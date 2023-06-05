@@ -167,6 +167,10 @@ declare project_name='';
 ## command line argument $9 : package name
 ##
 declare package_name='';
+##
+## command line argument $10 : Git configuration files.
+##
+declare -a git_files=();
 
 
 
@@ -189,7 +193,7 @@ declare pull_rebase=''; # unused
 ##
 ## Check number of arguments.
 ##
-if (( 9 == "${#}" )); then
+if (( 10 == "${#}" )); then
   :;
 else
   echo 'Error: wrong number of arguments.';
@@ -200,47 +204,52 @@ fi
 ##
 repository_path="${1}";
 repository_path="$( echo "${repository_path}" | sed 's/[/]*$//g' )";
-                                                                                echo "repository_path : '${repository_path}'";
+                                                                                #echo "repository_path : '${repository_path}'";
 ##
 ## command line argument S2 : repository-name - name of the repository
 ##
 repository_name="${2}";
-                                                                                echo "repository_name : '${repository_name}'";
+                                                                                #echo "repository_name : '${repository_name}'";
 ##
 ## command line argument $3 : user name
 ##
 user_name="${3}";
-                                                                                echo "user_name       : '${user_name}'";
+                                                                                #echo "user_name       : '${user_name}'";
 ##
 ## command line argument $4 : user email
 ##
 user_email="${4}";
-                                                                                echo "user_email      : '${user_email}'";
+                                                                                #echo "user_email      : '${user_email}'";
 ##
 ## command line argument $5 : how a merge is handled
 ##
 merge_ff="${5}";
-                                                                                echo "merge_ff        : '${merge_ff}'";
+                                                                                #echo "merge_ff        : '${merge_ff}'";
 ##
 ## command line argument $6 : how a pull is handled
 ##
 pull_ff="${6}";
-                                                                                echo "pull_ff         : '${pull_ff}'";
+                                                                                #echo "pull_ff         : '${pull_ff}'";
 ##
 ## command line argument $7 : remotes
 ##
 IFS=';' read -a 'remotes' -r <<< "${7}";
-                                                                                echo "remotes         : '${remotes[@]}' (${#remotes[@]})";
+                                                                                #echo "remotes         : '${remotes[@]}' (${#remotes[@]})";
 ##
 ## command line argument $8 : project name
 ##
 project_name="${8}";
-                                                                                echo "project_name    : '${project_name}'";
+                                                                                #echo "project_name    : '${project_name}'";
 ##
 ## command line argument $9 : package name
 ##
 package_name="${9}";
-                                                                                echo "package_name    : '${package_name}'";
+                                                                                #echo "package_name    : '${package_name}'";
+##
+## command line argument $10 : Git configuration files.
+##
+IFS=';' read -a 'git_files' -r <<< "${10}";
+                                                                                #echo "git_files       : '${git_files[@]}' (${#git_files[@]})";
 
 
 
@@ -336,6 +345,27 @@ echo '... done';
 echo "Info: committing as initial commit '${REPOSITORY}'. ...";
 ##
 git commit --allow-empty --message="$( echo "Initial commit of ${project_name} ${package_name}." | fold --spaces --width='50' )";
+##
+echo '... done';
+
+
+
+################################################################################
+##
+## Create und commit Git configuration files.
+##
+################################################################################
+##
+echo "Info: creating git configuration files in '${REPOSITORY}'. ...";
+##
+declare git_file='';
+for git_file in "${git_files[@]}"; do
+  touch "./${git_file}";
+  git add "./${git_file}";
+  git commit --message="$( echo "Add Git configuration file." | fold --spaces  --width='50' )
+
+$( echo "* ${git_file}: add configuration file." | fold --spaces  --width='72' )";
+done
 ##
 echo '... done';
 

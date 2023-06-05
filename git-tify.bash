@@ -46,13 +46,17 @@
 ##
 ## SYNOPSIS
 ##
-## git-tify.bash ???
+## git-tify.bash repository-path repository-name ???
 ##
 ## DESCRIPTION
 ##
 ## ???
 ##
 ## ARGUMENTS
+##
+## repository-path - path to the directory
+##
+## repository-name - name of the repository
 ##
 ## ???
 ##
@@ -70,13 +74,13 @@
 ##
 ## FILES
 ##
-## ???
+## git-tify.bash - this script
 ##
 ## EXIT STATUS                                  (For sections 1, 6, and 8 only.)
 ##
 ## EXAMPLES
 ##
-## git-tify.bash ???
+## git-tify.bash /home/user/john_dow/repositories/ foobar
 ##
 ## DIAGNOSTICS  (For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.)
 ##
@@ -103,6 +107,55 @@
 ## See section TESTS below.
 ##
 ################################################################################
+
+
+
+################################################################################
+##
+## Global constants.
+##
+################################################################################
+
+
+
+################################################################################
+##
+## Global variables.
+##
+################################################################################
+##
+## $1 : repository-path - path to the directory
+##
+declare repository_path='';
+##
+## S2 : repository-name - name of the repository
+##
+declare repository_name='';
+
+
+
+################################################################################
+##
+## Get the command line arguments.
+##
+################################################################################
+##
+## Check number of arguments.
+##
+if (( 2 == "${#}" )); then
+  :;
+else
+  echo 'Error: wrong number of arguments.';
+  exit 1;
+fi
+##
+## $1 : repository-path - path to the directory
+##
+repository_path="${1}";
+##
+## S2 : repository-name - name of the repository
+##
+repository_name="${2}";
 
 
 

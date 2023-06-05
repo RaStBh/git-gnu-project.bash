@@ -23,7 +23,91 @@
 ## this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 ################################################################################
+
+
+
+################################################################################
 ##
 ## $Date: 2023-06-05 12:11:58.1852606000 +00:00:00 $
+##
+################################################################################
+
+
+
+################################################################################
+##
+## git-tify.bash (git-gnu-project)
+##
+## NAME
+##
+## git-tify.bash - manage Git repository
+##
+## LIBRARY                                      (For sections 2, 3, and 9 only.)
+##
+## SYNOPSIS
+##
+## git-tify.bash ???
+##
+## DESCRIPTION
+##
+## ???
+##
+## ARGUMENTS
+##
+## ???
+##
+## OPTIONS
+##
+## ???
+##
+## CONTEXT                                       (For section 9 functions only.)
+##
+## IMPLEMENTATION NOTES
+##
+## RETURN VALUES         (For sections 2, 3, and 9 function return values only.)
+##
+## ENVIRONMENT                               (For sections 1, 6, 7, and 8 only.)
+##
+## FILES
+##
+## ???
+##
+## EXIT STATUS                                  (For sections 1, 6, and 8 only.)
+##
+## EXAMPLES
+##
+## git-tify.bash ???
+##
+## DIAGNOSTICS  (For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.)
+##
+## ERRORS                     (For sections 2, 3, 4, and 9 errno settings only.)
+##
+## SEE ALSO
+##
+## STANDARDS
+##
+## HISTORY
+##
+## AUTHORS
+##
+## Ralf Stephan <me@ralf-stephan.name>
+##
+## CAVEATS
+##
+## BUGS
+##
+## SECURITY CONSIDERATIONS
+##
+## TESTS
+##
+## See section TESTS below.
+##
+################################################################################
+
+
+
+################################################################################
+##
+## TESTS
 ##
 ################################################################################

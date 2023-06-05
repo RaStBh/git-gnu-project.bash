@@ -188,6 +188,8 @@ else
 fi
 ##
 mkdir "./${repository_name}/";
+##
+cd "./${repository_name}/";
 
 
 

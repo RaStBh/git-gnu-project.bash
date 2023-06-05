@@ -124,13 +124,46 @@
 ##
 ################################################################################
 ##
-## $1 : repository-path - path to the directory
+## command line argument $1 : repository-path - path to the directory
 ##
 declare repository_path='';
 ##
-## S2 : repository-name - name of the repository
+## command line argument S2 : repository-name - name of the repository
 ##
 declare repository_name='';
+##
+## command line argument $3 : user name
+##
+declare user_name='';
+##
+## command line argument $4 : user email
+##
+declare user_email='';
+##
+## command line argument $5 : how a merge is handled
+##
+## git merge --ff-only : merge.ff = only
+## git merge --ff      : merge.ff = true
+## git merge --no-ff   : merge.ff = false
+##
+declare merge_ff='';
+##
+## command line argument $6 : how a pull is handled
+##
+## git pull --ff-only : pull.ff = only
+## git pull --ff      : pull.ff = true
+## git pull --no-ff   : pull.ff = false
+##
+declare pull_ff='';
+##
+## command line argument ??? : how a rebase is handled
+##
+## git pull --rebase='false'       : pull.rebase = false
+## git pull --rebase='true'        : pull.rebase = true
+## git pull --rebase='interactive' : pull.rebase = interactive
+## git pull --rebase='merges'      : pull.rebase = merges
+##
+declare pull_rebase=''; # unused
 
 
 
@@ -142,28 +175,44 @@ declare repository_name='';
 ##
 ## Check number of arguments.
 ##
-if (( 2 == "${#}" )); then
+if (( 6 == "${#}" )); then
   :;
 else
   echo 'Error: wrong number of arguments.';
   exit 1;
 fi
 ##
-## $1 : repository-path - path to the directory
+## command line argument $1 : repository-path - path to the directory
 ##
 repository_path="${1}";
 repository_path="$( echo "${repository_path}" | sed 's/[/]*$//g' )";
 ##
-## S2 : repository-name - name of the repository
+## command line argument S2 : repository-name - name of the repository
 ##
 repository_name="${2}";
+##
+## command line argument $3 : user name
+##
+user_name="${3}";
+##
+## command line argument $4 : user email
+##
+user_email="${4}";
+##
+## command line argument $5 : how a merge is handled
+##
+merge_ff="${5}";
+##
+## command line argument $6 : how a pull is handled
+##
+pull_ff="${6}";
 
 
 
 ################################################################################
 ##
-## See if we can create a new  repository.  If OK, then change working directory
-## and create the new directory.
+## See if we can create a new Git repository.  If OK, then change working
+## directory and create the new directory.
 ##
 ################################################################################
 ##
@@ -190,6 +239,53 @@ fi
 mkdir "./${repository_name}/";
 ##
 cd "./${repository_name}/";
+
+
+
+################################################################################
+##
+## Create and initialize an empty Git repository in the working directory.
+##
+################################################################################
+##
+echo "Info: create and initialize an empty repository in '${repository_path}/${repository_name}/'. ...";
+##
+git init --initial-branch='master' --template='' './';
+##
+echo '... done';
+
+
+
+################################################################################
+##
+## Configure the Git repository.
+##
+################################################################################
+##
+echo "Info: configuring repository '${repository_path}/${repository_name}/'. ...";
+##
+git config --global user.name  "${user_name}";
+##
+git config          user.name  "${user_name}";
+##
+git config --global user.email "${user_email}";
+##
+git config          user.email "${user_email}";
+##
+git config --global merge.ff   "${merge_ff}";
+##
+git config          merge.ff   "${merge_ff}";
+##
+git config --global pull.ff    "${pull_ff}";
+##
+git config          pull.ff    "${pull_ff}";
+##
+declare git_remote='';
+for git_remote in "${!GIT_REMOTES[@]}"; do
+  git remote add "${git_remote}" "${GIT_REMOTES[${git_remote}]}";
+done;
+##
+echo '... done';
 
 
 

@@ -40,7 +40,7 @@
 ##
 ## NAME
 ##
-## git-tify.bash - manage Git repository
+## git-tify.bash - manage a directory as a Git repository
 ##
 ## LIBRARY                                      (For sections 2, 3, and 9 only.)
 ##

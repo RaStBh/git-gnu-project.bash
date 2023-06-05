@@ -259,52 +259,52 @@ fi
 ##
 repository_path="${1}";
 repository_path="$( echo "${repository_path}" | sed 's/[/]*$//g' )";
-                                                                                #echo "repository_path : '${repository_path}'";
+                                                                                #echo "repository_path      : '${repository_path}'";
 ##
 ## command line argument S2  : repository-name      - name of the repository
 ##
 repository_name="${2}";
-                                                                                #echo "repository_name : '${repository_name}'";
+                                                                                #echo "repository_name      : '${repository_name}'";
 ##
 ## command line argument $3  : user-name            - name of the user
 ##
 user_name="${3}";
-                                                                                #echo "user_name       : '${user_name}'";
+                                                                                #echo "user_name            : '${user_name}'";
 ##
 ## command line argument $4  : user-email           - email of the user
 ##
 user_email="${4}";
-                                                                                #echo "user_email      : '${user_email}'";
+                                                                                #echo "user_email           : '${user_email}'";
 ##
 ## command line argument $5  : merge-ff             - how a merge is handled
 ##
 merge_ff="${5}";
-                                                                                #echo "merge_ff        : '${merge_ff}'";
+                                                                                #echo "merge_ff             : '${merge_ff}'";
 ##
 ## command line argument $6  : pull-ff              - how a pull is handled
 ##
 pull_ff="${6}";
-                                                                                #echo "pull_ff         : '${pull_ff}'";
+                                                                                #echo "pull_ff              : '${pull_ff}'";
 ##
 ## command line argument $7  : tracked_repositories - set of tracked repositories
 ##
 IFS=';' read -a 'tracked_repositories' -r <<< "${7}";
-                                                                                #echo "tracked_repositories         : '${tracked_repositories[@]}' (${#tracked_repositories[@]})";
+                                                                                #echo "tracked_repositories : '${tracked_repositories[@]}' (${#tracked_repositories[@]})";
 ##
 ## command line argument $8  : project-name         - name of the project
 ##
 project_name="${8}";
-                                                                                #echo "project_name    : '${project_name}'";
+                                                                                #echo "project_name         : '${project_name}'";
 ##
 ## command line argument $9  : package-name         - name of the package
 ##
 package_name="${9}";
-                                                                                #echo "package_name    : '${package_name}'";
+                                                                                #echo "package_name         : '${package_name}'";
 ##
 ## command line argument $10 : git-files            - Git configuration files
 ##
 IFS=';' read -a 'git_files' -r <<< "${10}";
-                                                                                #echo "git_files       : '${git_files[@]}' (${#git_files[@]})";
+                                                                                #echo "git_files            : '${git_files[@]}' (${#git_files[@]})";
 
 
 ################################################################################

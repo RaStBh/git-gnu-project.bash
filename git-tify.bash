@@ -156,6 +156,20 @@ declare merge_ff='';
 ##
 declare pull_ff='';
 ##
+## command line argument $7 : remotes url
+##
+declare -a remotes=();
+##
+## command line argument $8 : project name
+##
+declare project_name='';
+##
+## command line argument $9 : package name
+##
+declare package_name='';
+
+
+
 ## command line argument ??? : how a rebase is handled
 ##
 ## git pull --rebase='false'       : pull.rebase = false
@@ -164,14 +178,6 @@ declare pull_ff='';
 ## git pull --rebase='merges'      : pull.rebase = merges
 ##
 declare pull_rebase=''; # unused
-##
-## command line argument $7 : project name
-##
-declare project_name='';
-##
-## command line argument $8 : package name
-##
-declare package_name='';
 
 
 
@@ -183,7 +189,7 @@ declare package_name='';
 ##
 ## Check number of arguments.
 ##
-if (( 8 == "${#}" )); then
+if (( 9 == "${#}" )); then
   :;
 else
   echo 'Error: wrong number of arguments.';
@@ -194,34 +200,47 @@ fi
 ##
 repository_path="${1}";
 repository_path="$( echo "${repository_path}" | sed 's/[/]*$//g' )";
+                                                                                echo "repository_path : '${repository_path}'";
 ##
 ## command line argument S2 : repository-name - name of the repository
 ##
 repository_name="${2}";
+                                                                                echo "repository_name : '${repository_name}'";
 ##
 ## command line argument $3 : user name
 ##
 user_name="${3}";
+                                                                                echo "user_name       : '${user_name}'";
 ##
 ## command line argument $4 : user email
 ##
 user_email="${4}";
+                                                                                echo "user_email      : '${user_email}'";
 ##
 ## command line argument $5 : how a merge is handled
 ##
 merge_ff="${5}";
+                                                                                echo "merge_ff        : '${merge_ff}'";
 ##
 ## command line argument $6 : how a pull is handled
 ##
 pull_ff="${6}";
+                                                                                echo "pull_ff         : '${pull_ff}'";
 ##
-## command line argument $7 : project name
+## command line argument $7 : remotes
 ##
-project_name="${7}";
+IFS=';' read -a 'remotes' -r <<< "${7}";
+                                                                                echo "remotes         : '${remotes[@]}' (${#remotes[@]})";
 ##
-## command line argument $8 : package name
+## command line argument $8 : project name
 ##
-package_name="${8}";
+project_name="${8}";
+                                                                                echo "project_name    : '${project_name}'";
+##
+## command line argument $9 : package name
+##
+package_name="${9}";
+                                                                                echo "package_name    : '${package_name}'";
 
 
 
@@ -296,9 +315,12 @@ git config --global pull.ff    "${pull_ff}";
 ##
 git config          pull.ff    "${pull_ff}";
 ##
-declare git_remote='';
-for git_remote in "${!GIT_REMOTES[@]}"; do
-  git remote add "${git_remote}" "${GIT_REMOTES[${git_remote}]}";
+declare remote='';
+declare -a key_value=();
+for remote in "${remotes[@]}"; do
+  key_value=();
+  IFS=',' read -a 'key_value' -r <<< "${remote}";
+  git remote add "${key_value[0]}" "${key_value[1]}";
 done;
 ##
 echo '... done';
@@ -316,7 +338,6 @@ echo "Info: committing as initial commit '${REPOSITORY}'. ...";
 git commit --allow-empty --message="$( echo "Initial commit of ${project_name} ${package_name}." | fold --spaces --width='50' )";
 ##
 echo '... done';
-
 
 
 

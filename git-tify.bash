@@ -152,10 +152,37 @@ fi
 ## $1 : repository-path - path to the directory
 ##
 repository_path="${1}";
+repository_path="$( echo "${repository_path}" | sed 's/[/]*$//g' )";
 ##
 ## S2 : repository-name - name of the repository
 ##
 repository_name="${2}";
+
+
+
+################################################################################
+##
+## See if we can create a new repository.
+##
+################################################################################
+##
+## See if there is the directory $repository_path.
+##
+if [[ -d "${repository_path}" ]]; then
+  :;
+else
+  echo "Error: directory '${repository_path}/' does not exist.";
+  exit 1;
+fi
+##
+## See if there is a directory $repository_name is directory $repository_path.
+##
+if [[ -d "${repository_path}/${repository_name}" ]]; then
+  echo "Error: directory '${repository_path}/${repository_name}/' does exist.";
+  exit 1;
+else
+  :;
+fi
 
 
 

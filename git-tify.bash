@@ -46,11 +46,24 @@
 ##
 ## SYNOPSIS
 ##
-## git-tify.bash repository-path repository-name ???
+## git-tify.bash repository-path repository-name user-name user-email merge-ff 
+##   pull-ff remotes project-name package-name git-files
 ##
 ## DESCRIPTION
 ##
-## ???
+## Manage a directory as a Git repository.
+##
+## Step 1: See if we can create a new Git repository.
+##
+## Step 2: Create and initialize an empty Git repository.
+##
+## Step 3: Configure the Git repository.
+##
+## Step 4: Initial commit of the repository.
+##
+## Step 5: Create und commit Git configuration files.
+##
+## Step 6: Cleanup and optimize the repository.
 ##
 ## ARGUMENTS
 ##
@@ -58,11 +71,23 @@
 ##
 ## repository-name - name of the repository
 ##
-## ???
+## user-name       - name of the user
+##
+## user-email      - email of the user
+##
+## merge-ff        - how a merge is handled
+##
+## pull-ff         - how a pull is handled
+##
+## remotes         - set of tracked repositories
+##
+## project-name    - name of the project
+##
+## package-name    - name of the package
+##
+## git-files       - Git configuration files
 ##
 ## OPTIONS
-##
-## ???
 ##
 ## CONTEXT                                       (For section 9 functions only.)
 ##
@@ -80,7 +105,17 @@
 ##
 ## EXAMPLES
 ##
-## git-tify.bash /home/user/john_dow/repositories/ foobar
+## ./git-tify.bash \
+##   '/home/user/JohnDow/repositories/' \
+##   'foobar' \
+##   'John Dow' \
+##   'john.dow@example.com' \
+##   'false' \
+##   'false' \
+##   'github.com,git@github.com-JohnDow:JohnDow;gitlab.com,git@gitlab.com-JohnDow:JohnDow;example.com,ssh://JohnDow@example.com/home/JohnDow/repositories' \
+##   'JD' \
+##   'foobar' \
+##   '.gitattributes;.gitignore;.gitkeep;.gitmodules;.mailmap'
 ##
 ## DIAGNOSTICS  (For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.)
 ##
@@ -200,53 +235,53 @@ else
   exit 1;
 fi
 ##
-## command line argument $1 : repository-path - path to the directory
+## command line argument $1  : repository-path - path to the directory
 ##
 repository_path="${1}";
 repository_path="$( echo "${repository_path}" | sed 's/[/]*$//g' )";
                                                                                 #echo "repository_path : '${repository_path}'";
 ##
-## command line argument S2 : repository-name - name of the repository
+## command line argument S2  : repository-name - name of the repository
 ##
 repository_name="${2}";
                                                                                 #echo "repository_name : '${repository_name}'";
 ##
-## command line argument $3 : user name
+## command line argument $3  : user-name       - name of the user
 ##
 user_name="${3}";
                                                                                 #echo "user_name       : '${user_name}'";
 ##
-## command line argument $4 : user email
+## command line argument $4  : user-email      - email of the user
 ##
 user_email="${4}";
                                                                                 #echo "user_email      : '${user_email}'";
 ##
-## command line argument $5 : how a merge is handled
+## command line argument $5  : merge-ff        - how a merge is handled
 ##
 merge_ff="${5}";
                                                                                 #echo "merge_ff        : '${merge_ff}'";
 ##
-## command line argument $6 : how a pull is handled
+## command line argument $6  : pull-ff         - how a pull is handled
 ##
 pull_ff="${6}";
                                                                                 #echo "pull_ff         : '${pull_ff}'";
 ##
-## command line argument $7 : remotes
+## command line argument $7  : remotes         - set of tracked repositories
 ##
 IFS=';' read -a 'remotes' -r <<< "${7}";
                                                                                 #echo "remotes         : '${remotes[@]}' (${#remotes[@]})";
 ##
-## command line argument $8 : project name
+## command line argument $8  : project-name    - name of the project
 ##
 project_name="${8}";
                                                                                 #echo "project_name    : '${project_name}'";
 ##
-## command line argument $9 : package name
+## command line argument $9  : package-name    - name of the package
 ##
 package_name="${9}";
                                                                                 #echo "package_name    : '${package_name}'";
 ##
-## command line argument $10 : Git configuration files.
+## command line argument $10 : git-files       - Git configuration files
 ##
 IFS=';' read -a 'git_files' -r <<< "${10}";
                                                                                 #echo "git_files       : '${git_files[@]}' (${#git_files[@]})";

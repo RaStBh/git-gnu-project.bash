@@ -1,5 +1,7 @@
 #! /usr/bin/env -S bash -e
 
+
+
 ################################################################################
 ##
 ## This file is part of RaSt git-gnu-project.
@@ -305,10 +307,9 @@ IFS=';' read -a 'git_files' -r <<< "${10}";
                                                                                 #echo "git_files       : '${git_files[@]}' (${#git_files[@]})";
 
 
-
 ################################################################################
 ##
-## See if we can create a new Git repository.  If OK, then change working
+## See  if we  can create  a new  Git repository.   If OK,  then change  working
 ## directory and create the new directory.
 ##
 ################################################################################

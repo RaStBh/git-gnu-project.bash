@@ -162,27 +162,32 @@ repository_name="${2}";
 
 ################################################################################
 ##
-## See if we can create a new repository.
+## See if we can create a new  repository.  If OK, then change working directory
+## and create the new directory.
 ##
 ################################################################################
 ##
 ## See if there is the directory $repository_path.
 ##
-if [[ -d "${repository_path}" ]]; then
+if [[ -d "${repository_path}/" ]]; then
   :;
 else
   echo "Error: directory '${repository_path}/' does not exist.";
   exit 1;
 fi
 ##
+cd "${repository_path}/";
+##
 ## See if there is a directory $repository_name is directory $repository_path.
 ##
-if [[ -d "${repository_path}/${repository_name}" ]]; then
+if [[ -d "./${repository_name}/" ]]; then
   echo "Error: directory '${repository_path}/${repository_name}/' does exist.";
   exit 1;
 else
   :;
 fi
+##
+mkdir "./${repository_name}/";
 
 
 

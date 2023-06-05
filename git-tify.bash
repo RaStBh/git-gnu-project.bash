@@ -164,6 +164,14 @@ declare pull_ff='';
 ## git pull --rebase='merges'      : pull.rebase = merges
 ##
 declare pull_rebase=''; # unused
+##
+## command line argument $7 : project name
+##
+declare project_name='';
+##
+## command line argument $8 : package name
+##
+declare package_name='';
 
 
 
@@ -175,7 +183,7 @@ declare pull_rebase=''; # unused
 ##
 ## Check number of arguments.
 ##
-if (( 6 == "${#}" )); then
+if (( 8 == "${#}" )); then
   :;
 else
   echo 'Error: wrong number of arguments.';
@@ -206,6 +214,14 @@ merge_ff="${5}";
 ## command line argument $6 : how a pull is handled
 ##
 pull_ff="${6}";
+##
+## command line argument $7 : project name
+##
+project_name="${7}";
+##
+## command line argument $8 : package name
+##
+package_name="${8}";
 
 
 
@@ -286,6 +302,21 @@ for git_remote in "${!GIT_REMOTES[@]}"; do
 done;
 ##
 echo '... done';
+
+
+
+################################################################################
+##
+## Initial commit of the repository.
+##
+################################################################################
+##
+echo "Info: committing as initial commit '${REPOSITORY}'. ...";
+##
+git commit --allow-empty --message="$( echo "Initial commit of ${project_name} ${package_name}." | fold --spaces --width='50' )";
+##
+echo '... done';
+
 
 
 

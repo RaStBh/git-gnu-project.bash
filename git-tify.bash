@@ -46,7 +46,7 @@
 ##
 ## SYNOPSIS
 ##
-## git-tify.bash repository-path repository-name user-name user-email merge-ff 
+## git-tify.bash repository-path repository-name user-name user-email merge-ff
 ##   pull-ff tracked-repositories project-name package-name git-files
 ##
 ## DESCRIPTION
@@ -99,7 +99,11 @@
 ##
 ## FILES
 ##
-## git-tify.bash - this script
+## git-tify.bash           - this script
+##
+## config.inc.bash         - used configuration file
+##
+## config.inc.bash.example - example configuration file
 ##
 ## EXIT STATUS                                  (For sections 1, 6, and 8 only.)
 ##
@@ -217,6 +221,20 @@ declare -a git_files=();
 ## git pull --rebase='merges'      : pull.rebase = merges
 ##
 declare pull_rebase=''; # unused
+
+
+
+################################################################################
+##
+## Get content of configuration file.
+##
+################################################################################
+#
+if [[ -f './config.inc.bash' ]]; then
+  source './config.inc.bash';
+else
+  :;
+fi
 
 
 

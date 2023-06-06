@@ -366,7 +366,7 @@ while true; do
         merge_ff="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
       else
-        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'.";
+        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'." 1>&2;
         exit 1;
       fi
       ;;
@@ -377,7 +377,7 @@ while true; do
         pull_ff="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
       else
-        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'.";
+        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'." 1>&2;
         exit 1;
       fi
       ;;
@@ -401,7 +401,7 @@ while true; do
       break 1;
       ;;
     *)
-      echo "Error: unknown option name '${option_name}'.";
+      echo "Error: unknown option name '${option_name}'." 1>&2;
       exit 1;
       ;;
   esac
@@ -439,7 +439,7 @@ done
 if [[ -d "${repository_path}/" ]]; then
   :;
 else
-  echo "Error: directory '${repository_path}/' does not exist.";
+  echo "Error: directory '${repository_path}/' does not exist." 1>&2;
   exit 1;
 fi
 ##
@@ -448,7 +448,7 @@ cd "${repository_path}/";
 ## See if there is a directory $repository_name is directory $repository_path.
 ##
 if [[ -d "./${repository_name}/" ]]; then
-  echo "Error: directory '${repository_path}/${repository_name}/' does exist.";
+  echo "Error: directory '${repository_path}/${repository_name}/' does exist." 1>&2;
   exit 1;
 else
   :;
@@ -459,14 +459,14 @@ read -p "Create repository in '${repository_path}/${repository_name}/' (y/n)? " 
 confirm="$( echo "${confirm}" | tr '[:upper:]' '[:lower:]' )";
 case "${confirm}" in
   'y' | 'yes' )
-    echo "Info: create repository in '${repository_path}/${repository_name}/'.";
+    echo "Info: create repository in '${repository_path}/${repository_name}/'." 1>&2;
     ;;
   'n' | 'no'  )
     echo 'Info: creating repository aborded.';
     exit 0;
     ;;
   * )
-    echo "Error: unknown '${confirm}'";
+    echo "Error: unknown '${confirm}'" 1>&2;
     exit 1;
     ;;
 esac
@@ -483,11 +483,11 @@ cd "./${repository_name}/";
 ##
 ################################################################################
 ##
-echo "Info: create and initialize an empty repository in '${repository_path}/${repository_name}/'. ...";
+echo "Info: create and initialize an empty repository in '${repository_path}/${repository_name}/'. ..." 1>&2;
 ##
 git init --initial-branch='master' --template='' './';
 ##
-echo '... done';
+echo '... done' 1>&2;
 
 
 
@@ -497,7 +497,7 @@ echo '... done';
 ##
 ################################################################################
 ##
-echo "Info: configuring repository '${repository_path}/${repository_name}/'. ...";
+echo "Info: configuring repository '${repository_path}/${repository_name}/'. ..." 1>&2;
 ##
 git config --global user.name  "${user_name}";
 ##
@@ -523,7 +523,7 @@ for tracked_repository in "${tracked_repositories[@]}"; do
   git remote add "${key_value[0]}" "${key_value[1]}";
 done;
 ##
-echo '... done';
+echo '... done' 1>&2;
 
 
 
@@ -533,11 +533,11 @@ echo '... done';
 ##
 ################################################################################
 ##
-echo "Info: committing as initial commit '${REPOSITORY}'. ...";
+echo "Info: committing as initial commit '${REPOSITORY}'. ..." 1>&2;
 ##
 git commit --allow-empty --message="$( echo "Initial commit of ${project_name} ${package_name}." | fold --spaces --width='50' )";
 ##
-echo '... done';
+echo '... done' 1>&2;
 
 
 
@@ -549,12 +549,12 @@ echo '... done';
 ##
 ################################################################################
 ##
-echo "Info: creating git configuration files in '${REPOSITORY}'. ...";
+echo "Info: creating git configuration files in '${REPOSITORY}'. ..." 1>&2;
 ##
 declare git_file='';
 for git_file in "${git_files[@]}"; do
   if [[ -f "./${git_file}" ]]; then
-    echo "Error: Git configuration file './${git_file}' already exists.";
+    echo "Error: Git configuration file './${git_file}' already exists." 1>&2;
     exit 1;
   else
     touch "./${git_file}";
@@ -565,7 +565,7 @@ $( echo "* ${git_file}: add configuration file." | fold --spaces  --width='72' )
   fi
 done
 ##
-echo '... done';
+echo '... done' 1>&2;
 
 
 
@@ -575,11 +575,11 @@ echo '... done';
 ##
 ################################################################################
 ##
-echo "Info: cleaning and optimizing '${REPOSITORY}'. ...";
+echo "Info: cleaning and optimizing '${REPOSITORY}'. ..." 1>&2;
 ##
 git gc;
 ##
-echo '... done';
+echo '... done' 1>&2;
 
 
 

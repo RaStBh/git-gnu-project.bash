@@ -531,17 +531,24 @@ echo '... done';
 ##
 ## Create und commit Git configuration files.
 ##
+## If file already exists, then exit.
+##
 ################################################################################
 ##
 echo "Info: creating git configuration files in '${REPOSITORY}'. ...";
 ##
 declare git_file='';
 for git_file in "${git_files[@]}"; do
-  touch "./${git_file}";
-  git add "./${git_file}";
-  git commit --message="$( echo "Add Git configuration file." | fold --spaces  --width='50' )
+  if [[ -f "./${git_file}" ]]; then
+    echo "Error: Git configuration file './${git_file}' already exists.";
+    exit 1;
+  else
+    touch "./${git_file}";
+    git add "./${git_file}";
+    git commit --message="$( echo "Add Git configuration file." | fold --spaces  --width='50' )
 
 $( echo "* ${git_file}: add configuration file." | fold --spaces  --width='72' )";
+  fi
 done
 ##
 echo '... done';

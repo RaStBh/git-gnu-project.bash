@@ -360,12 +360,26 @@ while true; do
       next_position="$(( "${next_position}" + 1 ))";
       ;;
     '--merge-ff' )
-      merge_ff="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
+      if   [[ 'only' == "${option_argument}" ]] \
+        || [[ 'true' == "${option_argument}" ]] \
+        || [[ 'false' == "${option_argument}" ]]; then
+        merge_ff="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+      else
+        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'.";
+        exit 1;
+      fi
       ;;
     '--pull-ff' )
-      pull_ff="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
+      if   [[ 'only' == "${option_argument}" ]] \
+        || [[ 'true' == "${option_argument}" ]] \
+        || [[ 'false' == "${option_argument}" ]]; then
+        pull_ff="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+      else
+        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'.";
+        exit 1;
+      fi
       ;;
     '--tracked-repository' )
       tracked_repositories["${#tracked_repositories[@]}"]="${option_argument}";

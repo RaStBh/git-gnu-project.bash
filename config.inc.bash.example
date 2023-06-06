@@ -1,0 +1,30 @@
+
+## Copyright (C)  2023  John Dow
+
+## $Date: 2023-06-05 12:11:58.1852606000 +00:00:00 $
+
+repository_path='/home/user/JohnDow/repositories/';
+
+repository_name='foobar';
+
+user_name='John Dow';
+
+user_email='john.dow@example.com';
+
+merge_ff='false';
+
+pull_ff='false';
+
+tracked_repositories[]='github.com,git@github.com-JohnDow:JohnDow';
+tracked_repositories[]='gitlab.com,git@gitlab.com-JohnDow:JohnDow';
+tracked_repositories[]='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories';
+
+project_name='JS';
+
+package_name='foobar';
+
+git_files[0]='.gitattributes';
+git_files[1]='.gitignore';
+git_files[2]='.gitkeep';
+git_files[3]='.gitmodules';
+git_files[4]='.mailmap';

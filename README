@@ -1,0 +1,40 @@
+
+################################################################################
+##
+## This file is part of RaSt git-gnu-project.
+##
+## RaSt git-gnu-project is to  manage a directory as a Git  repository and a GNU
+## package.
+##
+## Copyright (C)  2023  Ralf Stephan
+##
+## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+## without modification,  are permitted in  any medium without  royalty provided
+## the copyright  notice and this  notice are  preserved.  This file  is offered
+## as-is, without any warranty.
+##
+################################################################################
+
+
+
+================================================================================
+
+Contents
+--------------------------------------------------------------------------------
+
+1 Introduction
+
+================================================================================
+
+1 Introduction
+--------------------------------------------------------------------------------
+
+RaSt git-gnu-project  is to  manage a directory  as a Git  repository and  a GNU
+package.
+
+You can crate a local Git repository and configure it to your liking.
+
+You  can create  a local  GNU package  having a  project tree  for a  program, a
+library or a documentation.
+
+================================================================================

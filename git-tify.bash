@@ -346,6 +346,9 @@ case "${confirm}" in
     exit 0;
     ;;
   * )
+    echo "Error: unknown '${confirm}'";
+    exit 1;
+    ;;
 esac
 ##
 mkdir "./${repository_name}/";

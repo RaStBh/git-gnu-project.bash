@@ -3,6 +3,10 @@
 
 ## $Date: 2023-06-05 12:11:58.1852606000 +00:00:00 $
 
+##
+## Git configuration.
+##
+
 repository_path='/home/user/JohnDow/repositories/';
 
 repository_name='foobar';
@@ -28,3 +32,7 @@ git_files[1]='.gitignore';
 git_files[2]='.gitkeep';
 git_files[3]='.gitmodules';
 git_files[4]='.mailmap';
+
+##
+## GNU configuration.
+##

@@ -334,6 +334,20 @@ else
   :;
 fi
 ##
+declare confirm='';
+read -p "Create repository in '${repository_path}/${repository_name}/' (y/n)? " 'confirm';
+confirm="$( echo "${confirm}" | tr '[:upper:]' '[:lower:]' )";
+case "${confirm}" in
+  'y' | 'yes' )
+    echo "Info: create repository in '${repository_path}/${repository_name}/'.";
+    ;;
+  'n' | 'no'  )
+    echo 'Info: creating repository aborded.';
+    exit 0;
+    ;;
+  * )
+esac
+##
 mkdir "./${repository_name}/";
 ##
 cd "./${repository_name}/";

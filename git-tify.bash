@@ -48,8 +48,13 @@
 ##
 ## SYNOPSIS
 ##
-## git-tify.bash repository-path repository-name user-name user-email merge-ff
-##   pull-ff tracked-repositories project-name package-name git-files
+## git-tify.bash [--repository-path=<path to the directory>]
+## [--repository-name=<name of the repository>] [--user-name=<name of the user>]
+## [--user-email=<email of the user>] [--merge-ff=<how a merge is handled>]
+## [--pull-ff=<how a pull is handled>]
+## [--tracked-repository=<repository to track>]
+## [--project-name=<name of the project>] [--package-name=<name of the package>]
+## [--git-file=<Git configuration file>]
 ##
 ## DESCRIPTION
 ##
@@ -69,27 +74,58 @@
 ##
 ## ARGUMENTS
 ##
-## repository-path      - path to the directory
-##
-## repository-name      - name of the repository
-##
-## user-name            - name of the user
-##
-## user-email           - email of the user
-##
-## merge-ff             - how a merge is handled
-##
-## pull-ff              - how a pull is handled
-##
-## tracked-repositories - set of tracked repositories
-##
-## project-name         - name of the project
-##
-## package-name         - name of the package
-##
-## git-files            - Git configuration files
-##
 ## OPTIONS
+##
+## --repository-path=<path to the directory>
+##
+##   set path to the directory
+##
+## --repository-name=<name of the repository>
+##
+##   set name of the repository
+##
+## --user-name=<name of the user>
+##
+##   set name of the user
+##
+## --user-email=<email of the user>
+##
+##   set email of the user
+##
+## --merge-ff=<how a merge is handled>
+##
+##   set how a merge is handled
+##
+##   only
+##   true
+##   false
+##
+## --pull-ff=<how a pull is handled>
+##
+##   set how a pull is handled
+##
+##   only
+##   true
+##   false
+##
+## --tracked-repository=<repository to track>
+##
+##   add repository to track
+##
+##   The string  is composed of  the remote name  followed by the  ',' character
+##   followed by the remote URL.
+##
+## --project-name=<name of the project>
+##
+##   set name of the project
+##
+## --package-name=<name of the package>
+##
+##   set name of the package
+##
+## --git-file=<Git configuration file>
+##
+##   add Git configuration file
 ##
 ## CONTEXT                                       (For section 9 functions only.)
 ##
@@ -112,16 +148,22 @@
 ## EXAMPLES
 ##
 ## ./git-tify.bash \
-##   '/home/user/JohnDow/repositories/' \
-##   'foobar' \
-##   'John Dow' \
-##   'john.dow@example.com' \
-##   'false' \
-##   'false' \
-##   'github.com,git@github.com-JohnDow:JohnDow;gitlab.com,git@gitlab.com-JohnDow:JohnDow;example.com,ssh://JohnDow@example.com/home/JohnDow/repositories' \
-##   'JD' \
-##   'foobar' \
-##   '.gitattributes;.gitignore;.gitkeep;.gitmodules;.mailmap'
+## --repository-path='/home/user/JohnDow/repositories/' \
+## --repository-name='foobar' \
+## --user-name='John Dow' \
+## --user-email='john.dow@example.com' \
+## --merge-ff='false' \
+## --pull-ff'false' \
+## --tracked-repository='github.com,git@github.com-JohnDow:JohnDow' \
+## --tracked-repository='gitlab.com,git@gitlab.com-JohnDow:JohnDow;example.com' \
+## --tracked-repository='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/' \
+## --project-name'JD' \
+## --package-name='foobar' \
+## --git-file='.gitattributes' \
+## --git-file='.gitignore' \
+## --git-file='.gitkeep' \
+## --git-file='.gitmodules' \
+## --git-file='.mailmap'
 ##
 ## DIAGNOSTICS  (For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.)
 ##
@@ -165,23 +207,23 @@
 ##
 ################################################################################
 ##
-## command line argument $1  : repository-path      - path to the directory
+## repository-path      - path to the directory
 ##
 declare repository_path='';
 ##
-## command line argument S2  : repository-name      - name of the repository
+## repository-name      - name of the repository
 ##
 declare repository_name='';
 ##
-## command line argument $3  : user-name            - name of the user
+## user-name            - name of the user
 ##
 declare user_name='';
 ##
-## command line argument $4  : user-email           - email of the user
+## user-email           - email of the user
 ##
 declare user_email='';
 ##
-## command line argument $5  : merge-ff             - how a merge is handled
+## merge-ff             - how a merge is handled
 ##
 ## git merge --ff-only : merge.ff = only
 ## git merge --ff      : merge.ff = true
@@ -189,7 +231,7 @@ declare user_email='';
 ##
 declare merge_ff='';
 ##
-## command line argument $6  : pull-ff              - how a pull is handled
+## pull-ff              - how a pull is handled
 ##
 ## git pull --ff-only : pull.ff = only
 ## git pull --ff      : pull.ff = true
@@ -197,19 +239,19 @@ declare merge_ff='';
 ##
 declare pull_ff='';
 ##
-## command line argument $7  : tracked-repositories - set of tracked repositories
+## tracked-repositories - list of tracked repositories
 ##
 declare -a tracked_repositories=();
 ##
-## command line argument $8  : project-name         - name of the project
+## project-name         - name of the project
 ##
 declare project_name='';
 ##
-## command line argument $9  : package-name         - name of the package
+## package-name         - name of the package
 ##
 declare package_name='';
 ##
-## command line argument $10 : git-files            - Git configuration files
+## git-files            - list of Git configuration files
 ##
 declare -a git_files=();
 
@@ -242,69 +284,133 @@ fi
 
 ################################################################################
 ##
-## Get the command line arguments.
+## Parse command line options names and arguments.
 ##
 ################################################################################
 ##
-## Check number of arguments.
+## Declare the command line option names and option arguments.
 ##
-if (( 10 == "${#}" )); then
-  :;
-else
-  echo 'Error: wrong number of arguments.';
-  exit 1;
-fi
+declare short_options='';
 ##
-## command line argument $1  : repository-path      - path to the directory
+declare long_options='';
+long_options+='repository-path:';
+long_options+=',';
+long_options+='repository-name:';
+long_options+=',';
+long_options+='user-name:';
+long_options+=',';
+long_options+='user-email:';
+long_options+=',';
+long_options+='merge-ff:';
+long_options+=',';
+long_options+='pull-ff:';
+long_options+=',';
+long_options+='tracked-repository:';
+long_options+=',';
+long_options+='project-name:';
+long_options+=',';
+long_options+='package-name:';
+long_options+=',';
+long_options+='git-file:';
 ##
-repository_path="${1}";
-repository_path="$( echo "${repository_path}" | sed 's/[/]*$//g' )";
+## Parse the command line options.
+##
+declare -a arguments=();
+eval arguments=( "$( getopt --alternative \
+                             --options "${short_options}" \
+                             --longoptions "${long_options}" \
+                             --shell 'bash' \
+                             -- \
+                             "${@}" )" );
+
+                                                                                #echo "arguments: '${arguments[@]}' (${#arguments[@]})"
+##
+## Parse the command line options and command line arguments.
+##
+declare option_name='';
+declare option_argument='';
+declare -i previous_position=0;
+declare -i current_position=0;
+declare -i next_position=0;
+                                                                                #echo ">>> next_position  : '${next_position}'";
+while true; do
+  option_name="${arguments[$(( "${current_position}" + 0 ))]}";
+                                                                                #echo ">>> option_name    : '${option_name}'";
+  option_argument="${arguments[$(( "${current_position}" + 1 ))]}";
+  option_argument="$( echo "${option_argument}" | sed "s/^'//g" )";
+  option_argument="$( echo "${option_argument}" | sed "s/'$//g" )";
+                                                                                #echo ">>> option_argument: '${option_argument}'";
+  next_position="$(( "${next_position}" + 1 ))";
+                                                                                #echo ">>> next_position  : '${next_position}'";
+  case "${option_name}" in
+    '--repository-path' )
+      repository_path="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--repository-name' )
+      repository_name="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--user-name' )
+      user_name="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--user-email' )
+      user_email="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--merge-ff' )
+      merge_ff="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--pull-ff' )
+      pull_ff="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--tracked-repository' )
+      tracked_repositories["${#tracked_repositories[@]}"]="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--project-name' )
+      project_name="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--package-name' )
+      package_name="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--git-file' )
+      git_files["${#git_files[@]}"]="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
+      ;;
+    '--' )
+      break 1;
+      ;;
+    *)
+      echo "Error: unknown option name '${option_name}'.";
+      exit 1;
+      ;;
+  esac
+  previous_position="${current_position}";
+  current_position="${next_position}";
+done
                                                                                 #echo "repository_path      : '${repository_path}'";
-##
-## command line argument S2  : repository-name      - name of the repository
-##
-repository_name="${2}";
                                                                                 #echo "repository_name      : '${repository_name}'";
-##
-## command line argument $3  : user-name            - name of the user
-##
-user_name="${3}";
                                                                                 #echo "user_name            : '${user_name}'";
-##
-## command line argument $4  : user-email           - email of the user
-##
-user_email="${4}";
                                                                                 #echo "user_email           : '${user_email}'";
-##
-## command line argument $5  : merge-ff             - how a merge is handled
-##
-merge_ff="${5}";
                                                                                 #echo "merge_ff             : '${merge_ff}'";
-##
-## command line argument $6  : pull-ff              - how a pull is handled
-##
-pull_ff="${6}";
                                                                                 #echo "pull_ff              : '${pull_ff}'";
-##
-## command line argument $7  : tracked_repositories - set of tracked repositories
-##
-IFS=';' read -a 'tracked_repositories' -r <<< "${7}";
-                                                                                #echo "tracked_repositories : '${tracked_repositories[@]}' (${#tracked_repositories[@]})";
-##
-## command line argument $8  : project-name         - name of the project
-##
-project_name="${8}";
+                                                                                #echo "tracked_repositories :";
+                                                                                #for (( index=0; index<"${#tracked_repositories[@]}"; index++ )); do
+                                                                                #  echo "  ${index}: '${tracked_repositories[${index}]}'";
+                                                                                #done
                                                                                 #echo "project_name         : '${project_name}'";
-##
-## command line argument $9  : package-name         - name of the package
-##
-package_name="${9}";
                                                                                 #echo "package_name         : '${package_name}'";
-##
-## command line argument $10 : git-files            - Git configuration files
-##
-IFS=';' read -a 'git_files' -r <<< "${10}";
-                                                                                #echo "git_files            : '${git_files[@]}' (${#git_files[@]})";
+                                                                                #echo "git_files            :";
+                                                                                #for (( index=0; index<"${#git_files[@]}"; index++ )); do
+                                                                                #  echo "  ${index}: '${git_files[${index}]}'";
+                                                                                #done
+
 
 
 ################################################################################

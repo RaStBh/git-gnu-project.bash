@@ -21,7 +21,7 @@ pull_ff='false';
 
 tracked_repositories[]='github.com,git@github.com-JohnDow:JohnDow';
 tracked_repositories[]='gitlab.com,git@gitlab.com-JohnDow:JohnDow';
-tracked_repositories[]='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories';
+tracked_repositories[]='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/';
 
 project_name='JS';
 

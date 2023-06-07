@@ -44,7 +44,7 @@
 ##
 ## git-tify.bash - manage a directory as a Git repository
 ##
-## LIBRARY                                      (For sections 2, 3, and 9 only.)
+## LIBRARY
 ##
 ## SYNOPSIS
 ##
@@ -127,13 +127,13 @@
 ##
 ##   add Git configuration file
 ##
-## CONTEXT                                       (For section 9 functions only.)
+## CONTEXT
 ##
 ## IMPLEMENTATION NOTES
 ##
-## RETURN VALUES         (For sections 2, 3, and 9 function return values only.)
+## RETURN VALUES
 ##
-## ENVIRONMENT                               (For sections 1, 6, 7, and 8 only.)
+## ENVIRONMENT
 ##
 ## FILES
 ##
@@ -143,7 +143,7 @@
 ##
 ## config.inc.bash.example - example configuration file
 ##
-## EXIT STATUS                                  (For sections 1, 6, and 8 only.)
+## EXIT STATUS
 ##
 ## EXAMPLES
 ##
@@ -167,9 +167,9 @@
 ##
 ## For how to use the configuration file config.inc.bash see the file itself.
 ##
-## DIAGNOSTICS  (For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.)
+## DIAGNOSTICS
 ##
-## ERRORS                     (For sections 2, 3, 4, and 9 errno settings only.)
+## ERRORS
 ##
 ## SEE ALSO
 ##

@@ -257,7 +257,7 @@ declare -a git_files=();
 
 
 
-## command line argument ??? : pull_rebase          - how a rebase is handled
+## pull_rebase          - how a rebase is handled
 ##
 ## git pull --rebase='false'       : pull.rebase = false
 ## git pull --rebase='true'        : pull.rebase = true

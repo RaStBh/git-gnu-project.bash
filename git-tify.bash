@@ -86,11 +86,11 @@
 ##
 ## --user-name=<name of the user>
 ##
-##   set name of the user
+##   set name of the user locally and globally
 ##
 ## --user-email=<email of the user>
 ##
-##   set email of the user
+##   set email of the user locally and globally
 ##
 ## --merge-ff=<how a merge is handled>
 ##

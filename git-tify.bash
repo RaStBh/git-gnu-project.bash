@@ -165,6 +165,8 @@
 ## --git-file='.gitmodules' \
 ## --git-file='.mailmap'
 ##
+## For how to use the configuration file config.inc.bash see the file itself.
+##
 ## DIAGNOSTICS  (For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.)
 ##
 ## ERRORS                     (For sections 2, 3, 4, and 9 errno settings only.)

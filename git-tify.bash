@@ -298,25 +298,16 @@ fi
 declare short_options='';
 ##
 declare long_options='';
-long_options+='repository-path:';
-long_options+=',';
-long_options+='repository-name:';
-long_options+=',';
-long_options+='user-name:';
-long_options+=',';
-long_options+='user-email:';
-long_options+=',';
-long_options+='merge-ff:';
-long_options+=',';
-long_options+='pull-ff:';
-long_options+=',';
-long_options+='tracked-repository:';
-long_options+=',';
-long_options+='project-name:';
-long_options+=',';
-long_options+='package-name:';
-long_options+=',';
-long_options+='git-file:';
+long_options+='repository-path:,';
+long_options+='repository-name:,';
+long_options+='user-name:,';
+long_options+='user-email:,';
+long_options+='merge-ff:,';
+long_options+='pull-ff:,';
+long_options+='tracked-repository:,';
+long_options+='project-name:,';
+long_options+='package-name:,';
+long_options+='git-file:,';
 ##
 ## Parse the command line options.
 ##

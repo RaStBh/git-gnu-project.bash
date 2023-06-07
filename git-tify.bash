@@ -42,139 +42,93 @@
 ##
 ## NAME
 ##
-## git-tify.bash - manage a directory as a Git repository
-##
-## LIBRARY
+##   git-tify.bash - manage a directory as a Git repository
 ##
 ## SYNOPSIS
 ##
-## git-tify.bash [--repository-path=<path to the directory>]
-## [--repository-name=<name of the repository>] [--user-name=<name of the user>]
-## [--user-email=<email of the user>] [--merge-ff=<how a merge is handled>]
-## [--pull-ff=<how a pull is handled>]
-## [--tracked-repository=<repository to track>]
-## [--project-name=<name of the project>] [--package-name=<name of the package>]
-## [--git-file=<Git configuration file>]
+##   git-tify.bash 
+##   [--repository-path=<path to the directory>]
+##   [--repository-name=<name of the repository>] 
+##   [--user-name=<name of the user>]
+##   [--user-email=<email of the user>] 
+##   [--merge-ff=<how a merge is handled>]
+##   [--pull-ff=<how a pull is handled>]
+##   [--tracked-repository=<repository to track>]
+##   [--project-name=<name of the project>] 
+##   [--package-name=<name of the package>]
+##   [--git-file=<Git configuration file>]
 ##
 ## DESCRIPTION
 ##
-## Manage a directory as a Git repository.
+##   Manage a directory as a Git repository.
 ##
-## Step 1: See if we can create a new Git repository.
-##
-## Step 2: Create and initialize an empty Git repository.
-##
-## Step 3: Configure the Git repository.
-##
-## Step 4: Initial commit of the repository.
-##
-## Step 5: Create und commit Git configuration files.
-##
-## Step 6: Cleanup and optimize the repository.
-##
-## ARGUMENTS
+##   Step 1: See if we can create a new Git repository.
+##   Step 2: Create and initialize an empty Git repository.
+##   Step 3: Configure the Git repository.
+##   Step 4: Initial commit of the repository.
+##   Step 5: Create und commit Git configuration files.
+##   Step 6: Clean-up and optimize the repository.
 ##
 ## OPTIONS
 ##
-## --repository-path=<path to the directory>
-##
-##   set path to the directory
-##
-## --repository-name=<name of the repository>
-##
-##   set name of the repository
-##
-## --user-name=<name of the user>
-##
-##   set name of the user locally and globally
-##
-## --user-email=<email of the user>
-##
-##   set email of the user locally and globally
-##
-## --merge-ff=<how a merge is handled>
-##
-##   set how a merge is handled
-##
-##   only
-##   true
-##   false
-##
-## --pull-ff=<how a pull is handled>
-##
-##   set how a pull is handled
-##
-##   only
-##   true
-##   false
-##
-## --tracked-repository=<repository to track>
-##
-##   add repository to track
-##
-##   The string  is composed of  the remote name  followed by the  ',' character
-##   followed by the remote URL.
-##
-## --project-name=<name of the project>
-##
-##   set name of the project
-##
-## --package-name=<name of the package>
-##
-##   set name of the package
-##
-## --git-file=<Git configuration file>
-##
-##   add Git configuration file
-##
-## CONTEXT
+##   --repository-path    - set path to the directory
+##   --repository-name    - set name of the repository
+##   --user-name          - set name of the user locally and globally
+##   --user-email         - set email of the user locally and globally
+##   --merge-ff           - set how a merge is handled (only | true | false)
+##   --pull-ff            - set how a pull is handled (only | true | false)
+##   --tracked-repository - add repository to track (The string  is composed of  
+##                          the remote name  followed by the  ',' character 
+##                          followed by the remote URL.)
+##   --project-name       - set name of the project
+##   --package-name       - set name of the package
+##   --git-file           - add Git configuration file
 ##
 ## IMPLEMENTATION NOTES
-##
-## RETURN VALUES
 ##
 ## ENVIRONMENT
 ##
 ## FILES
 ##
-## git-tify.bash           - this script
-##
-## config.inc.bash         - used configuration file
-##
-## config.inc.bash.example - example configuration file
+##   git-tify.bash           - this script
+##   config.inc.bash         - used configuration file
+##   config.inc.bash.example - example configuration file
 ##
 ## EXIT STATUS
 ##
+##   on success: 0
+##   on failure: 1
+##
 ## EXAMPLES
 ##
-## ./git-tify.bash \
-## --repository-path='/home/user/JohnDow/repositories/' \
-## --repository-name='foobar' \
-## --user-name='John Dow' \
-## --user-email='john.dow@example.com' \
-## --merge-ff='false' \
-## --pull-ff'false' \
-## --tracked-repository='github.com,git@github.com-JohnDow:JohnDow' \
-## --tracked-repository='gitlab.com,git@gitlab.com-JohnDow:JohnDow;example.com' \
-## --tracked-repository='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/' \
-## --project-name'JD' \
-## --package-name='foobar' \
-## --git-file='.gitattributes' \
-## --git-file='.gitignore' \
-## --git-file='.gitkeep' \
-## --git-file='.gitmodules' \
-## --git-file='.mailmap'
+##   ./git-tify.bash \
+##   --repository-path='/home/user/JohnDow/repositories/' \
+##   --repository-name='foobar' \
+##   --user-name='John Dow' \
+##   --user-email='john.dow@example.com' \
+##   --merge-ff='false' \
+##   --pull-ff'false' \
+##   --tracked-repository='github.com,git@github.com-JohnDow:JohnDow' \
+##   --tracked-repository='gitlab.com,git@gitlab.com-JohnDow:JohnDow' \
+##   --tracked-repository='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/' \
+##   --project-name'JD' \
+##   --package-name='foobar' \
+##   --git-file='.gitattributes' \
+##   --git-file='.gitignore' \
+##   --git-file='.gitkeep' \
+##   --git-file='.gitmodules' \
+##   --git-file='.mailmap'
 ##
-## For how to use the configuration file config.inc.bash see the file itself.
+##   For how to use the configuration file config.inc.bash see the file itself.
 ##
 ## DIAGNOSTICS
 ##
-## ERRORS
-##
 ## SEE ALSO
 ##
-## You can get git-gnu-project from <https://github.com/RaStBh/git-gnu-project>
-## or <https://gitlab.com/RaStBh/git-gnu-project>.
+##   You can get git-gnu-project from 
+##   <https://github.com/RaStBh/git-gnu-project>
+##   or 
+##   <https://gitlab.com/RaStBh/git-gnu-project>.
 ##
 ## STANDARDS
 ##
@@ -182,17 +136,13 @@
 ##
 ## AUTHORS
 ##
-## Ralf Stephan <me@ralf-stephan.name>
+##   Ralf Stephan <me@ralf-stephan.name>
 ##
 ## CAVEATS
 ##
 ## BUGS
 ##
 ## SECURITY CONSIDERATIONS
-##
-## TESTS
-##
-## See section TESTS below.
 ##
 ################################################################################
 

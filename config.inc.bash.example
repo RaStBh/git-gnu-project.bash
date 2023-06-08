@@ -1,4 +1,4 @@
-##
+
 ## Copyright (C)  2023  John Dow  <john.dow@example.com>
 ##
 ## $Date: 2023-06-07 15:51:53.8110411000 +00:00:00 $
@@ -42,39 +42,518 @@ git_files[4]='.mailmap';
 ##
 package_name='foobar';
 ##
-
-
-
-deed_GNU_AGPL="
-## This file is part of <PROJECT> <PACKAGE>.
+copyright_license_notice_GNU_AGPL="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
 ##
-## <DESCRIPTION>
+## <WORK-DESCRIPTION>
 ##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>   <EMAIL>
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
 ##
-##
-## <PROJECT> <PACKAGE> is  free software: you can redistribute  it and/or modify
-## it under the terms  of the GNU Affero General Public  License as published by
-## the Free  Software Foundation, either version  3 of the License,  or (at your
+## This <WORK-TYPE> is  free software: you can redistribute it  and/or modify it
+## under the terms of the GNU Affero  General Public License as published by the
+## Free  Software Foundation,  either  version 3  of the  License,  or (at  your
 ## option) any later version.
 ##
-##  <PROJECT> <PACKAGE> is  distributed in the hope that it  will be useful, but
-##  WITHOUT ANY WARRANTY;  without even the implied  warranty of MERCHANTABILITY
-##  or FITNESS  FOR A  PARTICULAR PURPOSE.   See the  GNU Affero  General Public
-##  License for more details.
+## This  <WORK-TYPE> is  distributed in  the hope  that it  will be  useful, but
+## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+## FITNESS FOR A PARTICULAR PURPOSE.  See  the GNU Affero General Public License
+## for more details.
 ##
-##  You should  have received a  copy of the  GNU Affero General  Public License
-##  along with this program.  If not, see <https://www.gnu.org/licenses/>.";
+## You should  have received  a copy  of the GNU  Affero General  Public License
+## along with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
+##
+copyright_license_notice_GNU_APL="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## GNU All-Permissive License: Copying and  distribution of this <file>, with or
+## without modification,  are permitted in  any medium without  royalty provided
+## the copyright notice  and this notice are preserved.  This  <file> is offered
+## as-is, without any warranty.";
+##
+copyright_license_notice_GNU_FDL="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## See the file <SOURCE-FILE> for copying conditions.
 
+or
 
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## Permission is granted to copy, distribute and/or modify this <document> under
+## the terms  of the GNU  Free Documentation License,  Version 1.3 or  any later
+## version  published  by  the  Free  Software  Foundation;  with  no  Invariant
+## Sections, no Front-Cover Texts, and no Back-Cover Texts.
+##
+## A copy of the  license is included in the <document>  in the section entitled
+## \"GNU Free Documentation License\".
+##
+## You should have  received a copy of the GNU  Free Documentation License along
+## with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.
 
+or
+
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
 ##
-deed_GNU_APL="";
+## <WORK-DESCRIPTION>
 ##
-deed_GNU_FDL="";
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
 ##
-deed_GNU_GPL="";
+## Permission is granted to copy, distribute and/or modify this <document> under
+## the terms  of the GNU  Free Documentation License,  Version 1.3 or  any later
+## version  published  by  the  Free Software  Foundation;  with  the  Invariant
+## Sections being  <INVARIANT-SECTIONS-LIST>, with  the Front-Cover  Texts being
+## <FRONT-COVER-TEXTS-LIST>,  and  with  the   Back-Cover  Texts  being  <FRONT-
+## COVER-TEXTS-LIST>.
 ##
-deed_GNU_LGPL="";
+## A copy of the  license is included in the <document>  in the section entitled
+## \"GNU Free Documentation License\".
 ##
-deed_GNU_VCADL="";
+## You should have  received a copy of the GNU  Free Documentation License along
+## with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.
+
+or
+
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## Permission is granted to copy, distribute and/or modify this <document> under
+## the terms  of the GNU  Free Documentation License,  Version 1.3 or  any later
+## version  published  by  the  Free Software  Foundation;  with  the  Invariant
+## Sections being as  in (I) below, with  the Front-Cover Texts being  as in (F)
+## below, and with the Back-Cover Texts being as in (B) below.
+##
+## (I) The Invariant Sections are: <INVARIANT SECTIONS LIST>.
+##
+## (F) The Front-Cover Texts are: <FRONT-COVER TEXTS LIST>.
+##
+## (B) The Front-Cover Texts are: <BACK-COVER TEXTS LIST>.
+##
+## A copy of the  license is included in the <document>  in the section entitled
+## \"GNU Free Documentation License\".
+##
+## You should have  received a copy of the GNU  Free Documentation License along
+## with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
+##
+copyright_license_notice_GNU_GPL="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This <WORK-TYPE> is  free software: you can redistribute it  and/or modify it
+## under the terms  of the GNU General  Public License as published  by the Free
+## Software Foundation, either version 3 of the License, or (at your option) any
+## later version.
+##
+## This  <WORK-TYPE> is  distributed in  the hope  that it  will be  useful, but
+## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+## FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General Public  License for
+## more details.
+##
+## You should have received a copy of  the GNU General Public License along with
+## this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
+##
+copyright_license_notice_GNU_LGPL="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This <WORK-TYPE> is  free software: you can redistribute it  and/or modify it
+## under the terms of the GNU Lesser  General Public License as published by the
+## Free  Software Foundation,  either  version 3  of the  License,  or (at  your
+## option) any later version.
+##
+## This  <WORK-TYPE> is  distributed in  the hope  that it  will be  useful, but
+## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+## FITNESS FOR A PARTICULAR PURPOSE.  See  the GNU Lesser General Public License
+## for more details.
+##
+## You should  have received  a copy  of the GNU  Lesser General  Public License
+## along with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
+##
+copyright_license_notice_GNU_VCADL="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## GNU  Verbatim   Copying  and  Distribution  License:   Verbatim  copying  and
+## distribution  of  this  entire  <article> are  permitted  worldwide,  without
+## royalty, in any medium, provided this notice is preserved.";
+##
+copyright_license_notice_CC_BY="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This  <WORK-TYPE> is  licensed  under the  CC  Attribution 4.0  International
+## license.
+##
+## You should have  received a copy of the CC  Attribution International license
+## along  with  this  <WORK-TYPE>.  If  not,  see  <https://creativecommons.org/
+## about/cclicenses/>.
+##
+## This  is a  human-readable  summary of  (and  not a  substitute  for) the  CC
+## Attribution International license.
+##
+## [ This license is acceptable for Free Cultural Works. ]
+##
+## You are free to:
+##
+##   Share - copy and redistribute the material in any medium or format
+##
+##   Adapt - remix, transform, and build upon the material for any purpose, even
+##   commercially.
+##
+##   The licensor cannot revoke these freedoms as long as you follow the license
+##   terms.
+##
+## Under the following terms:
+##
+##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
+##   license, and indicate if changes were made. You may do so in any reasonable
+##   manner, but not in any way that  suggests the licensor endorses you or your
+##   use.
+##
+##   No additional restrictions - You may not apply legal terms or technological
+##   measures  that legally  restrict  others from  doing  anything the  license
+##   permits.
+##
+## Notices:
+##
+##   You do not have to comply with  the license for elements of the material in
+##   the public domain or where your use is permitted by an applicable exception
+##   or limitation.
+##
+##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
+##   permissions necessary for your intended use. For example, other rights such
+##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
+##   material.";
+##
+copyright_license_notice_CC_BY_SA="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This  <WORK-TYPE>  is  licensed   under  the  CC  Attribution-ShareAlike  4.0
+## International license.
+##
+## You  should   have  received   a  copy   of  the   CC  Attribution-ShareAlike
+## International license  along with  this <WORK-TYPE>.   If not,  see <https://
+## creativecommons.org/about/cclicenses/>.
+##
+## This  is a  human-readable  summary of  (and  not a  substitute  for) the  CC
+## Attribution-ShareAlike International license.
+##
+## [ This license is acceptable for Free Cultural Works. ]
+##
+## You are free to:
+##
+##   Share - copy and redistribute the material in any medium or format
+##
+##   Adapt - remix, transform, and build upon the material for any purpose, even
+##   commercially.
+##
+##   The licensor cannot revoke these freedoms as long as you follow the license
+##   terms.
+##
+## Under the following terms:
+##
+##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
+##   license, and indicate if changes were made. You may do so in any reasonable
+##   manner, but not in any way that  suggests the licensor endorses you or your
+##   use.
+##
+##   ShareAlike - If you remix, transform,  or build upon the material, you must
+##   distribute your contributions under the same license as the original.
+##
+##   No additional restrictions - You may not apply legal terms or technological
+##   measures  that legally  restrict  others from  doing  anything the  license
+##   permits.
+##
+## Notices:
+##
+##   You do not have to comply with  the license for elements of the material in
+##   the public domain or where your use is permitted by an applicable exception
+##   or limitation.
+##
+##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
+##   permissions necessary for your intended use. For example, other rights such
+##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
+##   material.";
+copyright_license_notice_BY_NC="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This  <WORK-TYPE>  is licensed  under  the  CC Attribution-NonCommercial  4.0
+## International license.
+##
+## You  should  have  received  a   copy  of  the  CC  Attribution-NonCommercial
+## International license  along with  this <WORK-TYPE>.   If not,  see <https://
+## creativecommons.org/about/cclicenses/>.
+##
+## This  is a  human-readable  summary of  (and  not a  substitute  for) the  CC
+## Attribution-NonCommercial International license.
+##
+## [ This license is not acceptable for Free Cultural Works. ]
+##
+## You are free to:
+##
+##   Share - copy and redistribute the material in any medium or format
+##
+##   Adapt - remix, transform, and build upon the material
+##
+##   The licensor cannot revoke these freedoms as long as you follow the license
+##   terms.
+##
+## Under the following terms:
+##
+##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
+##   license, and indicate if changes were made. You may do so in any reasonable
+##   manner, but not in any way that  suggests the licensor endorses you or your
+##   use.
+##
+##   NonCommercial - You may not use the material for commercial purposes.
+##
+##   No additional restrictions - You may not apply legal terms or technological
+##   measures  that legally  restrict  others from  doing  anything the  license
+##   permits.
+##
+## Notices:
+##
+##   You do not have to comply with  the license for elements of the material in
+##   the public domain or where your use is permitted by an applicable exception
+##   or limitation.
+##
+##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
+##   permissions necessary for your intended use. For example, other rights such
+##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
+##   material.";
+##
+copyright_license_notice_BY_NC_SA="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This  <WORK-TYPE>   is  licensed  under  the   CC  Attribution-NonCommercial-
+## ShareAlike 4.0 International license.
+##
+## You  should  have  received  a  copy  of  the  CC  Attribution-NonCommercial-
+## ShareAlike International  license along with  this <WORK-TYPE>.  If  not, see
+## <https:// creativecommons.org/about/cclicenses/>.
+##
+## This  is a  human-readable  summary of  (and  not a  substitute  for) the  CC
+## Attribution-NonCommercial-ShareAlike International license.
+##
+## [ This license is not acceptable for Free Cultural Works. ]
+##
+## You are free to:
+##
+##   Share - copy and redistribute the material in any medium or format
+##
+##   Adapt - remix, transform, and build upon the material
+##
+##   The licensor cannot revoke these freedoms as long as you follow the license
+##   terms.
+##
+## Under the following terms:
+##
+##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
+##   license, and indicate if changes were made. You may do so in any reasonable
+##   manner, but not in any way that  suggests the licensor endorses you or your
+##   use.
+##
+##   NonCommercial - You may not use the material for commercial purposes.
+##
+##   ShareAlike - If you remix, transform,  or build upon the material, you must
+##   distribute your contributions under the same license as the original.
+##
+##   No additional restrictions - You may not apply legal terms or technological
+##   measures  that legally  restrict  others from  doing  anything the  license
+##   permits.
+##
+## Notices:
+##
+##   You do not have to comply with  the license for elements of the material in
+##   the public domain or where your use is permitted by an applicable exception
+##   or limitation.
+##
+##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
+##   permissions necessary for your intended use. For example, other rights such
+##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
+##   material.";
+##
+copyright_license_notice_BY_ND="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This  <WORK-TYPE>  is licensed  under  the  CC Attribution-NoDerivatives  4.0
+## International license.
+##
+## You  should  have  received  a   copy  of  the  CC  Attribution-NoDerivatives
+## International license  along with  this <WORK-TYPE>.   If not,  see <https://
+## creativecommons.org/about/cclicenses/>.
+##
+## This  is a  human-readable  summary of  (and  not a  substitute  for) the  CC
+## Attribution-NoDerivatives International license.
+##
+## [ This license is not acceptable for Free Cultural Works. ]
+##
+## You are free to:
+##
+##   Share - copy and redistribute the material  in any medium or format for any
+##   purpose, even commercially.
+##
+##   The licensor cannot revoke these freedoms as long as you follow the license
+##   terms.
+##
+## Under the following terms:
+##
+##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
+##   license, and indicate if changes were made. You may do so in any reasonable
+##   manner, but not in any way that  suggests the licensor endorses you or your
+##   use.
+##
+##   NoDerivatives -  If you remix, transform,  or build upon the  material, you
+##   may not distribute the modified material.
+##
+##   No additional restrictions - You may not apply legal terms or technological
+##   measures  that legally  restrict  others from  doing  anything the  license
+##   permits.
+##
+## Notices:
+##
+##   You do not have to comply with  the license for elements of the material in
+##   the public domain or where your use is permitted by an applicable exception
+##   or limitation.
+##
+##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
+##   permissions necessary for your intended use. For example, other rights such
+##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
+##   material.";
+##
+copyright_license_notice_BY-NC-ND="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This  <WORK-TYPE>   is  licensed  under  the   CC  Attribution-NonCommercial-
+## NoDerivatives 4.0 International license.
+##
+## You  should  have  received  a  copy  of  the  CC  Attribution-NonCommercial-
+## NoDerivatives International license along with this <WORK-TYPE>.  If not, see
+## <https://creativecommons.org/about/cclicenses/>.
+##
+## This  is a  human-readable  summary of  (and  not a  substitute  for) the  CC
+## Attribution-NonCommercial-NoDerivatives International license.
+##
+## [ This license is not acceptable for Free Cultural Works. ]
+##
+## You are free to:
+##
+##   Share - copy and redistribute the material in any medium or format
+##
+##   The licensor cannot revoke these freedoms as long as you follow the license
+##   terms.
+##
+## Under the following terms:
+##
+##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
+##   license, and indicate if changes were made. You may do so in any reasonable
+##   manner, but not in any way that  suggests the licensor endorses you or your
+##   use.
+##
+##   NonCommercial - You may not use the material for commercial purposes.
+##
+##   NoDerivatives -  If you remix, transform,  or build upon the  material, you
+##   may not distribute the modified material.
+##
+##   No additional restrictions - You may not apply legal terms or technological
+##   measures  that legally  restrict  others from  doing  anything the  license
+##   permits.
+##
+## Notices:
+##
+##   You do not have to comply with  the license for elements of the material in
+##   the public domain or where your use is permitted by an applicable exception
+##   or limitation.
+##
+##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
+##   permissions necessary for your intended use. For example, other rights such
+##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
+##   material.";
+##
+copyright_license_notice_CC_0="
+## This file is part of the <WORK-TITLE> <WORK-TYPE>.
+##
+## <WORK-DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
+##
+## This <WORK-TYPE>  is licensed under  the CC  CC0 1.0 Universal  Public Domain
+## Dedication license.
+##
+## You  should have  received  a copy  of  the CC  CC0  Universal Public  Domain
+## Dedication  license  along with  this  <WORK-TYPE>.   If not,  see  <https://
+## creativecommons.org/about/cclicenses/>.
+##
+## This is  a human-readable summary  of (and not a  substitute for) the  CC CC0
+## Universal Public Domain Dedication license.
+##
+## [ This license is acceptable for Free Cultural Works. ]
+##
+## No Copyright
+##
+##   The person who associated  a work with this deed has  dedicated the work to
+##   the public domain by waiving all of his or her rights to the work worldwide
+##   under copyright law,  including all related and neighboring  rights, to the
+##   extent allowed by law.
+##
+##   You can copy, modify, distribute and  perform the work, even for commercial
+##   purposes, all without asking permission. See Other Information below.
+##
+## Other Information
+##
+##   In no way are the patent or trademark rights of any person affected by CC0,
+##   nor are the  rights that other persons may  have in the work or  in how the
+##   work is used, such as publicity or privacy rights.
+##
+##   Unless expressly  stated otherwise, the  person who associated a  work with
+##   this deed makes  no warranties about the work, and  disclaims liability for
+##   all uses of the work, to the fullest extent permitted by applicable law.
+##
+##   When using  or citing  the work,  you should not  imply endorsement  by the
+##   author or the affirmer.";

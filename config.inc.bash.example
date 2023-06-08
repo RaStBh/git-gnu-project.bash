@@ -1,5 +1,5 @@
 ##
-## Copyright (C)  2023  John Dow
+## Copyright (C)  2023  John Dow  <john.dow@example.com>
 ##
 ## $Date: 2023-06-07 15:51:53.8110411000 +00:00:00 $
 ##
@@ -41,3 +41,40 @@ git_files[4]='.mailmap';
 ## GNU package configuration.
 ##
 package_name='foobar';
+##
+
+
+
+deed_GNU_AGPL="
+## This file is part of <PROJECT> <PACKAGE>.
+##
+## <DESCRIPTION>
+##
+## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>   <EMAIL>
+##
+##
+## <PROJECT> <PACKAGE> is  free software: you can redistribute  it and/or modify
+## it under the terms  of the GNU Affero General Public  License as published by
+## the Free  Software Foundation, either version  3 of the License,  or (at your
+## option) any later version.
+##
+##  <PROJECT> <PACKAGE> is  distributed in the hope that it  will be useful, but
+##  WITHOUT ANY WARRANTY;  without even the implied  warranty of MERCHANTABILITY
+##  or FITNESS  FOR A  PARTICULAR PURPOSE.   See the  GNU Affero  General Public
+##  License for more details.
+##
+##  You should  have received a  copy of the  GNU Affero General  Public License
+##  along with this program.  If not, see <https://www.gnu.org/licenses/>.";
+
+
+
+##
+deed_GNU_APL="";
+##
+deed_GNU_FDL="";
+##
+deed_GNU_GPL="";
+##
+deed_GNU_LGPL="";
+##
+deed_GNU_VCADL="";

@@ -9,7 +9,7 @@
 ## RaSt git-gnu-project is to  manage a directory as a Git  repository and a GNU
 ## package.
 ##
-## Copyright (C)  2023  Ralf Stephan
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
 ## RaSt git-gnu-project is free software:  you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by the Free

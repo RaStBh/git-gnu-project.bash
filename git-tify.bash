@@ -1,7 +1,7 @@
 #! /usr/bin/env -S bash -e
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## This file is part of RaSt git-gnu-project.
@@ -25,17 +25,17 @@
 ## this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 ################################################################################
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## $Date: 2023-06-07 15:51:53.8110411000 +00:00:00 $
 ##
 ################################################################################
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## git-tify.bash (git-gnu-project)
@@ -145,17 +145,17 @@
 ## SECURITY CONSIDERATIONS
 ##
 ################################################################################
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Global constants.
 ##
 ################################################################################
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Global variables.
@@ -209,9 +209,9 @@ declare package_name='';
 ## git-files            - list of Git configuration files
 ##
 declare -a git_files=();
-
-
-
+##
+##
+##
 ## pull_rebase          - how a rebase is handled
 ##
 ## git pull --rebase='false'       : pull.rebase = false
@@ -220,23 +220,23 @@ declare -a git_files=();
 ## git pull --rebase='merges'      : pull.rebase = merges
 ##
 declare pull_rebase=''; # unused
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Get content of configuration file.
 ##
 ################################################################################
-#
+##
 if [[ -f './config.inc.bash' ]]; then
   source './config.inc.bash';
 else
   :;
 fi
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Parse command line options names and arguments.
@@ -268,7 +268,7 @@ eval arguments=( "$( getopt --alternative \
                              --shell 'bash' \
                              -- \
                              "${@}" )" );
-
+##
                                                                                 #echo "arguments: '${arguments[@]}' (${#arguments[@]})"
 ##
 ## Parse the command line options and command line arguments.
@@ -370,9 +370,9 @@ done
                                                                                 #for (( index=0; index<"${#git_files[@]}"; index++ )); do
                                                                                 #  echo "  ${index}: '${git_files[${index}]}'";
                                                                                 #done
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## See  if we  can create  a new  Git repository.   If OK,  then change  working
@@ -420,9 +420,9 @@ esac
 mkdir "./${repository_name}/";
 ##
 cd "./${repository_name}/";
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Create and initialize an empty Git repository in the working directory.
@@ -434,9 +434,9 @@ echo "Info: create and initialize an empty repository in '${repository_path}/${r
 git init --initial-branch='master' --template='' './';
 ##
 echo '... done' 1>&2;
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Configure the Git repository.
@@ -470,9 +470,9 @@ for tracked_repository in "${tracked_repositories[@]}"; do
 done;
 ##
 echo '... done' 1>&2;
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Initial commit of the repository.
@@ -484,9 +484,9 @@ echo "Info: committing as initial commit '${REPOSITORY}'. ..." 1>&2;
 git commit --allow-empty --message="$( echo "Initial commit of ${project_name} ${package_name}." | fold --spaces --width='50' )";
 ##
 echo '... done' 1>&2;
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Create und commit Git configuration files.
@@ -506,15 +506,15 @@ for git_file in "${git_files[@]}"; do
     touch "./${git_file}";
     git add "./${git_file}";
     git commit --message="$( echo "Add Git configuration file." | fold --spaces  --width='50' )
-
+##
 $( echo "* ${git_file}: add configuration file." | fold --spaces  --width='72' )";
   fi
 done
 ##
 echo '... done' 1>&2;
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Cleanup and optimize the repository.
@@ -526,21 +526,21 @@ echo "Info: cleaning and optimizing '${REPOSITORY}'. ..." 1>&2;
 git gc;
 ##
 echo '... done' 1>&2;
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## TESTS
 ##
 ################################################################################
-
-
-
+##
+##
+##
 ################################################################################
 ##
 ## Exit the shell.
 ##
 ################################################################################
-
+##
 exit 0;

@@ -497,6 +497,10 @@ echo '... done' 1>&2;
 ##
 echo "Info: creating git configuration files in '${REPOSITORY}'. ..." 1>&2;
 ##
+## Add .gitkeep
+##
+git_files["${#git_files[@]}"]='.gitkeep';
+##
 declare git_file='';
 for git_file in "${git_files[@]}"; do
   if [[ -f "./${git_file}" ]]; then

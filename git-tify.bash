@@ -116,8 +116,6 @@
 ##   --git-file='.gitmodules' \
 ##   --git-file='.mailmap'
 ##
-##   For how to use the configuration file config.inc.bash see the file itself.
-##
 ## DIAGNOSTICS
 ##
 ## SEE ALSO

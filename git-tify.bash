@@ -120,11 +120,6 @@
 ##
 ## SEE ALSO
 ##
-##   You can get git-gnu-project from 
-##   <https://github.com/RaStBh/git-gnu-project>
-##   or 
-##   <https://gitlab.com/RaStBh/git-gnu-project>.
-##
 ## STANDARDS
 ##
 ## HISTORY

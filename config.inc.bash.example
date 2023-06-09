@@ -26,9 +26,9 @@ merge_ff='false';
 ##
 pull_ff='false';
 ##
-tracked_repositories[]='github.com,git@github.com-JohnDow:JohnDow';
-tracked_repositories[]='gitlab.com,git@gitlab.com-JohnDow:JohnDow';
-tracked_repositories[]='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/';
+tracked_repositories[0]='github.com,git@github.com-JohnDow:JohnDow';
+tracked_repositories[1]='gitlab.com,git@gitlab.com-JohnDow:JohnDow';
+tracked_repositories[2]='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/';
 ##
 git_files[0]='.gitattributes';
 git_files[1]='.gitignore';

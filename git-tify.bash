@@ -508,7 +508,7 @@ for git_file in "${git_files[@]}"; do
     touch "./${git_file}";
     git add "./${git_file}";
     git commit --message="$( echo "Add Git configuration file." | fold --spaces  --width='50' )
-##
+
 $( echo "* ${git_file}: add configuration file." | fold --spaces  --width='72' )";
   fi
 done

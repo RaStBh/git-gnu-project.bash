@@ -390,6 +390,8 @@ else
   :;
 fi
 ##
+## Ask for confirmation.
+##
 declare confirm='';
 read -p "Create repository in '${repository_path}/${repository_name}/' (y/n)? " 'confirm';
 confirm="$( echo "${confirm}" | tr '[:upper:]' '[:lower:]' )";

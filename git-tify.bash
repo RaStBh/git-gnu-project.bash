@@ -361,6 +361,10 @@ done
                                                                                 #  echo "  ${index}: '${git_files[${index}]}'";
                                                                                 #done
 ##
+## Remove trailing '/'.
+##
+repository_path="$( echo "${repository_path}" | sed 's/[\/]*$//' )";
+##
 ##
 ##
 ################################################################################

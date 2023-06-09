@@ -48,6 +48,7 @@
 ##   [--repository-name=<name of the repository>]
 ##   [--package_type=<package type>]
 ##   [--copying_file=<copying file>]
+##   [--project_file=<project_file>]
 ##
 ## DESCRIPTION
 ##
@@ -64,6 +65,7 @@
 ##   --repository-name - set name of the repository
 ##   --package_type    - set package type
 ##   --copying_file    - add copying file
+##   --project_file    - add project_file
 ##
 ## IMPLEMENTATION NOTES
 ##
@@ -86,7 +88,9 @@
 ##   --repository-path='/home/user/JohnDow/repositories/' \
 ##   --repository-name='foobar' \
 ##   --package_type='pkg' \
-##   --copying_file='COPYING,home/JohnDow/licenses/gnu_gpl-3.0.txt'
+##   --copying_file='COPYING,home/JohnDow/licenses/gnu_gpl-3.0.txt' \
+##   --project_file='configure' \
+##   --project_file='MAKEFILE'
 ##
 ## DIAGNOSTICS
 ##
@@ -147,6 +151,8 @@ declare repository_name='';
 declare package_type='';
 ##
 declare -A copying_files=();
+##
+declare -a project_files=();
 ##
 ##
 ##
@@ -226,6 +232,9 @@ while true; do
       copying_files["${#copying_files[@]}"]="${option_argument}";
       next_position="$(( "${next_position}" + 1 ))";
       ;;
+    project_file )
+      project_files["${#project_files[@]}"]="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
     '--' )
       break 1;
       ;;
@@ -343,7 +352,6 @@ echo '... done' 1>&2;
 ##
 echo "Info: creating project tree in '${repository_path}/${repository_name}/'. ..." 1>&2;
 ##
-declare -a project_files=();
 if   [[ 'prg' == "${package_type}" ]]; then
   echo "... project type: prg ..." 1>&2;
   project_files=( "${project_tree_prg[@]}" );

@@ -38,7 +38,7 @@ package.
 
 You can crate a local Git repository and configure it to your liking.
 
-You  can create  a local  GNU package  having a  project tree  for a  program, a
-library or a documentation.
+You can  create a local GNU  package having a  project tree for a  collection of
+programs, libraries and / or documentations or for an other type of work.
 
 ================================================================================

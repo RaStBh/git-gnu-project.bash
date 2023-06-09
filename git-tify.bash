@@ -381,7 +381,7 @@ fi
 ##
 cd "${repository_path}/";
 ##
-## See if there is a directory $repository_name is directory $repository_path.
+## See if there is a directory $repository_name in directory $repository_path.
 ##
 if [[ -d "./${repository_name}/" ]]; then
   echo "Error: directory '${repository_path}/${repository_name}/' does exist." 1>&2;

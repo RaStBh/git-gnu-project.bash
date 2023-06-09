@@ -409,6 +409,8 @@ case "${confirm}" in
     ;;
 esac
 ##
+## Create the repository and change directory.
+##
 mkdir "./${repository_name}/";
 ##
 cd "./${repository_name}/";

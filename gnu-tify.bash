@@ -47,7 +47,7 @@
 ##   [--repository-path=<path to the directory>]
 ##   [--repository-name=<name of the repository>]
 ##   [--package_type=<package type>]
-##   [--copying_files=<copying files>] ??? todo
+##   [--copying_file=<copying file>]
 ##
 ## DESCRIPTION
 ##
@@ -63,7 +63,7 @@
 ##   --repository-path - set path to the directory
 ##   --repository-name - set name of the repository
 ##   --package_type    - set package type
-##   --copying_files   - set copying files ??? todo
+##   --copying_file    - add copying file
 ##
 ## IMPLEMENTATION NOTES
 ##
@@ -86,7 +86,7 @@
 ##   --repository-path='/home/user/JohnDow/repositories/' \
 ##   --repository-name='foobar' \
 ##   --package_type='pkg' \
-##   --copying_files='doc/.gitkeep,src/.gitkeep,README,COPYING' ??? todo
+##   --copying_file='COPYING,home/JohnDow/licenses/gnu_gpl-3.0.txt'
 ##
 ## DIAGNOSTICS
 ##
@@ -222,7 +222,9 @@ while true; do
       repository_name="${package_type}";
       next_position="$(( "${next_position}" + 1 ))";
       ;;
-    'copying_files' ) ## ??? todo
+    'copying_file' )
+      copying_files["${#copying_files[@]}"]="${option_argument}";
+      next_position="$(( "${next_position}" + 1 ))";
       ;;
     '--' )
       break 1;

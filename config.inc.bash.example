@@ -84,3 +84,13 @@ global_options[0]='user.name;John Dow';
 global_options[1]='user.email;john_dow@example.com';
 global_options[2]='merge.ff;false';
 global_options[3]='pull.ff;false';
+
+## The repositories.
+##
+## Example:
+##
+##   repositories[index]='key;value';
+##
+##   repositories[0]='github.com;github.com,git@github.com-JohnDow:JohnDow';
+##   repositories[1]='gitlab.com;gitlab.com,git@github.com-JohnDow:JohnDow';
+##   repositories[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';

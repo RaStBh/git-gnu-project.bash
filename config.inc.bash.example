@@ -89,12 +89,12 @@ global_options[3]='pull.ff;false';
 ##
 ## Example:
 ##
-##   repositories[index]='key;value';
+##   remotes[index]='key;value';
 ##
-##   repositories[0]='github.com;git@github.com-JohnDow:JohnDow';
-##   repositories[1]='gitlab.com;git@gitlab.com-JohnDow:JohnDow';
-##   repositories[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';
+##   remotes[0]='github.com;git@github.com-JohnDow:JohnDow';
+##   remotes[1]='gitlab.com;git@gitlab.com-JohnDow:JohnDow';
+##   remotes[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';
 
-repositories[0]='github.com;git@github.com-JohnDow:JohnDow';
-repositories[1]='gitlab.com;git@gitlab.com-JohnDow:JohnDow';
-repositories[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';
+remotes[0]='github.com;git@github.com-JohnDow:JohnDow';
+remotes[1]='gitlab.com;git@gitlab.com-JohnDow:JohnDow';
+remotes[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';

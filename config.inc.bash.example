@@ -85,7 +85,7 @@ global_options[1]='user.email;john_dow@example.com';
 global_options[2]='merge.ff;false';
 global_options[3]='pull.ff;false';
 
-## The repositories.
+## The Git remotes.
 ##
 ## Example:
 ##

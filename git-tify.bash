@@ -129,6 +129,18 @@ function main()
 
   local arguments=( "${@}" );
 
+  # Get content from configuration file if it is present.
+
+  if [[ -f './config.inc.bash' ]]; then
+      echo "Info: configuration file './config.inc.bash' present.";
+      echo "Info: loading configuraton file './config.inc.bash'.";
+  else
+      echo "Info: configuration file './config.inc.bash' not present.";
+      echo "Info: not loading configuraton file './config.inc.bash'.";
+  fi
+
+  # Return from function.
+  
   return;
 }
 

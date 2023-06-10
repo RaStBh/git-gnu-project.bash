@@ -129,18 +129,42 @@ function main()
 
   local arguments=( "${@}" );
 
+  # The working directory.
+
+  local working_directory='';
+
+  # The repository directory.
+
+  local repository_directory='';
+
   # Get content from configuration file if it is present.
 
   if [[ -f './config.inc.bash' ]]; then
-      echo "Info: configuration file './config.inc.bash' present.";
-      echo "Info: loading configuraton file './config.inc.bash'.";
+    echo "Info: configuration file './config.inc.bash' present.";
+    echo "Info: loading configuraton file './config.inc.bash'.";
+    source './config.inc.bash';
   else
-      echo "Info: configuration file './config.inc.bash' not present.";
-      echo "Info: not loading configuraton file './config.inc.bash'.";
+    echo "Info: configuration file './config.inc.bash' not present.";
+    echo "Info: not loading configuraton file './config.inc.bash'.";
+  fi
+
+  # See if variables are set and not empty.
+
+  if [[ -n "${working_directory}" ]]; then
+    echo "Info: variable 'working_directory' (${working_directory}) present.";
+  else
+    echo "Error: variable 'working_directory' not present.";
+    exit 1;
+  fi
+  if [[ -n "${repository_directory}" ]]; then
+    echo "Info: variable 'repository_directory' (${repository_directory}) present.";
+  else
+    echo "Error: variable 'repository_directory' not present.";
+    exit 1;
   fi
 
   # Return from function.
-  
+
   return;
 }
 

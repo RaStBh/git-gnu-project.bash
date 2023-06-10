@@ -30,3 +30,21 @@
 ## $Date: 2023-06-10 04:07:40.7345884000 +00:00:00 $
 ##
 ################################################################################
+
+
+
+## The working directory.
+##
+## Example:
+##
+##   </home/john_dow/repositories/foobar/>
+
+working_directory='/home/john_dow/repositories/foobar/';
+
+## The repository directory.
+##
+## Example:
+##
+##   </home/john_dow/repositories/foobar/.git>
+
+working_directory='/home/john_dow/repositories/foobar/.git';

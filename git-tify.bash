@@ -134,6 +134,128 @@
 
 
 
+## @brief Test directory.
+## @details Test directory.
+##   1. See if there is the directory 'dirname'.
+##      On yes continue.
+##      On no exit.
+##   2. See if there is the directry 'basename'.
+##      On yes exit.
+##      On no  continue.
+## @return
+##   The exit code of last command.
+
+function testDirectory()
+{
+  # The dirname.
+
+  local dirname="${1}";
+
+  # The basename.
+
+  local basename="${2}";
+
+  # Test the directory 'dirname/basename/'.
+
+  if [[ -d "${dirname}" ]]; then
+  # do nothing
+    :;
+  else
+    echo "Error: no such directory '${dirname}'.";
+    exit 1;
+  fi
+  cd "${dirname}";
+  if [[ -d "./${basename}" ]]; then
+    echo "Error: directory '${dirname}/${basename}/' already exists.";
+    exit 1;
+  else
+    # do nothing
+    :;
+  fi
+
+  # Return from function.
+
+  return;
+}
+
+
+## @brief Ask for confirmation.
+## @details Ask for confirmation.
+##   1. Ask the user.
+##   2  On 'n', 'no', 'N', 'NO', 'nO', ... exit.
+##      On 'y', 'yes', 'Y', 'YES', 'yES', ... continue.
+## @return
+##   The exit code of last command.
+
+function askConfirmation()
+{
+  # The confirmation from user.
+
+  local confirmation='';
+
+  # Get confirmation from user.
+
+  read -p "Create repository in '${dirname}/${basename}/'? (y/n): " 'confirmation';
+  confirmation="${confirmation,,}";
+
+  # See what the user answered.  On 'yes' continue. On 'no' exit.
+
+  case "${confirmation}" in
+    'n' | 'no' )
+      echo 'Info: aborded by user.';
+      exit 0;
+      ;;
+    'y' | 'yes' )
+      # do nothing
+      ;;
+    * )
+      echo "Error: unkown confirmation '${confirmation}'.";
+      exit 1;
+      ;;
+  esac
+
+  # Return from function.
+
+  return;
+}
+
+
+
+## @brief Create a directory.
+## @details Create a directory.
+##   Create the directory.
+##   Check presence of the directory.
+## @param[in] directory
+##  The directory to create.
+## @return
+##   The exit code of last command.
+
+function createDirectory()
+{
+  # The directory to create.
+
+  local directory="${1}";
+
+  # Create the directory.
+
+  mkdir "${directory}";
+
+  # See if we created the directory.
+
+  if [[ -d "${directory}" ]]; then
+    echo "Info: directory '${directory}' created.";
+  else
+    echo "Error: directory '${directory}' not created.";
+    exit 1;
+  fi
+
+  # Return from function.
+
+  return;
+}
+
+
+
 ################################################################################
 ##
 ## MAIN
@@ -194,45 +316,16 @@ function main()
 
   echo "Info: creating working directory '${working_directory}' ...";
   local dirname="$( dirname "${working_directory}" )";
-  if [[ -d "${dirname}" ]]; then
-    # do nothing
-    :;
-  else
-    echo "Error: no such directory '${dirname}'.";
-    exit 1;
-  fi
-  cd "${dirname}";
   local basename="$( basename "${working_directory}" )";
-  if [[ -d "./${basename}" ]]; then
-    echo "Error: directory '${dirname}/${basename}/' already exists.";
-    exit 1;
-  else
-    # do nothing
-    :;
-  fi
+  testDirectory "${dirname}" "${basename}";
 
-  # Ask for confirmation
+  # Ask for confirmation before creating the working directory.
 
-  local confirmation='';
-  read -p "Create repository in '${dirname}/${basename}/'? (y/n): " 'confirmation';
-  confirmation="${confirmation,,}";
-  case "${confirmation}" in
-    'n' | 'no' )
-      echo 'Info: aborded by user.';
-      exit 0;
-      ;;
-    'y' | 'yes' )
-      # do nothing
-      ;;
-    * )
-      echo "Error: unkown confirmation '${confirmation}'.";
-      exit 1;
-      ;;
-  esac
+  askConfirmation;
 
   # It is ok to create the working directory.  So create it.
 
-  mkdir "${basename}";
+  createDirectory "${dirname}/${basename}/";
   echo '... done';
 
   # Return from function.

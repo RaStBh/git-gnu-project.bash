@@ -256,6 +256,35 @@ function createDirectory()
 
 
 
+## @brief Initialize a Git repository.
+## @details Initialize a Git repository.
+##   1. Create the Git repository.
+##   2. See if the Git repository have been created.
+## @return
+##   The exit code of last command.
+
+function initializeGitRepository()
+{
+  # Initialize the Git Repository.
+
+  git init --initial-branch='master' --template='' ./;
+
+  # See if the Git repository have been created.
+
+  if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      echo "Info: Git repository created in '$( pwd )/'.";
+  else
+      echo "Info: Git repository not created in '$( pwd )/'.";
+      exit 1;
+  fi
+
+  # Return from function.
+
+  return;
+}
+
+
+
 ################################################################################
 ##
 ## MAIN
@@ -333,6 +362,12 @@ function main()
 
   echo "Info: changing directory to '${working_directory}' ...";
   cd "${working_directory}";
+  echo '... done';
+
+  # Initialize the Git repository.
+
+  echo "Info: initializing Git repository in '${dirname}/${basename}/'";
+  initializeGitRepository;
   echo '... done';
 
   # Return from function.

@@ -33,7 +33,7 @@
 
 
 
-## The working directory.
+## The Git working directory.
 ##
 ## Example:
 ##
@@ -43,7 +43,7 @@
 
 working_directory='/home/john_dow/repositories/foobar/';
 
-## The repository directory.
+## The Git repository directory.
 ##
 ## Example:
 ##
@@ -53,18 +53,34 @@ working_directory='/home/john_dow/repositories/foobar/';
 
 repository_directory='/home/john_dow/repositories/foobar/.git/';
 
-## Git configuration.
+## The Git local options.
 ##
 ## Example:
 ##
-##   git_configs[index]='key;value';
+##   local_options[index]='key;value';
 ##
-##   git_configs[0]='user.name;John Dow';
-##   git_configs[1]='user.email;john_dow@example.com';
-##   git_configs[2]='merge.ff;false';
-##   git_configs[3]='pull.ff;false";
+##   local_options[0]='user.name;John Dow';
+##   local_options[1]='user.email;john_dow@example.com';
+##   local_options[2]='merge.ff;false';
+##   local_options[3]='pull.ff;false";
 
-git_configs[0]='user.name;John Dow';
-git_configs[1]='user.email;john_dow@example.com';
-git_configs[2]='merge.ff;false';
-git_configs[3]='pull.ff;false";
+local_options[0]='user.name;John Dow';
+local_options[1]='user.email;john_dow@example.com';
+local_options[2]='merge.ff;false';
+local_options[3]='pull.ff;false";
+
+## The Git global options.
+##
+## Example:
+##
+##   global_options[index]='key;value';
+##
+##   global_options[0]='user.name;John Dow';
+##   global_options[1]='user.email;john_dow@example.com';
+##   global_options[2]='merge.ff;false';
+##   global_options[3]='pull.ff;false";
+
+global_options[0]='user.name;John Dow';
+global_options[1]='user.email;john_dow@example.com';
+global_options[2]='merge.ff;false';
+global_options[3]='pull.ff;false";

@@ -452,6 +452,7 @@ function setGlobalOptions()
 ##   The Git remotes.
 ## @return
 ##   The exit code of last command.
+
 function setRemotes()
 {
   # The Git remotes.
@@ -504,6 +505,27 @@ function setRemotes()
 
     git remote add "${key}" "${value}";
   done
+
+  # Return from function.
+
+  return;
+}
+
+
+
+## @brief Initial empty commit.
+## @details Initial empty commit.
+## @return
+##   The exit code of last command.
+
+function initialCommit()
+{
+  # Initial empty commit.
+
+  git commit \
+      --allow-empty \
+      --message="$(  echo "Initial empty commit." \
+                   | fold --spaces --width='50' )";
 
   # Return from function.
 
@@ -623,26 +645,32 @@ function main()
 
   # Initialize the Git repository.
 
-  echo "Info: initializing Git repository in '${working_directory}'";
+  echo "Info: initializing Git repository in '${working_directory}' ...";
   initializeGitRepository;
   echo '... done';
 
   # Set Git local options.
 
-  echo "Info: configure Git local options in '${working_directory}'";
+  echo "Info: configure Git local options in '${working_directory}' ...";
   setLocalOptions "${local_options[@]}";
   echo '... done';
 
   # Set Git global options.
 
-  echo "Info: configure Git global options in '${working_directory}'";
+  echo "Info: configure Git global options in '${working_directory}' ...";
   setGlobalOptions "${global_options[@]}";
   echo '... done';
 
   # Set remotes.
 
-  echo "Info: configure Git remotes in '${working_directory}'";
+  echo "Info: configure Git remotes in '${working_directory}' ...";
   setRemotes "${remotes[@]}";
+  echo '... done';
+
+  # Initial commit.
+
+  echo "Info: commiting Git repository in '${working_directory}' ...";
+  initialCommit;
   echo '... done';
 
   # Return from function.

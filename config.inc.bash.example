@@ -47,4 +47,4 @@ working_directory='/home/john_dow/repositories/foobar/';
 ##
 ##   </home/john_dow/repositories/foobar/.git>
 
-working_directory='/home/john_dow/repositories/foobar/.git';
+repository_directory='/home/john_dow/repositories/foobar/.git';

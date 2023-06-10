@@ -125,6 +125,8 @@
 
 function main()
 {
+  # Get the command line arguments.
+
   local arguments=( "${@}" );
 
   return;

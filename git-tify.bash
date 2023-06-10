@@ -163,6 +163,32 @@ function main()
     exit 1;
   fi
 
+  # See if we can create the working directory.
+
+  echo "Info: creating working directory '${working_directory}' ...";
+  local dirname="$( dirname "${working_directory}" )";
+  if [[ -d "${dirname}" ]]; then
+    # do nothing
+    :;
+  else
+    echo "Error: no such directory '${dirname}'.";
+    exit 1;
+  fi
+  cd "${dirname}";
+  local basename="$( basename "${working_directory}" )";
+  if [[ -d "./${basename}" ]]; then
+    echo "Error: directory '${dirname}/${basename}/' already exists.";
+    exit 1;
+  else
+    # do nothing
+    :;
+  fi
+
+  # It is ok to create the working directory.  So create it.
+
+  mkdir "${basename}";
+  echo '... done';
+
   # Return from function.
 
   return;

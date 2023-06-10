@@ -37,6 +37,7 @@
 ##
 ## Example:
 ##
+##   </home/john_dow/repositories/foobar>
 ##   </home/john_dow/repositories/foobar/>
 
 working_directory='/home/john_dow/repositories/foobar/';
@@ -46,5 +47,6 @@ working_directory='/home/john_dow/repositories/foobar/';
 ## Example:
 ##
 ##   </home/john_dow/repositories/foobar/.git>
+##   </home/john_dow/repositories/foobar/.git/>
 
-repository_directory='/home/john_dow/repositories/foobar/.git';
+repository_directory='/home/john_dow/repositories/foobar/.git/';

@@ -3,7 +3,8 @@
 ##
 ## This file is part of the RaSt git-gnu-project package.
 ##
-## RaSt git-gnu-project is to manage a directory as a Git and GNU style project.
+## RaSt  git-gnu-project is  to manage  a directory  as a  Git and  a GNU  style
+## project.
 ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
@@ -27,6 +28,83 @@
 ################################################################################
 ##
 ## $Date: 2023-06-10 04:07:40.7345884000 +00:00:00 $
+##
+################################################################################
+
+
+
+################################################################################
+##
+## GIT-TIFY.BASH - 1 - 2023-06-10 - RaSt - RaSt git-gnu-project Manual
+##
+## NAME
+##
+##   git-tify.bash - manage a directory as Git and GNU style project
+##
+## SYNOPSIS
+##
+##   git-tify.bash
+##
+##   ???
+##
+## DESCRIPTION
+##
+##   RaSt git-gnu-project is a collection of  Bash scripts to manage a directory
+##   as a Git and a GNU style project.
+##
+##   The directory then  is a Git working directory containing  a Git repository
+##   directory.
+##
+##   The  Git working  directory  is  for example  </home/john_dow/repositories/
+##   foobar/>.
+##
+##   The Git  repository directory is for  example </home/john_dow/repositories/
+##   foobar/.git>.
+##
+##   ???
+##
+## OPTIONS
+##
+##   ???
+##
+## IMPLEMENTATION NOTES
+##
+## ENVIRONMENT
+##
+## FILES
+##
+##   git-tify.bash           - this script
+##   config.inc.bash         - the configuration file
+##   config.inc.bash.example - the example configuration file
+##
+## EXIT STATUS
+##
+##   on success: $? == 0
+##   on failure: $? >  0
+##
+## EXAMPLES
+##
+##   git-tify.bash
+##
+##   ???
+##
+## DIAGNOSTICS
+##
+## SEE ALSO
+##
+## STANDARDS
+##
+## HISTORY
+##
+## AUTHORS
+##
+##   Ralf Stephan <me@ralf-stephan.name>
+##
+## CAVEATS
+##
+## BUGS
+##
+## SECURITY CONSIDERATIONS
 ##
 ################################################################################
 

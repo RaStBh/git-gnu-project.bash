@@ -315,6 +315,10 @@ function main()
 
   local repository_directory='';
 
+  # The Git configuration.
+
+  local -A git_configs=();
+
   # Get content from configuration file if it is present.
 
   if [[ -f './config.inc.bash' ]]; then

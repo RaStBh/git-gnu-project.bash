@@ -134,6 +134,54 @@
 
 
 
+## @brief Create the working directory.
+## @details Create the working directory.
+##   1. See if we can create the working directory.
+##   2. If ok, then create the working directory.
+## @param[in] working_directory.
+##   The working directory.
+## @return
+##   The exit code of last command.
+
+function createWorkingDirectory()
+{
+  # The working directory.
+
+  local working_directory="${1}";
+
+  # See if we can create the working directory.
+
+  echo "Info: creating working directory '${working_directory}' ...";
+  local dirname="$( dirname "${working_directory}" )";
+  if [[ -d "${dirname}" ]]; then
+    # do nothing
+    :;
+  else
+    echo "Error: no such directory '${dirname}'.";
+    exit 1;
+  fi
+  cd "${dirname}";
+  local basename="$( basename "${working_directory}" )";
+  if [[ -d "./${basename}" ]]; then
+    echo "Error: directory '${dirname}/${basename}/' already exists.";
+    exit 1;
+  else
+    # do nothing
+    :;
+  fi
+
+  # It is ok to create the working directory.  So create it.
+
+  mkdir "${basename}";
+  echo '... done';
+
+  # Return from function.
+    
+  return;
+}
+
+
+
 ################################################################################
 ##
 ## MAIN
@@ -190,31 +238,9 @@ function main()
     exit 1;
   fi
 
-  # See if we can create the working directory.
+  # Create the working directory.
 
-  echo "Info: creating working directory '${working_directory}' ...";
-  local dirname="$( dirname "${working_directory}" )";
-  if [[ -d "${dirname}" ]]; then
-    # do nothing
-    :;
-  else
-    echo "Error: no such directory '${dirname}'.";
-    exit 1;
-  fi
-  cd "${dirname}";
-  local basename="$( basename "${working_directory}" )";
-  if [[ -d "./${basename}" ]]; then
-    echo "Error: directory '${dirname}/${basename}/' already exists.";
-    exit 1;
-  else
-    # do nothing
-    :;
-  fi
-
-  # It is ok to create the working directory.  So create it.
-
-  mkdir "${basename}";
-  echo '... done';
+  createWorkingDirectory "${working_directory}";
 
   # Return from function.
 

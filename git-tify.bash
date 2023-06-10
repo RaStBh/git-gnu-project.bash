@@ -413,8 +413,8 @@ function setGlobalOptions()
       # do nothing
       :;
     else
-        echo "Error: unknown key '${key}' in variable 'global_options'.";
-        exit 1;
+      echo "Error: unknown key '${key}' in variable 'global_options'.";
+      exit 1;
     fi
 
     # See key has value.

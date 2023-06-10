@@ -94,3 +94,7 @@ global_options[3]='pull.ff;false';
 ##   repositories[0]='github.com;github.com,git@github.com-JohnDow:JohnDow';
 ##   repositories[1]='gitlab.com;gitlab.com,git@github.com-JohnDow:JohnDow';
 ##   repositories[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';
+
+repositories[0]='github.com;github.com,git@github.com-JohnDow:JohnDow';
+repositories[1]='gitlab.com;gitlab.com,git@github.com-JohnDow:JohnDow';
+repositories[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';

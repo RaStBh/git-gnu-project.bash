@@ -37,8 +37,9 @@
 ##
 ## Example:
 ##
-##   </home/john_dow/repositories/foobar>
-##   </home/john_dow/repositories/foobar/>
+##   working_directory='/home/john_dow/repositories/foobar';
+##
+##   working_directory='/home/john_dow/repositories/foobar/';
 
 working_directory='/home/john_dow/repositories/foobar/';
 
@@ -46,7 +47,24 @@ working_directory='/home/john_dow/repositories/foobar/';
 ##
 ## Example:
 ##
-##   </home/john_dow/repositories/foobar/.git>
-##   </home/john_dow/repositories/foobar/.git/>
+##   repository_directory='/home/john_dow/repositories/foobar/.git';
+##
+##   repository_directory='/home/john_dow/repositories/foobar/.git/';
 
 repository_directory='/home/john_dow/repositories/foobar/.git/';
+
+## Git configuration.
+##
+## Example:
+##
+##   git_configs[index]='key;value';
+##
+##   git_configs[0]='user.name;John Dow';
+##   git_configs[1]='user.email;john_dow@example.com';
+##   git_configs[2]='merge.ff;false';
+##   git_configs[3]='pull.ff;false";
+
+git_configs[0]='user.name;John Dow';
+git_configs[1]='user.email;john_dow@example.com';
+git_configs[2]='merge.ff;false';
+git_configs[3]='pull.ff;false";

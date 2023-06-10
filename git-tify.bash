@@ -285,6 +285,152 @@ function initializeGitRepository()
 
 
 
+## @brief Set Git local options.
+## @details Set Git local options.
+##   1. See that local options contain known keys.
+##   2. See that key has value.
+##   3. Set Git options locally.
+## @param[in] local_options
+##   The Git local options.
+## @return
+##   The exit code of last command.
+
+function setLocalOptions()
+{
+  # The Git local options.
+
+  local -a local_options=( "${@}" );
+
+  # See if the keys of the local options are known keys.
+
+  local index=0;
+
+  local -a key_value=();
+  local key='';
+  local value='';
+
+  for (( index=0; index<"${#local_options[@]}"; index++ )); do
+    # Split option into key and value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${local_options[${index}]}";
+    key="${key_value[0]}";
+    value="${key_value[1]}";
+
+    # See that the key is an allowed key.
+
+    if   [[ 'user.name' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'user.email' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'merge.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'pull.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    else
+        echo "Error: unknown key '${key}' in variable 'local_options'.";
+        exit 1;
+    fi
+    if [[ -n "${value}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'local_options' key '${key}' (${value}) has empty value.";
+      exit 1;
+    fi
+    echo "Info: variable 'local_options' key '${key}' (${value}) present.";
+
+    # Set the local options.
+
+    git config "${key}" "${value}";
+  done
+
+  # Return from function.
+
+  return;
+}
+
+
+
+## @brief Set Git global options.
+## @details Set Git global options.
+##   1. See that global options contain known keys.
+##   2. See that key has value.
+##   3. Set Git options globally.
+## @param[in] global_options
+##   The Git global options.
+## @return
+##   The exit code of last command.
+
+function setGlobalOptions()
+{
+  # The Git global options.
+
+  local -a global_options=( "${@}" );
+
+  # See if the keys of the global options are known keys.
+
+  local index=0;
+
+  local -a key_value=();
+  local key='';
+  local value='';
+
+  for (( index=0; index<"${#global_options[@]}"; index++ )); do
+    # Split option into key and value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${global_options[${index}]}";
+    key="${key_value[0]}";
+    value="${key_value[1]}";
+
+    # See that the key is an allowed key.
+
+    if   [[ 'user.name' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'user.email' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'merge.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'pull.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    else
+        echo "Error: unknown key '${key}' in variable 'global_options'.";
+        exit 1;
+    fi
+    if [[ -n "${value}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'global_options' key '${key}' (${value}) has empty value.";
+      exit 1;
+    fi
+    echo "Info: variable 'global_options' key '${key}' (${value}) present.";
+
+    # Set the global options.
+
+    git config --global "${key}" "${value}";
+  done
+
+  # Return from function.
+
+  return;
+}
+
+
+
 ################################################################################
 ##
 ## MAIN
@@ -307,17 +453,21 @@ function main()
 
   local arguments=( "${@}" );
 
-  # The working directory.
+  # The Git working directory.
 
   local working_directory='';
 
-  # The repository directory.
+  # The Git repository directory.
 
   local repository_directory='';
 
-  # The Git configuration.
+  # The Git local options.
 
-  local -A git_configs=();
+  local -a local_options=();
+
+  # The Git global options.
+
+  local -a global_options=();
 
   # Get content from configuration file if it is present.
 
@@ -342,6 +492,18 @@ function main()
     echo "Info: variable 'repository_directory' (${repository_directory}) present.";
   else
     echo "Error: variable 'repository_directory' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#local_options[@]}" )); then
+    echo "Info: variable 'local_options' (${#local_options[@]}) (${local_options[@]}) present.";
+  else
+    echo "Error: variable 'local_options' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#global_options[@]}" )); then
+    echo "Info: variable 'global_options' (${#global_options[@]}) (${global_options[@]}) present.";
+  else
+    echo "Error: variable 'global_options' not present.";
     exit 1;
   fi
 
@@ -370,8 +532,20 @@ function main()
 
   # Initialize the Git repository.
 
-  echo "Info: initializing Git repository in '${dirname}/${basename}/'";
+  echo "Info: initializing Git repository in '${working_directory}'";
   initializeGitRepository;
+  echo '... done';
+
+  # Set Git local options.
+
+  echo "Info: configure Git local options in '${working_directory}'";
+  setLocalOptions "${local_options[@]}";
+  echo '... done';
+
+  # Set Git global options.
+
+  echo "Info: configure Git global options in '${working_directory}'";
+  setGlobalOptions "${global_options[@]}";
   echo '... done';
 
   # Return from function.

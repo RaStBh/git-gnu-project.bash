@@ -112,16 +112,19 @@
 
 ################################################################################
 ##
-## Main
+## MAIN
 ##
 ################################################################################
 
-## @brief main function
-## @details
+
+
+## @brief The main function.
+## @details The main function.
+##   The script starts here.
 ## @ param[in] arguments
-##   the command line arguments
+##   The command line arguments.
 ## @return
-##   exit code of last command
+##   The exit code of the last command.
 
 function main()
 {

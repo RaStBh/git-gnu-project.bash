@@ -337,6 +337,9 @@ function setLocalOptions()
         echo "Error: unknown key '${key}' in variable 'local_options'.";
         exit 1;
     fi
+
+    # See key has value.
+
     if [[ -n "${value}" ]]; then
       # do nothing
       :;
@@ -344,6 +347,9 @@ function setLocalOptions()
       echo "Error: variable 'local_options' key '${key}' (${value}) has empty value.";
       exit 1;
     fi
+
+    # Show key and value.
+
     echo "Info: variable 'local_options' key '${key}' (${value}) present.";
 
     # Set the local options.
@@ -410,6 +416,9 @@ function setGlobalOptions()
         echo "Error: unknown key '${key}' in variable 'global_options'.";
         exit 1;
     fi
+
+    # See key has value.
+
     if [[ -n "${value}" ]]; then
       # do nothing
       :;
@@ -417,11 +426,83 @@ function setGlobalOptions()
       echo "Error: variable 'global_options' key '${key}' (${value}) has empty value.";
       exit 1;
     fi
+
+    # Show key and value.
+
     echo "Info: variable 'global_options' key '${key}' (${value}) present.";
 
     # Set the global options.
 
     git config --global "${key}" "${value}";
+  done
+
+  # Return from function.
+
+  return;
+}
+
+
+
+## @brief Set Git remotes.
+## @details Set Git remotes.
+##   1. See that remotes contain known keys.
+##   2. See that key has value.
+##   3. Set Git remotes.
+## @param[in] remotes
+##   The Git remotes.
+## @return
+##   The exit code of last command.
+function setRemotes()
+{
+  # The Git remotes.
+
+  local -a remotes=( "${@}" );
+
+  # See if the keys of the remotes are not empty.
+
+  local index=0;
+
+  local -a key_value=();
+  local key='';
+  local value='';
+
+  for (( index=0; index<"${#remotes[@]}"; index++ )); do
+    # Split remotes into key and value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${remotes[${index}]}";
+    key="${key_value[0]}";
+    value="${key_value[1]}";
+
+    # See that the key is not empty.
+
+    if [[ -n "${key}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'remotes' has empty key (${value}).";
+      exit 1;
+    fi
+
+    # See key has value.
+
+    if [[ -n "${value}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'remotes' key (${key}) has empty value.";
+      exit 1;
+    fi
+
+    # Show key and value.
+
+    echo "Info: variable 'remotes' key '${key}' (${value}) present.";
+
+    # Set remote.
+
+    git remote add "${key}" "${value}";
   done
 
   # Return from function.
@@ -469,6 +550,10 @@ function main()
 
   local -a global_options=();
 
+  # The Git remotes.
+
+  local -a remotes=();
+
   # Get content from configuration file if it is present.
 
   if [[ -f './config.inc.bash' ]]; then
@@ -504,6 +589,12 @@ function main()
     echo "Info: variable 'global_options' (${#global_options[@]}) (${global_options[@]}) present.";
   else
     echo "Error: variable 'global_options' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#remotes[@]}" )); then
+    echo "Info: variable 'remotes' (${#remotes[@]}) (${remotes[@]}) present.";
+  else
+    echo "Error: variable 'remotes' not present.";
     exit 1;
   fi
 
@@ -546,6 +637,12 @@ function main()
 
   echo "Info: configure Git global options in '${working_directory}'";
   setGlobalOptions "${global_options[@]}";
+  echo '... done';
+
+  # Set remotes.
+
+  echo "Info: configure Git remotes in '${working_directory}'";
+  setRemotes "${remotes[@]}";
   echo '... done';
 
   # Return from function.

@@ -232,17 +232,9 @@ function askConfirmation()
 
 function createDirectory()
 {
-  # The dirname.
-
-  local dirname="${1}";
-
-  # The basename.
-
-  local basename="${2}";
-
   # The directory to create.
 
-  local directory="${dirname}/${basename}/";
+  local directory="${1}";
 
   # Create the directory.
 
@@ -326,6 +318,7 @@ function main()
   local dirname="$( dirname "${working_directory}" )";
   local basename="$( basename "${working_directory}" )";
   testDirectory "${dirname}" "${basename}";
+  working_directory="${dirname}/${basename}/";
 
   # Ask for confirmation before creating the working directory.
 
@@ -333,7 +326,13 @@ function main()
 
   # It is ok to create the working directory.  So create it.
 
-  createDirectory "${dirname}" "${basename}";
+  createDirectory "${working_directory}";
+  echo '... done';
+
+  # Change directory to working directory.
+
+  echo "Info: changing directory to '${working_directory}' ...";
+  cd "${working_directory}";
   echo '... done';
 
   # Return from function.

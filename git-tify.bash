@@ -534,6 +534,25 @@ function initialCommit()
 
 
 
+## @brief Cleanup and optimize the repository.
+## @details Cleanup and optimize the repository.
+## @return
+##   The exit code of last command.
+
+function runHousekeeping()
+{
+  # Cleanup and optimize the repository.
+
+  git gc;
+
+  # Return from function.
+
+  return;
+
+}
+
+
+
 ################################################################################
 ##
 ## MAIN
@@ -671,6 +690,12 @@ function main()
 
   echo "Info: commiting Git repository in '${working_directory}' ...";
   initialCommit;
+  echo '... done';
+
+  # Cleanup and optimize the repository.
+
+  echo "Info: cleaning and optimizing Git repository in '${working_directory}' ...";
+  runHousekeeping;
   echo '... done';
 
   # Return from function.

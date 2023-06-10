@@ -112,6 +112,32 @@
 
 ################################################################################
 ##
+## Main
+##
+################################################################################
+
+## @brief main function
+## @details
+## @ param[in] arguments
+##   the command line arguments
+## @return
+##   exit code of last command
+
+function main()
+{
+  local arguments=( "${@}" );
+
+  return;
+}
+
+# Call the main function and pass the command line arguments.
+
+main "${@}";
+
+
+
+################################################################################
+##
 ## TESTS
 ##
 ################################################################################

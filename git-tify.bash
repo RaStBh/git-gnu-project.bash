@@ -232,9 +232,17 @@ function askConfirmation()
 
 function createDirectory()
 {
+  # The dirname.
+
+  local dirname="${1}";
+
+  # The basename.
+
+  local basename="${2}";
+
   # The directory to create.
 
-  local directory="${1}";
+  local directory="${dirname}/${basename}/";
 
   # Create the directory.
 
@@ -325,7 +333,7 @@ function main()
 
   # It is ok to create the working directory.  So create it.
 
-  createDirectory "${dirname}/${basename}/";
+  createDirectory "${dirname}" "${basename}";
   echo '... done';
 
   # Return from function.

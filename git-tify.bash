@@ -170,13 +170,32 @@ function createWorkingDirectory()
     :;
   fi
 
+  # Ask for confirmation
+
+  local confirmation='';
+  read -p "Create repository in '${dirname}/${basename}/'? (y/n): " 'confirmation';
+  confirmation="${confirmation,,}";
+  case "${confirmation}" in
+    'n' | 'no' )
+      echo 'Info: aborded by user.';
+      exit 0;
+      ;;
+    'y' | 'yes' )
+      # do nothing
+      ;;
+    * )
+      echo "Error: unkown confirmation '${confirmation}'.";
+      exit 1;
+      ;;
+  esac
+
   # It is ok to create the working directory.  So create it.
 
   mkdir "${basename}";
   echo '... done';
 
   # Return from function.
-    
+
   return;
 }
 

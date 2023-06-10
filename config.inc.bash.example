@@ -62,12 +62,12 @@ repository_directory='/home/john_dow/repositories/foobar/.git/';
 ##   local_options[0]='user.name;John Dow';
 ##   local_options[1]='user.email;john_dow@example.com';
 ##   local_options[2]='merge.ff;false';
-##   local_options[3]='pull.ff;false";
+##   local_options[3]='pull.ff;false';
 
 local_options[0]='user.name;John Dow';
 local_options[1]='user.email;john_dow@example.com';
 local_options[2]='merge.ff;false';
-local_options[3]='pull.ff;false";
+local_options[3]='pull.ff;false';
 
 ## The Git global options.
 ##
@@ -78,9 +78,9 @@ local_options[3]='pull.ff;false";
 ##   global_options[0]='user.name;John Dow';
 ##   global_options[1]='user.email;john_dow@example.com';
 ##   global_options[2]='merge.ff;false';
-##   global_options[3]='pull.ff;false";
+##   global_options[3]='pull.ff;false';
 
 global_options[0]='user.name;John Dow';
 global_options[1]='user.email;john_dow@example.com';
 global_options[2]='merge.ff;false';
-global_options[3]='pull.ff;false";
+global_options[3]='pull.ff;false';

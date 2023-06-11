@@ -39,6 +39,8 @@
 ##
 ##   working_directory='/home/john_dow/repositories/foobar';
 ##
+##   or
+##
 ##   working_directory='/home/john_dow/repositories/foobar/';
 
 working_directory='/home/john_dow/repositories/foobar/';
@@ -48,6 +50,8 @@ working_directory='/home/john_dow/repositories/foobar/';
 ## Example:
 ##
 ##   repository_directory='/home/john_dow/repositories/foobar/.git';
+##
+##   or
 ##
 ##   repository_directory='/home/john_dow/repositories/foobar/.git/';
 
@@ -59,15 +63,27 @@ repository_directory='/home/john_dow/repositories/foobar/.git/';
 ##
 ##   local_options[index]='key;value';
 ##
+##   local_options=();
 ##   local_options[0]='user.name;John Dow';
 ##   local_options[1]='user.email;john_dow@example.com';
 ##   local_options[2]='merge.ff;false';
 ##   local_options[3]='pull.ff;false';
+##
+##   or
+##
+##   local_options=( \
+##     'user.name;John Dow' \
+##     'user.email;john_dow@example.com' \
+##     'merge.ff;false' \
+##     'pull.ff;false' \
+##   );
 
-local_options[0]='user.name;John Dow';
-local_options[1]='user.email;john_dow@example.com';
-local_options[2]='merge.ff;false';
-local_options[3]='pull.ff;false';
+local_options=( \
+  'user.name;John Dow' \
+  'user.email;john_dow@example.com' \
+  'merge.ff;false' \
+  'pull.ff;false' \
+);
 
 ## The Git global options.
 ##
@@ -75,15 +91,27 @@ local_options[3]='pull.ff;false';
 ##
 ##   global_options[index]='key;value';
 ##
+##   global_options=();
 ##   global_options[0]='user.name;John Dow';
 ##   global_options[1]='user.email;john_dow@example.com';
 ##   global_options[2]='merge.ff;false';
 ##   global_options[3]='pull.ff;false';
+##
+##   or
+##
+##   global_options=( \
+##     'user.name;John Dow' \
+##     'user.email;john_dow@example.com' \
+##     'merge.ff;false' \
+##     'pull.ff;false' \
+##   );
 
-global_options[0]='user.name;John Dow';
-global_options[1]='user.email;john_dow@example.com';
-global_options[2]='merge.ff;false';
-global_options[3]='pull.ff;false';
+global_options=(
+  'user.name;John Dow' \
+  'user.email;john_dow@example.com' \
+  'merge.ff;false' \
+  'pull.ff;false' \
+);
 
 ## The Git remotes.
 ##
@@ -91,10 +119,21 @@ global_options[3]='pull.ff;false';
 ##
 ##   remotes[index]='key;value';
 ##
+##   remotes=();
 ##   remotes[0]='github.com;git@github.com-JohnDow:JohnDow';
 ##   remotes[1]='gitlab.com;git@gitlab.com-JohnDow:JohnDow';
 ##   remotes[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';
+##
+##   or
+##
+##   remotes=( \
+##     'github.com;git@github.com-JohnDow:JohnDow' \
+##     'gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
+##     'example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+##   );
 
-remotes[0]='github.com;git@github.com-JohnDow:JohnDow';
-remotes[1]='gitlab.com;git@gitlab.com-JohnDow:JohnDow';
-remotes[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';
+remotes=(
+  'github.com;git@github.com-JohnDow:JohnDow' \
+  'gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
+  'example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+);

@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Date: 2023-06-11 04:18:33.2607097000 +00:00:00 $
+## $Version: 0.2.0 (2023-06-12 03:10:51 +00:00:00) $
 ##
 ################################################################################
 
@@ -663,13 +663,13 @@ function main()
 
   # The Version of this script.
 
-  local version="$( cat << 'END'
-git-tify.bash (RaSt git-gnu-project) 0.2.0
-(2023-06-11 04:18:33.2607097000 +00:00:00)
-Copyright (C)  2023  Ralf Stephan
-License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+  local version="$( cat << 'END' 
+git-tify.bash (RaSt git-gnu-project)
+0.2.0 (2023-06-12 03:10:51 +00:00:00)
+Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
+License GPLv3+ (GNU GPL version 3 or later, see <https://gnu.org/licenses/gpl.html>)
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.";
+There is NO WARRANTY, to the extent permitted by law.
 END
 )";
 

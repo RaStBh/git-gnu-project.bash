@@ -35,7 +35,7 @@
 
 ################################################################################
 ##
-## GIT-TIFY.BASH - 1 - 2023-06-10 - RaSt - RaSt git-gnu-project Manual
+## GIT-TIFY.BASH - 1 - 2023-06-12 - RaSt - RaSt git-gnu-project Manual
 ##
 ## NAME
 ##

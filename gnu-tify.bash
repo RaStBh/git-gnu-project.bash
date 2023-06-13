@@ -231,6 +231,25 @@ function askConfirmation()
 
 
 
+## @brief Cleanup and optimize the repository.
+## @details Cleanup and optimize the repository.
+## @return
+##   The exit code of the last command.
+
+function runHousekeeping()
+{
+  # Cleanup and optimize the repository.
+
+  git gc;
+
+  # Return from the function.
+
+  return;
+
+}
+
+
+
 ################################################################################
 ##
 ## EXIT

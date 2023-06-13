@@ -139,6 +139,56 @@
 
 
 
+## @brief Test directory.
+## @details Test directory.
+##   1. See if there is the directory 'dirname'.
+##      On yes: continue.
+##      On no:  exit.
+##   2. See if there is the directry 'basename'.
+##      On yes: continue.
+##      On no:  exit.
+## @param[in] dirname
+##   The dirname, for example </home/john_dow/repositories/>.
+## @param[in] basename
+##   The basename, for example <foobar>.
+## @return
+##   The exit code of last command.
+
+function testDirectory()
+{
+  # The dirname.
+
+  local dirname="${1}";
+
+  # The basename.
+
+  local basename="${2}";
+
+  # Test the directory.
+
+  if [[ -d "${dirname}" ]]; then
+  # do nothing
+    :;
+  else
+    echo "Error: no such directory '${dirname}'.";
+    exit 1;
+  fi
+  cd "${dirname}";
+  if [[ -d "./${basename}" ]]; then
+    # do nothing
+    :;
+  else
+    echo "Error: directory '${dirname}/${basename}/' does not exist.";
+    exit 1;
+  fi
+
+  # Return from the function.
+
+  return;
+}
+
+
+
 ################################################################################
 ##
 ## EXIT

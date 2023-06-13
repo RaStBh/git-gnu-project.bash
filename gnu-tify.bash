@@ -189,6 +189,48 @@ function testDirectory()
 
 
 
+## @brief Ask the user for confirmation.
+## @details Ask the user for confirmation.
+##   1. Ask the user.
+##   2  On 'n', 'no', 'N', 'NO', 'nO', ...   : exit.
+##      On 'y', 'yes', 'Y', 'YES', 'yES', ...: continue.
+## @return
+##   The exit code of the last command.
+
+function askConfirmation()
+{
+  # The confirmation from the user.
+
+  local confirmation='';
+
+  # Get confirmation from the user.
+
+  read -p "Create repository in '${dirname}/${basename}/'? (y/n): " 'confirmation';
+  confirmation="${confirmation,,}";
+
+  # See what the user answered.  On 'yes' continue.  On 'no' exit.
+
+  case "${confirmation}" in
+    'n' | 'no' )
+      echo 'Info: aborded by user.';
+      exit 0;
+      ;;
+    'y' | 'yes' )
+      # do nothing
+      ;;
+    * )
+      echo "Error: unkown confirmation '${confirmation}'.";
+      exit 1;
+      ;;
+  esac
+
+  # Return from the function.
+
+  return;
+}
+
+
+
 ################################################################################
 ##
 ## EXIT

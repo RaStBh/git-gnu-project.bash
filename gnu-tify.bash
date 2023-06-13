@@ -252,6 +252,39 @@ function runHousekeeping()
 
 ################################################################################
 ##
+## MAIN
+##
+################################################################################
+
+
+
+## @brief The main function.
+## @details The main function.
+##   The script starts here.
+## @ param[in] arguments
+##   The command line arguments.
+## @return
+##   The exit code of the last command.
+
+function main()
+{
+  # Get the command line arguments.
+
+  local -a arguments=( "${@}" );
+
+  # Return from the function.
+
+  return;
+}
+
+# Call the main function and pass the command line arguments.
+
+main "${@}";
+
+
+
+################################################################################
+##
 ## EXIT
 ##
 ################################################################################

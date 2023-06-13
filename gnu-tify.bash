@@ -35,6 +35,80 @@
 
 ################################################################################
 ##
+## GNU-TIFY.BASH - 1 - 2023-06-12 - RaSt - RaSt git-gnu-project Manual
+##
+## NAME
+##
+##   gnu-tify.bash - manage directory as GNU style project
+##
+## SYNOPSIS
+##
+##   gnu-tify.bash
+##
+##   ???
+##
+## DESCRIPTION
+##
+##   RaSt gnu-tify.bash is  a Bash script to  manage a directory as  a GNU style
+##   project.
+##
+##   The directory then contains a GNU style project tree for program, library, documentation or package projects.
+##
+##   ???
+##
+## OPTIONS
+##
+##   ???
+##
+## IMPLEMENTATION NOTES
+##
+## ENVIRONMENT
+##
+## FILES
+##
+##   gnu-tify.bash           - this script
+##   config.inc.bash         - configuration file
+##   config.inc.bash.example - example configuration file
+##
+## EXIT STATUS
+##
+##   on success: $? == 0
+##   on failure: $? >  0
+##
+## EXAMPLES
+##
+##   gnu-tify.bash
+##
+##   ???
+##
+##   gnu-tify.bash --help
+##
+##   gnu-tify.bash --version
+##
+## DIAGNOSTICS
+##
+## SEE ALSO
+##
+## STANDARDS
+##
+## HISTORY
+##
+## AUTHORS
+##
+##   Ralf Stephan <me@ralf-stephan.name>
+##
+## CAVEATS
+##
+## BUGS
+##
+## SECURITY CONSIDERATIONS
+##
+################################################################################
+
+
+
+################################################################################
+##
 ## TESTS
 ##
 ################################################################################

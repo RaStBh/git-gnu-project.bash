@@ -224,7 +224,7 @@ function testDirectory()
   fi
   cd "${dirname}";
   if [[ -d "./${basename}" ]]; then
-    echo "Error: directory '${dirname}/${basename}/' already exists.";
+    echo "Error: directory '${dirname}/${basename}/' does exist.";
     exit 1;
   else
     # do nothing

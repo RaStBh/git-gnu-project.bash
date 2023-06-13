@@ -237,6 +237,7 @@ function testDirectory()
 }
 
 
+
 ## @brief Ask the user for confirmation.
 ## @details Ask the user for confirmation.
 ##   1. Ask the user.

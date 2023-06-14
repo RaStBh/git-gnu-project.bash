@@ -146,6 +146,46 @@ remotes=(
   'example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
 );
 
+## Names of Git configuration files:
+##
+##   .gitattributes
+##   .gitignore
+##   .gitmodules
+##   .mailmap
+##
+## Not a Git configuration file:
+##
+##   .gitkeep
+
+## Git configuration files.
+##
+## Example:
+##
+##   configuration_files=();
+##   configuration_files[1]='.gitattributes';
+##   configuration_files[2]='.gitignore';
+##   configuration_files[3]='.gitmodules';
+##   configuration_files[4]='.mailmap';
+##   configuration_files[5]='.gitkeep';
+##
+##   or
+##
+##   configuration_files=(
+##     '.gitattributes' \
+##     '.gitignore' \
+##     '.gitmodules' \
+##     '.mailmap' \
+##     '.gitkeep' \
+##   );
+
+configuration_files=(
+  '.gitattributes' \
+  '.gitignore' \
+  '.gitkeep' \
+  '.gitmodules' \
+  '.mailmap' \
+);
+
 
 
 ################################################################################
@@ -276,46 +316,6 @@ readme_files=(
   'README' \
   'THANKS' \
   'TODO' \
-);
-
-## Names of Git configuration files:
-##
-##   .gitattributes
-##   .gitignore
-##   .gitmodules
-##   .mailmap
-##
-## Not a Git configuration file:
-##
-##   .gitkeep
-
-## Git configuration files.
-##
-## Example:
-##
-##   configuration_files=();
-##   configuration_files[1]='.gitattributes';
-##   configuration_files[2]='.gitignore';
-##   configuration_files[3]='.gitmodules';
-##   configuration_files[4]='.mailmap';
-##   configuration_files[5]='.gitkeep';
-##
-##   or
-##
-##   configuration_files=(
-##     '.gitattributes' \
-##     '.gitignore' \
-##     '.gitmodules' \
-##     '.mailmap' \
-##     '.gitkeep' \
-##   );
-
-configuration_files=(
-  '.gitattributes' \
-  '.gitignore' \
-  '.gitkeep' \
-  '.gitmodules' \
-  '.mailmap' \
 );
 
 ## Package project tree layout - The Pitchfork Layout (PFL)

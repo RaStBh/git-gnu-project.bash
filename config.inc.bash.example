@@ -161,7 +161,7 @@ remotes=(
 ##
 ## Example:
 ##
-##   legal_notice_notice="This file is part of JD foobar package.
+##   legal_notice="This file is part of JD foobar package.
 ##
 ##   JD foobar is ...
 ##

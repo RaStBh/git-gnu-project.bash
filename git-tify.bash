@@ -386,6 +386,7 @@ function setLocalOptions()
     value='';
     IFS=';' read -a 'key_value' -r <<< "${local_options[${index}]}";
     key="${key_value[0]}";
+
     value="${key_value[1]}";
 
     # See that the key is an allowed key.
@@ -410,18 +411,24 @@ function setLocalOptions()
     # See the key has a known value.
 
     if [[ -n "${value}" ]]; then
-      if   [[ 'true' == "${value}" ]]; then
-        # do nothing
-        :;
-      elif [[ 'false' == "${value}" ]]; then
-        # do nothing
-        :;
-      elif [[ 'only' == "${value}" ]]; then
-        # do nothing
-        :;
+      if    [[ 'merge.ff' == "${key}" ]] \
+         || [[ 'pull.ff' == "${key}" ]]; then
+        if   [[ 'true' == "${value}" ]]; then
+          #do nothing
+          :;
+        elif [[ 'false' == "${value}" ]]; then
+          # do nothing
+          :;
+        elif [[ 'only' == "${value}" ]]; then
+          # do nothing
+          :;
+        else
+          echo "Error: variable 'local_options' key '${key}' (${value}) has unknown value.";
+          exit 1;
+        fi
       else
-        echo "Error: variable 'local_options' key '${key}' (${value}) has unknown value.";
-        exit 1;
+        # do nothing
+        :;
       fi
     else
       echo "Error: variable 'local_options' key '${key}' (${value}) has empty value.";
@@ -502,18 +509,24 @@ function setGlobalOptions()
     # See the key has a known value.
 
     if [[ -n "${value}" ]]; then
-      if   [[ 'true' == "${value}" ]]; then
-        # do nothing
-        :;
-      elif [[ 'false' == "${value}" ]]; then
-        # do nothing
-        :;
-      elif [[ 'only' == "${value}" ]]; then
-        # do nothing
-        :;
+      if    [[ 'merge.ff' == "${key}" ]] \
+         || [[ 'pull.ff' == "${key}" ]]; then
+        if   [[ 'true' == "${value}" ]]; then
+          #do nothing
+          :;
+        elif [[ 'false' == "${value}" ]]; then
+          # do nothing
+          :;
+        elif [[ 'only' == "${value}" ]]; then
+          # do nothing
+          :;
+        else
+          echo "Error: variable 'global_options' key '${key}' (${value}) has unknown value.";
+          exit 1;
+        fi
       else
-        echo "Error: variable 'global_options' key '${key}' (${value}) has unknown value.";
-        exit 1;
+        # do nothing
+        :;
       fi
     else
       echo "Error: variable 'global_options' key '${key}' (${value}) has empty value.";
@@ -772,6 +785,8 @@ END
   long_options+='local-option:,';
   long_options+='empty-global-options,';
   long_options+='global-option:,';
+  long_options+='empty-remotes,';
+  long_options+='remote:,';
   long_options+='help,';
   long_options+='version,';
 
@@ -781,6 +796,7 @@ END
                               --shell 'bash' \
                               -- \
                               "${@}" )" );
+
   local option_name='';
   local option_argument='';
   local -i previous_position=0;
@@ -809,7 +825,8 @@ END
         ;;
 
       '--local-option' )
-        local_options["${#local_options[@]}"]=( "${option_argument}" );
+
+        local_options[${#local_options[@]}]="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
         ;;
 
@@ -819,7 +836,17 @@ END
         ;;
 
       '--global-option' )
-        global_options["${#global_options[@]}"]=( "${option_argument}" );
+        global_options["${#global_options[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-remotes' )
+        remotes=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--remote' )
+        remotes["${#remotes[@]}"]="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
         ;;
 
@@ -831,6 +858,10 @@ END
       '--version' )
         echo "${version}";
         exit 0;
+        ;;
+
+      '--' )
+        break;
         ;;
 
       *)

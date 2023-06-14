@@ -146,6 +146,13 @@
 ##
 ## SEE ALSO
 ##
+##   Report bugs to:
+##   Package home page:
+##   General help using RaSt software:
+##
+##     https://github.com/RaStBh/
+##     https://gitlab.com/RaStBh/
+##
 ## STANDARDS
 ##
 ## HISTORY
@@ -622,6 +629,7 @@ function initialCommit()
 
 
 ## @brief Cleanup and optimize the repository.
+
 ## @details Cleanup and optimize the repository.
 ## @return
 ##   The exit code of the last command.

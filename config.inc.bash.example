@@ -156,11 +156,12 @@ remotes=(
 
 
 
-## Notice to insert in each Git configuration file and GNU standard readme file.
+## Legal notice to insert in each Git configuration file and GNU standard readme
+## file.
 ##
 ## Example:
 ##
-##   notice="This file is part of JD foobar package.
+##   legal_notice_notice="This file is part of JD foobar package.
 ##
 ##   JD foobar is ...
 ##
@@ -171,7 +172,7 @@ remotes=(
 ##   the copyright  notice and this  notice are  preserved.  This file  is offered
 ##   as-is, without any warranty.";
 
-notice="This file is part of JD foobar package.
+legal_notice="This file is part of JD foobar package.
 ##
 ## JD foobar is ...
 ##

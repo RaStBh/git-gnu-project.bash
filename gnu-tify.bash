@@ -89,6 +89,13 @@
 ##
 ## SEE ALSO
 ##
+##   Report bugs to:
+##   Package home page:
+##   General help using RaSt software:
+##
+##     https://github.com/RaStBh/
+##     https://gitlab.com/RaStBh/
+##
 ## STANDARDS
 ##
 ## HISTORY

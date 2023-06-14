@@ -51,6 +51,9 @@
 ##                 [--global-option=<global option>]
 ##                 [--empty-remotes]
 ##                 [--remote=<remote>]
+##                 [--legal-notice=<legal notice>]
+##                 [--empty-configuration-files]
+##                 [--configuration-file=<configuration file>]
 ##                 [--help]
 ##                 [--version]
 ##
@@ -77,26 +80,35 @@
 ##   Step 3: Set the Git global options.
 ##   Step 4: Set the Git remotes.
 ##   Step 5: Commit Git repository as empty initial commit.
-##   Step 6: Cleanup and optimize the Git repository.
+##   Step 6: Add Git configuration files.
+##           Add legal notice to Git configuration files.
+##           Commit Git configuration files.
+##   Step 7: Cleanup and optimize the Git repository.
 ##
 ## OPTIONS
 ##
-##   --working-directory    - set Git working directory
-##   --repository-directory - set Git repository directory
-##   --empty-local-options  - set Git local  options list to an  empty list, use
-##                            this before --local-option
-##   --local-option         - add Git  local option  to Git local  options list,
-##                            use this after --empty-local-options
-##   --empty-global-options - set Git global options list  to an empty list, use
-##                            this before --global-option
-##   --global-option        - add Git global option  to Git global options list,
-##                            use this after --empty-global-options
-##   --empty-remotes        - set Git  remotes list to  an empty list,  use this
-##                            before --remote
-##   --remote               - add Git remote to Git remotes list, use this after
-##                            --empty-remotes
-##   --help                 - print help
-##   --version              - print version
+##   --working-directory         - set Git working directory
+##   --repository-directory      - set Git repository directory
+##   --empty-local-options       - set Git local options  list to an empty list,
+##                                 use this before --local-option
+##   --local-option              - add  Git local  option to  Git local  options
+##                                 list, use this after --empty-local-options
+##   --empty-global-options      - set Git global options list to an empty list,
+##                                 use this before --global-option
+##   --global-option             - add Git  global option to Git  global options
+##                                 list, use this after --empty-global-options
+##   --empty-remotes             - set Git  remotes list  to an empty  list, use
+##                                 this before --remote
+##   --remote                    - add Git remote to  Git remotes list, use this
+##                                 after --empty-remotes
+##   --legal-notice              - set legal notice
+##   --empty-configuration-files - set Git  configuration file list to  an empty
+##                                 list, use this before --configuration-file
+##   --configuration-file        - add  Git  remote  to Git  configuration  file
+##                                 list,         use          this         after
+##                                 --empty-configuration-files
+##   --help                      - print help
+##   --version                   - print version
 ##
 ##   Allowed values for global options and local options:
 ##
@@ -136,7 +148,23 @@
 ##                 --empty-remotes \
 ##                 --remote='github.com;git@github.com-JohnDow:JohnDow' \
 ##                 --remote='gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
-##                 --remote='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/'
+##                 --remote='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+##                 --legal-notice="## This file is part of JD foobar package.
+##                 ##
+##                 ## JD foobar is ...
+##                 ##
+##                 ## Copyright (C)  2023  John Dow  <john_dow@example.com>
+##                 ##
+##                 ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+##                 ## without modification,  are permitted in  any medium without  royalty provided
+##                 ## the copyright  notice and this  notice are  preserved.  This file  is offered
+##                 ## as-is, without any warranty." \
+##                 --empty-configuration-files \
+##                 --configuration-file='.gitattributes' \
+##                 --configuration-file='.gitignore' \
+##                 --configuration-file='.gitkeep' \
+##                 --configuration-file='.gitmodules' \
+##                 --configuration-file='.mailmap'
 ##
 ##   git-tify.bash --help
 ##
@@ -639,6 +667,47 @@ function initialCommit()
   return;
 }
 
+## @brief Add Git configuration files.
+## @details
+##   Add Git configuration files.
+##   Add legal notice to Git configuration files.
+##   Commit Git configuration files.
+## @param[in] legal_notice
+##   The legal notice
+## @param[in] configuration_files
+##   The Git configuration files.
+## @return
+##   The exit code of the last command.
+
+function addConfigurationFiles()
+{
+  # The legal notice.
+
+  local legal_notice="${1}"; shift;
+
+  # The configuration files.
+
+  local -a configuration_files=( "${@}" );
+
+  # Add Git configuration files.
+  # Add legal notice to Git configuration files.
+  # Commit Git configuration files.
+
+  local configuration_file='';
+  for configuration_file in "${configuration_files[@]}"; do
+      echo "
+${legal_notice}" > "${configuration_file}";
+    git add "${configuration_file}";
+    git commit --message="$( echo "Add file.
+
+* ${configuration_file}: add file." | fold --spaces --width='72' )";
+  done
+
+  # Return from the function.
+
+  return;
+}
+
 
 
 ## @brief Cleanup and optimize the repository.
@@ -656,7 +725,6 @@ function runHousekeeping()
   # Return from the function.
 
   return;
-
 }
 
 
@@ -709,6 +777,9 @@ SYNOPSIS
                 [--global-option=<global option>]
                 [--empty-remotes]
                 [--remote=<remote>]
+                [--legal-notice=<legal notice>]
+                [--empty-configuration-files]
+                [--configuration-file=<configuration file>]
                 [--help]
                 [--version]
 
@@ -718,22 +789,28 @@ SYNOPSIS
 
 OPTIONS
 
-  --working-directory    - set Git working directory
-  --repository-directory - set Git repository directory
-  --empty-local-options  - set Git local options list to an empty list, use
-                           this before --local-option
-  --local-option         - add Git local option  to Git local options list,
-                           use this after --empty-local-options
-  --empty-global-options - set Git  global options  list to an  empty list,
-                           use this before --global-option
-  --global-option        - add  Git global  option  to  Git global  options
-                           list, use this after --empty-global-options
-  --empty-remotes        - set Git remotes list to  an empty list, use this
-                           before --remote
-  --remote               - add  Git remote  to Git  remotes list,  use this
-                           after --empty-remotes
-  --help                 - print help
-  --version              - print version";
+  --working-directory         - set Git working directory
+  --repository-directory      - set Git repository directory
+  --empty-local-options       - set Git local options  list to an empty list,
+                                use this before --local-option
+  --local-option              - add  Git local  option to  Git local  options
+                                list, use this after --empty-local-options
+  --empty-global-options      - set Git global options list to an empty list,
+                                use this before --global-option
+  --global-option             - add Git  global option to Git  global options
+                                list, use this after --empty-global-options
+  --empty-remotes             - set Git  remotes list  to an empty  list, use
+                                this before --remote
+  --remote                    - add Git remote to  Git remotes list, use this
+                                after --empty-remotes
+  --legal-notice              - set legal notice
+  --empty-configuration-files - set Git  configuration file list to  an empty
+                                list, use this before --configuration-file
+  --configuration-file        - add  Git  remote  to Git  configuration  file
+                                list,         use          this         after
+                                --empty-configuration-files
+  --help                      - print help
+  --version                   - print version";
 
 Report bugs to:
 Package home page:
@@ -764,6 +841,14 @@ END
 
   local -a remotes=();
 
+  # The Legal notice.
+
+  local legal_notice='';
+
+  # The Git configuration files.
+
+  local -a configuration_files=();
+
   # Get the variables from the configuration file if the file it is present.
 
   if [[ -f './config.inc.bash' ]]; then
@@ -787,6 +872,9 @@ END
   long_options+='global-option:,';
   long_options+='empty-remotes,';
   long_options+='remote:,';
+  long_options+='legal-notice:,';
+  long_options+='empty-configuration-files,';
+  long_options+='configuration-file:,';
   long_options+='help,';
   long_options+='version,';
 
@@ -850,6 +938,21 @@ END
         next_position="$(( "${next_position}" + 1 ))";
         ;;
 
+      '--legal-notice' )
+        legal_notice="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-configuration-files' )
+        configuration_files=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--configuration-file' )
+        configuration_files["${#configuration_files[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
       '--help' )
         echo "${usage}";
         exit 0;
@@ -908,6 +1011,18 @@ END
     echo "Error: variable 'remotes' not present.";
     exit 1;
   fi
+  if [[ -n "${legal_notice}" ]]; then
+    echo "Info: variable 'legal_notice' (${legal_notice}) present.";
+  else
+    echo "Error: variable 'legal_notice' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#configuration_files[@]}" )); then
+    echo "Info: variable 'configuration_files' (${#configuration_files[@]}) (${configuration_files[@]}) present.";
+  else
+    echo "Error: variable 'configuration_files' not present.";
+    exit 1;
+  fi
 
   # See if we can create the Git working directory.
 
@@ -946,13 +1061,13 @@ END
 
   # Set the Git global options.
 
-  echo "Info: configure Git global options in '${working_directory}' ...";
+  echo "Info: configuring Git global options in '${working_directory}' ...";
   setGlobalOptions "${global_options[@]}";
   echo '... done';
 
   # Set the Git remotes.
 
-  echo "Info: configure Git remotes in '${working_directory}' ...";
+  echo "Info: configuring Git remotes in '${working_directory}' ...";
   setRemotes "${remotes[@]}";
   echo '... done';
 
@@ -960,6 +1075,14 @@ END
 
   echo "Info: commiting Git repository in '${working_directory}' ...";
   initialCommit;
+  echo '... done';
+
+  ## Add Git configuration files.
+  ## Add legal notice to Git configuration files.
+  ## Commit Git configuration files.
+
+  echo "Info: adding Git configuration files in '${working_directory}' ...";
+  addConfigurationFiles "${legal_notice}" "${configuration_files[@]}";
   echo '... done';
 
   # Cleanup and optimize the Git repository.

@@ -563,6 +563,12 @@ $( echo "* ${key}: add file." | fold --spaces --width='72' )";
   done
   echo '... done';
 
+  # Cleanup and optimize the Git repository.
+
+  echo "Info: cleaning and optimizing Git repository in '${working_directory}' ...";
+  runHousekeeping;
+  echo '... done';
+
   # Return from the function.
 
   return;

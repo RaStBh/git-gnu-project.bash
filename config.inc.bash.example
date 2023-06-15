@@ -369,13 +369,16 @@ type='pkg';
 ## Example:
 ##
 ##   common_tree=();
+##   common_tree[0]='.gitkeep';
 ##
 ##   or
 ##
 ##   common_tree=( \
+##     '.gitkeep' \
 ##   );
 
 common_tree=( \
+  '.gitkeep' \
 );
 
 ## Package project tree - special directories  and files for program source code

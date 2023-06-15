@@ -418,7 +418,7 @@ common_tree=( \
 ##     'include/.gitkeep' \
 ##     'libs/.gitkeep' \
 ##     'src/.gitkeep' \
-##     'src/Makefile.am'; \
+##     'src/Makefile.am' \
 ##     'src/main.c' \
 ##     'src/main.h' \
 ##     'tests/.gitkeep' \
@@ -437,7 +437,7 @@ pogram_tree=( \
   'include/.gitkeep' \
   'libs/.gitkeep' \
   'src/.gitkeep' \
-  'src/Makefile.am'; \
+  'src/Makefile.am' \
   'src/main.c' \
   'src/main.h' \
   'tests/.gitkeep' \

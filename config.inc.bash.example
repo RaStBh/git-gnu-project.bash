@@ -318,6 +318,19 @@ readme_files=(
   'TODO' \
 );
 
+## Package project tree layout - the type of the package.
+##
+##   program  - prg
+##   library  - lib
+##   document - doc
+##   package  - pkg
+##
+## Example:
+##
+##   type='pkg';
+
+type='pkg';
+
 ## Package project tree layout - The Pitchfork Layout (PFL)
 ##
 ##   build/

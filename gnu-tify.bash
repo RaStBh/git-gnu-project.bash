@@ -52,7 +52,8 @@
 ##   RaSt gnu-tify.bash is  a Bash script to  manage a directory as  a GNU style
 ##   project.
 ##
-##   The directory then contains a GNU style project tree for program, library, documentation or package projects.
+##   The directory then contains a GNU  style project tree for program, library,
+##   documentation or package projects.
 ##
 ##   ???
 ##
@@ -253,6 +254,162 @@ function runHousekeeping()
 
   return;
 
+}
+
+
+
+## @brief Create GNU standard readme files.
+## @details Create GNU standard readme files.
+##   If there  is a Git  repository in the working  directory, add files  to the
+##   repository.
+## @param[in] legal_notice
+##   The copyright and license notice.
+## @param[in] readme_files
+##   The readme files.
+## @return
+##   The exit code of the last command.
+
+function createReadmeFiles()
+{
+  # The Legal notice.
+
+  local -a legal_notice="${1}"; shift;
+
+  # The GNU standard readme files.
+
+  local -a readme_files=( "${@}" );
+
+  # Create the files.
+
+  local readme_file='';
+  for readme_file in "${readme_files[@]}"; do
+    echo "
+${legal_notice}" > "./${readme_file}";
+    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      git add "./${readme_file}";
+      git commit --message="$( echo "Add file." | fold --spaces --width='50' )
+
+$( echo "* ${readme_file}: add file." | fold --spaces --width='72' )";
+    else
+      # do nothing
+      :;
+    fi
+  done
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Create project tree directories and files.
+## @details Create project tree directories and files.
+## @param[in] project_tree
+##   The project tree directories and files.
+## @return
+##   The exit code of the last command.
+
+function createProjectTree()
+{
+  # The project tree.
+
+  local -a project_tree=( "${@}" );
+
+  # Create the directories and files.
+
+  local project_item='';
+  for project_item in "${project_tree[@]}"; do
+    mkdir -p "$( dirname "./${project_item}" )";
+    echo "
+${legal_notice}" > "./${project_item}";
+    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      git add "./${project_item}";
+      git commit --message="$( echo "Add file." | fold --spaces --width='50' )
+
+$( echo "* ${project_item}: add file." | fold --spaces --width='72' )";
+    else
+      # do nothing
+      :;
+    fi
+  done
+
+  # Return from the function.
+
+  return;
+}
+
+
+## @brief Copy license files.
+## @details Copy license files.
+##   1. See  that the  Git  remote contains  a  key.  A  remote  has the  format
+##      'key;value'.
+##   2. See that the key has a value.
+##   3. Set Git remote.
+## @param[in] license_files
+##   The license files.
+## @return
+##   The exit code of the last command.
+
+function copyLicenseFiles()
+{
+  # The license files.
+
+  local -a license_files=( "${@}" );
+
+  # See if the keys of the license files are not empty.
+
+  local index=0;
+
+  local -a key_value=();
+  local key='';
+  local value='';
+
+  for (( index=0; index<"${#license_files[@]}"; index++ )); do
+    # Split the files into the key and the value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${license_files[${index}]}";
+    key="${key_value[0]}";
+    value="${key_value[1]}";# See that the key is not empty.
+
+    if [[ -n "${key}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'license_files' has empty key (${value}).";
+      exit 1;
+    fi
+
+    # See the key has a value.
+
+    if [[ -n "${value}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'license_files' key (${key}) has empty value.";
+      exit 1;
+    fi
+
+    # Copy the license files.
+
+    cat "${value}" > "./${key}";
+    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      git add "./${key}";
+      git commit --message="$( echo "Add file." | fold --spaces --width='50' )
+
+$( echo "* ${key}: add file." | fold --spaces --width='72' )";
+    else
+      # do nothing
+      :;
+    fi
+  done
+
+  # Return from the function.
+
+  return;
 }
 
 
@@ -462,23 +619,9 @@ END
   echo '... done';
 
   # Create GNU standard readme files.
-  # If there is a Git repository in the working directory, add files to the repository.
 
   echo "Info: creating readme files in '${working_directory}' ...";
-  local readme_file='';
-    for readme_file in "${readme_files[@]}"; do
-      echo "
-${legal_notice}" > "./${readme_file}";
-      if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
-        git add "./${readme_file}";
-        git commit --message="$( echo "Add file." | fold --spaces --width='50' )
-
-$( echo "* ${readme_file}: add file." | fold --spaces --width='72' )";
-      else
-        # do nothing
-        :;
-      fi
-    done
+  createReadmeFiles "${readme_files[@]}";
   echo '... done';
 
   # Create the project tree.
@@ -495,72 +638,15 @@ $( echo "* ${readme_file}: add file." | fold --spaces --width='72' )";
     project_tree=( "${common_tree[@]}" "${package_tree[@]}" );
   else
     echo "Error: unknown package type '${type}'.";
+    exit 1;
   fi
-  local project_item='';
-  for project_item in "${project_tree[@]}"; do
-    mkdir -p "$( dirname "./${project_item}" )";
-    echo "
-${legal_notice}" > "./${project_item}";
-    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
-      git add "./${project_item}";
-      git commit --message="$( echo "Add file." | fold --spaces --width='50' )
-
-$( echo "* ${project_item}: add file." | fold --spaces --width='72' )";
-    else
-      # do nothing
-      :;
-    fi
-  done
+  createProjectTree "${project_tree[@]}";
   echo '... done';
 
   # Copy licenses files.
 
   echo "Info: copying licenses files to '${working_directory}' ...";
-  local index=0;
-  local -a key_value=();
-  local key='';
-  local value='';
-  for (( index=0; index<"${#license_files[@]}"; index++ )); do
-    # Split the files into the key and the value.
-
-    key_value=();
-    key='';
-    value='';
-    IFS=';' read -a 'key_value' -r <<< "${license_files[${index}]}";
-    key="${key_value[0]}";
-    value="${key_value[1]}";# See that the key is not empty.
-
-    if [[ -n "${key}" ]]; then
-      # do nothing
-      :;
-    else
-      echo "Error: variable 'remotes' has empty key (${value}).";
-      exit 1;
-    fi
-
-    # See the key has a value.
-
-    if [[ -n "${value}" ]]; then
-      # do nothing
-      :;
-    else
-      echo "Error: variable 'remotes' key (${key}) has empty value.";
-      exit 1;
-    fi
-
-    # Copy the license files.
-
-    cat "${value}" > "./${key}";
-    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
-      git add "./${key}";
-      git commit --message="$( echo "Add file." | fold --spaces --width='50' )
-
-$( echo "* ${key}: add file." | fold --spaces --width='72' )";
-    else
-      # do nothing
-      :;
-    fi
-  done
+  copyLicenseFiles "${license_files[@]}";
   echo '... done';
 
   # Cleanup and optimize the Git repository.

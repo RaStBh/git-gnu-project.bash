@@ -212,7 +212,7 @@ function askConfirmation()
 
   # Get confirmation from the user.
 
-  read -p "Create repository in '${dirname}/${basename}/'? (y/n): " 'confirmation';
+  read -p "Create project tree in '${dirname}/${basename}/'? (y/n): " 'confirmation';
   confirmation="${confirmation,,}";
 
   # See what the user answered.  On 'yes' continue.  On 'no' exit.
@@ -278,6 +278,230 @@ function main()
   # Get the command line arguments.
 
   local -a arguments=( "${@}" );
+
+  # The Version of this script.
+
+  local version="$( cat << 'END'
+gnu-tify.bash (RaSt git-gnu-project)
+0.2.0 (2023-06-12 03:10:51 +00:00:00)
+Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
+License GPLv3+ (GNU GPL version 3 or later,
+see <https://gnu.org/licenses/gpl.html>)
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+END
+)";
+
+  # The usage of the script
+
+  local usage=" cat << 'END'
+SYNOPSIS
+
+  git-tify.bash
+
+  ???
+
+OPTIONS
+
+  ???
+
+END
+";
+
+  # The Git working directory.
+
+  local working_directory='';
+
+  # The  Git  repository  directory.
+
+  local repository_directory='';
+
+  # GNU standard readme files.
+
+  local -a readme_files=();
+
+  # The package type.
+
+  local type='';
+
+  # Package project tree - common files and directories.
+
+  local -a common_tree=();
+
+  # Package project tree - files and directories for program projects.
+
+  local -a pogram_tree=();
+
+  # Package project tree - files and directories for library projects.
+
+  local -a library_tree=();
+
+  # Package project tree - files and directories for document projects.
+
+  local -a document_tree=();
+
+  # Package project tree - files and directories for package projects.
+
+  local -a package_tree=();
+
+  # The Legal notice.
+
+  local legal_notice='';
+
+  # Get the command line arguments.
+
+  local short_options='';
+  local long_options='';
+
+  # Get the variables from the configuration file if the file it is present.
+
+  if [[ -f './config.inc.bash' ]]; then
+    echo "Info: configuration file './config.inc.bash' present.";
+    echo "Info: loading configuraton file './config.inc.bash'.";
+    source './config.inc.bash';
+  else
+    echo "Info: configuration file './config.inc.bash' not present.";
+    echo "Info: not loading configuraton file './config.inc.bash'.";
+  fi
+
+  eval arguments=( "$( getopt --alternative \
+                              --options "${short_options}" \
+                              --longoptions "${long_options}" \
+                              --shell 'bash' \
+                              -- \
+                              "${@}" )" );
+
+  # See if the variables are set and not empty.
+
+  if [[ -n "${working_directory}" ]]; then
+    echo "Info: variable 'working_directory' (${working_directory}) present.";
+  else
+    echo "Error: variable 'working_directory' not present.";
+    exit 1;
+  fi
+  if [[ -n "${repository_directory}" ]]; then
+    echo "Info: variable 'repository_directory' (${repository_directory}) present.";
+  else
+    echo "Error: variable 'repository_directory' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#readme_files[@]}" )); then
+    echo "Info: variable 'readme_files' (${#readme_files[@]}) (${readme_files[@]}) present.";
+  else
+    echo "Error: variable 'readme_files' not present.";
+    exit 1;
+  fi
+  if [[ -n "${type}" ]]; then
+    echo "Info: variable 'type' (${type}) present.";
+  else
+    echo "Error: variable 'type' not present.";
+    exit 1;
+  fi
+  if (( 0 <= "${#common_tree[@]}" )); then
+    echo "Info: variable 'common_tree' (${#common_tree[@]}) (${common_tree[@]}) present.";
+  else
+    echo "Error: variable 'common_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#pogram_tree[@]}" )); then
+    echo "Info: variable 'pogram_tree' (${#pogram_tree[@]}) (${pogram_tree[@]}) present.";
+  else
+    echo "Error: variable 'pogram_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#library_tree[@]}" )); then
+    echo "Info: variable 'library_tree' (${#library_tree[@]}) (${library_tree[@]}) present.";
+  else
+    echo "Error: variable 'library_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#document_tree[@]}" )); then
+    echo "Info: variable 'document_tree' (${#document_tree[@]}) (${document_tree[@]}) present.";
+  else
+    echo "Error: variable 'document_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#package_tree[@]}" )); then
+    echo "Info: variable 'package_tree' (${#package_tree[@]}) (${package_tree[@]}) present.";
+  else
+    echo "Error: variable 'package_tree' not present.";
+    exit 1;
+  fi
+  if [[ -n "${legal_notice}" ]]; then
+    echo "Info: variable 'legal_notice' (${legal_notice}) present.";
+  else
+    echo "Error: variable 'legal_notice' not present.";
+    exit 1;
+  fi
+
+  # See if we have a GNU working directory.
+
+  local dirname="$( dirname "${working_directory}" )";
+  local basename="$( basename "${working_directory}" )";
+  testDirectory "${dirname}" "${basename}";
+  working_directory="${dirname}/${basename}/";
+
+  # Ask the user for confirmation before creating the Git working directory.
+
+  askConfirmation;
+
+  # Change the Bash working directory to the Git working directory.
+
+  echo "Info: changing directory to '${working_directory}' ...";
+  cd "${working_directory}";
+  echo '... done';
+
+  # Create GNU standard readme files.
+  # If there is a Git repository in the working directory, add files to the repository.
+
+  echo "Info: creating readme files in '${working_directory}' ...";
+  local readme_file='';
+    for readme_file in "${readme_files[@]}"; do
+      echo "
+${legal_notice}" > "./${readme_file}";
+      if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+        git add "./${readme_file}";
+        git commit --message="$( echo "Add file." | fold --spaces --width='50' )
+
+$( echo "* ${readme_file}: add file." | fold --spaces --width='72' )";
+      else
+        # do nothing
+        :;
+      fi
+    done
+  echo '... done';
+
+  # Create the project tree.
+
+  echo "Info: creating GNU project in '${working_directory}' ...";
+  local -a project_tree=();
+  if   [[ 'prg' == "${type}" ]]; then
+    project_tree=( "${common_tree[@]}" "${pogram_tree[@]}" );
+  elif [[ 'lib' == "${type}" ]]; then
+    project_tree=( "${common_tree[@]}" "${library_tree[@]}" );
+  elif [[ 'doc' == "${type}" ]]; then
+    project_tree=( "${common_tree[@]}" "${document_tree[@]}" );
+  elif [[ 'pkg' == "${type}" ]]; then
+    project_tree=( "${common_tree[@]}" "${package_tree[@]}" );
+  else
+    echo "Error: unknown package type '${type}'.";
+  fi
+  local project_item='';
+  for project_item in "${project_tree[@]}"; do
+    mkdir -p "$( dirname "./${project_item}" )";
+    echo "
+${legal_notice}" > "./${project_item}";
+    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      git add "./${project_item}";
+      git commit --message="$( echo "Add file." | fold --spaces --width='50' )
+
+$( echo "* ${project_item}: add file." | fold --spaces --width='72' )";
+    else
+      # do nothing
+      :;
+    fi
+  done
+  echo '... done';
 
   # Return from the function.
 

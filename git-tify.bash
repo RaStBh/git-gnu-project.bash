@@ -810,7 +810,13 @@ OPTIONS
                                 list,         use          this         after
                                 --empty-configuration-files
   --help                      - print help
-  --version                   - print version;
+  --version                   - print version
+
+  Allowed values for global options and local options:
+
+    merge.ff - only | true | false
+
+    pull.ff  - only | true | false
 
 Report bugs to:
 Package home page:

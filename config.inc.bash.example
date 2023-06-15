@@ -603,33 +603,33 @@ package_tree=( \
 ##   or
 ##
 ##   license_files=( \
-##     'COPYING.;/home/john_dow/licenses/licenses/cc_0_1.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nc-nd_4.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nc-sa_4.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nc_4.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nd_4.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-sa_4.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/cc_by_4.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/gnu_agpl-3.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/gnu_apl.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
-##     'COPYING.;/home/john_dow/licenses/licenses/gnu_vcadl.txt' \
+##     'COPYING.cc_0_1.0;/home/john_dow/licenses/licenses/cc_0_1.0.txt' \
+##     'COPYING.cc_by-nc-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nc-nd_4.0.txt' \
+##     'COPYING.cc_by-nc-sa_4.0;/home/john_dow/licenses/licenses/cc_by-nc-sa_4.0.txt' \
+##     'COPYING.cc_by-nc_4.0;/home/john_dow/licenses/licenses/cc_by-nc_4.0.txt' \
+##     'COPYING.cc_by-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nd_4.0.txt' \
+##     'COPYING.cc_by-sa_4.0;/home/john_dow/licenses/licenses/cc_by-sa_4.0.txt' \
+##     'COPYING.cc_by_4.0;/home/john_dow/licenses/licenses/cc_by_4.0.txt' \
+##     'COPYING.gnu_agpl-3.0;/home/john_dow/licenses/licenses/gnu_agpl-3.0.txt' \
+##     'COPYING.gnu_apl.txt;/home/john_dow/licenses/licenses/gnu_apl.txt' \
+##     'COPYING.gnu_fdl-1.3;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+##     'COPYING.gnu_gpl-3.0;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+##     'COPYING.gnu_lgpl-3.0;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+##     'COPYING.gnu_vcadl;/home/john_dow/licenses/licenses/gnu_vcadl.txt' \
 ##   );
 ##
 ##   or
 ##
 ##   license_files=(
-##     'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
-##     'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
-##     'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
-##     'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##     'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+##     'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+##     'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+##     'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
 ##   );
 
 license_files=(
-  'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
-  'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
-  'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
-  'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+  'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+  'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+  'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+  'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
 );

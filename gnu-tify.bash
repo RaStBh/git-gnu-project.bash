@@ -348,6 +348,10 @@ END
 
   local legal_notice='';
 
+  # Files containing licenses texts.
+
+  local -a license_files=();
+
   # Get the command line arguments.
 
   local short_options='';
@@ -427,6 +431,12 @@ END
     echo "Error: variable 'package_tree' not present.";
     exit 1;
   fi
+  if (( 0 < "${#license_files[@]}" )); then
+    echo "Info: variable 'license_files' (${#license_files[@]}) (${license_files[@]}) present.";
+  else
+    echo "Error: variable 'license_files' not present.";
+    exit 1;
+  fi
   if [[ -n "${legal_notice}" ]]; then
     echo "Info: variable 'legal_notice' (${legal_notice}) present.";
   else
@@ -496,6 +506,56 @@ ${legal_notice}" > "./${project_item}";
       git commit --message="$( echo "Add file." | fold --spaces --width='50' )
 
 $( echo "* ${project_item}: add file." | fold --spaces --width='72' )";
+    else
+      # do nothing
+      :;
+    fi
+  done
+  echo '... done';
+
+  # Copy licenses files.
+
+  echo "Info: copying licenses files to '${working_directory}' ...";
+  local index=0;
+  local -a key_value=();
+  local key='';
+  local value='';
+  for (( index=0; index<"${#license_files[@]}"; index++ )); do
+    # Split the files into the key and the value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${license_files[${index}]}";
+    key="${key_value[0]}";
+    value="${key_value[1]}";# See that the key is not empty.
+
+    if [[ -n "${key}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'remotes' has empty key (${value}).";
+      exit 1;
+    fi
+
+    # See the key has a value.
+
+    if [[ -n "${value}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'remotes' key (${key}) has empty value.";
+      exit 1;
+    fi
+
+    # Copy the license files.
+
+    cat "${value}" > "./${key}";
+    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      git add "./${key}";
+      git commit --message="$( echo "Add file." | fold --spaces --width='50' )
+
+$( echo "* ${key}: add file." | fold --spaces --width='72' )";
     else
       # do nothing
       :;

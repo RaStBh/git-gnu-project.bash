@@ -740,7 +740,7 @@ function runHousekeeping()
 ## @brief The main function.
 ## @details The main function.
 ##   The script starts here.
-## @ param[in] arguments
+## @param[in] arguments
 ##   The command line arguments.
 ## @return
 ##   The exit code of the last command.
@@ -810,7 +810,7 @@ OPTIONS
                                 list,         use          this         after
                                 --empty-configuration-files
   --help                      - print help
-  --version                   - print version";
+  --version                   - print version;
 
 Report bugs to:
 Package home page:

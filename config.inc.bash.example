@@ -383,37 +383,49 @@ common_tree=( \
 ##
 ## Example:
 ##
-##   pogram_tree=();
-##   pogram_tree[0]='build/.gitkeep';
-##   pogram_tree[1]='data/.gitkeep';
-##   pogram_tree[2]='docs/.gitkeep';
-##   pogram_tree[3]='examples/.gitkeep';
-##   pogram_tree[4]='external/.gitkeep';
-##   pogram_tree[5]='extras/.gitkeep';
-##   pogram_tree[6]='include/.gitkeep';
-##   pogram_tree[7]='libs/.gitkeep';
-##   pogram_tree[8]='src/.gitkeep';
-##   pogram_tree[9]='tests/.gitkeep';
-##   pogram_tree[10]='tools/.gitkeep';
+##   program_tree=();
+##   pogram_tree[0]='Makefile.am';
+##   pogram_tree[1]='build/.gitkeep';
+##   pogram_tree[2]='configure.ac';
+##   pogram_tree[3]='data/.gitkeep';
+##   pogram_tree[4]='docs/.gitkeep';
+##   pogram_tree[5]='examples/.gitkeep';
+##   pogram_tree[6]='external/.gitkeep';
+##   pogram_tree[7]='extras/.gitkeep';
+##   pogram_tree[8]='include/.gitkeep';
+##   pogram_tree[9]='libs/.gitkeep';
+##   pogram_tree[10]='src/.gitkeep';
+##   pogram_tree[11]='src/Makefile.am';
+##   pogram_tree[12]='src/main.c';
+##   pogram_tree[13]='src/main.h';
+##   pogram_tree[14]='tests/.gitkeep';
+##   pogram_tree[15]='tools/.gitkeep';
 ##
 ##   or
 ##
 ##   pogram_tree=(
-##     'build/.gitkeep'
-##     'data/.gitkeep'
-##     'docs/.gitkeep'
-##     'examples/.gitkeep'
-##     'external/.gitkeep'
-##     'extras/.gitkeep'
-##     'include/.gitkeep'
-##     'libs/.gitkeep'
-##     'src/.gitkeep'
-##     'tests/.gitkeep'
-##     'tools/.gitkeep'
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'src/Makefile.am'; \
+##     'src/main.c' \
+##     'src/main.h' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
 ##   );
 
 pogram_tree=( \
+  'Makefile.am' \
   'build/.gitkeep' \
+  'configure.ac' \
   'data/.gitkeep' \
   'docs/.gitkeep' \
   'examples/.gitkeep' \
@@ -422,6 +434,9 @@ pogram_tree=( \
   'include/.gitkeep' \
   'libs/.gitkeep' \
   'src/.gitkeep' \
+  'src/Makefile.am'; \
+  'src/main.c' \
+  'src/main.h' \
   'tests/.gitkeep' \
   'tools/.gitkeep' \
 );

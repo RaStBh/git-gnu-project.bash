@@ -205,8 +205,12 @@ Step 1: Asking the user for confirm#! /usr/bin/env -S bash -e
 ##                 --library-tree='tests/.gitkeep' \
 ##                 --library-tree='tools/.gitkeep' \
 ##                 --empty-document-tree \
+##                 --document-tree='Makefile.am' \
 ##                 --document-tree='build/.gitkeep' \
+##                 --document-tree='configure.ac' \
 ##                 --document-tree='data/.gitkeep' \
+##                 --document-tree='doc/Makefile.am' \
+##                 --document-tree='doc/main.ltx' \
 ##                 --document-tree='docs/.gitkeep' \
 ##                 --document-tree='examples/.gitkeep' \
 ##                 --document-tree='external/.gitkeep' \

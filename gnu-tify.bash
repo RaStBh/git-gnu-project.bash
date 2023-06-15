@@ -221,8 +221,12 @@ Step 1: Asking the user for confirm#! /usr/bin/env -S bash -e
 ##                 --document-tree='tests/.gitkeep' \
 ##                 --document-tree='tools/.gitkeep' \
 ##                 --empty-package-tree \
+##                 --package-tree='Makefile.am' \
 ##                 --package-tree='build/.gitkeep' \
+##                 --package-tree='configure.ac' \
 ##                 --package-tree='data/.gitkeep' \
+##                 --package-tree='doc/Makefile.am' \
+##                 --package-tree='doc/main.ltx' \
 ##                 --package-tree='docs/.gitkeep' \
 ##                 --package-tree='examples/.gitkeep' \
 ##                 --package-tree='external/.gitkeep' \
@@ -230,6 +234,11 @@ Step 1: Asking the user for confirm#! /usr/bin/env -S bash -e
 ##                 --package-tree='include/.gitkeep' \
 ##                 --package-tree='libs/.gitkeep' \
 ##                 --package-tree='src/.gitkeep' \
+##                 --package-tree='src/Makefile.am' \
+##                 --package-tree='src/libmain.c' \
+##                 --package-tree='src/libmain.h' \
+##                 --package-tree='src/main.c' \
+##                 --package-tree='src/main.h' \
 ##                 --package-tree='tests/.gitkeep' \
 ##                 --package-tree='tools/.gitkeep' \
 ##                 --legal-notice=="## This file is part of JD foobar package.

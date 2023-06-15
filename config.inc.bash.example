@@ -212,7 +212,7 @@ configuration_files=(
 ##   the copyright  notice and this  notice are  preserved.  This file  is offered
 ##   as-is, without any warranty.";
 
-legal_notice="This file is part of JD foobar package.
+legal_notice="## This file is part of JD foobar package.
 ##
 ## JD foobar is ...
 ##

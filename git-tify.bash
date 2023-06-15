@@ -43,7 +43,7 @@
 ##
 ## SYNOPSIS
 ##
-##   git-tify.bash [--working_directory=<working directory>]
+##   git-tify.bash [--working-directory=<working directory>]
 ##                 [--repository-directory=<repository directory>]
 ##                 [--empty-local-options]
 ##                 [--local-option=<local-option>]

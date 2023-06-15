@@ -1,4 +1,4 @@
-#! /usr/bin/env -S bash -e
+Step 1: Asking the user for confirm#! /usr/bin/env -S bash -e
 ################################################################################
 ##
 ## This file is part of the RaSt git-gnu-project package.
@@ -43,9 +43,26 @@
 ##
 ## SYNOPSIS
 ##
-##   gnu-tify.bash
-##
-##   ???
+##   gnu-tify.bash [--working-directory=<working directory>]
+##                 [--repository-directory=<repository directory>]
+##                 [--empty-readme-files]
+##                 [--readme-file=<readme file>]
+##                 [--type=<type>]
+##                 [--empty-common-tree]
+##                 [--common-tree=<common tree item>]
+##                 [--empty-program-tree]
+##                 [--program-tree=<program tree item>]
+##                 [--empty-library-tree]
+##                 [--library-tree=<library tree item>]
+##                 [--empty-document-tree]
+##                 [--document-tree=<document tree item>]
+##                 [--empty-package-tree]
+##                 [--package-tree=<package tree item>]
+##                 [--legal-notice=<legal notice>]
+##                 [--empty-license-file]
+##                 [--license-file=<license file>]
+##                 [--help]
+##                 [--version]
 ##
 ## DESCRIPTION
 ##
@@ -55,11 +72,67 @@
 ##   The directory then contains a GNU  style project tree for program, library,
 ##   documentation or package projects.
 ##
-##   ???
+##   The  Git working  directory  is  for example  </home/john_dow/repositories/
+##   foobar/>.
+##
+##   The Git  repository directory is for  example </home/john_dow/repositories/
+##   foobar/.git/>.
+##
+##   This script does:
+##
+##   Step 1: Asking the  user for confirmation  before creating the  Git working
+##           directory.
+##   Step 2: Create the GNU standard readme files.
+##   Step 3: Create  the  project  tree   (for  program,  library,  document  or
+##           package).
+##   Step 4: Copy licenses files.
+##   Step 5: Cleanup and optimize the Git repository.
 ##
 ## OPTIONS
 ##
-##   ???
+##   --working-directory         - set Git working directory
+##   --repository-directory      - set Git repository directory
+##   --empty-readme-files        - set  GNU standard  readme  files  list to  an
+##                                 empty list, use this before --readme-file
+##   --readme-file               - add GNU standard readme  file to GNU standard
+##                                 readme   files    list,   use    this   after
+##                                 --empty-readme-files
+##   --type                      - set project type
+##   --empty-common-tree         - set GNU  common tree  list to an  empty list,
+##                                 use this before --common-tree
+##   --common-tree               - add GNU  common tree item to  GNU common tree
+##                                 list, use this after --empty-common-tree
+##   --empty-program-tree        - set GNU  program tree  list to an  empty list,
+##                                 use this before --program-tree
+##   --program-tree              - add GNU program tree item to GNU program tree
+##                                 list, use this after --empty-program-tree
+##   --empty-library-tree        - set GNU  library tree list to  an empty list,
+##                                 use this before --library-tree
+##   --library-tree              - add GNU library tree item to GNU library tree
+##                                 list, use this after --empty-library-tree
+##   --empty-document-tree       - set GNU document tree  list to an empty list,
+##                                 use this before --document-tree
+##   --document-tree             - add GNU  document tree  item to  GNU document
+##                                 tree      list,      use      this      after
+##                                 --empty-document-tree
+##   --empty-package-tree        - set GNU  package tree list to  an empty list,
+##                                 use this before --readme-file
+##   --package-tree              - add GNU package tree item to GNU package tree
+##                                 list, use this after --empty-package-tree
+##   --legal-notice              - set the legal notice
+##   --empty-license-file        - set license  file list to an  empty list, use
+##                                 this before --empty-package-tree
+##   --license-file              - add license  file to license files  list, use
+##                                 this after --empty-license-file
+##   --help                      - print help
+##   --version                   - print version
+##
+##   Allowed values for  project type:
+##
+##     program  | prg
+##     library  | lib
+##     document | doc
+##     package  | pkg
 ##
 ## IMPLEMENTATION NOTES
 ##
@@ -78,9 +151,93 @@
 ##
 ## EXAMPLES
 ##
-##   gnu-tify.bash
-##
-##   ???
+##   gnu-tify.bash --working-directory='/home/john_dow/repositories/foobar/' \
+##                 --repository-directory='/home/john_dow/repositories/foobar/.git/' \
+##                 --empty-readme-files \
+##                 --readme-file='AUTHORS' \
+##                 --readme-file='BACKLOG' \
+##                 --readme-file='BUGS' \
+##                 --readme-file='CHANGELOG' \
+##                 --readme-file='CONTRIBUTING' \
+##                 --readme-file='COPYING' \
+##                 --readme-file='FAQ' \
+##                 --readme-file='HACKING' \
+##                 --readme-file='INSTALL' \
+##                 --readme-file='NEWS' \
+##                 --readme-file='README' \
+##                 --readme-file='THANKS' \
+##                 --readme-file='TODO' \
+##                 --type='pkg' \
+##                 --empty-common-tree \
+##                 --common-tree='.gitkeep' \
+##                 --empty-program-tree \
+##                 --program-tree='Makefile.am' \
+##                 --program-tree='build/.gitkeep' \
+##                 --program-tree='configure.ac' \
+##                 --program-tree='data/.gitkeep' \
+##                 --program-tree='docs/.gitkeep' \
+##                 --program-tree='examples/.gitkeep' \
+##                 --program-tree='external/.gitkeep' \
+##                 --program-tree='extras/.gitkeep' \
+##                 --program-tree='include/.gitkeep' \
+##                 --program-tree='libs/.gitkeep' \
+##                 --program-tree='src/.gitkeep' \
+##                 --program-tree='src/Makefile.am' \
+##                 --program-tree='src/main.c' \
+##                 --program-tree='src/main.h' \
+##                 --program-tree='tests/.gitkeep' \
+##                 --program-tree='tools/.gitkeep' \
+##                 --empty-library-tree \
+##                 --library-tree='build/.gitkeep' \
+##                 --library-tree='data/.gitkeep' \
+##                 --library-tree='docs/.gitkeep' \
+##                 --library-tree='examples/.gitkeep' \
+##                 --library-tree='external/.gitkeep' \
+##                 --library-tree='extras/.gitkeep' \
+##                 --library-tree='include/.gitkeep' \
+##                 --library-tree='libs/.gitkeep' \
+##                 --library-tree='src/.gitkeep' \
+##                 --library-tree='tests/.gitkeep' \
+##                 --library-tree='tools/.gitkeep' \
+##                 --empty-document-tree \
+##                 --document-tree='build/.gitkeep' \
+##                 --document-tree='data/.gitkeep' \
+##                 --document-tree='docs/.gitkeep' \
+##                 --document-tree='examples/.gitkeep' \
+##                 --document-tree='external/.gitkeep' \
+##                 --document-tree='extras/.gitkeep' \
+##                 --document-tree='include/.gitkeep' \
+##                 --document-tree='libs/.gitkeep' \
+##                 --document-tree='src/.gitkeep' \
+##                 --document-tree='tests/.gitkeep' \
+##                 --document-tree='tools/.gitkeep' \
+##                 --empty-package-tree \
+##                 --package-tree='build/.gitkeep' \
+##                 --package-tree='data/.gitkeep' \
+##                 --package-tree='docs/.gitkeep' \
+##                 --package-tree='examples/.gitkeep' \
+##                 --package-tree='external/.gitkeep' \
+##                 --package-tree='extras/.gitkeep' \
+##                 --package-tree='include/.gitkeep' \
+##                 --package-tree='libs/.gitkeep' \
+##                 --package-tree='src/.gitkeep' \
+##                 --package-tree='tests/.gitkeep' \
+##                 --package-tree='tools/.gitkeep' \
+##                 --legal-notice=="## This file is part of JD foobar package.
+##                 ##
+##                 ## JD foobar is ...
+##                 ##
+##                 ## Copyright (C)  2023  John Dow  <john_dow@example.com>
+##                 ##
+##                 ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+##                 ## without modification,  are permitted in  any medium without  royalty provided
+##                 ## the copyright  notice and this  notice are  preserved.  This file  is offered
+##                 ## as-is, without any warranty." \
+##                --empty-license-file \
+##                --license-file='COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+##                --license-file='COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+##                --license-file='COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+##                --license-file='COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
 ##
 ##   gnu-tify.bash --help
 ##
@@ -340,6 +497,7 @@ $( echo "* ${project_item}: add file." | fold --spaces --width='72' )";
 }
 
 
+
 ## @brief Copy license files.
 ## @details Copy license files.
 ##   1. See  that the  Git  remote contains  a  key.  A  remote  has the  format
@@ -454,14 +612,79 @@ END
   local usage=" cat << 'END'
 SYNOPSIS
 
-  git-tify.bash
-
-  ???
+  gnu-tify.bash [--working-directory=<working directory>]
+                [--repository-directory=<repository directory>]
+                [--empty-readme-files]
+                [--readme-file=<readme file>]
+                [--type=<type>]
+                [--empty-common-tree]
+                [--common-tree=<common tree item>]
+                [--empty-program-tree]
+                [--program-tree=<program tree item>]
+                [--empty-library-tree]
+                [--library-tree=<library tree item>]
+                [--empty-document-tree]
+                [--document-tree=<document tree item>]
+                [--empty-package-tree]
+                [--package-tree=<package tree item>]
+                [--legal-notice=<legal notice>]
+                [--empty-license-file]
+                [--license-file=<license file>]
+                [--help]
+                [--version]
 
 OPTIONS
 
-  ???
+  --working-directory         - set Git working directory
+  --repository-directory      - set Git repository directory
+  --empty-readme-files        - set  GNU standard  readme  files  list to  an
+                                empty list, use this before --readme-file
+  --readme-file               - add GNU standard readme  file to GNU standard
+                                readme   files    list,   use    this   after
+                                --empty-readme-files
+  --type                      - set project type
+  --empty-common-tree         - set GNU  common tree  list to an  empty list,
+                                use this before --common-tree
+  --common-tree               - add GNU  common tree item to  GNU common tree
+                                list, use this after --empty-common-tree
+  --empty-program-tree        - set GNU  program tree  list to an  empty list,
+                                use this before --program-tree
+  --program-tree              - add GNU program tree item to GNU program tree
+                                list, use this after --empty-program-tree
+  --empty-library-tree        - set GNU  library tree list to  an empty list,
+                                use this before --library-tree
+  --library-tree              - add GNU library tree item to GNU library tree
+                                list, use this after --empty-library-tree
+  --empty-document-tree       - set GNU document tree  list to an empty list,
+                                use this before --document-tree
+  --document-tree             - add GNU  document tree  item to  GNU document
+                                tree      list,      use      this      after
+                                --empty-document-tree
+  --empty-package-tree        - set GNU  package tree list to  an empty list,
+                                use this before --readme-file
+  --package-tree              - add GNU package tree item to GNU package tree
+                                list, use this after --empty-package-tree
+  --legal-notice              - set the legal notice
+  --empty-license-file        - set license  file list to an  empty list, use
+                                this before --empty-package-tree
+  --license-file              - add license  file to license files  list, use
+                                this after --empty-license-file
+  --help                      - print help
+  --version                   - print version
 
+  Allowed values for  project type:
+
+    program  | prg
+    library  | lib
+    document | doc
+    package  | pkg
+
+Report bugs to:
+Package home page:
+General help using RaSt software:
+
+  https://github.com/RaStBh/
+  https://gitlab.com/RaStBh/
 END
 ";
 
@@ -513,6 +736,160 @@ END
 
   local short_options='';
   local long_options='';
+
+  long_options+='working-directory:,';
+  long_options+='repository-directory:,';
+  long_options+='empty-readme-files,';
+  long_options+='readme-file:,';
+  long_options+='--type:,';
+  long_options+='--empty-common-tree,';
+  long_options+='--common-tree:,';
+  long_options+='--empty-program-tree,';
+  long_options+='--program-tree:,';
+  long_options+='--empty-library-tree,';
+  long_options+='--library-tree:,';
+  long_options+='--empty-document-tree,';
+  long_options+='--document-tree:,';
+  long_options+='--empty-package-tree,';
+  long_options+='--package-tree:,';
+  long_options+='--legal-notice:,';
+  long_options+='--empty-license-file,';
+  long_options+='--license-file:,';
+  long_options+='--help,';
+  long_options+='--version,';
+
+  local option_name='';
+  local option_argument='';
+  local -i previous_position=0;
+  local -i current_position=0;
+  local -i next_position=0;
+
+  while true; do
+    option_name="${arguments[$(( "${current_position}" + 0 ))]}";
+    option_argument="${arguments[$(( "${current_position}" + 1 ))]}";
+    next_position="$(( "${next_position}" + 1 ))";
+    case "${option_name}" in
+
+      '--working-directory' )
+        working_directory="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--repository-directory' )
+        repository_directory="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-readme-files' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--readme-file' )
+        readme_files["${#readme_files[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--type' )
+        type="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-common-tree' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--common-tree' )
+        common_tree["${#common_tree[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-program-tree' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--program-tree' )
+        program_tree["${#program_tree[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-library-tree' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--library-tree' )
+        library_tree["${#library_tree[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-document-tree' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--document-tree' )
+        document_tree["${#document_tree[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-package-tree' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--package-tree' )
+        package_tree["${#package_tree[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--legal-notice' )
+        legal-notice="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-license-file' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--license-file' )
+        license-file["${#license-file[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--help' )
+        echo "${usage}";
+        exit 0;
+        ;;
+
+      '--version' )
+        echo "${version}";
+        exit 0;
+        ;;
+
+      '--' )
+        break;
+        ;;
+
+      *)
+        echo "Error: unknown option name '${option_name}'."
+        echo '';
+        echo "${usage}";
+        exit 1;
+        ;;
+
+    esac
+    previous_position="${current_position}";
+    current_position="${next_position}";
+  done
 
   # Get the variables from the configuration file if the file it is present.
 
@@ -618,7 +995,7 @@ END
   cd "${working_directory}";
   echo '... done';
 
-  # Create GNU standard readme files.
+  # Create the GNU standard readme files.
 
   echo "Info: creating readme files in '${working_directory}' ...";
   createReadmeFiles "${readme_files[@]}";
@@ -628,13 +1005,18 @@ END
 
   echo "Info: creating GNU project in '${working_directory}' ...";
   local -a project_tree=();
-  if   [[ 'prg' == "${type}" ]]; then
+  type="${type,,}";
+  if      [[ 'prg' == "${type}" ]] \
+       || [[ 'program' == "${type}" ]]; then
     project_tree=( "${common_tree[@]}" "${pogram_tree[@]}" );
-  elif [[ 'lib' == "${type}" ]]; then
+  elif    [[ 'lib' == "${type}" ]] \
+       || [[ 'library' == "${type}" ]]; then
     project_tree=( "${common_tree[@]}" "${library_tree[@]}" );
-  elif [[ 'doc' == "${type}" ]]; then
+  elif    [[ 'doc' == "${type}" ]] \
+       || [[ 'document' == "${type}" ]]; then
     project_tree=( "${common_tree[@]}" "${document_tree[@]}" );
-  elif [[ 'pkg' == "${type}" ]]; then
+  elif [[ 'pkg' == "${type}" ]] \
+       || [[ 'package' == "${type}" ]]; then
     project_tree=( "${common_tree[@]}" "${package_tree[@]}" );
   else
     echo "Error: unknown package type '${type}'.";

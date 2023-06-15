@@ -450,36 +450,48 @@ pogram_tree=( \
 ## Example:
 ##
 ##   library_tree=();
-##   library_tree[0]='build/.gitkeep';
-##   library_tree[1]='data/.gitkeep';
-##   library_tree[2]='docs/.gitkeep';
-##   library_tree[3]='examples/.gitkeep';
-##   library_tree[4]='external/.gitkeep';
-##   library_tree[5]='extras/.gitkeep';
-##   library_tree[6]='include/.gitkeep';
-##   library_tree[7]='libs/.gitkeep';
-##   library_tree[8]='src/.gitkeep';
-##   library_tree[9]='tests/.gitkeep';
-##   library_tree[10]='tools/.gitkeep';
+##   library_tree[0]='Makefile.am';
+##   library_tree[1]='build/.gitkeep';
+##   library_tree[2]='configure.ac';
+##   library_tree[3]='data/.gitkeep';
+##   library_tree[4]='docs/.gitkeep';
+##   library_tree[5]='examples/.gitkeep';
+##   library_tree[6]='external/.gitkeep';
+##   library_tree[7]='extras/.gitkeep';
+##   library_tree[8]='include/.gitkeep';
+##   library_tree[9]='libs/.gitkeep';
+##   library_tree[10]='src/.gitkeep';
+##   library_tree[11]='src/Makefile.am';
+##   library_tree[12]='src/libmain.c';
+##   library_tree[13]='src/libmain.h';
+##   library_tree[14]='tests/.gitkeep';
+##   library_tree[15]='tools/.gitkeep';
 ##
 ##   or
 ##
-##   library_tree=(
-##     'build/.gitkeep'
-##     'data/.gitkeep'
-##     'docs/.gitkeep'
-##     'examples/.gitkeep'
-##     'external/.gitkeep'
-##     'extras/.gitkeep'
-##     'include/.gitkeep'
-##     'libs/.gitkeep'
-##     'src/.gitkeep'
-##     'tests/.gitkeep'
-##     'tools/.gitkeep'
+##   library_tree=( \
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'src/Makefile.am' \
+##     'src/libmain.c' \
+##     'src/libmain.h' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
 ##   );
 
 library_tree=( \
+  'Makefile.am' \
   'build/.gitkeep' \
+  'configure.ac' \
   'data/.gitkeep' \
   'docs/.gitkeep' \
   'examples/.gitkeep' \
@@ -488,6 +500,9 @@ library_tree=( \
   'include/.gitkeep' \
   'libs/.gitkeep' \
   'src/.gitkeep' \
+  'src/Makefile.am' \
+  'src/libmain.c' \
+  'src/libmain.h' \
   'tests/.gitkeep' \
   'tools/.gitkeep' \
 );

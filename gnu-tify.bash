@@ -188,7 +188,9 @@ Step 1: Asking the user for confirm#! /usr/bin/env -S bash -e
 ##                 --program-tree='tests/.gitkeep' \
 ##                 --program-tree='tools/.gitkeep' \
 ##                 --empty-library-tree \
+##                 --library-tree='Makefile.am' \
 ##                 --library-tree='build/.gitkeep' \
+##                 --library-tree='configure.ac' \
 ##                 --library-tree='data/.gitkeep' \
 ##                 --library-tree='docs/.gitkeep' \
 ##                 --library-tree='examples/.gitkeep' \
@@ -197,6 +199,9 @@ Step 1: Asking the user for confirm#! /usr/bin/env -S bash -e
 ##                 --library-tree='include/.gitkeep' \
 ##                 --library-tree='libs/.gitkeep' \
 ##                 --library-tree='src/.gitkeep' \
+##                 --library-tree='src/Makefile.am' \
+##                 --library-tree='src/libmain.c' \
+##                 --library-tree='src/libmain.h' \
 ##                 --library-tree='tests/.gitkeep' \
 ##                 --library-tree='tools/.gitkeep' \
 ##                 --empty-document-tree \

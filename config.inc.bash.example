@@ -270,19 +270,19 @@ legal_notice="## This file is part of JD foobar package.
 ## Example:
 ##
 ##   readme_files=();
-##   readme_files[0]='AUTHORS'
+##   readme_files[0]='AUTHORS';
 ##   readme_files[1]='BACKLOG'
-##   readme_files[2]='BUGS'
-##   readme_files[3]='CHANGELOG'
-##   readme_files[4]='CONTRIBUTING'
-##   readme_files[5]='COPYING'
-##   readme_files[6]='FAQ'
-##   readme_files[7]='HACKING'
-##   readme_files[8]='INSTALL'
-##   readme_files[9]='NEWS'
-##   readme_files[10]='README'
-##   readme_files[11]='THANKS'
-##   readme_files[12]='TODO'
+##   readme_files[2]='BUGS';
+##   readme_files[3]='CHANGELOG';
+##   readme_files[4]='CONTRIBUTING';
+##   readme_files[5]='COPYING';
+##   readme_files[6]='FAQ';
+##   readme_files[7]='HACKING';
+##   readme_files[8]='INSTALL';
+##   readme_files[9]='NEWS';
+##   readme_files[10]='README';
+##   readme_files[11]='THANKS';
+##   readme_files[12]='TODO';
 ##
 ##   or
 ##
@@ -384,17 +384,17 @@ common_tree=( \
 ## Example:
 ##
 ##   pogram_tree=();
-##   pogram_tree[0]='build/.gitkeep'
-##   pogram_tree[1]='data/.gitkeep'
-##   pogram_tree[2]='docs/.gitkeep'
-##   pogram_tree[3]='examples/.gitkeep'
-##   pogram_tree[4]='external/.gitkeep'
-##   pogram_tree[5]='extras/.gitkeep'
-##   pogram_tree[6]='include/.gitkeep'
-##   pogram_tree[7]='libs/.gitkeep'
-##   pogram_tree[8]='src/.gitkeep'
-##   pogram_tree[9]='tests/.gitkeep'
-##   pogram_tree[10]='tools/.gitkeep'
+##   pogram_tree[0]='build/.gitkeep';
+##   pogram_tree[1]='data/.gitkeep';
+##   pogram_tree[2]='docs/.gitkeep';
+##   pogram_tree[3]='examples/.gitkeep';
+##   pogram_tree[4]='external/.gitkeep';
+##   pogram_tree[5]='extras/.gitkeep';
+##   pogram_tree[6]='include/.gitkeep';
+##   pogram_tree[7]='libs/.gitkeep';
+##   pogram_tree[8]='src/.gitkeep';
+##   pogram_tree[9]='tests/.gitkeep';
+##   pogram_tree[10]='tools/.gitkeep';
 ##
 ##   or
 ##
@@ -432,17 +432,17 @@ pogram_tree=( \
 ## Example:
 ##
 ##   library_tree=();
-##   library_tree[0]='build/.gitkeep'
-##   library_tree[1]='data/.gitkeep'
-##   library_tree[2]='docs/.gitkeep'
-##   library_tree[3]='examples/.gitkeep'
-##   library_tree[4]='external/.gitkeep'
-##   library_tree[5]='extras/.gitkeep'
-##   library_tree[6]='include/.gitkeep'
-##   library_tree[7]='libs/.gitkeep'
-##   library_tree[8]='src/.gitkeep'
-##   library_tree[9]='tests/.gitkeep'
-##   library_tree[10]='tools/.gitkeep'
+##   library_tree[0]='build/.gitkeep';
+##   library_tree[1]='data/.gitkeep';
+##   library_tree[2]='docs/.gitkeep';
+##   library_tree[3]='examples/.gitkeep';
+##   library_tree[4]='external/.gitkeep';
+##   library_tree[5]='extras/.gitkeep';
+##   library_tree[6]='include/.gitkeep';
+##   library_tree[7]='libs/.gitkeep';
+##   library_tree[8]='src/.gitkeep';
+##   library_tree[9]='tests/.gitkeep';
+##   library_tree[10]='tools/.gitkeep';
 ##
 ##   or
 ##
@@ -480,17 +480,17 @@ library_tree=( \
 ## Example:
 ##
 ##   document_tree=();
-##   document_tree[0]='build/.gitkeep'
-##   document_tree[1]='data/.gitkeep'
+##   document_tree[0]='build/.gitkeep';
+##   document_tree[1]='data/.gitkeep';
 ##   document_tree[2]='docs/.gitkeep'
-##   document_tree[3]='examples/.gitkeep'
-##   document_tree[4]='external/.gitkeep'
-##   document_tree[5]='extras/.gitkeep'
-##   document_tree[6]='include/.gitkeep'
-##   document_tree[7]='libs/.gitkeep'
-##   document_tree[8]='src/.gitkeep'
-##   document_tree[9]='tests/.gitkeep'
-##   document_tree[10]='tools/.gitkeep'
+##   document_tree[3]='examples/.gitkeep';
+##   document_tree[4]='external/.gitkeep';
+##   document_tree[5]='extras/.gitkeep';
+##   document_tree[6]='include/.gitkeep';
+##   document_tree[7]='libs/.gitkeep';
+##   document_tree[8]='src/.gitkeep';
+##   document_tree[9]='tests/.gitkeep';
+##   document_tree[10]='tools/.gitkeep';
 ##
 ##   or
 ##
@@ -529,17 +529,17 @@ document_tree=( \
 ## Example:
 ##
 ##   package_tree=();
-##   package_tree[0]='build/.gitkeep'
-##   package_tree[1]='data/.gitkeep'
-##   package_tree[2]='docs/.gitkeep'
-##   package_tree[3]='examples/.gitkeep'
-##   package_tree[4]='external/.gitkeep'
-##   package_tree[5]='extras/.gitkeep'
-##   package_tree[6]='include/.gitkeep'
-##   package_tree[7]='libs/.gitkeep'
-##   package_tree[8]='src/.gitkeep'
-##   package_tree[9]='tests/.gitkeep'
-##   package_tree[10]='tools/.gitkeep'
+##   package_tree[0]='build/.gitkeep';
+##   package_tree[1]='data/.gitkeep';
+##   package_tree[2]='docs/.gitkeep';
+##   package_tree[3]='examples/.gitkeep';
+##   package_tree[4]='external/.gitkeep';
+##   package_tree[5]='extras/.gitkeep';
+##   package_tree[6]='include/.gitkeep';
+##   package_tree[7]='libs/.gitkeep';
+##   package_tree[8]='src/.gitkeep';
+##   package_tree[9]='tests/.gitkeep';
+##   package_tree[10]='tools/.gitkeep';
 ##
 ##   or
 ##
@@ -569,4 +569,67 @@ package_tree=( \
   'src/.gitkeep' \
   'tests/.gitkeep' \
   'tools/.gitkeep' \
+);
+
+## Files containing licenses texts.
+##
+## Example:
+##
+##   license_files[index]='key;value';
+##
+##   license_files=();
+##   license_files[0]='COPYING.cc_0_1.0;/home/john_dow/licenses/licenses/cc_0_1.0.txt';
+##   license_files[1]='COPYING.cc_by-nc-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nc-nd_4.0.txt';
+##   license_files[2]='COPYING.cc_by-nc-sa_4.0;/home/john_dow/licenses/licenses/cc_by-nc-sa_4.0.txt';
+##   license_files[3]='COPYING.cc_by-nc_4.0;/home/john_dow/licenses/licenses/cc_by-nc_4.0.txt';
+##   license_files[4]='COPYING.cc_by-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nd_4.0.txt';
+##   license_files[5]='COPYING.cc_by-sa_4.0;/home/john_dow/licenses/licenses/cc_by-sa_4.0.txt';
+##   license_files[6]='COPYING.cc_by_4.0;/home/john_dow/licenses/licenses/cc_by_4.0.txt';
+##   license_files[7]='COPYING.gnu_agpl-3.0;/home/john_dow/licenses/licenses/gnu_agpl-3.0.txt';
+##   license_files[8]='COPYING.gnu_apl.txt;/home/john_dow/licenses/licenses/gnu_apl.txt';
+##   license_files[9]='COPYING.gnu_fdl-1.3;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
+##   license_files[10]='COPYING.gnu_gpl-3.0;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##   license_files[11]='COPYING.gnu_lgpl-3.0;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
+##   license_files[12]='COPYING.gnu_vcadl;/home/john_dow/licenses/licenses/gnu_vcadl.txt';
+##
+##   or
+##
+##   license_files=();
+##   license_files[0]='COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
+##   license_files[1]='COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##   license_files[2]='COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
+##   license_files[4]='COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##
+##   or
+##
+##   license_files=( \
+##     'COPYING.;/home/john_dow/licenses/licenses/cc_0_1.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nc-nd_4.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nc-sa_4.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nc_4.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-nd_4.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/cc_by-sa_4.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/cc_by_4.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/gnu_agpl-3.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/gnu_apl.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+##     'COPYING.;/home/john_dow/licenses/licenses/gnu_vcadl.txt' \
+##   );
+##
+##   or
+##
+##   license_files=(
+##     'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
+##     'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##     'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
+##     'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##   );
+
+license_files=(
+  'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
+  'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+  'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
+  'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
 );

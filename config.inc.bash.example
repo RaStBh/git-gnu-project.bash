@@ -574,46 +574,73 @@ document_tree=( \
 ## Example:
 ##
 ##   package_tree=();
-##   package_tree[0]='build/.gitkeep';
-##   package_tree[1]='data/.gitkeep';
-##   package_tree[2]='docs/.gitkeep';
-##   package_tree[3]='examples/.gitkeep';
-##   package_tree[4]='external/.gitkeep';
-##   package_tree[5]='extras/.gitkeep';
-##   package_tree[6]='include/.gitkeep';
-##   package_tree[7]='libs/.gitkeep';
-##   package_tree[8]='src/.gitkeep';
-##   package_tree[9]='tests/.gitkeep';
-##   package_tree[10]='tools/.gitkeep';
+##   package_tree[0]='Makefile.am';
+##   package_tree[1]='build/.gitkeep';
+##   package_tree[2]='configure.ac';
+##   package_tree[3]='data/.gitkeep';
+##   package_tree[4]='doc/Makefile.am';
+##   package_tree[5]='doc/main.ltx';
+##   package_tree[6]='docs/.gitkeep';
+##   package_tree[7]='examples/.gitkeep';
+##   package_tree[8]='external/.gitkeep';
+##   package_tree[9]='extras/.gitkeep';
+##   package_tree[10]='include/.gitkeep';
+##   package_tree[11]='libs/.gitkeep';
+##   package_tree[12]='src/.gitkeep';
+##   package_tree[13]='src/Makefile.am';
+##   package_tree[14]='src/libmain.c';
+##   package_tree[15]='src/libmain.h';
+##   package_tree[16]='src/main.c';
+##   package_tree[17]='src/main.h';
+##   package_tree[18]='tests/.gitkeep';
+##   package_tree[19]='tools/.gitkeep';
 ##
 ##   or
 ##
-##   package_tree=(
-##     'build/.gitkeep'
-##     'data/.gitkeep'
-##     'docs/.gitkeep'
-##     'examples/.gitkeep'
-##     'external/.gitkeep'
-##     'extras/.gitkeep'
-##     'include/.gitkeep'
-##     'libs/.gitkeep'
-##     'src/.gitkeep'
-##     'tests/.gitkeep'
-##     'tools/.gitkeep'
+##   package_tree=( \
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'doc/Makefile.am' \
+##     'doc/main.ltx' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'src/Makefile.am' \
+##     'src/libmain.c' \
+##     'src/libmain.h' \
+##     'src/main.c' \
+##     'src/main.h' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
 ##   );
 
 package_tree=( \
-  'build/.gitkeep' \
-  'data/.gitkeep' \
-  'docs/.gitkeep' \
-  'examples/.gitkeep' \
-  'external/.gitkeep' \
-  'extras/.gitkeep' \
-  'include/.gitkeep' \
-  'libs/.gitkeep' \
-  'src/.gitkeep' \
-  'tests/.gitkeep' \
-  'tools/.gitkeep' \
+    'Makefile.am' \
+    'build/.gitkeep' \
+    'configure.ac' \
+    'data/.gitkeep' \
+    'doc/Makefile.am' \
+    'doc/main.ltx' \
+    'docs/.gitkeep' \
+    'examples/.gitkeep' \
+    'external/.gitkeep' \
+    'extras/.gitkeep' \
+    'include/.gitkeep' \
+    'libs/.gitkeep' \
+    'src/.gitkeep' \
+    'src/Makefile.am' \
+    'src/libmain.c' \
+    'src/libmain.h' \
+    'src/main.c' \
+    'src/main.h' \
+    'tests/.gitkeep' \
+    'tools/.gitkeep' \
 );
 
 ## Files containing licenses texts.

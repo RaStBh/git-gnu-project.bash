@@ -402,7 +402,7 @@ function askConfirmation()
       # do nothing
       ;;
     * )
-      echo "Error: unkown confirmation '${confirmation}'.";
+      echo "Error: unknown confirmation '${confirmation}'.";
       exit 1;
       ;;
   esac
@@ -428,7 +428,6 @@ function runHousekeeping()
   # Return from the function.
 
   return;
-
 }
 
 
@@ -759,22 +758,29 @@ END
   long_options+='repository-directory:,';
   long_options+='empty-readme-files,';
   long_options+='readme-file:,';
-  long_options+='--type:,';
-  long_options+='--empty-common-tree,';
-  long_options+='--common-tree:,';
-  long_options+='--empty-program-tree,';
-  long_options+='--program-tree:,';
-  long_options+='--empty-library-tree,';
-  long_options+='--library-tree:,';
-  long_options+='--empty-document-tree,';
-  long_options+='--document-tree:,';
-  long_options+='--empty-package-tree,';
-  long_options+='--package-tree:,';
-  long_options+='--legal-notice:,';
-  long_options+='--empty-license-file,';
-  long_options+='--license-file:,';
-  long_options+='--help,';
-  long_options+='--version,';
+  long_options+='type:,';
+  long_options+='empty-common-tree,';
+  long_options+='common-tree:,';
+  long_options+='empty-program-tree,';
+  long_options+='program-tree:,';
+  long_options+='empty-library-tree,';
+  long_options+='library-tree:,';
+  long_options+='empty-document-tree,';
+  long_options+='document-tree:,';
+  long_options+='empty-package-tree,';
+  long_options+='package-tree:,';
+  long_options+='legal-notice:,';
+  long_options+='empty-license-file,';
+  long_options+='license-file:,';
+  long_options+='help,';
+  long_options+='version,';
+
+  eval arguments=( "$( getopt --alternative \
+                              --options "${short_options}" \
+                              --longoptions "${long_options}" \
+                              --shell 'bash' \
+                              -- \
+                              "${@}" )" );
 
   local option_name='';
   local option_argument='';
@@ -864,23 +870,18 @@ END
         ;;
 
       '--legal-notice' )
-        legal-notice="${option_argument}";
+        legal_notice="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
         ;;
 
       '--empty-license-file' )
-        local_options=();
+        license_files=();
         next_position="$(( "${next_position}" + 0 ))";
         ;;
 
       '--license-file' )
-        license-file["${#license-file[@]}"]="${option_argument}";
+        license_files["${#license_files[@]}"]="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
-        ;;
-
-      '' )
-        local_options=();
-        next_position="$(( "${next_position}" + 0 ))";
         ;;
 
       '--help' )
@@ -919,13 +920,6 @@ END
     echo "Info: configuration file './config.inc.bash' not present.";
     echo "Info: not loading configuraton file './config.inc.bash'.";
   fi
-
-  eval arguments=( "$( getopt --alternative \
-                              --options "${short_options}" \
-                              --longoptions "${long_options}" \
-                              --shell 'bash' \
-                              -- \
-                              "${@}" )" );
 
   # See if the variables are set and not empty.
 

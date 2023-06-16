@@ -918,7 +918,7 @@ END
     source './config.inc.bash';
   else
     echo "Info: configuration file './config.inc.bash' not present.";
-    echo "Info: not loading configuraton file './config.inc.bash'.";
+    echo "Info: not loading configuration file './config.inc.bash'.";
   fi
 
   # See if the variables are set and not empty.

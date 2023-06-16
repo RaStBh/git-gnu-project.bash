@@ -6,7 +6,7 @@
 ## RaSt git-gnu-project is to  manage a directory as a Git  repository and a GNU
 ## package.
 ##
-## Copyright (C)  2023  Ralf Stephan
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
 ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
 ## without modification,  are permitted in  any medium without  royalty provided
@@ -91,6 +91,8 @@ programs, libraries and / or documentations or for an other type of work.
 
  8 AUTHORS
 --------------------------------------------------------------------------------
+
+Ralf Stephan <me@ralf-stephan.name>
 
 ================================================================================
 

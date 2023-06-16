@@ -513,37 +513,49 @@ library_tree=( \
 ## Example:
 ##
 ##   document_tree=();
-##   document_tree[0]='build/.gitkeep';
-##   document_tree[1]='data/.gitkeep';
-##   document_tree[2]='docs/.gitkeep'
-##   document_tree[3]='examples/.gitkeep';
-##   document_tree[4]='external/.gitkeep';
-##   document_tree[5]='extras/.gitkeep';
-##   document_tree[6]='include/.gitkeep';
-##   document_tree[7]='libs/.gitkeep';
-##   document_tree[8]='src/.gitkeep';
-##   document_tree[9]='tests/.gitkeep';
-##   document_tree[10]='tools/.gitkeep';
+##   document_tree[0]='Makefile.am';
+##   document_tree[1]='build/.gitkeep';
+##   document_tree[2]='configure.ac';
+##   document_tree[3]='data/.gitkeep';
+##   document_tree[4]='doc/Makefile.am';
+##   document_tree[5]='doc/main.ltx';
+##   document_tree[6]='docs/.gitkeep';
+##   document_tree[7]='examples/.gitkeep';
+##   document_tree[8]='external/.gitkeep';
+##   document_tree[9]='extras/.gitkeep';
+##   document_tree[10]='include/.gitkeep';
+##   document_tree[11]='libs/.gitkeep';
+##   document_tree[12]='src/.gitkeep';
+##   document_tree[13]='tests/.gitkeep';
+##   document_tree[14]='tools/.gitkeep';
 ##
 ##   or
 ##
-##   document_tree=(
-##     'build/.gitkeep'
-##     'data/.gitkeep'
-##     'docs/.gitkeep'
-##     'examples/.gitkeep'
-##     'external/.gitkeep'
-##     'extras/.gitkeep'
-##     'include/.gitkeep'
-##     'libs/.gitkeep'
-##     'src/.gitkeep'
-##     'tests/.gitkeep'
-##     'tools/.gitkeep'
+##   document_tree=( \
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'doc/Makefile.am' \
+##     'doc/main.ltx' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
 ##   );
 
 document_tree=( \
+  'Makefile.am' \
   'build/.gitkeep' \
+  'configure.ac' \
   'data/.gitkeep' \
+  'doc/Makefile.am' \
+  'doc/main.ltx' \
   'docs/.gitkeep' \
   'examples/.gitkeep' \
   'external/.gitkeep' \

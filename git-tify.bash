@@ -1,10 +1,10 @@
 #! /usr/bin/env -S bash -e
 ################################################################################
 ##
-## This file is part of RaSt git-gnu-project.
+## This file is part of the RaSt git-gnu-project package.
 ##
-## RaSt git-gnu-project is to  manage a directory as a Git  repository and a GNU
-## package.
+## RaSt  git-gnu-project is  to manage  a directory  as a  Git and  a GNU  style
+## project.
 ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
@@ -19,67 +19,102 @@
 ## more details.
 ##
 ## You should have received a copy of  the GNU General Public License along with
-## this program.  If not, see <https://www.gnu.org/licenses/>.
+## this package.  If not, see <https://www.gnu.org/licenses/>.
 ##
 ################################################################################
-##
-##
-##
+
+
+
 ################################################################################
 ##
-## $Date: 2023-06-07 15:51:53.8110411000 +00:00:00 $
+## $Version: 0.2.0 (2023-06-17 03:15:17 +00:00:00) $
 ##
 ################################################################################
-##
-##
-##
+
+
+
 ################################################################################
 ##
-## git-tify.bash (git-gnu-project)
+## GIT-TIFY.BASH - 1 - 2023-06-12 - RaSt - RaSt git-gnu-project Manual
 ##
 ## NAME
 ##
-##   git-tify.bash - manage a directory as a Git repository
+##   git-tify.bash - manage directory as Git style project
 ##
 ## SYNOPSIS
 ##
-##   git-tify.bash 
-##   [--repository-path=<path to the directory>]
-##   [--repository-name=<name of the repository>] 
-##   [--user-name=<name of the user>]
-##   [--user-email=<email of the user>] 
-##   [--merge-ff=<how a merge is handled>]
-##   [--pull-ff=<how a pull is handled>]
-##   [--tracked-repository=<repository to track>]
-##   [--project-name=<name of the project>] 
-##   [--package-name=<name of the package>]
-##   [--git-file=<Git configuration file>]
+##   git-tify.bash [--working-directory=<working directory>]
+##                 [--repository-directory=<repository directory>]
+##                 [--empty-local-options]
+##                 [--local-option=<local-option>]
+##                 [--empty-global-options]
+##                 [--global-option=<global option>]
+##                 [--empty-remotes]
+##                 [--remote=<remote>]
+##                 [--legal-notice=<legal notice>]
+##                 [--empty-configuration-files]
+##                 [--configuration-file=<configuration file>]
+##                 [--help]
+##                 [--version]
 ##
 ## DESCRIPTION
 ##
-##   Manage a directory as a Git repository.
+##   RaSt git-tify.bash is  a Bash script to  manage a directory as  a Git style
+##   project.
 ##
-##   Step 1: See if we can create a new Git repository.
-##   Step 2: Create and initialize an empty Git repository.
-##   Step 3: Configure the Git repository.
-##   Step 4: Initial commit of the repository.
-##   Step 5: Create und commit Git configuration files.
-##   Step 6: Clean-up and optimize the repository.
+##   The directory then  is a Git working directory containing  a Git repository
+##   directory.
+##
+##   The  Git working  directory  is  for example  </home/john_dow/repositories/
+##   foobar/>.
+##
+##   The Git  repository directory is for  example </home/john_dow/repositories/
+##   foobar/.git/>.
+##
+##   This script does:
+##
+##   Step 1: Create the Git working  directory, asking the user for confirmation
+##           before creating the Git working directory.
+##   Step 2: Initialize the Git repository.
+##   Step 3: Set the Git local options.
+##   Step 3: Set the Git global options.
+##   Step 4: Set the Git remotes.
+##   Step 5: Commit Git repository as empty initial commit.
+##   Step 6: Add Git configuration files.
+##           Add legal notice to Git configuration files.
+##           Commit Git configuration files.
+##   Step 7: Cleanup and optimize the Git repository.
 ##
 ## OPTIONS
 ##
-##   --repository-path    - set path to the directory
-##   --repository-name    - set name of the repository
-##   --user-name          - set name of the user locally and globally
-##   --user-email         - set email of the user locally and globally
-##   --merge-ff           - set how a merge is handled (only | true | false)
-##   --pull-ff            - set how a pull is handled (only | true | false)
-##   --tracked-repository - add repository to track (The string  is composed of  
-##                          the remote name  followed by the  ',' character 
-##                          followed by the remote URL.)
-##   --project-name       - set name of the project
-##   --package-name       - set name of the package
-##   --git-file           - add Git configuration file
+##   --working-directory         - set Git working directory
+##   --repository-directory      - set Git repository directory
+##   --empty-local-options       - set Git local options  list to an empty list,
+##                                 use this before --local-option
+##   --local-option              - add  Git local  option to  Git local  options
+##                                 list, use this after --empty-local-options
+##   --empty-global-options      - set Git global options list to an empty list,
+##                                 use this before --global-option
+##   --global-option             - add Git  global option to Git  global options
+##                                 list, use this after --empty-global-options
+##   --empty-remotes             - set Git  remotes list  to an empty  list, use
+##                                 this before --remote
+##   --remote                    - add Git remote to  Git remotes list, use this
+##                                 after --empty-remotes
+##   --legal-notice              - set legal notice
+##   --empty-configuration-files - set Git  configuration file list to  an empty
+##                                 list, use this before --configuration-file
+##   --configuration-file        - add  Git  remote  to Git  configuration  file
+##                                 list,         use          this         after
+##                                 --empty-configuration-files
+##   --help                      - print help
+##   --version                   - print version
+##
+##   Allowed values for global options and local options:
+##
+##     merge.ff - only | true | false
+##
+##     pull.ff  - only | true | false
 ##
 ## IMPLEMENTATION NOTES
 ##
@@ -88,37 +123,63 @@
 ## FILES
 ##
 ##   git-tify.bash           - this script
-##   config.inc.bash         - used configuration file
+##   config.inc.bash         - configuration file
 ##   config.inc.bash.example - example configuration file
 ##
 ## EXIT STATUS
 ##
-##   on success: 0
-##   on failure: 1
+##   on success: $? == 0
+##   on failure: $? >  0
 ##
 ## EXAMPLES
 ##
-##   ./git-tify.bash \
-##   --repository-path='/home/user/JohnDow/repositories/' \
-##   --repository-name='foobar' \
-##   --user-name='John Dow' \
-##   --user-email='john.dow@example.com' \
-##   --merge-ff='false' \
-##   --pull-ff'false' \
-##   --tracked-repository='github.com,git@github.com-JohnDow:JohnDow' \
-##   --tracked-repository='gitlab.com,git@gitlab.com-JohnDow:JohnDow' \
-##   --tracked-repository='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/' \
-##   --project-name'JD' \
-##   --package-name='foobar' \
-##   --git-file='.gitattributes' \
-##   --git-file='.gitignore' \
-##   --git-file='.gitkeep' \
-##   --git-file='.gitmodules' \
-##   --git-file='.mailmap'
+##   git-tify.bash --working-directory='/home/john_dow/repositories/foobar/' \
+##                 --repository-directory='/home/john_dow/repositories/foobar/.git/' \
+##                 --empty-local-options \
+##                 --local-option='user.name;John Dow' \
+##                 --local-option='user.email;john_dow@example.com' \
+##                 --local-option='merge.ff;false' \
+##                 --local-option='pull.ff;false' \
+##                 --empty-global-options \
+##                 --global-option='user.name;John Dow' \
+##                 --global-option='user.email;john_dow@example.com' \
+##                 --global-option='merge.ff;false' \
+##                 --global-option='pull.ff;false' \
+##                 --empty-remotes \
+##                 --remote='github.com;git@github.com-JohnDow:JohnDow' \
+##                 --remote='gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
+##                 --remote='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+##                 --legal-notice="## This file is part of JD foobar package.
+##                 ##
+##                 ## JD foobar is ...
+##                 ##
+##                 ## Copyright (C)  2023  John Dow  <john_dow@example.com>
+##                 ##
+##                 ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+##                 ## without modification,  are permitted in  any medium without  royalty provided
+##                 ## the copyright  notice and this  notice are  preserved.  This file  is offered
+##                 ## as-is, without any warranty." \
+##                 --empty-configuration-files \
+##                 --configuration-file='.gitattributes' \
+##                 --configuration-file='.gitignore' \
+##                 --configuration-file='.gitkeep' \
+##                 --configuration-file='.gitmodules' \
+##                 --configuration-file='.mailmap'
+##
+##   git-tify.bash --help
+##
+##   git-tify.bash --version
 ##
 ## DIAGNOSTICS
 ##
 ## SEE ALSO
+##
+##   Report bugs to:
+##   Package home page:
+##   General help using RaSt software:
+##
+##     https://github.com/RaStBh/
+##     https://gitlab.com/RaStBh/
 ##
 ## STANDARDS
 ##
@@ -135,414 +196,930 @@
 ## SECURITY CONSIDERATIONS
 ##
 ################################################################################
-##
-##
-##
+
+
+
 ################################################################################
 ##
-## Global constants.
+## GLOBAL CONSTANTS
 ##
 ################################################################################
-##
-##
-##
+
+
+
 ################################################################################
 ##
-## Global variables.
+## GLOBAL VARIABLES
 ##
 ################################################################################
-##
-## repository-path      - path to the directory
-##
-declare repository_path='';
-##
-## repository-name      - name of the repository
-##
-declare repository_name='';
-##
-## user-name            - name of the user
-##
-declare user_name='';
-##
-## user-email           - email of the user
-##
-declare user_email='';
-##
-## merge-ff             - how a merge is handled
-##
-## git merge --ff-only : merge.ff = only
-## git merge --ff      : merge.ff = true
-## git merge --no-ff   : merge.ff = false
-##
-declare merge_ff='';
-##
-## pull-ff              - how a pull is handled
-##
-## git pull --ff-only : pull.ff = only
-## git pull --ff      : pull.ff = true
-## git pull --no-ff   : pull.ff = false
-##
-declare pull_ff='';
-##
-## tracked-repositories - list of tracked repositories
-##
-declare -a tracked_repositories=();
-##
-## project-name         - name of the project
-##
-declare project_name='';
-##
-## package-name         - name of the package
-##
-declare package_name='';
-##
-## git-files            - list of Git configuration files
-##
-declare -a git_files=();
-##
-##
-##
-## pull_rebase          - how a rebase is handled
-##
-## git pull --rebase='false'       : pull.rebase = false
-## git pull --rebase='true'        : pull.rebase = true
-## git pull --rebase='interactive' : pull.rebase = interactive
-## git pull --rebase='merges'      : pull.rebase = merges
-##
-declare pull_rebase=''; # unused
-##
-##
-##
+
+
+
 ################################################################################
 ##
-## Get content of configuration file.
+## FUNCTONS
 ##
 ################################################################################
-##
-if [[ -f './config.inc.bash' ]]; then
-  source './config.inc.bash';
-else
-  :;
-fi
-##
-##
-##
-################################################################################
-##
-## Parse command line options names and arguments.
-##
-################################################################################
-##
-## Declare the command line option names and option arguments.
-##
-declare short_options='';
-##
-declare long_options='';
-long_options+='repository-path:,';
-long_options+='repository-name:,';
-long_options+='user-name:,';
-long_options+='user-email:,';
-long_options+='merge-ff:,';
-long_options+='pull-ff:,';
-long_options+='tracked-repository:,';
-long_options+='project-name:,';
-long_options+='package-name:,';
-long_options+='git-file:,';
-##
-## Parse the command line options.
-##
-declare -a arguments=();
-eval arguments=( "$( getopt --alternative \
-                             --options "${short_options}" \
-                             --longoptions "${long_options}" \
-                             --shell 'bash' \
-                             -- \
-                             "${@}" )" );
-##
-                                                                                #echo "arguments: '${arguments[@]}' (${#arguments[@]})"
-##
-## Parse the command line options and command line arguments.
-##
-declare option_name='';
-declare option_argument='';
-declare -i previous_position=0;
-declare -i current_position=0;
-declare -i next_position=0;
-                                                                                #echo ">>> next_position  : '${next_position}'";
-while true; do
-  option_name="${arguments[$(( "${current_position}" + 0 ))]}";
-                                                                                #echo ">>> option_name    : '${option_name}'";
-  option_argument="${arguments[$(( "${current_position}" + 1 ))]}";
-  option_argument="$( echo "${option_argument}" | sed "s/^'//g" )";
-  option_argument="$( echo "${option_argument}" | sed "s/'$//g" )";
-                                                                                #echo ">>> option_argument: '${option_argument}'";
-  next_position="$(( "${next_position}" + 1 ))";
-                                                                                #echo ">>> next_position  : '${next_position}'";
-  case "${option_name}" in
-    '--repository-path' )
-      repository_path="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
+
+
+
+## @brief Test directory.
+## @details Test directory.
+##   1. See if there is the directory 'dirname'.
+##      On yes: continue.
+##      On no:  exit.
+##   2. See if there is the directry 'basename'.
+##      On yes: exit.
+##      On no : continue.
+## @param[in] dirname
+##   The dirname, for example </home/john_dow/repositories/>.
+## @param[in] basename
+##   The basename, for example <foobar>.
+## @return
+##   The exit code of last command.
+
+function testDirectory()
+{
+  # The dirname.
+
+  local dirname="${1}";
+
+  # The basename.
+
+  local basename="${2}";
+
+  # Test the directory.
+
+  if [[ -d "${dirname}" ]]; then
+  # do nothing
+    :;
+  else
+    echo "Error: no such directory '${dirname}'.";
+    exit 1;
+  fi
+  cd "${dirname}";
+  if [[ -d "./${basename}" ]]; then
+    echo "Error: directory '${dirname}/${basename}/' does exist.";
+    exit 1;
+  else
+    # do nothing
+    :;
+  fi
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Ask the user for confirmation.
+## @details Ask the user for confirmation.
+##   1. Ask the user.
+##   2  On 'n', 'no', 'N', 'NO', 'nO', ...   : exit.
+##      On 'y', 'yes', 'Y', 'YES', 'yES', ...: continue.
+## @return
+##   The exit code of the last command.
+
+function askConfirmation()
+{
+  # The confirmation from the user.
+
+  local confirmation='';
+
+  # Get confirmation from the user.
+
+  read -p "Create repository in '${dirname}/${basename}/'? (y/n): " 'confirmation';
+  confirmation="${confirmation,,}";
+
+  # See what the user answered.  On 'yes' continue.  On 'no' exit.
+
+  case "${confirmation}" in
+    'n' | 'no' )
+      echo 'Info: aborded by user.';
+      exit 0;
       ;;
-    '--repository-name' )
-      repository_name="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
+    'y' | 'yes' )
+      # do nothing
       ;;
-    '--user-name' )
-      user_name="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
-      ;;
-    '--user-email' )
-      user_email="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
-      ;;
-    '--merge-ff' )
-      if   [[ 'only' == "${option_argument}" ]] \
-        || [[ 'true' == "${option_argument}" ]] \
-        || [[ 'false' == "${option_argument}" ]]; then
-        merge_ff="${option_argument}";
-        next_position="$(( "${next_position}" + 1 ))";
-      else
-        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'." 1>&2;
-        exit 1;
-      fi
-      ;;
-    '--pull-ff' )
-      if   [[ 'only' == "${option_argument}" ]] \
-        || [[ 'true' == "${option_argument}" ]] \
-        || [[ 'false' == "${option_argument}" ]]; then
-        pull_ff="${option_argument}";
-        next_position="$(( "${next_position}" + 1 ))";
-      else
-        echo "Error: wrong option argument '${option_argument}' for option name '${option_name}'." 1>&2;
-        exit 1;
-      fi
-      ;;
-    '--tracked-repository' )
-      tracked_repositories["${#tracked_repositories[@]}"]="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
-      ;;
-    '--project-name' )
-      project_name="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
-      ;;
-    '--package-name' )
-      package_name="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
-      ;;
-    '--git-file' )
-      git_files["${#git_files[@]}"]="${option_argument}";
-      next_position="$(( "${next_position}" + 1 ))";
-      ;;
-    '--' )
-      break 1;
-      ;;
-    *)
-      echo "Error: unknown option name '${option_name}'." 1>&2;
+    * )
+      echo "Error: unkown confirmation '${confirmation}'.";
       exit 1;
       ;;
   esac
-  previous_position="${current_position}";
-  current_position="${next_position}";
-done
-                                                                                #echo "repository_path      : '${repository_path}'";
-                                                                                #echo "repository_name      : '${repository_name}'";
-                                                                                #echo "user_name            : '${user_name}'";
-                                                                                #echo "user_email           : '${user_email}'";
-                                                                                #echo "merge_ff             : '${merge_ff}'";
-                                                                                #echo "pull_ff              : '${pull_ff}'";
-                                                                                #echo "tracked_repositories :";
-                                                                                #for (( index=0; index<"${#tracked_repositories[@]}"; index++ )); do
-                                                                                #  echo "  ${index}: '${tracked_repositories[${index}]}'";
-                                                                                #done
-                                                                                #echo "project_name         : '${project_name}'";
-                                                                                #echo "package_name         : '${package_name}'";
-                                                                                #echo "git_files            :";
-                                                                                #for (( index=0; index<"${#git_files[@]}"; index++ )); do
-                                                                                #  echo "  ${index}: '${git_files[${index}]}'";
-                                                                                #done
-##
-## Remove trailing '/'.
-##
-repository_path="$( echo "${repository_path}" | sed 's/[\/]*$//' )";
-##
-##
-##
-################################################################################
-##
-## See  if we  can create  a new  Git repository.   If OK,  then change  working
-## directory and create the new directory.
-##
-################################################################################
-##
-## See if there is the directory $repository_path.
-##
-if [[ -d "${repository_path}/" ]]; then
-  :;
-else
-  echo "Error: directory '${repository_path}/' does not exist." 1>&2;
-  exit 1;
-fi
-##
-cd "${repository_path}/";
-##
-## See if there is a directory $repository_name in directory $repository_path.
-##
-if [[ -d "./${repository_name}/" ]]; then
-  echo "Error: directory '${repository_path}/${repository_name}/' does exist." 1>&2;
-  exit 1;
-else
-  :;
-fi
-##
-## Ask for confirmation.
-##
-declare confirm='';
-read -p "Create repository in '${repository_path}/${repository_name}/' (y/n)? " 'confirm';
-confirm="$( echo "${confirm}" | tr '[:upper:]' '[:lower:]' )";
-case "${confirm}" in
-  'y' | 'yes' )
-    echo "Info: create repository in '${repository_path}/${repository_name}/'." 1>&2;
-    ;;
-  'n' | 'no'  )
-    echo 'Info: creating repository aborded.';
-    exit 0;
-    ;;
-  * )
-    echo "Error: unknown '${confirm}'" 1>&2;
-    exit 1;
-    ;;
-esac
-##
-## Create the repository and change directory.
-##
-mkdir "./${repository_name}/";
-##
-cd "./${repository_name}/";
-##
-##
-##
-################################################################################
-##
-## Create and initialize an empty Git repository in the working directory.
-##
-################################################################################
-##
-echo "Info: create and initialize an empty repository in '${repository_path}/${repository_name}/'. ..." 1>&2;
-##
-git init --initial-branch='master' --template='' './';
-##
-echo '... done' 1>&2;
-##
-##
-##
-################################################################################
-##
-## Configure the Git repository.
-##
-################################################################################
-##
-echo "Info: configuring repository '${repository_path}/${repository_name}/'. ..." 1>&2;
-##
-git config --global user.name  "${user_name}";
-##
-git config          user.name  "${user_name}";
-##
-git config --global user.email "${user_email}";
-##
-git config          user.email "${user_email}";
-##
-git config --global merge.ff   "${merge_ff}";
-##
-git config          merge.ff   "${merge_ff}";
-##
-git config --global pull.ff    "${pull_ff}";
-##
-git config          pull.ff    "${pull_ff}";
-##
-declare tracked_repository='';
-declare -a key_value=();
-for tracked_repository in "${tracked_repositories[@]}"; do
-  key_value=();
-  IFS=',' read -a 'key_value' -r <<< "${tracked_repository}";
-  git remote add "${key_value[0]}" "${key_value[1]}";
-done;
-##
-echo '... done' 1>&2;
-##
-##
-##
-################################################################################
-##
-## Initial commit of the repository.
-##
-################################################################################
-##
-echo "Info: committing as initial commit '${REPOSITORY}'. ..." 1>&2;
-##
-git commit --allow-empty --message="$( echo "Initial commit of ${project_name} ${package_name}." | fold --spaces --width='50' )";
-##
-echo '... done' 1>&2;
-##
-##
-##
-################################################################################
-##
-## Create und commit Git configuration files.
-##
-## If file already exists, then exit.
-##
-################################################################################
-##
-echo "Info: creating git configuration files in '${REPOSITORY}'. ..." 1>&2;
-##
-## Add .gitkeep
-##
-git_files["${#git_files[@]}"]='.gitkeep';
-##
-declare git_file='';
-for git_file in "${git_files[@]}"; do
-  if [[ -f "./${git_file}" ]]; then
-    echo "Error: Git configuration file './${git_file}' already exists." 1>&2;
-    exit 1;
-  else
-    touch "./${git_file}";
-    git add "./${git_file}";
-    git commit --message="$( echo "Add Git configuration file." | fold --spaces  --width='50' )
 
-$( echo "* ${git_file}: add configuration file." | fold --spaces  --width='72' )";
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Create a directory.
+## @details Create a directory.
+##   Create the directory.
+##   Check presence of the directory.
+## @param[in] directory
+##  The directory to create, for example </home/john_dow/repositories/foobar/>
+## @return
+##   The exit code of the last command.
+
+function createDirectory()
+{
+  # The directory to create.
+
+  local directory="${1}";
+
+  # Create the directory.
+
+  mkdir "${directory}";
+
+  # See if we created the directory.
+
+  if [[ -d "${directory}" ]]; then
+    echo "Info: directory '${directory}/' created.";
+  else
+    echo "Error: directory '${directory}/' not created.";
+    exit 1;
   fi
-done
-##
-echo '... done' 1>&2;
-##
-##
-##
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Initialize a Git repository.
+## @details Initialize a Git repository.
+##   1. Initialize  the Git repository.   This creates a '.git/'  directory, for
+##      example </home/john_dow/repositories/foobar/.git/>.
+##   2. See if the Git repository have been created.
+## @return
+##   The exit code of the last command.
+
+function initializeGitRepository()
+{
+  # Initialize the Git Repository.
+
+  git init --initial-branch='master' --template='' ./;
+
+  # See if the Git repository have been created
+
+  if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      echo "Info: Git repository created in '$( pwd )/'.";
+  else
+      echo "Info: Git repository not created in '$( pwd )/'.";
+      exit 1;
+  fi
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Set the Git local options.
+## @details Set the Git local options.
+##   1. See that  the local option contains  a known key only.   The known local
+##      option keys are:  user.name | user.email | merge.ff |  pull.ff.  A local
+##      option has the format 'key;value'.
+##   2. See that the key has a value.
+##   3. Set the Git option locally.
+## @param[in] local_options
+##   The Git local options.
+## @return
+##   The exit code of the last command.
+
+function setLocalOptions()
+{
+  # The Git local options.
+
+  local -a local_options=( "${@}" );
+
+  # See if the keys of the local options are known keys.
+
+  local index=0;
+
+  local -a key_value=();
+  local key='';
+  local value='';
+
+  for (( index=0; index<"${#local_options[@]}"; index++ )); do
+    # Split the option into the key and the value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${local_options[${index}]}";
+    key="${key_value[0]}";
+
+    value="${key_value[1]}";
+
+    # See that the key is an allowed key.
+
+    if   [[ 'user.name' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'user.email' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'merge.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'pull.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    else
+        echo "Error: unknown key '${key}' in variable 'local_options'.";
+        exit 1;
+    fi
+
+    # See the key has a known value.
+
+    if [[ -n "${value}" ]]; then
+      if    [[ 'merge.ff' == "${key}" ]] \
+         || [[ 'pull.ff' == "${key}" ]]; then
+        if   [[ 'true' == "${value}" ]]; then
+          #do nothing
+          :;
+        elif [[ 'false' == "${value}" ]]; then
+          # do nothing
+          :;
+        elif [[ 'only' == "${value}" ]]; then
+          # do nothing
+          :;
+        else
+          echo "Error: variable 'local_options' key '${key}' (${value}) has unknown value.";
+          exit 1;
+        fi
+      else
+        # do nothing
+        :;
+      fi
+    else
+      echo "Error: variable 'local_options' key '${key}' (${value}) has empty value.";
+      exit 1;
+    fi
+
+    # Show the key and the value.
+
+    echo "Info: variable 'local_options' key '${key}' (${value}) present.";
+
+    # Set the local option.
+
+    git config "${key}" "${value}";
+  done
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Set the Git global options.
+## @details Set the Git global options.
+##   1. See that the global option contains  a known key only.  The known global
+##      option keys are: user.name | user.email  | merge.ff | pull.ff.  A global
+##      option has the format 'key;value'.
+##   2. See that the key has a value.
+##   3. Set the Git option globally.
+## @param[in] global_options
+##   The Git global options.
+## @return
+##   The exit code of the last command.
+
+function setGlobalOptions()
+{
+  # The Git global options.
+
+  local -a global_options=( "${@}" );
+
+  # See if the keys of the global options are known keys.
+
+  local index=0;
+
+  local -a key_value=();
+  local key='';
+  local value='';
+
+  for (( index=0; index<"${#global_options[@]}"; index++ )); do
+    # Split the option into the key and the value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${global_options[${index}]}";
+    key="${key_value[0]}";
+    value="${key_value[1]}";
+
+    # See that the key is an allowed key.
+
+    if   [[ 'user.name' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'user.email' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'merge.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    elif [[ 'pull.ff' == "${key}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: unknown key '${key}' in variable 'global_options'.";
+      exit 1;
+    fi
+
+    # See the key has a known value.
+
+    if [[ -n "${value}" ]]; then
+      if    [[ 'merge.ff' == "${key}" ]] \
+         || [[ 'pull.ff' == "${key}" ]]; then
+        if   [[ 'true' == "${value}" ]]; then
+          #do nothing
+          :;
+        elif [[ 'false' == "${value}" ]]; then
+          # do nothing
+          :;
+        elif [[ 'only' == "${value}" ]]; then
+          # do nothing
+          :;
+        else
+          echo "Error: variable 'global_options' key '${key}' (${value}) has unknown value.";
+          exit 1;
+        fi
+      else
+        # do nothing
+        :;
+      fi
+    else
+      echo "Error: variable 'global_options' key '${key}' (${value}) has empty value.";
+      exit 1;
+    fi
+
+    # Show the key and the value.
+
+    echo "Info: variable 'global_options' key '${key}' (${value}) present.";
+
+    # Set the global option.
+
+    git config --global "${key}" "${value}";
+  done
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Set the Git remotes.
+## @details Set the Git remotes.
+##   1. See  that the  Git  remote contains  a  key.  A  remote  has the  format
+##      'key;value'.
+##   2. See that the key has a value.
+##   3. Set Git remote.
+## @param[in] remotes
+##   The Git remotes.
+## @return
+##   The exit code of the last command.
+
+function setRemotes()
+{
+  # The Git remotes.
+
+  local -a remotes=( "${@}" );
+
+  # See if the keys of the remotes are not empty.
+
+  local index=0;
+
+  local -a key_value=();
+  local key='';
+  local value='';
+
+  for (( index=0; index<"${#remotes[@]}"; index++ )); do
+    # Split the remotes into the key and the value.
+
+    key_value=();
+    key='';
+    value='';
+    IFS=';' read -a 'key_value' -r <<< "${remotes[${index}]}";
+    key="${key_value[0]}";
+    value="${key_value[1]}";
+
+    # See that the key is not empty.
+
+    if [[ -n "${key}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'remotes' has empty key (${value}).";
+      exit 1;
+    fi
+
+    # See the key has a value.
+
+    if [[ -n "${value}" ]]; then
+      # do nothing
+      :;
+    else
+      echo "Error: variable 'remotes' key (${key}) has empty value.";
+      exit 1;
+    fi
+
+    # Show the key and the value.
+
+    echo "Info: variable 'remotes' key '${key}' (${value}) present.";
+
+    # Set the remote.
+
+    git remote add "${key}" "${value}";
+  done
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Initial empty commit.
+## @details Initial empty commit.
+## @return
+##   The exit code of the last command.
+
+function initialCommit()
+{
+  # Initial empty commit.
+
+  git commit \
+      --allow-empty \
+      --message="$(  echo "Initial empty commit." \
+                   | fold --spaces --width='50' )";
+
+  # Return from the function.
+
+  return;
+}
+
+## @brief Add Git configuration files.
+## @details
+##   Add Git configuration files.
+##   Add legal notice to Git configuration files.
+##   Commit Git configuration files.
+## @param[in] legal_notice
+##   The legal notice
+## @param[in] configuration_files
+##   The Git configuration files.
+## @return
+##   The exit code of the last command.
+
+function addConfigurationFiles()
+{
+  # The legal notice.
+
+  local legal_notice="${1}"; shift;
+
+  # The configuration files.
+
+  local -a configuration_files=( "${@}" );
+
+  # Add Git configuration files.
+  # Add legal notice to Git configuration files.
+  # Commit Git configuration files.
+
+  local configuration_file='';
+  for configuration_file in "${configuration_files[@]}"; do
+      echo "
+${legal_notice}" > "${configuration_file}";
+    git add "${configuration_file}";
+    git commit --message="$( echo "Add file.
+
+* ${configuration_file}: add file." | fold --spaces --width='72' )";
+  done
+
+  # Return from the function.
+
+  return;
+}
+
+
+
+## @brief Cleanup and optimize the repository.
+
+## @details Cleanup and optimize the repository.
+## @return
+##   The exit code of the last command.
+
+function runHousekeeping()
+{
+  # Cleanup and optimize the repository.
+
+  git gc;
+
+  # Return from the function.
+
+  return;
+}
+
+
+
 ################################################################################
 ##
-## Cleanup and optimize the repository.
+## MAIN
 ##
 ################################################################################
-##
-echo "Info: cleaning and optimizing '${REPOSITORY}'. ..." 1>&2;
-##
-git gc;
-##
-echo '... done' 1>&2;
-##
-##
-##
+
+
+
+## @brief The main function.
+## @details The main function.
+##   The script starts here.
+## @param[in] arguments
+##   The command line arguments.
+## @return
+##   The exit code of the last command.
+
+function main()
+{
+  # Get the command line arguments.
+
+  local -a arguments=( "${@}" );
+
+  # The Version of this script.
+
+  local version="$( cat << 'END'
+git-tify.bash (RaSt git-gnu-project)
+0.2.0 (2023-06-17 03:15:17 +00:00:00)
+Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
+License GPLv3+ (GNU GPL version 3 or later,
+see <https://gnu.org/licenses/gpl.html>)
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+END
+)";
+
+  # The usage of the script
+
+  local usage="$( cat << 'END'
+SYNOPSIS
+
+  git-tify.bash [--working_directory=<working directory>]
+                [--repository-directory=<repository directory>]
+                [--empty-local-options]
+                [--local-option=<local-option>]
+                [--empty-global-options]
+                [--global-option=<global option>]
+                [--empty-remotes]
+                [--remote=<remote>]
+                [--legal-notice=<legal notice>]
+                [--empty-configuration-files]
+                [--configuration-file=<configuration file>]
+                [--help]
+                [--version]
+
+  git-tify.bash --help
+
+  git-tify.bash --version
+
+OPTIONS
+
+  --working-directory         - set Git working directory
+  --repository-directory      - set Git repository directory
+  --empty-local-options       - set Git local options  list to an empty list,
+                                use this before --local-option
+  --local-option              - add  Git local  option to  Git local  options
+                                list, use this after --empty-local-options
+  --empty-global-options      - set Git global options list to an empty list,
+                                use this before --global-option
+  --global-option             - add Git  global option to Git  global options
+                                list, use this after --empty-global-options
+  --empty-remotes             - set Git  remotes list  to an empty  list, use
+                                this before --remote
+  --remote                    - add Git remote to  Git remotes list, use this
+                                after --empty-remotes
+  --legal-notice              - set legal notice
+  --empty-configuration-files - set Git  configuration file list to  an empty
+                                list, use this before --configuration-file
+  --configuration-file        - add  Git  remote  to Git  configuration  file
+                                list,         use          this         after
+                                --empty-configuration-files
+  --help                      - print help
+  --version                   - print version
+
+  Allowed values for global options and local options:
+
+    merge.ff - only | true | false
+
+    pull.ff  - only | true | false
+
+Report bugs to:
+Package home page:
+General help using RaSt software:
+
+  https://github.com/RaStBh/
+  https://gitlab.com/RaStBh/
+END
+)";
+
+  # The Git working directory.
+
+  local working_directory='';
+
+  # The  Git  repository  directory.
+
+  local repository_directory='';
+
+  # The Git local options.
+
+  local -a local_options=();
+
+  # The Git global options.
+
+  local -a global_options=();
+
+  # The Git remotes.
+
+  local -a remotes=();
+
+  # The Legal notice.
+
+  local legal_notice='';
+
+  # The Git configuration files.
+
+  local -a configuration_files=();
+
+  # Get the variables from the configuration file if the file it is present.
+
+  if [[ -f './config.inc.bash' ]]; then
+    echo "Info: configuration file './config.inc.bash' present.";
+    echo "Info: loading configuraton file './config.inc.bash'.";
+    source './config.inc.bash';
+  else
+    echo "Info: configuration file './config.inc.bash' not present.";
+    echo "Info: not loading configuraton file './config.inc.bash'.";
+  fi
+
+  # Get the command line arguments.
+
+  local short_options='';
+  local long_options='';
+  long_options+='working-directory:,';
+  long_options+='repository-directory:,';
+  long_options+='empty-local-options,';
+  long_options+='local-option:,';
+  long_options+='empty-global-options,';
+  long_options+='global-option:,';
+  long_options+='empty-remotes,';
+  long_options+='remote:,';
+  long_options+='legal-notice:,';
+  long_options+='empty-configuration-files,';
+  long_options+='configuration-file:,';
+  long_options+='help,';
+  long_options+='version,';
+
+  eval arguments=( "$( getopt --alternative \
+                              --options "${short_options}" \
+                              --longoptions "${long_options}" \
+                              --shell 'bash' \
+                              -- \
+                              "${@}" )" );
+
+  local option_name='';
+  local option_argument='';
+  local -i previous_position=0;
+  local -i current_position=0;
+  local -i next_position=0;
+
+  while true; do
+    option_name="${arguments[$(( "${current_position}" + 0 ))]}";
+    option_argument="${arguments[$(( "${current_position}" + 1 ))]}";
+    next_position="$(( "${next_position}" + 1 ))";
+    case "${option_name}" in
+
+      '--working-directory' )
+        working_directory="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--repository-directory' )
+        repository_directory="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-local-options' )
+        local_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--local-option' )
+
+        local_options[${#local_options[@]}]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-global-options' )
+        global_options=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--global-option' )
+        global_options["${#global_options[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-remotes' )
+        remotes=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--remote' )
+        remotes["${#remotes[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--legal-notice' )
+        legal_notice="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--empty-configuration-files' )
+        configuration_files=();
+        next_position="$(( "${next_position}" + 0 ))";
+        ;;
+
+      '--configuration-file' )
+        configuration_files["${#configuration_files[@]}"]="${option_argument}";
+        next_position="$(( "${next_position}" + 1 ))";
+        ;;
+
+      '--help' )
+        echo "${usage}";
+        exit 0;
+        ;;
+
+      '--version' )
+        echo "${version}";
+        exit 0;
+        ;;
+
+      '--' )
+        break;
+        ;;
+
+      *)
+        echo "Error: unknown option name '${option_name}'."
+        echo '';
+        echo "${usage}";
+        exit 1;
+        ;;
+
+    esac
+    previous_position="${current_position}";
+    current_position="${next_position}";
+  done
+
+  # See if the variables are set and not empty.
+
+  if [[ -n "${working_directory}" ]]; then
+    echo "Info: variable 'working_directory' (${working_directory}) present.";
+  else
+    echo "Error: variable 'working_directory' not present.";
+    exit 1;
+  fi
+  if [[ -n "${repository_directory}" ]]; then
+    echo "Info: variable 'repository_directory' (${repository_directory}) present.";
+  else
+    echo "Error: variable 'repository_directory' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#local_options[@]}" )); then
+    echo "Info: variable 'local_options' (${#local_options[@]}) (${local_options[@]}) present.";
+  else
+    echo "Error: variable 'local_options' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#global_options[@]}" )); then
+    echo "Info: variable 'global_options' (${#global_options[@]}) (${global_options[@]}) present.";
+  else
+    echo "Error: variable 'global_options' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#remotes[@]}" )); then
+    echo "Info: variable 'remotes' (${#remotes[@]}) (${remotes[@]}) present.";
+  else
+    echo "Error: variable 'remotes' not present.";
+    exit 1;
+  fi
+  if [[ -n "${legal_notice}" ]]; then
+    echo "Info: variable 'legal_notice' (${legal_notice}) present.";
+  else
+    echo "Error: variable 'legal_notice' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#configuration_files[@]}" )); then
+    echo "Info: variable 'configuration_files' (${#configuration_files[@]}) (${configuration_files[@]}) present.";
+  else
+    echo "Error: variable 'configuration_files' not present.";
+    exit 1;
+  fi
+
+  # See if we can create the Git working directory.
+
+  echo "Info: creating working directory '${working_directory}' ...";
+  local dirname="$( dirname "${working_directory}" )";
+  local basename="$( basename "${working_directory}" )";
+  testDirectory "${dirname}" "${basename}";
+  working_directory="${dirname}/${basename}/";
+
+  # Ask the user for confirmation before creating the Git working directory.
+
+  askConfirmation;
+
+  # It is ok to create the Git working directory.  So create it.
+
+  createDirectory "${working_directory}";
+  echo '... done';
+
+  # Change the Bash working directory to the Git working directory.
+
+  echo "Info: changing directory to '${working_directory}' ...";
+  cd "${working_directory}";
+  echo '... done';
+
+  # Initialize the Git repository.
+
+  echo "Info: initializing Git repository in '${working_directory}' ...";
+  initializeGitRepository;
+  echo '... done';
+
+  # Set the Git local options.
+
+  echo "Info: configure Git local options in '${working_directory}' ...";
+  setLocalOptions "${local_options[@]}";
+  echo '... done';
+
+  # Set the Git global options.
+
+  echo "Info: configuring Git global options in '${working_directory}' ...";
+  setGlobalOptions "${global_options[@]}";
+  echo '... done';
+
+  # Set the Git remotes.
+
+  echo "Info: configuring Git remotes in '${working_directory}' ...";
+  setRemotes "${remotes[@]}";
+  echo '... done';
+
+  # Initial commit.
+
+  echo "Info: commiting Git repository in '${working_directory}' ...";
+  initialCommit;
+  echo '... done';
+
+  ## Add Git configuration files.
+  ## Add legal notice to Git configuration files.
+  ## Commit Git configuration files.
+
+  echo "Info: adding Git configuration files in '${working_directory}' ...";
+  addConfigurationFiles "${legal_notice}" "${configuration_files[@]}";
+  echo '... done';
+
+  # Cleanup and optimize the Git repository.
+
+  echo "Info: cleaning and optimizing Git repository in '${working_directory}' ...";
+  runHousekeeping;
+  echo '... done';
+
+  # Return from the function.
+
+  return;
+}
+
+# Call the main function and pass the command line arguments.
+
+main "${@}";
+
+
+
 ################################################################################
 ##
 ## TESTS
 ##
 ################################################################################
-##
-##
-##
+
+
+
 ################################################################################
 ##
-## Exit the shell.
+## EXIT
 ##
 ################################################################################
-##
-exit 0;
+
+exit;

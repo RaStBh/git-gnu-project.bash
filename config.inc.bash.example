@@ -1,642 +1,707 @@
 
-## Copyright (C)  2023  John Dow  <john.dow@example.com>
+################################################################################
 ##
-## $Date: 2023-06-07 15:51:53.8110411000 +00:00:00 $
+## This file is part of the RaSt git-gnu-project package.
 ##
+## RaSt  git-gnu-project is  to manage  a directory  as a  Git and  a GNU  style
+## project.
 ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
-## Common configuration
-##
-project_name='JS';
-##
-##
-##
-## Git repository configuration.
-##
-##
-repository_path='/home/user/JohnDow/repositories/';
-##
-repository_name='foobar';
-##
-user_name='John Dow';
-##
-user_email='john.dow@example.com';
-##
-merge_ff='false';
-##
-pull_ff='false';
-##
-tracked_repositories[0]='github.com,git@github.com-JohnDow:JohnDow';
-tracked_repositories[1]='gitlab.com,git@gitlab.com-JohnDow:JohnDow';
-tracked_repositories[2]='example.com,ssh://JohnDow@example.com/home/JohnDow/repositories/foobar/';
-##
-git_files[0]='.gitattributes';
-git_files[1]='.gitignore';
-git_files[2]='.gitkeep';
-git_files[3]='.gitmodules';
-git_files[4]='.mailmap';
-##
-##
-##
-## GNU package configuration.
-##
-package_name='foobar';
-##
-#gnu_files[]='ABOUT-GNU';
-#gnu_files[]='ABOUT-NLS';
-gnu_files[0]='AUTHORS';
-gnu_files[1]='BACKLOG';
-gnu_files[2]='BUGS';
-gnu_files[3]='CHANGELOG';
-#gnu_files[]='CHANGELOG.0';
-#gnu_files[]='CHANGELOG.O';
-#gnu_files[]='CHANGELOG.1';
-#gnu_files[]='OCHANGELOG';;
-#gnu_files[]='ChangeLog';
-#gnu_files[]='ChangeLog.0';
-#gnu_files[]='ChangeLog.O';
-#gnu_files[]='ChangeLog.1';
-#gnu_files[]='OChangeLog';
-gnu_files[4]='CONTRIBUTING';
-#gnu_files[]='COPYING';
-gnu_files[5]='COPYING.DOC';
-gnu_files[6]='COPYING.LIB';
-gnu_files[7]='COPYING.PRG';
-#gnu_files[]='COPYING.FDL';
-#gnu_files[]='COPYING.LGPL';
-#gnu_files[]='COPYING.GPL';
-#gnu_files[]='COPYING.LESSER';
-#gnu_files[]='LICENSE';
-gnu_files[8]='FAQ';
-gnu_files[9]='HACKING';
-gnu_files[10]='INSTALL';
-gnu_files[11]='NEWS';
-#gnu_files[]='NEWS.0';
-#gnu_files[]='NEWS.O';
-#gnu_files[]='NEWS.1';
-#gnu_files[]='ONEWS';
-gnu_files[12]='README';
-#gnu_files[]='README-alpha';
-#gnu_files[]='README-beta';
-#gnu_files[]='README-dev';
-gnu_files[13]='THANKS';
-gnu_files[14]='TODO';
-##
-licenses[0]='gnu_agpl,/home/JohnDow/licenses/gnu_agpl-3.0.txt';
-licenses[1]='gnu_apl,/home/JohnDow/licenses/gnu_apl.txt';
-licenses[2]='gnu_fdl,/home/JohnDow/licenses/gnu_fdl-1.3.txt';
-licenses[3]='gnu_gpl,/home/JohnDow/licenses/gnu_gpl-3.0.txt';
-licenses[4]='gnu_lgpl,/home/JohnDow/licenses/gnu_lgpl-3.0.txt';
-licenses[5]='gnu_vcadl,/home/JohnDow/licenses/gnu_vcadl.txt';
-licenses[6]='cc_0,/home/JohnDow/licenses/cc_0_1.0.txt';
-licenses[7]='cc_by-nc-nd,/home/JohnDow/licenses/cc_by-nc-nd_4.0.txt';
-licenses[8]='cc_by-nc-sa,/home/JohnDow/licenses/cc_by-nc-sa_4.0.txt';
-licenses[9]='cc_by-nc,/home/JohnDow/licenses/cc_by-nc_4.0.txt';
-licenses[0]='cc_by-nd,/home/JohnDow/licenses/cc_by-nd_4.0.txt';
-licenses[10]='cc_by-sa,/home/JohnDow/licenses/cc_by-sa_4.0.txt';
-licenses[11]='cc_by,/home/JohnDow/licenses/cc_by_4.0.txt';
-##
-project_tree_prg[0]='.gitkeep';
-project_tree_prg[1]='COPYING.PRG';
-##
-project_tree_lib[0]='.gitkeep';
-project_tree_lib[1]='COPYING.LIB';
-##
-project_tree_doc[0]='.gitkeep';
-project_tree_doc[1]='COPYING.DOC';
-##
-project_tree_pkg[0]='.gitkeep';
-project_tree_pkg[1]='COPYING.PRG';
-project_tree_pkg[2]='COPYING.LIB';
-project_tree_pkg[3]='COPYING.DOC';
-project_tree_pkg[4]='build/.gitkeep';
-project_tree_pkg[5]='data/.gitkeep';
-project_tree_pkg[6]='docs/.gitkeep';
-project_tree_pkg[7]='examples/.gitkeep';
-project_tree_pkg[8]='external/.gitkeep';
-project_tree_pkg[9]='extras/.gitkeep';
-project_tree_pkg[10]='include/.gitkeep';
-project_tree_pkg[11]='libs/.gitkeep';
-project_tree_pkg[12]='src/.gitkeep';
-project_tree_pkg[13]='tests/.gitkeep';
-project_tree_pkg[14]='tools/.gitkeep';
-##
-copying_files["COPYING.PRG"]='/home/JohnDow/licenses/gnu_gpl-3.0.txt';
-copying_files["COPYING.LIB"]='/home/JohnDow/licenses/gnu_lgpl-3.0.txt';
-copying_files["COPYING.DOC"]='/home/JohnDow/licenses/gnu_fdl-1.3.txt';
-##
-copyright_license_notice_GNU_AGPL="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This <WORK-TYPE> is  free software: you can redistribute it  and/or modify it
-## under the terms of the GNU Affero  General Public License as published by the
-## Free  Software Foundation,  either  version 3  of the  License,  or (at  your
-## option) any later version.
-##
-## This  <WORK-TYPE> is  distributed in  the hope  that it  will be  useful, but
-## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-## FITNESS FOR A PARTICULAR PURPOSE.  See  the GNU Affero General Public License
-## for more details.
-##
-## You should  have received  a copy  of the GNU  Affero General  Public License
-## along with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
-##
-copyright_license_notice_GNU_APL="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## GNU All-Permissive License: Copying and  distribution of this <file>, with or
-## without modification,  are permitted in  any medium without  royalty provided
-## the copyright notice  and this notice are preserved.  This  <file> is offered
-## as-is, without any warranty.";
-##
-copyright_license_notice_GNU_FDL="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## See the file <SOURCE-FILE> for copying conditions.
-
-or
-
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## Permission is granted to copy, distribute and/or modify this <document> under
-## the terms  of the GNU  Free Documentation License,  Version 1.3 or  any later
-## version  published  by  the  Free  Software  Foundation;  with  no  Invariant
-## Sections, no Front-Cover Texts, and no Back-Cover Texts.
-##
-## A copy of the  license is included in the <document>  in the section entitled
-## \"GNU Free Documentation License\".
-##
-## You should have  received a copy of the GNU  Free Documentation License along
-## with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.
-
-or
-
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## Permission is granted to copy, distribute and/or modify this <document> under
-## the terms  of the GNU  Free Documentation License,  Version 1.3 or  any later
-## version  published  by  the  Free Software  Foundation;  with  the  Invariant
-## Sections being  <INVARIANT-SECTIONS-LIST>, with  the Front-Cover  Texts being
-## <FRONT-COVER-TEXTS-LIST>,  and  with  the   Back-Cover  Texts  being  <FRONT-
-## COVER-TEXTS-LIST>.
-##
-## A copy of the  license is included in the <document>  in the section entitled
-## \"GNU Free Documentation License\".
-##
-## You should have  received a copy of the GNU  Free Documentation License along
-## with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.
-
-or
-
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## Permission is granted to copy, distribute and/or modify this <document> under
-## the terms  of the GNU  Free Documentation License,  Version 1.3 or  any later
-## version  published  by  the  Free Software  Foundation;  with  the  Invariant
-## Sections being as  in (I) below, with  the Front-Cover Texts being  as in (F)
-## below, and with the Back-Cover Texts being as in (B) below.
-##
-## (I) The Invariant Sections are: <INVARIANT SECTIONS LIST>.
-##
-## (F) The Front-Cover Texts are: <FRONT-COVER TEXTS LIST>.
-##
-## (B) The Front-Cover Texts are: <BACK-COVER TEXTS LIST>.
-##
-## A copy of the  license is included in the <document>  in the section entitled
-## \"GNU Free Documentation License\".
-##
-## You should have  received a copy of the GNU  Free Documentation License along
-## with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
-##
-copyright_license_notice_GNU_GPL="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This <WORK-TYPE> is  free software: you can redistribute it  and/or modify it
-## under the terms  of the GNU General  Public License as published  by the Free
+## RaSt git-gnu-project is free software:  you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by the Free
 ## Software Foundation, either version 3 of the License, or (at your option) any
 ## later version.
 ##
-## This  <WORK-TYPE> is  distributed in  the hope  that it  will be  useful, but
+## RaSt git-gnu-project is  distributed in the hope that it  will be useful, but
 ## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 ## FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General Public  License for
 ## more details.
 ##
 ## You should have received a copy of  the GNU General Public License along with
-## this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
-##
-copyright_license_notice_GNU_LGPL="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This <WORK-TYPE> is  free software: you can redistribute it  and/or modify it
-## under the terms of the GNU Lesser  General Public License as published by the
-## Free  Software Foundation,  either  version 3  of the  License,  or (at  your
-## option) any later version.
-##
-## This  <WORK-TYPE> is  distributed in  the hope  that it  will be  useful, but
-## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-## FITNESS FOR A PARTICULAR PURPOSE.  See  the GNU Lesser General Public License
-## for more details.
-##
-## You should  have received  a copy  of the GNU  Lesser General  Public License
-## along with this <WORK-TYPE>.  If not, see <https://www.gnu.org/licenses/>.";
-##
-copyright_license_notice_GNU_VCADL="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## GNU  Verbatim   Copying  and  Distribution  License:   Verbatim  copying  and
-## distribution  of  this  entire  <article> are  permitted  worldwide,  without
-## royalty, in any medium, provided this notice is preserved.";
-##
-copyright_license_notice_CC_BY="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This  <WORK-TYPE> is  licensed  under the  CC  Attribution 4.0  International
-## license.
-##
-## You should have  received a copy of the CC  Attribution International license
-## along  with  this  <WORK-TYPE>.  If  not,  see  <https://creativecommons.org/
-## about/cclicenses/>.
-##
-## This is a human-readable  summary (a deed) of (and not  a substitute for) the
-## CC Attribution International license.
-##
-## [ This license is acceptable for Free Cultural Works. ]
-##
-## You are free to:
-##
-##   Share - copy and redistribute the material in any medium or format
-##
-##   Adapt - remix, transform, and build upon the material for any purpose, even
-##   commercially.
-##
-##   The licensor cannot revoke these freedoms as long as you follow the license
-##   terms.
-##
-## Under the following terms:
-##
-##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
-##   license, and indicate if changes were made. You may do so in any reasonable
-##   manner, but not in any way that  suggests the licensor endorses you or your
-##   use.
-##
-##   No additional restrictions - You may not apply legal terms or technological
-##   measures  that legally  restrict  others from  doing  anything the  license
-##   permits.
-##
-## Notices:
-##
-##   You do not have to comply with  the license for elements of the material in
-##   the public domain or where your use is permitted by an applicable exception
-##   or limitation.
-##
-##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
-##   permissions necessary for your intended use. For example, other rights such
-##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
-##   material.";
-##
-copyright_license_notice_CC_BY_SA="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This  <WORK-TYPE>  is  licensed   under  the  CC  Attribution-ShareAlike  4.0
-## International license.
-##
-## You  should   have  received   a  copy   of  the   CC  Attribution-ShareAlike
-## International license  along with  this <WORK-TYPE>.   If not,  see <https://
-## creativecommons.org/about/cclicenses/>.
-##
-## This is a human-readable  summary (a deed) of (and not  a substitute for) the
-## CC Attribution-ShareAlike International license.
-##
-## [ This license is acceptable for Free Cultural Works. ]
-##
-## You are free to:
-##
-##   Share - copy and redistribute the material in any medium or format
-##
-##   Adapt - remix, transform, and build upon the material for any purpose, even
-##   commercially.
-##
-##   The licensor cannot revoke these freedoms as long as you follow the license
-##   terms.
-##
-## Under the following terms:
-##
-##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
-##   license, and indicate if changes were made. You may do so in any reasonable
-##   manner, but not in any way that  suggests the licensor endorses you or your
-##   use.
-##
-##   ShareAlike - If you remix, transform,  or build upon the material, you must
-##   distribute your contributions under the same license as the original.
-##
-##   No additional restrictions - You may not apply legal terms or technological
-##   measures  that legally  restrict  others from  doing  anything the  license
-##   permits.
-##
-## Notices:
-##
-##   You do not have to comply with  the license for elements of the material in
-##   the public domain or where your use is permitted by an applicable exception
-##   or limitation.
-##
-##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
-##   permissions necessary for your intended use. For example, other rights such
-##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
-##   material.";
-copyright_license_notice_BY_NC="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This  <WORK-TYPE>  is licensed  under  the  CC Attribution-NonCommercial  4.0
-## International license.
-##
-## You  should  have  received  a   copy  of  the  CC  Attribution-NonCommercial
-## International license  along with  this <WORK-TYPE>.   If not,  see <https://
-## creativecommons.org/about/cclicenses/>.
-##
-## This is a human-readable  summary (a deed) of (and not  a substitute for) the
-## CC Attribution-NonCommercial International license.
-##
-## [ This license is not acceptable for Free Cultural Works. ]
-##
-## You are free to:
-##
-##   Share - copy and redistribute the material in any medium or format
-##
-##   Adapt - remix, transform, and build upon the material
-##
-##   The licensor cannot revoke these freedoms as long as you follow the license
-##   terms.
-##
-## Under the following terms:
-##
-##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
-##   license, and indicate if changes were made. You may do so in any reasonable
-##   manner, but not in any way that  suggests the licensor endorses you or your
-##   use.
-##
-##   NonCommercial - You may not use the material for commercial purposes.
-##
-##   No additional restrictions - You may not apply legal terms or technological
-##   measures  that legally  restrict  others from  doing  anything the  license
-##   permits.
-##
-## Notices:
-##
-##   You do not have to comply with  the license for elements of the material in
-##   the public domain or where your use is permitted by an applicable exception
-##   or limitation.
-##
-##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
-##   permissions necessary for your intended use. For example, other rights such
-##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
-##   material.";
-##
-copyright_license_notice_BY_NC_SA="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This  <WORK-TYPE>   is  licensed  under  the   CC  Attribution-NonCommercial-
-## ShareAlike 4.0 International license.
-##
-## You  should  have  received  a  copy  of  the  CC  Attribution-NonCommercial-
-## ShareAlike International  license along with  this <WORK-TYPE>.  If  not, see
-## <https:// creativecommons.org/about/cclicenses/>.
-##
-## This is a human-readable  summary (a deed) of (and not  a substitute for) the
-## CC Attribution-NonCommercial-ShareAlike International license.
-##
-## [ This license is not acceptable for Free Cultural Works. ]
-##
-## You are free to:
-##
-##   Share - copy and redistribute the material in any medium or format
-##
-##   Adapt - remix, transform, and build upon the material
-##
-##   The licensor cannot revoke these freedoms as long as you follow the license
-##   terms.
-##
-## Under the following terms:
-##
-##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
-##   license, and indicate if changes were made. You may do so in any reasonable
-##   manner, but not in any way that  suggests the licensor endorses you or your
-##   use.
-##
-##   NonCommercial - You may not use the material for commercial purposes.
-##
-##   ShareAlike - If you remix, transform,  or build upon the material, you must
-##   distribute your contributions under the same license as the original.
-##
-##   No additional restrictions - You may not apply legal terms or technological
-##   measures  that legally  restrict  others from  doing  anything the  license
-##   permits.
-##
-## Notices:
-##
-##   You do not have to comply with  the license for elements of the material in
-##   the public domain or where your use is permitted by an applicable exception
-##   or limitation.
-##
-##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
-##   permissions necessary for your intended use. For example, other rights such
-##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
-##   material.";
-##
-copyright_license_notice_BY_ND="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This  <WORK-TYPE>  is licensed  under  the  CC Attribution-NoDerivatives  4.0
-## International license.
-##
-## You  should  have  received  a   copy  of  the  CC  Attribution-NoDerivatives
-## International license  along with  this <WORK-TYPE>.   If not,  see <https://
-## creativecommons.org/about/cclicenses/>.
-##
-## This is a human-readable  summary (a deed) of (and not  a substitute for) the
-## CC Attribution-NoDerivatives International license.
-##
-## [ This license is not acceptable for Free Cultural Works. ]
-##
-## You are free to:
-##
-##   Share - copy and redistribute the material  in any medium or format for any
-##   purpose, even commercially.
-##
-##   The licensor cannot revoke these freedoms as long as you follow the license
-##   terms.
-##
-## Under the following terms:
-##
-##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
-##   license, and indicate if changes were made. You may do so in any reasonable
-##   manner, but not in any way that  suggests the licensor endorses you or your
-##   use.
-##
-##   NoDerivatives -  If you remix, transform,  or build upon the  material, you
-##   may not distribute the modified material.
-##
-##   No additional restrictions - You may not apply legal terms or technological
-##   measures  that legally  restrict  others from  doing  anything the  license
-##   permits.
-##
-## Notices:
-##
-##   You do not have to comply with  the license for elements of the material in
-##   the public domain or where your use is permitted by an applicable exception
-##   or limitation.
-##
-##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
-##   permissions necessary for your intended use. For example, other rights such
-##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
-##   material.";
-##
-copyright_license_notice_BY-NC-ND="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This  <WORK-TYPE>   is  licensed  under  the   CC  Attribution-NonCommercial-
-## NoDerivatives 4.0 International license.
-##
-## You  should  have  received  a  copy  of  the  CC  Attribution-NonCommercial-
-## NoDerivatives International license along with this <WORK-TYPE>.  If not, see
-## <https://creativecommons.org/about/cclicenses/>.
-##
-## This is a human-readable  summary (a deed) of (and not  a substitute for) the
-## CC Attribution-NonCommercial-NoDerivatives International license.
-##
-## [ This license is not acceptable for Free Cultural Works. ]
-##
-## You are free to:
-##
-##   Share - copy and redistribute the material in any medium or format
-##
-##   The licensor cannot revoke these freedoms as long as you follow the license
-##   terms.
-##
-## Under the following terms:
-##
-##   Attribution  - You  must give  appropriate credit,  provide a  link to  the
-##   license, and indicate if changes were made. You may do so in any reasonable
-##   manner, but not in any way that  suggests the licensor endorses you or your
-##   use.
-##
-##   NonCommercial - You may not use the material for commercial purposes.
-##
-##   NoDerivatives -  If you remix, transform,  or build upon the  material, you
-##   may not distribute the modified material.
-##
-##   No additional restrictions - You may not apply legal terms or technological
-##   measures  that legally  restrict  others from  doing  anything the  license
-##   permits.
-##
-## Notices:
-##
-##   You do not have to comply with  the license for elements of the material in
-##   the public domain or where your use is permitted by an applicable exception
-##   or limitation.
-##
-##   No  warranties  are  given.  The  license  may not  give  you  all  of  the
-##   permissions necessary for your intended use. For example, other rights such
-##   as  publicity,  privacy,  or  moral  rights  may  limit  how  you  use  the
-##   material.";
-##
-copyright_license_notice_CC_0="
-## This file is part of the <WORK-TITLE> <WORK-TYPE>.
-##
-## <WORK-DESCRIPTION>
-##
-## Copyright (C)  <COPYRIGHT-YEARS>  <COPYRIGHT-OWNERS>  <COPYRIGHT-EMAIL>
-##
-## This <WORK-TYPE>  is licensed under  the CC  CC0 1.0 Universal  Public Domain
-## Dedication license.
-##
-## You  should have  received  a copy  of  the CC  CC0  Universal Public  Domain
-## Dedication  license  along with  this  <WORK-TYPE>.   If not,  see  <https://
-## creativecommons.org/about/cclicenses/>.
-##
-## This is a human-readable  summary (a deed) of (and not  a substitute for) the
-## CC CC0 Universal Public Domain Dedication license.
-##
-## [ This license is acceptable for Free Cultural Works. ]
-##
-## No Copyright
-##
-##   The person who associated  a work with this deed has  dedicated the work to
-##   the public domain by waiving all of his or her rights to the work worldwide
-##   under copyright law,  including all related and neighboring  rights, to the
-##   extent allowed by law.
-##
-##   You can copy, modify, distribute and  perform the work, even for commercial
-##   purposes, all without asking permission. See Other Information below.
-##
-## Other Information
-##
-##   In no way are the patent or trademark rights of any person affected by CC0,
-##   nor are the  rights that other persons may  have in the work or  in how the
-##   work is used, such as publicity or privacy rights.
-##
-##   Unless expressly  stated otherwise, the  person who associated a  work with
-##   this deed makes  no warranties about the work, and  disclaims liability for
-##   all uses of the work, to the fullest extent permitted by applicable law.
-##
-##   When using  or citing  the work,  you should not  imply endorsement  by the
-##   author or the affirmer.";
+## this package.  If not, see <https://www.gnu.org/licenses/>.
+##
+################################################################################
+
+
+
+################################################################################
+##
+## $Version: 0.2.0 (2023-06-17 03:15:17 +00:00:00) $
+##
+################################################################################
+
+
+
+################################################################################
+##
+## Configuration for the Git repository (git-tify.bash).
+##
+################################################################################
+
+
+
+## The Git working directory.
+##
+## Example:
+##
+##   working_directory='/home/john_dow/repositories/foobar';
+##
+##   or
+##
+##   working_directory='/home/john_dow/repositories/foobar/';
+
+working_directory='/home/john_dow/repositories/foobar/';
+
+## The Git repository directory.
+##
+## Example:
+##
+##   repository_directory='/home/john_dow/repositories/foobar/.git';
+##
+##   or
+##
+##   repository_directory='/home/john_dow/repositories/foobar/.git/';
+
+repository_directory='/home/john_dow/repositories/foobar/.git/';
+
+## The Git local options.
+##
+## Example:
+##
+##   local_options[index]='key;value';
+##
+##   local_options=();
+##   local_options[0]='user.name;John Dow';
+##   local_options[1]='user.email;john_dow@example.com';
+##   local_options[2]='merge.ff;false';
+##   local_options[3]='pull.ff;false';
+##
+##   or
+##
+##   local_options=( \
+##     'user.name;John Dow' \
+##     'user.email;john_dow@example.com' \
+##     'merge.ff;false' \
+##     'pull.ff;false' \
+##   );
+
+local_options=( \
+  'user.name;John Dow' \
+  'user.email;john_dow@example.com' \
+  'merge.ff;false' \
+  'pull.ff;false' \
+);
+
+## The Git global options.
+##
+## Example:
+##
+##   global_options[index]='key;value';
+##
+##   global_options=();
+##   global_options[0]='user.name;John Dow';
+##   global_options[1]='user.email;john_dow@example.com';
+##   global_options[2]='merge.ff;false';
+##   global_options[3]='pull.ff;false';
+##
+##   or
+##
+##   global_options=( \
+##     'user.name;John Dow' \
+##     'user.email;john_dow@example.com' \
+##     'merge.ff;false' \
+##     'pull.ff;false' \
+##   );
+
+global_options=(
+  'user.name;John Dow' \
+  'user.email;john_dow@example.com' \
+  'merge.ff;false' \
+  'pull.ff;false' \
+);
+
+## The Git remotes.
+##
+## Example:
+##
+##   remotes[index]='key;value';
+##
+##   remotes=();
+##   remotes[0]='github.com;git@github.com-JohnDow:JohnDow';
+##   remotes[1]='gitlab.com;git@gitlab.com-JohnDow:JohnDow';
+##   remotes[2]='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/';
+##
+##   or
+##
+##   remotes=( \
+##     'github.com;git@github.com-JohnDow:JohnDow' \
+##     'gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
+##     'example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+##   );
+
+remotes=(
+  'github.com;git@github.com-JohnDow:JohnDow' \
+  'gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
+  'example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+);
+
+## Names of Git configuration files:
+##
+##   .gitattributes
+##   .gitignore
+##   .gitmodules
+##   .mailmap
+##
+## Not a Git configuration file:
+##
+##   .gitkeep
+
+## Git configuration files.
+##
+## Example:
+##
+##   configuration_files=();
+##   configuration_files[1]='.gitattributes';
+##   configuration_files[2]='.gitignore';
+##   configuration_files[3]='.gitmodules';
+##   configuration_files[4]='.mailmap';
+##   configuration_files[5]='.gitkeep';
+##
+##   or
+##
+##   configuration_files=(
+##     '.gitattributes' \
+##     '.gitignore' \
+##     '.gitmodules' \
+##     '.mailmap' \
+##     '.gitkeep' \
+##   );
+
+configuration_files=(
+  '.gitattributes' \
+  '.gitignore' \
+  '.gitkeep' \
+  '.gitmodules' \
+  '.mailmap' \
+);
+
+
+
+################################################################################
+##
+## Configuration for the GNU project (gnu-tify.bash).
+##
+################################################################################
+
+
+
+## Legal notice to insert in each Git configuration file and GNU standard readme
+## file.
+##
+## Example:
+##
+##   legal_notice="This file is part of JD foobar package.
+##
+##   JD foobar is ...
+##
+##   Copyright (C)  2023  John Dow  <john_dow@example.com>
+##
+##   GNU All-Permissive  License: Copying and  distribution of this file,  with or
+##   without modification,  are permitted in  any medium without  royalty provided
+##   the copyright  notice and this  notice are  preserved.  This file  is offered
+##   as-is, without any warranty.";
+
+legal_notice="## This file is part of JD foobar package.
+##
+## JD foobar is ...
+##
+## Copyright (C)  2023  John Dow  <john_dow@example.com>
+##
+## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+## without modification,  are permitted in  any medium without  royalty provided
+## the copyright  notice and this  notice are  preserved.  This file  is offered
+## as-is, without any warranty.";
+
+## Names of GNU standard readme files:
+##
+##   ABOUT-GNU
+##   ABOUT-NLS
+##   AUTHORS
+##   BACKLOG
+##   BUGS
+##   CHANGELOG
+##   CHANGELOG.0
+##   CHANGELOG.1
+##   CHANGELOG.O
+##   CONTRIBUTING
+##   COPYING
+##   COPYING.DOC
+##   COPYING.FDL
+##   COPYING.GPL
+##   COPYING.LESSER
+##   COPYING.LGPL
+##   COPYING.LIB
+##   COPYING.PRG
+##   ChangeLog
+##   ChangeLog.0
+##   ChangeLog.1
+##   ChangeLog.O
+##   FAQ
+##   HACKING
+##   INSTALL
+##   LICENSE
+##   NEWS
+##   NEWS.0
+##   NEWS.1
+##   NEWS.O
+##   OCHANGELOG
+##   OChangeLog
+##   ONEWS
+##   README
+##   README-alpha
+##   README-beta
+##   README-dev
+##   THANKS
+##   TODO
+
+## GNU standard readme files.
+##
+## Example:
+##
+##   readme_files=();
+##   readme_files[0]='AUTHORS';
+##   readme_files[1]='BACKLOG'
+##   readme_files[2]='BUGS';
+##   readme_files[3]='CHANGELOG';
+##   readme_files[4]='CONTRIBUTING';
+##   readme_files[5]='COPYING';
+##   readme_files[6]='FAQ';
+##   readme_files[7]='HACKING';
+##   readme_files[8]='INSTALL';
+##   readme_files[9]='NEWS';
+##   readme_files[10]='README';
+##   readme_files[11]='THANKS';
+##   readme_files[12]='TODO';
+##
+##   or
+##
+##   readme_files=(
+##     'AUTHORS' \
+##     'BACKLOG' \
+##     'BUGS' \
+##     'CHANGELOG' \
+##     'CONTRIBUTING' \
+##     'COPYING' \
+##     'FAQ' \
+##     'HACKING' \
+##     'INSTALL' \
+##     'NEWS' \
+##     'README' \
+##     'THANKS' \
+##     'TODO' \
+##   );
+
+readme_files=(
+  'AUTHORS' \
+  'BACKLOG' \
+  'BUGS' \
+  'CHANGELOG' \
+  'CONTRIBUTING' \
+  'COPYING' \
+  'FAQ' \
+  'HACKING' \
+  'INSTALL' \
+  'NEWS' \
+  'README' \
+  'THANKS' \
+  'TODO' \
+);
+
+## Package project tree layout - the type of the package.
+##
+##   program  - prg
+##   library  - lib
+##   document - doc
+##   package  - pkg
+##
+## Example:
+##
+##   type='pkg';
+
+type='pkg';
+
+## Package project tree layout - The Pitchfork Layout (PFL)
+##
+##   build/
+##     subbuild1/
+##     subbuild2/
+##   data/
+##   docs/
+##   examples/
+##   external/
+##     subexternal1/
+##     subexternal2/
+##   extras/
+##     data/
+##     docs/
+##     examples/
+##     include/
+##     src/
+##     tests/
+##   include/
+##   libs/
+##     data/
+##     docs/
+##     examples/
+##     include/
+##     src/
+##     tests/
+##   src/
+##   tests/
+##   tools/
+##
+## Git only recognise files  but not directories.  So we add  a .gitkeep to each
+## directory so Git will not delete the directory.
+
+## Package project tree - common directories and files for all project types.
+##
+## Example:
+##
+##   common_tree=();
+##   common_tree[0]='.gitkeep';
+##
+##   or
+##
+##   common_tree=( \
+##     '.gitkeep' \
+##   );
+
+common_tree=( \
+  '.gitkeep' \
+);
+
+## Package project tree - special directories  and files for program source code
+## (with documentation) type of project.
+##
+## Example:
+##
+##   program_tree=();
+##   pogram_tree[0]='Makefile.am';
+##   pogram_tree[1]='build/.gitkeep';
+##   pogram_tree[2]='configure.ac';
+##   pogram_tree[3]='data/.gitkeep';
+##   pogram_tree[4]='docs/.gitkeep';
+##   pogram_tree[5]='examples/.gitkeep';
+##   pogram_tree[6]='external/.gitkeep';
+##   pogram_tree[7]='extras/.gitkeep';
+##   pogram_tree[8]='include/.gitkeep';
+##   pogram_tree[9]='libs/.gitkeep';
+##   pogram_tree[10]='src/.gitkeep';
+##   pogram_tree[11]='src/Makefile.am';
+##   pogram_tree[12]='src/main.c';
+##   pogram_tree[13]='src/main.h';
+##   pogram_tree[14]='tests/.gitkeep';
+##   pogram_tree[15]='tools/.gitkeep';
+##
+##   or
+##
+##   pogram_tree=(
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'src/Makefile.am' \
+##     'src/main.c' \
+##     'src/main.h' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
+##   );
+
+pogram_tree=( \
+  'Makefile.am' \
+  'build/.gitkeep' \
+  'configure.ac' \
+  'data/.gitkeep' \
+  'docs/.gitkeep' \
+  'examples/.gitkeep' \
+  'external/.gitkeep' \
+  'extras/.gitkeep' \
+  'include/.gitkeep' \
+  'libs/.gitkeep' \
+  'src/.gitkeep' \
+  'src/Makefile.am' \
+  'src/main.c' \
+  'src/main.h' \
+  'tests/.gitkeep' \
+  'tools/.gitkeep' \
+);
+
+## Package project tree - special directories  and files for library source code
+## (with documentation) type of project.
+##
+## Example:
+##
+##   library_tree=();
+##   library_tree[0]='Makefile.am';
+##   library_tree[1]='build/.gitkeep';
+##   library_tree[2]='configure.ac';
+##   library_tree[3]='data/.gitkeep';
+##   library_tree[4]='docs/.gitkeep';
+##   library_tree[5]='examples/.gitkeep';
+##   library_tree[6]='external/.gitkeep';
+##   library_tree[7]='extras/.gitkeep';
+##   library_tree[8]='include/.gitkeep';
+##   library_tree[9]='libs/.gitkeep';
+##   library_tree[10]='src/.gitkeep';
+##   library_tree[11]='src/Makefile.am';
+##   library_tree[12]='src/libmain.c';
+##   library_tree[13]='src/libmain.h';
+##   library_tree[14]='tests/.gitkeep';
+##   library_tree[15]='tools/.gitkeep';
+##
+##   or
+##
+##   library_tree=( \
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'src/Makefile.am' \
+##     'src/libmain.c' \
+##     'src/libmain.h' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
+##   );
+
+library_tree=( \
+  'Makefile.am' \
+  'build/.gitkeep' \
+  'configure.ac' \
+  'data/.gitkeep' \
+  'docs/.gitkeep' \
+  'examples/.gitkeep' \
+  'external/.gitkeep' \
+  'extras/.gitkeep' \
+  'include/.gitkeep' \
+  'libs/.gitkeep' \
+  'src/.gitkeep' \
+  'src/Makefile.am' \
+  'src/libmain.c' \
+  'src/libmain.h' \
+  'tests/.gitkeep' \
+  'tools/.gitkeep' \
+);
+
+## Package project tree - special  directories and files for documentation (with
+## source code examples) type of project.
+##
+## Example:
+##
+##   document_tree=();
+##   document_tree[0]='Makefile.am';
+##   document_tree[1]='build/.gitkeep';
+##   document_tree[2]='configure.ac';
+##   document_tree[3]='data/.gitkeep';
+##   document_tree[4]='doc/Makefile.am';
+##   document_tree[5]='doc/main.ltx';
+##   document_tree[6]='docs/.gitkeep';
+##   document_tree[7]='examples/.gitkeep';
+##   document_tree[8]='external/.gitkeep';
+##   document_tree[9]='extras/.gitkeep';
+##   document_tree[10]='include/.gitkeep';
+##   document_tree[11]='libs/.gitkeep';
+##   document_tree[12]='src/.gitkeep';
+##   document_tree[13]='tests/.gitkeep';
+##   document_tree[14]='tools/.gitkeep';
+##
+##   or
+##
+##   document_tree=( \
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'doc/Makefile.am' \
+##     'doc/main.ltx' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
+##   );
+
+document_tree=( \
+  'Makefile.am' \
+  'build/.gitkeep' \
+  'configure.ac' \
+  'data/.gitkeep' \
+  'doc/Makefile.am' \
+  'doc/main.ltx' \
+  'docs/.gitkeep' \
+  'examples/.gitkeep' \
+  'external/.gitkeep' \
+  'extras/.gitkeep' \
+  'include/.gitkeep' \
+  'libs/.gitkeep' \
+  'src/.gitkeep' \
+  'tests/.gitkeep' \
+  'tools/.gitkeep' \
+);
+
+## Package  project tree  -  special  directories and  files  for collection  of
+## programs   (with   documentation),   libraries   (with   documentation)   and
+## documentation (with source code examples) type of project.
+##
+## Example:
+##
+##   package_tree=();
+##   package_tree[0]='Makefile.am';
+##   package_tree[1]='build/.gitkeep';
+##   package_tree[2]='configure.ac';
+##   package_tree[3]='data/.gitkeep';
+##   package_tree[4]='doc/Makefile.am';
+##   package_tree[5]='doc/main.ltx';
+##   package_tree[6]='docs/.gitkeep';
+##   package_tree[7]='examples/.gitkeep';
+##   package_tree[8]='external/.gitkeep';
+##   package_tree[9]='extras/.gitkeep';
+##   package_tree[10]='include/.gitkeep';
+##   package_tree[11]='libs/.gitkeep';
+##   package_tree[12]='src/.gitkeep';
+##   package_tree[13]='src/Makefile.am';
+##   package_tree[14]='src/libmain.c';
+##   package_tree[15]='src/libmain.h';
+##   package_tree[16]='src/main.c';
+##   package_tree[17]='src/main.h';
+##   package_tree[18]='tests/.gitkeep';
+##   package_tree[19]='tools/.gitkeep';
+##
+##   or
+##
+##   package_tree=( \
+##     'Makefile.am' \
+##     'build/.gitkeep' \
+##     'configure.ac' \
+##     'data/.gitkeep' \
+##     'doc/Makefile.am' \
+##     'doc/main.ltx' \
+##     'docs/.gitkeep' \
+##     'examples/.gitkeep' \
+##     'external/.gitkeep' \
+##     'extras/.gitkeep' \
+##     'include/.gitkeep' \
+##     'libs/.gitkeep' \
+##     'src/.gitkeep' \
+##     'src/Makefile.am' \
+##     'src/libmain.c' \
+##     'src/libmain.h' \
+##     'src/main.c' \
+##     'src/main.h' \
+##     'tests/.gitkeep' \
+##     'tools/.gitkeep' \
+##   );
+
+package_tree=( \
+    'Makefile.am' \
+    'build/.gitkeep' \
+    'configure.ac' \
+    'data/.gitkeep' \
+    'doc/Makefile.am' \
+    'doc/main.ltx' \
+    'docs/.gitkeep' \
+    'examples/.gitkeep' \
+    'external/.gitkeep' \
+    'extras/.gitkeep' \
+    'include/.gitkeep' \
+    'libs/.gitkeep' \
+    'src/.gitkeep' \
+    'src/Makefile.am' \
+    'src/libmain.c' \
+    'src/libmain.h' \
+    'src/main.c' \
+    'src/main.h' \
+    'tests/.gitkeep' \
+    'tools/.gitkeep' \
+);
+
+## Files containing licenses texts.
+##
+## Example:
+##
+##   license_files[index]='key;value';
+##
+##   license_files=();
+##   license_files[0]='COPYING.cc_0_1.0;/home/john_dow/licenses/licenses/cc_0_1.0.txt';
+##   license_files[1]='COPYING.cc_by-nc-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nc-nd_4.0.txt';
+##   license_files[2]='COPYING.cc_by-nc-sa_4.0;/home/john_dow/licenses/licenses/cc_by-nc-sa_4.0.txt';
+##   license_files[3]='COPYING.cc_by-nc_4.0;/home/john_dow/licenses/licenses/cc_by-nc_4.0.txt';
+##   license_files[4]='COPYING.cc_by-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nd_4.0.txt';
+##   license_files[5]='COPYING.cc_by-sa_4.0;/home/john_dow/licenses/licenses/cc_by-sa_4.0.txt';
+##   license_files[6]='COPYING.cc_by_4.0;/home/john_dow/licenses/licenses/cc_by_4.0.txt';
+##   license_files[7]='COPYING.gnu_agpl-3.0;/home/john_dow/licenses/licenses/gnu_agpl-3.0.txt';
+##   license_files[8]='COPYING.gnu_apl.txt;/home/john_dow/licenses/licenses/gnu_apl.txt';
+##   license_files[9]='COPYING.gnu_fdl-1.3;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
+##   license_files[10]='COPYING.gnu_gpl-3.0;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##   license_files[11]='COPYING.gnu_lgpl-3.0;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
+##   license_files[12]='COPYING.gnu_vcadl;/home/john_dow/licenses/licenses/gnu_vcadl.txt';
+##
+##   or
+##
+##   license_files=();
+##   license_files[0]='COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt';
+##   license_files[1]='COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##   license_files[2]='COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt';
+##   license_files[4]='COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt';
+##
+##   or
+##
+##   license_files=( \
+##     'COPYING.cc_0_1.0;/home/john_dow/licenses/licenses/cc_0_1.0.txt' \
+##     'COPYING.cc_by-nc-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nc-nd_4.0.txt' \
+##     'COPYING.cc_by-nc-sa_4.0;/home/john_dow/licenses/licenses/cc_by-nc-sa_4.0.txt' \
+##     'COPYING.cc_by-nc_4.0;/home/john_dow/licenses/licenses/cc_by-nc_4.0.txt' \
+##     'COPYING.cc_by-nd_4.0;/home/john_dow/licenses/licenses/cc_by-nd_4.0.txt' \
+##     'COPYING.cc_by-sa_4.0;/home/john_dow/licenses/licenses/cc_by-sa_4.0.txt' \
+##     'COPYING.cc_by_4.0;/home/john_dow/licenses/licenses/cc_by_4.0.txt' \
+##     'COPYING.gnu_agpl-3.0;/home/john_dow/licenses/licenses/gnu_agpl-3.0.txt' \
+##     'COPYING.gnu_apl.txt;/home/john_dow/licenses/licenses/gnu_apl.txt' \
+##     'COPYING.gnu_fdl-1.3;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+##     'COPYING.gnu_gpl-3.0;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+##     'COPYING.gnu_lgpl-3.0;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+##     'COPYING.gnu_vcadl;/home/john_dow/licenses/licenses/gnu_vcadl.txt' \
+##   );
+##
+##   or
+##
+##   license_files=(
+##     'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+##     'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+##     'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+##     'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+##   );
+
+license_files=(
+  'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
+  'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+  'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
+  'COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
+);

@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.2.0 (2023-06-16 05:51:13 +00:00:00) $
+## $Version: 0.2.0 (2023-06-17 03:15:17 +00:00:00) $
 ##
 ################################################################################
 
@@ -755,7 +755,7 @@ function main()
 
   local version="$( cat << 'END'
 git-tify.bash (RaSt git-gnu-project)
-0.2.0 (2023-06-16 05:51:13 +00:00:00)
+0.2.0 (2023-06-17 03:15:17 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)

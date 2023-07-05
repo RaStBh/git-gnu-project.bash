@@ -1,22 +1,22 @@
 #! /usr/bin/env -S bash -e
 ################################################################################
 ##
-## This file is part of the RaSt git-gnu-project package.
+## This file is part of the RaSt git-gnu-project.bash package.
 ##
-## RaSt  git-gnu-project is  to manage  a directory  as a  Git and  a GNU  style
-## project.
+## RaSt git-gnu-project.bash is to  manage a directory as a Git  and a GNU style
+## project using Bash.
 ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
-## RaSt git-gnu-project is free software:  you can redistribute it and/or modify
-## it under the terms of the GNU General Public License as published by the Free
-## Software Foundation, either version 3 of the License, or (at your option) any
-## later version.
+## RaSt git-gnu-project.bash  is free software:  you can redistribute  it and/or
+## modify it under the  terms of the GNU General Public  License as published by
+## the Free  Software Foundation, either version  3 of the License,  or (at your
+## option) any later version.
 ##
-## RaSt git-gnu-project is  distributed in the hope that it  will be useful, but
-## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-## FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General Public  License for
-## more details.
+## RaSt git-gnu-project.bash is distributed in the  hope that it will be useful,
+## but   WITHOUT  ANY   WARRANTY;   without  even   the   implied  warranty   of
+## MERCHANTABILITY or  FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General
+## Public License for more details.
 ##
 ## You should have received a copy of  the GNU General Public License along with
 ## this package.  If not, see <https://www.gnu.org/licenses/>.
@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.2.0 (2023-06-17 03:15:17 +00:00:00) $
+## $Version: 0.3.0 (2023-07-05 07:26:16 +00:00:00) $
 ##
 ################################################################################
 
@@ -35,7 +35,7 @@
 
 ################################################################################
 ##
-## GIT-TIFY.BASH - 1 - 2023-06-12 - RaSt - RaSt git-gnu-project Manual
+## GIT-TIFY.BASH - 1 - 2023-06-12 - RaSt - RaSt git-gnu-project.bash Manual
 ##
 ## NAME
 ##
@@ -754,8 +754,8 @@ function main()
   # The Version of this script.
 
   local version="$( cat << 'END'
-git-tify.bash (RaSt git-gnu-project)
-0.2.0 (2023-06-17 03:15:17 +00:00:00)
+git-tify.bash (RaSt git-gnu-project.bash)
+0.3.0 (2023-07-05 07:26:16 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)

@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.4.0 (2023-07-16 06:42:54 +00:00:00) $
+## $Version: 0.5.0 (2023-07-16 07:11:30 +00:00:00) $
 ##
 ################################################################################
 
@@ -667,6 +667,30 @@ function initialCommit()
 
 
 
+## @brief Create annotated tag.
+## @details Create annotated tag.
+## @param[in] tag
+##   The tag.
+## @return
+##   The exit code of the last command.
+
+function createAnnotatedTag()
+{
+  # The tag.
+  
+  local tag="${1}";
+  
+  # Create annotated tag.
+  
+  git tag -a "${tag}" -m "${tag}";
+
+  # Return from the function.
+
+  return;
+}
+
+
+
 ## @brief Add Git configuration files.
 ## @details
 ##   Add Git configuration files.
@@ -754,7 +778,7 @@ function main()
 
   local version="$( cat << 'END'
 git-tify.bash (RaSt git-gnu-project.bash)
-0.4.0 (2023-07-16 06:42:54 +00:00:00)
+0.5.0 (2023-07-16 07:11:30 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -1063,7 +1087,13 @@ END
   echo "Info: commiting Git repository in '${working_directory}' ...";
   initialCommit;
   echo '... done';
+  
+  # Create annotated tag.
 
+  echo "Info: create annotated tag in '${working_directory}' ...";
+  createAnnotatedTag '0.0.0';
+  echo '... done';
+  
   ## Add Git configuration files.
   ## Add legal notice to Git configuration files.
   ## Commit Git configuration files.

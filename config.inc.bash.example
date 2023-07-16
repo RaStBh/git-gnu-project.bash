@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.3.0 (2023-07-05 07:26:16 +00:00:00) $
+## $Version: 0.4.0 (2023-07-16 06:42:54 +00:00:00) $
 ##
 ################################################################################
 
@@ -52,18 +52,6 @@
 ##   working_directory='/home/john_dow/repositories/foobar/';
 
 working_directory='/home/john_dow/repositories/foobar/';
-
-## The Git repository directory.
-##
-## Example:
-##
-##   repository_directory='/home/john_dow/repositories/foobar/.git';
-##
-##   or
-##
-##   repository_directory='/home/john_dow/repositories/foobar/.git/';
-
-repository_directory='/home/john_dow/repositories/foobar/.git/';
 
 ## The Git local options.
 ##

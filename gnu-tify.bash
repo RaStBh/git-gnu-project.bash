@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.3.0 (2023-07-05 07:26:16 +00:00:00) $
+## $Version: 0.4.0 (2023-07-16 06:42:54 +00:00:00) $
 ##
 ################################################################################
 
@@ -44,7 +44,6 @@
 ## SYNOPSIS
 ##
 ##   gnu-tify.bash [--working-directory=<working directory>]
-##                 [--repository-directory=<repository directory>]
 ##                 [--empty-readme-files]
 ##                 [--readme-file=<readme file>]
 ##                 [--type=<type>]
@@ -91,7 +90,6 @@
 ## OPTIONS
 ##
 ##   --working-directory         - set Git working directory
-##   --repository-directory      - set Git repository directory
 ##   --empty-readme-files        - set  GNU standard  readme  files  list to  an
 ##                                 empty list, use this before --readme-file
 ##   --readme-file               - add GNU standard readme  file to GNU standard
@@ -152,7 +150,6 @@
 ## EXAMPLES
 ##
 ##   gnu-tify.bash --working-directory='/home/john_dow/repositories/foobar/' \
-##                 --repository-directory='/home/john_dow/repositories/foobar/.git/' \
 ##                 --empty-readme-files \
 ##                 --readme-file='AUTHORS' \
 ##                 --readme-file='BACKLOG' \
@@ -309,14 +306,6 @@
 ################################################################################
 ##
 ## GLOBAL FUNCTONS
-##
-################################################################################
-
-
-
-################################################################################
-##
-## TESTS
 ##
 ################################################################################
 
@@ -615,7 +604,7 @@ function main()
 
   local version="$( cat << 'END'
 gnu-tify.bash (RaSt git-gnu-project.bash)
-0.3.0 (2023-07-05 07:26:16 +00:00:00)
+0.4.0 (2023-07-16 06:42:54 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -630,7 +619,6 @@ END
 SYNOPSIS
 
   gnu-tify.bash [--working-directory=<working directory>]
-                [--repository-directory=<repository directory>]
                 [--empty-readme-files]
                 [--readme-file=<readme file>]
                 [--type=<type>]
@@ -653,7 +641,6 @@ SYNOPSIS
 OPTIONS
 
   --working-directory         - set Git working directory
-  --repository-directory      - set Git repository directory
   --empty-readme-files        - set  GNU standard  readme  files  list to  an
                                 empty list, use this before --readme-file
   --readme-file               - add GNU standard readme  file to GNU standard
@@ -709,10 +696,6 @@ END
 
   local working_directory='';
 
-  # The  Git  repository  directory.
-
-  local repository_directory='';
-
   # GNU standard readme files.
 
   local -a readme_files=();
@@ -755,7 +738,6 @@ END
   local long_options='';
 
   long_options+='working-directory:,';
-  long_options+='repository-directory:,';
   long_options+='empty-readme-files,';
   long_options+='readme-file:,';
   long_options+='type:,';
@@ -796,11 +778,6 @@ END
 
       '--working-directory' )
         working_directory="${option_argument}";
-        next_position="$(( "${next_position}" + 1 ))";
-        ;;
-
-      '--repository-directory' )
-        repository_directory="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
         ;;
 
@@ -929,12 +906,6 @@ END
     echo "Error: variable 'working_directory' not present.";
     exit 1;
   fi
-  if [[ -n "${repository_directory}" ]]; then
-    echo "Info: variable 'repository_directory' (${repository_directory}) present.";
-  else
-    echo "Error: variable 'repository_directory' not present.";
-    exit 1;
-  fi
   if (( 0 < "${#readme_files[@]}" )); then
     echo "Info: variable 'readme_files' (${#readme_files[@]}) (${readme_files[@]}) present.";
   else
@@ -1057,6 +1028,14 @@ END
 # Call the main function and pass the command line arguments.
 
 main "${@}";
+
+
+
+################################################################################
+##
+## TESTS
+##
+################################################################################
 
 
 

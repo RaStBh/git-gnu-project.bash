@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.3.0 (2023-07-05 07:26:16 +00:00:00) $
+## $Version: 0.4.0 (2023-07-16 06:42:54 +00:00:00) $
 ##
 ################################################################################
 
@@ -44,7 +44,6 @@
 ## SYNOPSIS
 ##
 ##   git-tify.bash [--working-directory=<working directory>]
-##                 [--repository-directory=<repository directory>]
 ##                 [--empty-local-options]
 ##                 [--local-option=<local-option>]
 ##                 [--empty-global-options]
@@ -88,7 +87,6 @@
 ## OPTIONS
 ##
 ##   --working-directory         - set Git working directory
-##   --repository-directory      - set Git repository directory
 ##   --empty-local-options       - set Git local options  list to an empty list,
 ##                                 use this before --local-option
 ##   --local-option              - add  Git local  option to  Git local  options
@@ -134,7 +132,6 @@
 ## EXAMPLES
 ##
 ##   git-tify.bash --working-directory='/home/john_dow/repositories/foobar/' \
-##                 --repository-directory='/home/john_dow/repositories/foobar/.git/' \
 ##                 --empty-local-options \
 ##                 --local-option='user.name;John Dow' \
 ##                 --local-option='user.email;john_dow@example.com' \
@@ -366,7 +363,8 @@ function initializeGitRepository()
 
   # See if the Git repository have been created
 
-  if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+  if    [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]] \
+     && [[ -d './.git/' ]]; then
       echo "Info: Git repository created in '$( pwd )/'.";
   else
       echo "Info: Git repository not created in '$( pwd )/'.";
@@ -667,6 +665,8 @@ function initialCommit()
   return;
 }
 
+
+
 ## @brief Add Git configuration files.
 ## @details
 ##   Add Git configuration files.
@@ -711,7 +711,6 @@ ${legal_notice}" > "${configuration_file}";
 
 
 ## @brief Cleanup and optimize the repository.
-
 ## @details Cleanup and optimize the repository.
 ## @return
 ##   The exit code of the last command.
@@ -755,7 +754,7 @@ function main()
 
   local version="$( cat << 'END'
 git-tify.bash (RaSt git-gnu-project.bash)
-0.3.0 (2023-07-05 07:26:16 +00:00:00)
+0.4.0 (2023-07-16 06:42:54 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -770,7 +769,6 @@ END
 SYNOPSIS
 
   git-tify.bash [--working_directory=<working directory>]
-                [--repository-directory=<repository directory>]
                 [--empty-local-options]
                 [--local-option=<local-option>]
                 [--empty-global-options]
@@ -790,7 +788,6 @@ SYNOPSIS
 OPTIONS
 
   --working-directory         - set Git working directory
-  --repository-directory      - set Git repository directory
   --empty-local-options       - set Git local options  list to an empty list,
                                 use this before --local-option
   --local-option              - add  Git local  option to  Git local  options
@@ -831,10 +828,6 @@ END
 
   local working_directory='';
 
-  # The  Git  repository  directory.
-
-  local repository_directory='';
-
   # The Git local options.
 
   local -a local_options=();
@@ -871,7 +864,6 @@ END
   local short_options='';
   local long_options='';
   long_options+='working-directory:,';
-  long_options+='repository-directory:,';
   long_options+='empty-local-options,';
   long_options+='local-option:,';
   long_options+='empty-global-options,';
@@ -905,11 +897,6 @@ END
 
       '--working-directory' )
         working_directory="${option_argument}";
-        next_position="$(( "${next_position}" + 1 ))";
-        ;;
-
-      '--repository-directory' )
-        repository_directory="${option_argument}";
         next_position="$(( "${next_position}" + 1 ))";
         ;;
 
@@ -991,12 +978,6 @@ END
     echo "Info: variable 'working_directory' (${working_directory}) present.";
   else
     echo "Error: variable 'working_directory' not present.";
-    exit 1;
-  fi
-  if [[ -n "${repository_directory}" ]]; then
-    echo "Info: variable 'repository_directory' (${repository_directory}) present.";
-  else
-    echo "Error: variable 'repository_directory' not present.";
     exit 1;
   fi
   if (( 0 < "${#local_options[@]}" )); then

@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.5.0 (2023-07-16 07:11:30 +00:00:00) $
+## $Version: 0.6.0 (2023-07-16 07:35:21 +00:00:00) $
 ##
 ################################################################################
 
@@ -604,7 +604,7 @@ function main()
 
   local version="$( cat << 'END'
 gnu-tify.bash (RaSt git-gnu-project.bash)
-0.5.0 (2023-07-16 07:11:30 +00:00:00)
+0.6.0 (2023-07-16 07:35:21 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -981,7 +981,7 @@ END
   # Create the GNU standard readme files.
 
   echo "Info: creating readme files in '${working_directory}' ...";
-  createReadmeFiles "${readme_files[@]}";
+  createReadmeFiles "${legal_notice}" "${readme_files[@]}";
   echo '... done';
 
   # Create the project tree.

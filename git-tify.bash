@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.6.0 (2023-07-16 07:35:21 +00:00:00) $
+## $Version: 0.7.0 (2023-07-16 08:12:10 +00:00:00) $
 ##
 ################################################################################
 
@@ -677,11 +677,11 @@ function initialCommit()
 function createAnnotatedTag()
 {
   # The tag.
-  
+
   local tag="${1}";
-  
+
   # Create annotated tag.
-  
+
   git tag -a "${tag}" -m "${tag}";
 
   # Return from the function.
@@ -778,7 +778,7 @@ function main()
 
   local version="$( cat << 'END'
 git-tify.bash (RaSt git-gnu-project.bash)
-0.6.0 (2023-07-16 07:35:21 +00:00:00)
+0.7.0 (2023-07-16 08:12:10 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -847,6 +847,14 @@ General help using RaSt software:
   https://gitlab.com/RaStBh/
 END
 )";
+
+  # Name of the organisation.
+
+  local name_organisation='';
+
+  # Name of the package.
+
+  name_package='';
 
   # The Git working directory.
 
@@ -998,6 +1006,18 @@ END
 
   # See if the variables are set and not empty.
 
+  if [[ -n "${name_organisation}" ]]; then
+    echo "Info: variable 'name_organisation' (${name_organisation}) present.";
+  else
+    echo "Error: variable 'name_organisation' not present.";
+    exit 1;
+  fi
+  if [[ -n "${name_package}" ]]; then
+    echo "Info: variable 'name_package' (${name_package}) present.";
+  else
+    echo "Error: variable 'name_package' not present.";
+    exit 1;
+  fi
   if [[ -n "${working_directory}" ]]; then
     echo "Info: variable 'working_directory' (${working_directory}) present.";
   else
@@ -1087,13 +1107,13 @@ END
   echo "Info: commiting Git repository in '${working_directory}' ...";
   initialCommit;
   echo '... done';
-  
+
   # Create annotated tag.
 
   echo "Info: create annotated tag in '${working_directory}' ...";
   createAnnotatedTag '0.0.0';
   echo '... done';
-  
+
   ## Add Git configuration files.
   ## Add legal notice to Git configuration files.
   ## Commit Git configuration files.

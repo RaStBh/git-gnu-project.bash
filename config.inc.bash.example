@@ -27,9 +27,36 @@
 
 ################################################################################
 ##
-## $Version: 0.6.0 (2023-07-16 07:35:21 +00:00:00) $
+## $Version: 0.7.0 (2023-07-16 08:12:10 +00:00:00) $
 ##
 ################################################################################
+
+
+
+################################################################################
+##
+## Configuration for the Git repository  (git-tify.bash) and for the GNU project
+## (gnu-tify.bash).
+##
+################################################################################
+
+
+
+## Name of the organisation.
+##
+## Example:
+##
+##   name_organisation='JD';
+
+name_organisation='JD';
+
+## Name of the package.
+##
+## Example:
+##
+##   name_package='foobar';
+
+name_package='foobar';
 
 
 
@@ -51,7 +78,7 @@
 ##
 ##   working_directory='/home/john_dow/repositories/foobar/';
 
-working_directory='/home/john_dow/repositories/foobar/';
+working_directory="/home/john_dow/repositories/${name_package}/";
 
 ## The Git local options.
 ##
@@ -131,7 +158,7 @@ global_options=(
 remotes=(
   'github.com;git@github.com-JohnDow:JohnDow' \
   'gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
-  'example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+  "example.com;ssh://john_dow@example.com/home/john_dow/repositories/${name_package}/" \
 );
 
 ## Names of Git configuration files:
@@ -200,9 +227,9 @@ configuration_files=(
 ##   the copyright  notice and this  notice are  preserved.  This file  is offered
 ##   as-is, without any warranty.";
 
-legal_notice="## This file is part of JD foobar package.
+legal_notice="## This file is part of ${name_organisation} ${name_package} package.
 ##
-## JD foobar is ...
+## ${name_organisation} ${name_package} is ...
 ##
 ## Copyright (C)  2023  John Dow  <john_dow@example.com>
 ##
@@ -259,7 +286,7 @@ legal_notice="## This file is part of JD foobar package.
 ##
 ##   readme_files=();
 ##   readme_files[0]='AUTHORS';
-##   readme_files[1]='BACKLOG'
+##   readme_files[1]='BACKLOG';
 ##   readme_files[2]='BUGS';
 ##   readme_files[3]='CHANGELOG';
 ##   readme_files[4]='CONTRIBUTING';
@@ -362,11 +389,9 @@ type='pkg';
 ##   or
 ##
 ##   common_tree=( \
-##     '.gitkeep' \
 ##   );
 
 common_tree=( \
-  '.gitkeep' \
 );
 
 ## Package project tree - special directories  and files for program source code

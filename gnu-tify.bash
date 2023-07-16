@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.6.0 (2023-07-16 07:35:21 +00:00:00) $
+## $Version: 0.7.0 (2023-07-16 08:12:10 +00:00:00) $
 ##
 ################################################################################
 
@@ -448,7 +448,8 @@ function createReadmeFiles()
   for readme_file in "${readme_files[@]}"; do
     echo "
 ${legal_notice}" > "./${readme_file}";
-    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      if    [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]] \
+         && [[ -d './.git/' ]]; then
       git add "./${readme_file}";
       git commit --message="$( echo "Add file." | fold --spaces --width='50' )
 
@@ -479,14 +480,25 @@ function createProjectTree()
 
   local -a project_tree=( "${@}" );
 
+  # Directory to create.
+
+  local directory='';
+
   # Create the directories and files.
 
   local project_item='';
   for project_item in "${project_tree[@]}"; do
-    mkdir -p "$( dirname "./${project_item}" )";
+    directory="$( dirname "./${project_item} " )";
+    if [[ -d "${directory}" ]]; then
+      # do nothing
+      :;
+    else
+      mkdir -p "${directory}";
+    fi
     echo "
 ${legal_notice}" > "./${project_item}";
-    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+      if    [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]] \
+         && [[ -d './.git/' ]]; then
       git add "./${project_item}";
       git commit --message="$( echo "Add file." | fold --spaces --width='50' )
 
@@ -560,7 +572,8 @@ function copyLicenseFiles()
     # Copy the license files.
 
     cat "${value}" > "./${key}";
-    if [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]]; then
+    if    [[ 'true' == "$( git rev-parse --is-inside-work-tree 2> /dev/null )" ]] \
+       && [[ -d './.git/' ]]; then
       git add "./${key}";
       git commit --message="$( echo "Add file." | fold --spaces --width='50' )
 
@@ -604,7 +617,7 @@ function main()
 
   local version="$( cat << 'END'
 gnu-tify.bash (RaSt git-gnu-project.bash)
-0.6.0 (2023-07-16 07:35:21 +00:00:00)
+0.7.0 (2023-07-16 08:12:10 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -692,6 +705,14 @@ General help using RaSt software:
 END
 ";
 
+  # Name of the organisation.
+
+  local name_organisation='';
+
+  # Name of the package.
+
+  name_package='';
+
   # The Git working directory.
 
   local working_directory='';
@@ -731,6 +752,17 @@ END
   # Files containing licenses texts.
 
   local -a license_files=();
+
+  # Get the variables from the configuration file if the file it is present.
+
+  if [[ -f './config.inc.bash' ]]; then
+    echo "Info: configuration file './config.inc.bash' present.";
+    echo "Info: loading configuraton file './config.inc.bash'.";
+    source './config.inc.bash';
+  else
+    echo "Info: configuration file './config.inc.bash' not present.";
+    echo "Info: not loading configuration file './config.inc.bash'.";
+  fi
 
   # Get the command line arguments.
 
@@ -887,19 +919,20 @@ END
     current_position="${next_position}";
   done
 
-  # Get the variables from the configuration file if the file it is present.
-
-  if [[ -f './config.inc.bash' ]]; then
-    echo "Info: configuration file './config.inc.bash' present.";
-    echo "Info: loading configuraton file './config.inc.bash'.";
-    source './config.inc.bash';
-  else
-    echo "Info: configuration file './config.inc.bash' not present.";
-    echo "Info: not loading configuration file './config.inc.bash'.";
-  fi
-
   # See if the variables are set and not empty.
 
+  if [[ -n "${name_organisation}" ]]; then
+    echo "Info: variable 'name_organisation' (${name_organisation}) present.";
+  else
+    echo "Error: variable 'name_organisation' not present.";
+    exit 1;
+  fi
+  if [[ -n "${name_package}" ]]; then
+    echo "Info: variable 'name_package' (${name_package}) present.";
+  else
+    echo "Error: variable 'name_package' not present.";
+    exit 1;
+  fi
   if [[ -n "${working_directory}" ]]; then
     echo "Info: variable 'working_directory' (${working_directory}) present.";
   else

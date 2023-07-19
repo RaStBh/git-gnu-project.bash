@@ -1,19 +1,19 @@
 
 ################################################################################
 ##
-## This file is part of the RaSt git-gnu-project.bash package.
+## This file is part of the RaSt git-gnu-project.sh package.
 ##
-## RaSt git-gnu-project.bash is to  manage a directory as a Git  and a GNU style
-## project using Bash.
+## RaSt git-gnu-project.sh - for managing a  directory as a Git repository and a
+## GNU project using Bash.
 ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
-## RaSt git-gnu-project.bash  is free software:  you can redistribute  it and/or
+## RaSt  git-gnu-project.sh is  free software:  you can  redistribute it  and/or
 ## modify it under the  terms of the GNU General Public  License as published by
 ## the Free  Software Foundation, either version  3 of the License,  or (at your
 ## option) any later version.
 ##
-## RaSt git-gnu-project.bash is distributed in the  hope that it will be useful,
+## RaSt git-gnu-project.sh  is distributed in the  hope that it will  be useful,
 ## but   WITHOUT  ANY   WARRANTY;   without  even   the   implied  warranty   of
 ## MERCHANTABILITY or  FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General
 ## Public License for more details.
@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.7.0 (2023-07-16 08:12:10 +00:00:00) $
+## $Version: 0.8.0 (2023-07-19 08:54:48 +00:00:00) $
 ##
 ################################################################################
 
@@ -35,8 +35,8 @@
 
 ################################################################################
 ##
-## Configuration for the Git repository  (git-tify.bash) and for the GNU project
-## (gnu-tify.bash).
+## Configuration for  the Git repository  (git-tify.sh) and for the  GNU project
+## (gnu-tify.sh).
 ##
 ################################################################################
 
@@ -58,11 +58,66 @@ name_organisation='JD';
 
 name_package='foobar';
 
+## Package description.
+##
+## Example:
+##
+##   description_package="is for making foobar";
+
+description_package="is for making foobar";
+
+## Copyright information.
+##
+## Example:
+##
+##   copyright_years='2023';
+##   copyright_owners='John Dow';
+##   copyright_contacts='<john_dow@example.com>';
+
+copyright_years='2023';
+copyright_owners='John Dow';
+copyright_contacts='<john_dow@example.com>';
+
+## Legal notice to insert in each Git configuration file and GNU standard readme
+## file.
+##
+## Example:
+##
+##   legal_notice="################################################################################
+##   ##
+##   ## This file is part of the ${name_organisation} ${name_package} package.
+##   ##
+##   ## ${name_organisation} ${name_package} - ${description_package}.
+##   ##
+##   ## Copyright (C)  ${copyright_years}  ${copyright_owners}  ${copyright_contacts}
+##   ##
+##   ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+##   ## without modification,  are permitted in  any medium without  royalty provided
+##   ## the copyright  notice and this  notice are  preserved.  This file  is offered
+##   ## as-is, without any warranty.
+##   ##
+##   ################################################################################";
+
+legal_notice="################################################################################
+##
+## This file is part of the ${name_organisation} ${name_package} package.
+##
+## ${name_organisation} ${name_package} - ${description_package}.
+##
+## Copyright (C)  ${copyright_years}  ${copyright_owners}  ${copyright_contacts}
+##
+## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+## without modification,  are permitted in  any medium without  royalty provided
+## the copyright  notice and this  notice are  preserved.  This file  is offered
+## as-is, without any warranty.
+##
+################################################################################";
+
 
 
 ################################################################################
 ##
-## Configuration for the Git repository (git-tify.bash).
+## Configuration for the Git repository (git-tify.sh).
 ##
 ################################################################################
 
@@ -205,38 +260,11 @@ configuration_files=(
 
 ################################################################################
 ##
-## Configuration for the GNU project (gnu-tify.bash).
+## Configuration for the GNU project (gnu-tify.sh).
 ##
 ################################################################################
 
 
-
-## Legal notice to insert in each Git configuration file and GNU standard readme
-## file.
-##
-## Example:
-##
-##   legal_notice="This file is part of JD foobar package.
-##
-##   JD foobar is ...
-##
-##   Copyright (C)  2023  John Dow  <john_dow@example.com>
-##
-##   GNU All-Permissive  License: Copying and  distribution of this file,  with or
-##   without modification,  are permitted in  any medium without  royalty provided
-##   the copyright  notice and this  notice are  preserved.  This file  is offered
-##   as-is, without any warranty.";
-
-legal_notice="## This file is part of ${name_organisation} ${name_package} package.
-##
-## ${name_organisation} ${name_package} is ...
-##
-## Copyright (C)  2023  John Dow  <john_dow@example.com>
-##
-## GNU All-Permissive  License: Copying and  distribution of this file,  with or
-## without modification,  are permitted in  any medium without  royalty provided
-## the copyright  notice and this  notice are  preserved.  This file  is offered
-## as-is, without any warranty.";
 
 ## Names of GNU standard readme files:
 ##

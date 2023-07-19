@@ -1,3 +1,29 @@
 
+################################################################################
+##
+## This file is part of the RaSt git-gnu-project.sh package.
+##
+## RaSt git-gnu-project.sh - for managing a  directory as a Git repository and a
+## GNU project using Bash.
+##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
+##
+## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+## without modification,  are permitted in  any medium without  royalty provided
+## the copyright  notice and this  notice are  preserved.  This file  is offered
+## as-is, without any warranty.
+##
+################################################################################
+
+
+
+################################################################################
+##
+## $Version: 0.8.0 (2023-07-19 08:54:48 +00:00:00) $
+##
+################################################################################
+
+
+
 nppBackup/
-/config.inc.bash
+/config.inc.sh

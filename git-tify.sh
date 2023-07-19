@@ -1,19 +1,19 @@
 #! /usr/bin/env -S bash -e
 ################################################################################
 ##
-## This file is part of the RaSt git-gnu-project.bash package.
+## This file is part of the RaSt git-gnu-project.sh package.
 ##
-## RaSt git-gnu-project.bash is to  manage a directory as a Git  and a GNU style
-## project using Bash.
+## RaSt git-gnu-project.sh - for managing a  directory as a Git repository and a
+## GNU project using Bash.
 ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
-## RaSt git-gnu-project.bash  is free software:  you can redistribute  it and/or
+## RaSt  git-gnu-project.sh is  free software:  you can  redistribute it  and/or
 ## modify it under the  terms of the GNU General Public  License as published by
 ## the Free  Software Foundation, either version  3 of the License,  or (at your
 ## option) any later version.
 ##
-## RaSt git-gnu-project.bash is distributed in the  hope that it will be useful,
+## RaSt git-gnu-project.sh  is distributed in the  hope that it will  be useful,
 ## but   WITHOUT  ANY   WARRANTY;   without  even   the   implied  warranty   of
 ## MERCHANTABILITY or  FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General
 ## Public License for more details.
@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.7.0 (2023-07-16 08:12:10 +00:00:00) $
+## $Version: 0.8.0 (2023-07-19 08:54:48 +00:00:00) $
 ##
 ################################################################################
 
@@ -35,31 +35,30 @@
 
 ################################################################################
 ##
-## GIT-TIFY.BASH - 1 - 2023-06-12 - RaSt - RaSt git-gnu-project.bash Manual
+## GIT-TIFY.SH - 1 - 2023-07-19 - RaSt - RaSt git-gnu-project.sh Manual
 ##
 ## NAME
 ##
-##   git-tify.bash - manage directory as Git style project
+##   git-tify.sh - for managing a directory as a Git repository
 ##
 ## SYNOPSIS
 ##
-##   git-tify.bash [--working-directory=<working directory>]
-##                 [--empty-local-options]
-##                 [--local-option=<local-option>]
-##                 [--empty-global-options]
-##                 [--global-option=<global option>]
-##                 [--empty-remotes]
-##                 [--remote=<remote>]
-##                 [--legal-notice=<legal notice>]
-##                 [--empty-configuration-files]
-##                 [--configuration-file=<configuration file>]
-##                 [--help]
-##                 [--version]
+##   git-tify.sh [--working-directory=<working directory>]
+##               [--empty-local-options]
+##               [--local-option=<local-option>]
+##               [--empty-global-options]
+##               [--global-option=<global option>]
+##               [--empty-remotes]
+##               [--remote=<remote>]
+##               [--legal-notice=<legal notice>]
+##               [--empty-configuration-files]
+##               [--configuration-file=<configuration file>]
+##               [--help]
+##               [--version]
 ##
 ## DESCRIPTION
 ##
-##   RaSt git-tify.bash is  a Bash script to  manage a directory as  a Git style
-##   project.
+##   RaSt git-tify.sh is for managing a directory as a Git repository.
 ##
 ##   The directory then  is a Git working directory containing  a Git repository
 ##   directory.
@@ -120,9 +119,9 @@
 ##
 ## FILES
 ##
-##   git-tify.bash           - this script
-##   config.inc.bash         - configuration file
-##   config.inc.bash.example - example configuration file
+##   git-tify.sh           - this script
+##   config.inc.sh         - configuration file
+##   config.inc.sh.example - example configuration file
 ##
 ## EXIT STATUS
 ##
@@ -131,41 +130,45 @@
 ##
 ## EXAMPLES
 ##
-##   git-tify.bash --working-directory='/home/john_dow/repositories/foobar/' \
-##                 --empty-local-options \
-##                 --local-option='user.name;John Dow' \
-##                 --local-option='user.email;john_dow@example.com' \
-##                 --local-option='merge.ff;false' \
-##                 --local-option='pull.ff;false' \
-##                 --empty-global-options \
-##                 --global-option='user.name;John Dow' \
-##                 --global-option='user.email;john_dow@example.com' \
-##                 --global-option='merge.ff;false' \
-##                 --global-option='pull.ff;false' \
-##                 --empty-remotes \
-##                 --remote='github.com;git@github.com-JohnDow:JohnDow' \
-##                 --remote='gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
-##                 --remote='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
-##                 --legal-notice="## This file is part of JD foobar package.
-##                 ##
-##                 ## JD foobar is ...
-##                 ##
-##                 ## Copyright (C)  2023  John Dow  <john_dow@example.com>
-##                 ##
-##                 ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
-##                 ## without modification,  are permitted in  any medium without  royalty provided
-##                 ## the copyright  notice and this  notice are  preserved.  This file  is offered
-##                 ## as-is, without any warranty." \
-##                 --empty-configuration-files \
-##                 --configuration-file='.gitattributes' \
-##                 --configuration-file='.gitignore' \
-##                 --configuration-file='.gitkeep' \
-##                 --configuration-file='.gitmodules' \
-##                 --configuration-file='.mailmap'
+##   git-tify.sh --working-directory='/home/john_dow/repositories/foobar/' \
+##               --empty-local-options \
+##               --local-option='user.name;John Dow' \
+##               --local-option='user.email;john_dow@example.com' \
+##               --local-option='merge.ff;false' \
+##               --local-option='pull.ff;false' \
+##               --empty-global-options \
+##               --global-option='user.name;John Dow' \
+##               --global-option='user.email;john_dow@example.com' \
+##               --global-option='merge.ff;false' \
+##               --global-option='pull.ff;false' \
+##               --empty-remotes \
+##               --remote='github.com;git@github.com-JohnDow:JohnDow' \
+##               --remote='gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
+##               --remote='example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
+##               --legal-notice="################################################################################
+##               ##
+##               ## This file is part of the JD foobar package.
+##               ##
+##               ## JD foobar is for making foobar.
+##               ##
+##               ## Copyright (C)  2023  John Dow  <john_dow@example.com>
+##               ##
+##               ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+##               ## without modification,  are permitted in  any medium without  royalty provided
+##               ## the copyright  notice and this  notice are  preserved.  This file  is offered
+##               ## as-is, without any warranty.
+##               ##
+##               ################################################################################" \
+##               --empty-configuration-files \
+##               --configuration-file='.gitattributes' \
+##               --configuration-file='.gitignore' \
+##               --configuration-file='.gitkeep' \
+##               --configuration-file='.gitmodules' \
+##               --configuration-file='.mailmap'
 ##
-##   git-tify.bash --help
+##   git-tify.sh --help
 ##
-##   git-tify.bash --version
+##   git-tify.sh --version
 ##
 ## DIAGNOSTICS
 ##
@@ -254,8 +257,7 @@ function testDirectory()
     echo "Error: no such directory '${dirname}'.";
     exit 1;
   fi
-  cd "${dirname}";
-  if [[ -d "./${basename}" ]]; then
+  if [[ -d "${dirname}/${basename}" ]]; then
     echo "Error: directory '${dirname}/${basename}/' does exist.";
     exit 1;
   else
@@ -777,8 +779,8 @@ function main()
   # The Version of this script.
 
   local version="$( cat << 'END'
-git-tify.bash (RaSt git-gnu-project.bash)
-0.7.0 (2023-07-16 08:12:10 +00:00:00)
+git-tify.sh (RaSt git-gnu-project.sh)
+0.8.0 (2023-07-19 08:54:48 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -792,22 +794,22 @@ END
   local usage="$( cat << 'END'
 SYNOPSIS
 
-  git-tify.bash [--working_directory=<working directory>]
-                [--empty-local-options]
-                [--local-option=<local-option>]
-                [--empty-global-options]
-                [--global-option=<global option>]
-                [--empty-remotes]
-                [--remote=<remote>]
-                [--legal-notice=<legal notice>]
-                [--empty-configuration-files]
-                [--configuration-file=<configuration file>]
-                [--help]
-                [--version]
+  git-tify.sh [--working_directory=<working directory>]
+              [--empty-local-options]
+              [--local-option=<local-option>]
+              [--empty-global-options]
+              [--global-option=<global option>]
+              [--empty-remotes]
+              [--remote=<remote>]
+              [--legal-notice=<legal notice>]
+              [--empty-configuration-files]
+              [--configuration-file=<configuration file>]
+              [--help]
+              [--version]
 
-  git-tify.bash --help
+  git-tify.sh --help
 
-  git-tify.bash --version
+  git-tify.sh --version
 
 OPTIONS
 
@@ -854,7 +856,21 @@ END
 
   # Name of the package.
 
-  name_package='';
+  local name_package='';
+
+  # Package description.
+
+  local description_package='';
+
+  # Copyright information.
+
+  local copyright_years='';
+  local copyright_owners='';
+  local copyright_contacts='';
+
+  # The Legal notice.
+
+  local legal_notice='';
 
   # The Git working directory.
 
@@ -872,23 +888,51 @@ END
 
   local -a remotes=();
 
-  # The Legal notice.
-
-  local legal_notice='';
-
   # The Git configuration files.
 
   local -a configuration_files=();
 
+  # GNU standard readme files.
+
+  local -a readme_files=();
+
+  # The package type.
+
+  local type='';
+
+  # Package project tree - common files and directories.
+
+  local -a common_tree=();
+
+  # Package project tree - files and directories for program projects.
+
+  local -a pogram_tree=();
+
+  # Package project tree - files and directories for library projects.
+
+  local -a library_tree=();
+
+  # Package project tree - files and directories for document projects.
+
+  local -a document_tree=();
+
+  # Package project tree - files and directories for package projects.
+
+  local -a package_tree=();
+
+  # Files containing licenses texts.
+
+  local -a license_files=();
+
   # Get the variables from the configuration file if the file it is present.
 
-  if [[ -f './config.inc.bash' ]]; then
-    echo "Info: configuration file './config.inc.bash' present.";
-    echo "Info: loading configuraton file './config.inc.bash'.";
-    source './config.inc.bash';
+  if [[ -f './config.inc.sh' ]]; then
+    echo "Info: configuration file './config.inc.sh' present.";
+    echo "Info: loading configuraton file './config.inc.sh'.";
+    source './config.inc.sh';
   else
-    echo "Info: configuration file './config.inc.bash' not present.";
-    echo "Info: not loading configuraton file './config.inc.bash'.";
+    echo "Info: configuration file './config.inc.sh' not present.";
+    echo "Info: not loading configuration file './config.inc.sh'.";
   fi
 
   # Get the command line arguments.
@@ -1018,6 +1062,36 @@ END
     echo "Error: variable 'name_package' not present.";
     exit 1;
   fi
+  if [[ -n "${description_package}" ]]; then
+    echo "Info: variable 'description_package' (${description_package}) present.";
+  else
+    echo "Error: variable 'description_package' not present.";
+    exit 1;
+  fi
+  if [[ -n "${copyright_years}" ]]; then
+    echo "Info: variable 'copyright_years' (${copyright_years}) present.";
+  else
+    echo "Error: variable 'copyright_years' not present.";
+    exit 1;
+  fi
+  if [[ -n "${copyright_owners}" ]]; then
+    echo "Info: variable 'copyright_owners' (${copyright_owners}) present.";
+  else
+    echo "Error: variable 'copyright_owners' not present.";
+    exit 1;
+  fi
+  if [[ -n "${copyright_contacts}" ]]; then
+    echo "Info: variable 'copyright_contacts' (${copyright_contacts}) present.";
+  else
+    echo "Error: variable 'copyright_contacts' not present.";
+    exit 1;
+  fi
+  if [[ -n "${legal_notice}" ]]; then
+    echo "Info: variable 'legal_notice' (${legal_notice}) present.";
+  else
+    echo "Error: variable 'legal_notice' not present.";
+    exit 1;
+  fi
   if [[ -n "${working_directory}" ]]; then
     echo "Info: variable 'working_directory' (${working_directory}) present.";
   else
@@ -1042,16 +1116,58 @@ END
     echo "Error: variable 'remotes' not present.";
     exit 1;
   fi
-  if [[ -n "${legal_notice}" ]]; then
-    echo "Info: variable 'legal_notice' (${legal_notice}) present.";
-  else
-    echo "Error: variable 'legal_notice' not present.";
-    exit 1;
-  fi
   if (( 0 < "${#configuration_files[@]}" )); then
     echo "Info: variable 'configuration_files' (${#configuration_files[@]}) (${configuration_files[@]}) present.";
   else
     echo "Error: variable 'configuration_files' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#readme_files[@]}" )); then
+    echo "Info: variable 'readme_files' (${#readme_files[@]}) (${readme_files[@]}) present.";
+  else
+    echo "Error: variable 'readme_files' not present.";
+    exit 1;
+  fi
+  if [[ -n "${type}" ]]; then
+    echo "Info: variable 'type' (${type}) present.";
+  else
+    echo "Error: variable 'type' not present.";
+    exit 1;
+  fi
+  if (( 0 <= "${#common_tree[@]}" )); then
+    echo "Info: variable 'common_tree' (${#common_tree[@]}) (${common_tree[@]}) present.";
+  else
+    echo "Error: variable 'common_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#pogram_tree[@]}" )); then
+    echo "Info: variable 'pogram_tree' (${#pogram_tree[@]}) (${pogram_tree[@]}) present.";
+  else
+    echo "Error: variable 'pogram_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#library_tree[@]}" )); then
+    echo "Info: variable 'library_tree' (${#library_tree[@]}) (${library_tree[@]}) present.";
+  else
+    echo "Error: variable 'library_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#document_tree[@]}" )); then
+    echo "Info: variable 'document_tree' (${#document_tree[@]}) (${document_tree[@]}) present.";
+  else
+    echo "Error: variable 'document_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#package_tree[@]}" )); then
+    echo "Info: variable 'package_tree' (${#package_tree[@]}) (${package_tree[@]}) present.";
+  else
+    echo "Error: variable 'package_tree' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#license_files[@]}" )); then
+    echo "Info: variable 'license_files' (${#license_files[@]}) (${license_files[@]}) present.";
+  else
+    echo "Error: variable 'license_files' not present.";
     exit 1;
   fi
 

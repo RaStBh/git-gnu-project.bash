@@ -1,19 +1,19 @@
 #! /usr/bin/env -S bash -e
 ################################################################################
 ##
-## This file is part of the RaSt git-gnu-project.bash package.
+## This file is part of the RaSt git-gnu-project.sh package.
 ##
-## RaSt git-gnu-project.bash is to  manage a directory as a Git  and a GNU style
-## project using Bash.
+## RaSt git-gnu-project.sh - for managing a  directory as a Git repository and a
+## GNU project using Bash.
 ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 ##
-## RaSt git-gnu-project.bash  is free software:  you can redistribute  it and/or
+## RaSt  git-gnu-project.sh is  free software:  you can  redistribute it  and/or
 ## modify it under the  terms of the GNU General Public  License as published by
 ## the Free  Software Foundation, either version  3 of the License,  or (at your
 ## option) any later version.
 ##
-## RaSt git-gnu-project.bash is distributed in the  hope that it will be useful,
+## RaSt git-gnu-project.sh  is distributed in the  hope that it will  be useful,
 ## but   WITHOUT  ANY   WARRANTY;   without  even   the   implied  warranty   of
 ## MERCHANTABILITY or  FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General
 ## Public License for more details.
@@ -27,7 +27,7 @@
 
 ################################################################################
 ##
-## $Version: 0.7.0 (2023-07-16 08:12:10 +00:00:00) $
+## $Version: 0.8.0 (2023-07-19 08:54:48 +00:00:00) $
 ##
 ################################################################################
 
@@ -35,40 +35,39 @@
 
 ################################################################################
 ##
-## GNU-TIFY.BASH - 1 - 2023-06-12 - RaSt - RaSt git-gnu-project.bash Manual
+## GNU-TIFY.SH - 1 - 2023-07-19 - RaSt - RaSt git-gnu-project.sh Manual
 ##
 ## NAME
 ##
-##   gnu-tify.bash - manage directory as GNU style project
+##   gnu-tify.sh - for managing a directory as a GNU project
 ##
 ## SYNOPSIS
 ##
-##   gnu-tify.bash [--working-directory=<working directory>]
-##                 [--empty-readme-files]
-##                 [--readme-file=<readme file>]
-##                 [--type=<type>]
-##                 [--empty-common-tree]
-##                 [--common-tree=<common tree item>]
-##                 [--empty-program-tree]
-##                 [--program-tree=<program tree item>]
-##                 [--empty-library-tree]
-##                 [--library-tree=<library tree item>]
-##                 [--empty-document-tree]
-##                 [--document-tree=<document tree item>]
-##                 [--empty-package-tree]
-##                 [--package-tree=<package tree item>]
-##                 [--legal-notice=<legal notice>]
-##                 [--empty-license-file]
-##                 [--license-file=<license file>]
-##                 [--help]
-##                 [--version]
+##   gnu-tify.sh [--working-directory=<working directory>]
+##               [--empty-readme-files]
+##               [--readme-file=<readme file>]
+##               [--type=<type>]
+##               [--empty-common-tree]
+##               [--common-tree=<common tree item>]
+##               [--empty-program-tree]
+##               [--program-tree=<program tree item>]
+##               [--empty-library-tree]
+##               [--library-tree=<library tree item>]
+##               [--empty-document-tree]
+##               [--document-tree=<document tree item>]
+##               [--empty-package-tree]
+##               [--package-tree=<package tree item>]
+##               [--legal-notice=<legal notice>]
+##               [--empty-license-file]
+##               [--license-file=<license file>]
+##               [--help]
+##               [--version]
 ##
 ## DESCRIPTION
 ##
-##   RaSt gnu-tify.bash is  a Bash script to  manage a directory as  a GNU style
-##   project.
+##   RaSt gnu-tify.sh is for managing a directory as a GNU project.
 ##
-##   The directory then contains a GNU  style project tree for program, library,
+##   The  directory then  contains  a  GNU project  tree  for program,  library,
 ##   documentation or package projects.
 ##
 ##   The  Git working  directory  is  for example  </home/john_dow/repositories/
@@ -138,9 +137,9 @@
 ##
 ## FILES
 ##
-##   gnu-tify.bash           - this script
-##   config.inc.bash         - configuration file
-##   config.inc.bash.example - example configuration file
+##   gnu-tify.sh           - this script
+##   config.inc.sh         - configuration file
+##   config.inc.sh.example - example configuration file
 ##
 ## EXIT STATUS
 ##
@@ -149,114 +148,118 @@
 ##
 ## EXAMPLES
 ##
-##   gnu-tify.bash --working-directory='/home/john_dow/repositories/foobar/' \
-##                 --empty-readme-files \
-##                 --readme-file='AUTHORS' \
-##                 --readme-file='BACKLOG' \
-##                 --readme-file='BUGS' \
-##                 --readme-file='CHANGELOG' \
-##                 --readme-file='CONTRIBUTING' \
-##                 --readme-file='COPYING' \
-##                 --readme-file='FAQ' \
-##                 --readme-file='HACKING' \
-##                 --readme-file='INSTALL' \
-##                 --readme-file='NEWS' \
-##                 --readme-file='README' \
-##                 --readme-file='THANKS' \
-##                 --readme-file='TODO' \
-##                 --type='pkg' \
-##                 --empty-common-tree \
-##                 --common-tree='.gitkeep' \
-##                 --empty-program-tree \
-##                 --program-tree='Makefile.am' \
-##                 --program-tree='build/.gitkeep' \
-##                 --program-tree='configure.ac' \
-##                 --program-tree='data/.gitkeep' \
-##                 --program-tree='docs/.gitkeep' \
-##                 --program-tree='examples/.gitkeep' \
-##                 --program-tree='external/.gitkeep' \
-##                 --program-tree='extras/.gitkeep' \
-##                 --program-tree='include/.gitkeep' \
-##                 --program-tree='libs/.gitkeep' \
-##                 --program-tree='src/.gitkeep' \
-##                 --program-tree='src/Makefile.am' \
-##                 --program-tree='src/main.c' \
-##                 --program-tree='src/main.h' \
-##                 --program-tree='tests/.gitkeep' \
-##                 --program-tree='tools/.gitkeep' \
-##                 --empty-library-tree \
-##                 --library-tree='Makefile.am' \
-##                 --library-tree='build/.gitkeep' \
-##                 --library-tree='configure.ac' \
-##                 --library-tree='data/.gitkeep' \
-##                 --library-tree='docs/.gitkeep' \
-##                 --library-tree='examples/.gitkeep' \
-##                 --library-tree='external/.gitkeep' \
-##                 --library-tree='extras/.gitkeep' \
-##                 --library-tree='include/.gitkeep' \
-##                 --library-tree='libs/.gitkeep' \
-##                 --library-tree='src/.gitkeep' \
-##                 --library-tree='src/Makefile.am' \
-##                 --library-tree='src/libmain.c' \
-##                 --library-tree='src/libmain.h' \
-##                 --library-tree='tests/.gitkeep' \
-##                 --library-tree='tools/.gitkeep' \
-##                 --empty-document-tree \
-##                 --document-tree='Makefile.am' \
-##                 --document-tree='build/.gitkeep' \
-##                 --document-tree='configure.ac' \
-##                 --document-tree='data/.gitkeep' \
-##                 --document-tree='doc/Makefile.am' \
-##                 --document-tree='doc/main.ltx' \
-##                 --document-tree='docs/.gitkeep' \
-##                 --document-tree='examples/.gitkeep' \
-##                 --document-tree='external/.gitkeep' \
-##                 --document-tree='extras/.gitkeep' \
-##                 --document-tree='include/.gitkeep' \
-##                 --document-tree='libs/.gitkeep' \
-##                 --document-tree='src/.gitkeep' \
-##                 --document-tree='tests/.gitkeep' \
-##                 --document-tree='tools/.gitkeep' \
-##                 --empty-package-tree \
-##                 --package-tree='Makefile.am' \
-##                 --package-tree='build/.gitkeep' \
-##                 --package-tree='configure.ac' \
-##                 --package-tree='data/.gitkeep' \
-##                 --package-tree='doc/Makefile.am' \
-##                 --package-tree='doc/main.ltx' \
-##                 --package-tree='docs/.gitkeep' \
-##                 --package-tree='examples/.gitkeep' \
-##                 --package-tree='external/.gitkeep' \
-##                 --package-tree='extras/.gitkeep' \
-##                 --package-tree='include/.gitkeep' \
-##                 --package-tree='libs/.gitkeep' \
-##                 --package-tree='src/.gitkeep' \
-##                 --package-tree='src/Makefile.am' \
-##                 --package-tree='src/libmain.c' \
-##                 --package-tree='src/libmain.h' \
-##                 --package-tree='src/main.c' \
-##                 --package-tree='src/main.h' \
-##                 --package-tree='tests/.gitkeep' \
-##                 --package-tree='tools/.gitkeep' \
-##                 --legal-notice=="## This file is part of JD foobar package.
-##                 ##
-##                 ## JD foobar is ...
-##                 ##
-##                 ## Copyright (C)  2023  John Dow  <john_dow@example.com>
-##                 ##
-##                 ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
-##                 ## without modification,  are permitted in  any medium without  royalty provided
-##                 ## the copyright  notice and this  notice are  preserved.  This file  is offered
-##                 ## as-is, without any warranty." \
+##   gnu-tify.sh --working-directory='/home/john_dow/repositories/foobar/' \
+##               --empty-readme-files \
+##               --readme-file='AUTHORS' \
+##               --readme-file='BACKLOG' \
+##               --readme-file='BUGS' \
+##               --readme-file='CHANGELOG' \
+##               --readme-file='CONTRIBUTING' \
+##               --readme-file='COPYING' \
+##               --readme-file='FAQ' \
+##               --readme-file='HACKING' \
+##               --readme-file='INSTALL' \
+##               --readme-file='NEWS' \
+##               --readme-file='README' \
+##               --readme-file='THANKS' \
+##               --readme-file='TODO' \
+##               --type='pkg' \
+##               --empty-common-tree \
+##               --common-tree='.gitkeep' \
+##               --empty-program-tree \
+##               --program-tree='Makefile.am' \
+##               --program-tree='build/.gitkeep' \
+##               --program-tree='configure.ac' \
+##               --program-tree='data/.gitkeep' \
+##               --program-tree='docs/.gitkeep' \
+##               --program-tree='examples/.gitkeep' \
+##               --program-tree='external/.gitkeep' \
+##               --program-tree='extras/.gitkeep' \
+##               --program-tree='include/.gitkeep' \
+##               --program-tree='libs/.gitkeep' \
+##               --program-tree='src/.gitkeep' \
+##               --program-tree='src/Makefile.am' \
+##               --program-tree='src/main.c' \
+##               --program-tree='src/main.h' \
+##               --program-tree='tests/.gitkeep' \
+##               --program-tree='tools/.gitkeep' \
+##               --empty-library-tree \
+##               --library-tree='Makefile.am' \
+##               --library-tree='build/.gitkeep' \
+##               --library-tree='configure.ac' \
+##               --library-tree='data/.gitkeep' \
+##               --library-tree='docs/.gitkeep' \
+##               --library-tree='examples/.gitkeep' \
+##               --library-tree='external/.gitkeep' \
+##               --library-tree='extras/.gitkeep' \
+##               --library-tree='include/.gitkeep' \
+##               --library-tree='libs/.gitkeep' \
+##               --library-tree='src/.gitkeep' \
+##               --library-tree='src/Makefile.am' \
+##               --library-tree='src/libmain.c' \
+##               --library-tree='src/libmain.h' \
+##               --library-tree='tests/.gitkeep' \
+##               --library-tree='tools/.gitkeep' \
+##               --empty-document-tree \
+##               --document-tree='Makefile.am' \
+##               --document-tree='build/.gitkeep' \
+##               --document-tree='configure.ac' \
+##               --document-tree='data/.gitkeep' \
+##               --document-tree='doc/Makefile.am' \
+##               --document-tree='doc/main.ltx' \
+##               --document-tree='docs/.gitkeep' \
+##               --document-tree='examples/.gitkeep' \
+##               --document-tree='external/.gitkeep' \
+##               --document-tree='extras/.gitkeep' \
+##               --document-tree='include/.gitkeep' \
+##               --document-tree='libs/.gitkeep' \
+##               --document-tree='src/.gitkeep' \
+##               --document-tree='tests/.gitkeep' \
+##               --document-tree='tools/.gitkeep' \
+##               --empty-package-tree \
+##               --package-tree='Makefile.am' \
+##               --package-tree='build/.gitkeep' \
+##               --package-tree='configure.ac' \
+##               --package-tree='data/.gitkeep' \
+##               --package-tree='doc/Makefile.am' \
+##               --package-tree='doc/main.ltx' \
+##               --package-tree='docs/.gitkeep' \
+##               --package-tree='examples/.gitkeep' \
+##               --package-tree='external/.gitkeep' \
+##               --package-tree='extras/.gitkeep' \
+##               --package-tree='include/.gitkeep' \
+##               --package-tree='libs/.gitkeep' \
+##               --package-tree='src/.gitkeep' \
+##               --package-tree='src/Makefile.am' \
+##               --package-tree='src/libmain.c' \
+##               --package-tree='src/libmain.h' \
+##               --package-tree='src/main.c' \
+##               --package-tree='src/main.h' \
+##               --package-tree='tests/.gitkeep' \
+##               --package-tree='tools/.gitkeep' \
+##               --legal-notice=="################################################################################
+##               ##
+##               ## This file is part of the JD foobar package.
+##               ##
+##               ## JD foobar is for making foobar.
+##               ##
+##               ## Copyright (C)  2023  John Dow  <john_dow@example.com>
+##               ##
+##               ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
+##               ## without modification,  are permitted in  any medium without  royalty provided
+##               ## the copyright  notice and this  notice are  preserved.  This file  is offered
+##               ## as-is, without any warranty.
+##               ##
+##               ################################################################################" \
 ##                --empty-license-file \
 ##                --license-file='COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
 ##                --license-file='COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
 ##                --license-file='COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \
 ##                --license-file='COPYING;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt'
 ##
-##   gnu-tify.bash --help
+##   gnu-tify.sh --help
 ##
-##   gnu-tify.bash --version
+##   gnu-tify.sh --version
 ##
 ## DIAGNOSTICS
 ##
@@ -345,8 +348,7 @@ function testDirectory()
     echo "Error: no such directory '${dirname}'.";
     exit 1;
   fi
-  cd "${dirname}";
-  if [[ -d "./${basename}" ]]; then
+  if [[ -d "${dirname}/${basename}" ]]; then
     # do nothing
     :;
   else
@@ -616,8 +618,8 @@ function main()
   # The Version of this script.
 
   local version="$( cat << 'END'
-gnu-tify.bash (RaSt git-gnu-project.bash)
-0.7.0 (2023-07-16 08:12:10 +00:00:00)
+gnu-tify.sh (RaSt git-gnu-project.sh)
+0.8.0 (2023-07-19 08:54:48 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)
@@ -628,28 +630,28 @@ END
 
   # The usage of the script
 
-  local usage=" cat << 'END'
+  local usage="$( cat << 'END'
 SYNOPSIS
 
-  gnu-tify.bash [--working-directory=<working directory>]
-                [--empty-readme-files]
-                [--readme-file=<readme file>]
-                [--type=<type>]
-                [--empty-common-tree]
-                [--common-tree=<common tree item>]
-                [--empty-program-tree]
-                [--program-tree=<program tree item>]
-                [--empty-library-tree]
-                [--library-tree=<library tree item>]
-                [--empty-document-tree]
-                [--document-tree=<document tree item>]
-                [--empty-package-tree]
-                [--package-tree=<package tree item>]
-                [--legal-notice=<legal notice>]
-                [--empty-license-file]
-                [--license-file=<license file>]
-                [--help]
-                [--version]
+  gnu-tify.sh [--working-directory=<working directory>]
+              [--empty-readme-files]
+              [--readme-file=<readme file>]
+              [--type=<type>]
+              [--empty-common-tree]
+              [--common-tree=<common tree item>]
+              [--empty-program-tree]
+              [--program-tree=<program tree item>]
+              [--empty-library-tree]
+              [--library-tree=<library tree item>]
+              [--empty-document-tree]
+              [--document-tree=<document tree item>]
+              [--empty-package-tree]
+              [--package-tree=<package tree item>]
+              [--legal-notice=<legal notice>]
+              [--empty-license-file]
+              [--license-file=<license file>]
+              [--help]
+              [--version]
 
 OPTIONS
 
@@ -703,7 +705,7 @@ General help using RaSt software:
   https://github.com/RaStBh/
   https://gitlab.com/RaStBh/
 END
-";
+)";
 
   # Name of the organisation.
 
@@ -711,11 +713,41 @@ END
 
   # Name of the package.
 
-  name_package='';
+  local name_package='';
+
+  # Package description.
+
+  local description_package='';
+
+  # Copyright information.
+
+  local copyright_years='';
+  local copyright_owners='';
+  local copyright_contacts='';
+
+  # The Legal notice.
+
+  local legal_notice='';
 
   # The Git working directory.
 
   local working_directory='';
+
+  # The Git local options.
+
+  local -a local_options=();
+
+  # The Git global options.
+
+  local -a global_options=();
+
+  # The Git remotes.
+
+  local -a remotes=();
+
+  # The Git configuration files.
+
+  local -a configuration_files=();
 
   # GNU standard readme files.
 
@@ -745,23 +777,19 @@ END
 
   local -a package_tree=();
 
-  # The Legal notice.
-
-  local legal_notice='';
-
   # Files containing licenses texts.
 
   local -a license_files=();
 
   # Get the variables from the configuration file if the file it is present.
 
-  if [[ -f './config.inc.bash' ]]; then
-    echo "Info: configuration file './config.inc.bash' present.";
-    echo "Info: loading configuraton file './config.inc.bash'.";
-    source './config.inc.bash';
+  if [[ -f './config.inc.sh' ]]; then
+    echo "Info: configuration file './config.inc.sh' present.";
+    echo "Info: loading configuraton file './config.inc.sh'.";
+    source './config.inc.sh';
   else
-    echo "Info: configuration file './config.inc.bash' not present.";
-    echo "Info: not loading configuration file './config.inc.bash'.";
+    echo "Info: configuration file './config.inc.sh' not present.";
+    echo "Info: not loading configuration file './config.inc.sh'.";
   fi
 
   # Get the command line arguments.
@@ -814,7 +842,7 @@ END
         ;;
 
       '--empty-readme-files' )
-        local_options=();
+        readme_files=();
         next_position="$(( "${next_position}" + 0 ))";
         ;;
 
@@ -829,7 +857,7 @@ END
         ;;
 
       '--empty-common-tree' )
-        local_options=();
+        common_tree=();
         next_position="$(( "${next_position}" + 0 ))";
         ;;
 
@@ -839,7 +867,7 @@ END
         ;;
 
       '--empty-program-tree' )
-        local_options=();
+        pogram_tree=();
         next_position="$(( "${next_position}" + 0 ))";
         ;;
 
@@ -849,7 +877,7 @@ END
         ;;
 
       '--empty-library-tree' )
-        local_options=();
+        library_tree=();
         next_position="$(( "${next_position}" + 0 ))";
         ;;
 
@@ -859,7 +887,7 @@ END
         ;;
 
       '--empty-document-tree' )
-        local_options=();
+        document_tree=();
         next_position="$(( "${next_position}" + 0 ))";
         ;;
 
@@ -869,7 +897,7 @@ END
         ;;
 
       '--empty-package-tree' )
-        local_options=();
+        package_tree=();
         next_position="$(( "${next_position}" + 0 ))";
         ;;
 
@@ -933,10 +961,64 @@ END
     echo "Error: variable 'name_package' not present.";
     exit 1;
   fi
+  if [[ -n "${description_package}" ]]; then
+    echo "Info: variable 'description_package' (${description_package}) present.";
+  else
+    echo "Error: variable 'description_package' not present.";
+    exit 1;
+  fi
+  if [[ -n "${copyright_years}" ]]; then
+    echo "Info: variable 'copyright_years' (${copyright_years}) present.";
+  else
+    echo "Error: variable 'copyright_years' not present.";
+    exit 1;
+  fi
+  if [[ -n "${copyright_owners}" ]]; then
+    echo "Info: variable 'copyright_owners' (${copyright_owners}) present.";
+  else
+    echo "Error: variable 'copyright_owners' not present.";
+    exit 1;
+  fi
+  if [[ -n "${copyright_contacts}" ]]; then
+    echo "Info: variable 'copyright_contacts' (${copyright_contacts}) present.";
+  else
+    echo "Error: variable 'copyright_contacts' not present.";
+    exit 1;
+  fi
+  if [[ -n "${legal_notice}" ]]; then
+    echo "Info: variable 'legal_notice' (${legal_notice}) present.";
+  else
+    echo "Error: variable 'legal_notice' not present.";
+    exit 1;
+  fi
   if [[ -n "${working_directory}" ]]; then
     echo "Info: variable 'working_directory' (${working_directory}) present.";
   else
     echo "Error: variable 'working_directory' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#local_options[@]}" )); then
+    echo "Info: variable 'local_options' (${#local_options[@]}) (${local_options[@]}) present.";
+  else
+    echo "Error: variable 'local_options' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#global_options[@]}" )); then
+    echo "Info: variable 'global_options' (${#global_options[@]}) (${global_options[@]}) present.";
+  else
+    echo "Error: variable 'global_options' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#remotes[@]}" )); then
+    echo "Info: variable 'remotes' (${#remotes[@]}) (${remotes[@]}) present.";
+  else
+    echo "Error: variable 'remotes' not present.";
+    exit 1;
+  fi
+  if (( 0 < "${#configuration_files[@]}" )); then
+    echo "Info: variable 'configuration_files' (${#configuration_files[@]}) (${configuration_files[@]}) present.";
+  else
+    echo "Error: variable 'configuration_files' not present.";
     exit 1;
   fi
   if (( 0 < "${#readme_files[@]}" )); then
@@ -985,12 +1067,6 @@ END
     echo "Info: variable 'license_files' (${#license_files[@]}) (${license_files[@]}) present.";
   else
     echo "Error: variable 'license_files' not present.";
-    exit 1;
-  fi
-  if [[ -n "${legal_notice}" ]]; then
-    echo "Info: variable 'legal_notice' (${legal_notice}) present.";
-  else
-    echo "Error: variable 'legal_notice' not present.";
     exit 1;
   fi
 

@@ -1,34 +1,28 @@
 
 ################################################################################
-##
-## This file is part of the RaSt git-gnu-project.sh package.
-##
-## RaSt git-gnu-project.sh - for managing a  directory as a Git repository and a
-## GNU project using Bash.
-##
-## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
-##
-## RaSt  git-gnu-project.sh is  free software:  you can  redistribute it  and/or
-## modify it under the  terms of the GNU General Public  License as published by
-## the Free  Software Foundation, either version  3 of the License,  or (at your
-## option) any later version.
-##
-## RaSt git-gnu-project.sh  is distributed in the  hope that it will  be useful,
-## but   WITHOUT  ANY   WARRANTY;   without  even   the   implied  warranty   of
-## MERCHANTABILITY or  FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General
-## Public License for more details.
-##
-## You should have received a copy of  the GNU General Public License along with
-## this package.  If not, see <https://www.gnu.org/licenses/>.
-##
-################################################################################
-
-
-
-################################################################################
-##
-## $Version: 0.8.0 (2023-07-19 08:54:48 +00:00:00) $
-##
+##                                                                            ##
+## This file is part of the RaSt git-gnu-project.sh package.                  ##
+##                                                                            ##
+## RaSt git-gnu-project.sh  - for  managing a  directory as  a Git repository ##
+## and a GNU project using Bash.                                              ##
+##                                                                            ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
+##                                                                            ##
+## RaSt FooBar  is free  software: you  can redistribute  it and/or modify it ##
+## under the  terms of  the GNU  General Public  License as  published by the ##
+## Free Software  Foundation, either  version 3  of the  License, or (at your ##
+## option) any later version.                                                 ##
+##                                                                            ##
+## RaSt  FooBar  is  distributed  in  the  hope  that  it will be useful, but ##
+## WITHOUT   ANY   WARRANTY;   without   even   the   implied   warranty   of ##
+## MERCHANTABILITY or FITNESS FOR A  PARTICULAR PURPOSE. See the GNU  General ##
+## Public License for more details.                                           ##
+##                                                                            ##
+## You should have received  a copy of the  GNU General Public License  along ##
+## with this package. If not, see <https://www.gnu.org/licenses/>.            ##
+##                                                                            ##
+## $Version: 0.9.0 (2023-07-24 07:52:39 +00:00:00) $                          ##
+##                                                                            ##
 ################################################################################
 
 
@@ -42,6 +36,625 @@
 
 
 
+## @brief Create version.
+## @details Create version.
+##    This is for the initial version.
+##    0.0.0 (2023-07-24 04:50:10 +00:00:00)
+## @return version
+##   The version string.
+
+function version()
+{
+  local version='';
+
+  version='';
+  version+='0.0.0';
+  version+=' (';
+  version+="$( date --utc '+%4Y-%2m-%2d %2H:%2M:%2S %::z' )";
+  version+=')';
+
+  echo "${version}";
+
+  return;
+}
+
+## @brief Align blocks of text.
+## @details Align blocks of text.
+## @param[in] string_in
+##   The string we want to align.
+##   Can consists of multiple lines, separated by newline.
+##   Each line will be aligned on its own.
+## @param[in] column
+##   Width of a block.
+## @param[in] alignment
+##   The aligenment:
+##   * left
+##   * right
+##   * center
+##   * block
+## @param[in] border_left
+##   A string on the left side of the string.
+## @param[in] border_right
+##   A string on the right side of the string.
+## @param[in] border_top
+##   A string on the top side of the string.
+## @param[in] border_bottom
+##   A string on the bottom side of the string.
+## @return string_out
+##   The aligned string.
+
+function align()
+{
+  local string_in="${1}";
+  local -i column="${2}";
+  local alignment="${3}";
+  local border_left="${4}";
+  local border_right="${5}";
+  local border_top="${6}";
+  local border_bottom="${7}";
+
+
+
+  ## @brief Remove space at the begin of line.
+  ## @details Remove space at the begin of line.
+  ##   '   foobar   ' --> 'foobar   '
+  ## @param[in] string
+  ##   The sting.
+  ## @param string
+  ##   The string.
+
+  function trimleft()
+  {
+    local string="${1}";
+
+    function trimleft_awk()
+    {
+      local string="${1}";
+
+      string="$( \
+                  echo "${string}" \
+                | awk '{gsub(/^[[:space:]]*/,""); print $0 }' \
+              )";
+
+      echo "${string}";
+      return;
+    }
+
+    function trimleft_bash()
+    {
+      local string="${1}";
+
+      local extglob_new='shopt -s extglob';
+      local extglob_old="$( shopt -p extglob )";
+      eval "${extglob_new}";
+      string="${string##+([[:space:]])}";
+      eval "${extglob_old}";
+
+      echo "${string}";
+      return;
+    }
+
+    function trimleft_sed()
+    {
+      local string="${1}";
+
+      string="$( \
+                  echo "${string}" \
+                | sed --expression='s/^[[:space:]]*//' \
+              )";
+
+      echo "${string}";
+      return;
+    }
+
+    string="$( trimleft_bash "${string}" )";
+
+    echo "${string}";
+    return;
+  }
+
+  ## @brief Remove space at the end of line.
+  ## @details Remove space at the end of line.
+  ## '   foobar   ' --> '   foobar'
+  ## @param[in] string
+  ##   The sting.
+  ## @param string
+  ##   The string.
+
+  function trimright()
+  {
+    local string="${1}";
+
+    function trimright_awk()
+    {
+      local string="${1}";
+
+      string="$( \
+                  echo "${string}" \
+                | awk '{gsub(/[[:space:]]*$/,""); print $0 }' \
+              )";
+
+      echo "${string}";
+      return;
+    }
+
+    function trimright_bash()
+    {
+      local string="${1}";
+
+      local extglob_new='shopt -s extglob';
+      local extglob_old="$( shopt -p extglob )";
+      eval "${extglob_new}";
+      string="${string%%+([[:space:]])}";
+      eval "${extglob_old}";
+
+      echo "${string}";
+      return;
+    }
+
+    function trimright_sed()
+    {
+      local string="${1}";
+
+      string="$( \
+                  echo "${string}" \
+                | sed --expression='s/[[:space:]]*$//' \
+              )";
+
+      echo "${string}";
+      return;
+    }
+
+    string="$( trimright_bash "${string}" )";
+
+    echo "${string}";
+    return;
+  }
+
+  ## @brief Remove space at the begin and the end of line.
+  ## @details Remove space at the begin and the end of line.
+  ## '   foobar   ' --> 'foobar'
+  ## @param[in] string
+  ##   The sting.
+  ## @param string
+  ##   The string.
+
+  function trim()
+  {
+    local string="${1}";
+
+    string="$( trimleft "${string}" )";
+    string="$( trimright "${string}" )";
+
+    echo "${string}";
+    return;
+  }
+
+  ## @brief Right align string.
+  ## @details Right align string.
+  ##
+  ##   |012345|67890123456789012345678901234567890123456789012345678901234567890123456789|
+  ##   |      |                                                                          |
+  ##   |foobar|                                                                          |
+  ##
+  ##    \----/
+  ##     |
+  ##     +-- length
+  ##
+  ##    \-------------------------------------------------------------------------------/
+  ##     |
+  ##     +-- column
+  ##
+  ## @param[in] string
+  ##   The string.
+  ## @return sting
+  ##   The string.
+
+  function printfLeft()
+  {
+    local string="${1}";
+    local -i column="${2}";
+
+    string="$( trim "${string}" )";
+    string="$( printf '%-*s' \
+                 "${column}" \
+                 "${string}" \
+            )";
+    string="$( trimright "${string}" )";
+
+    echo "${string}";
+    return;
+  }
+
+  ## @brief Left align string.
+  ## @details Left align string.
+  ##
+  ##   |01234567890123456789012345678901234567890123456789012345678901234567890123|456789|
+  ##   |                                                                          |      |
+  ##   |                                                                          |foobar|
+  ##
+  ##                                                                              |\----/|
+  ##                                                                                |
+  ##                                                                                +-- length
+  ##
+  ##   |\-------------------------------------------------------------------------------/|
+  ##     |
+  ##     +-- column
+  ##
+  ## @param[in] string
+  ##   The string.
+  ## @return sting
+  ##   The string.
+
+  function printfRight()
+  {
+    local string="${1}";
+    local -i column="${2}";
+
+    string="$( trim "${string}" )";
+    string="$( printf '%*s' \
+                 "${column}" \
+                 "${string}" \
+            )";
+    string="$( trimright "${string}" )";
+
+    echo "${string}";
+    return;
+  }
+
+  ## @brief Left align string.
+  ## @details Left align string.
+  ##
+  ##   |0123456789012345678901234567890123456|789012|3456789012345678901234567890123456789|
+  ##
+  ##   |                                     |foobar|                                     |
+  ##
+  ##   |                                     |\----/|                                     |
+  ##                                           |
+  ##                                           +-- length
+  ##
+  ##   |\---------------------------------------/\---------------------------------------/|
+  ##     |                                        |
+  ##     |                                        +--right = ( 1 / 2 ) * column
+  ##     |
+  ##     +-- left = ( 1 / 2 ) * column
+  ##
+  ##   |\---------------------------------------/\-/|\-----------------------------------/|
+  ##     |                                        |   |
+  ##     |                                        |   +-- right = column - left_1 - left_2
+  ##     |                                        |               column - ( left_1 + left_2 )
+  ##     |                                        |
+  ##     |                                        +-- left_2 = ( 1 / 2 ) * length
+  ##     |
+  ##     +-- left_1 = ( 1 / 2 ) * column
+  ##
+  ##   |\------------------------------------------/|\-----------------------------------/|
+  ##     |                                            |
+  ##     |                                            +-- right = column - left
+  ##     |                                                      = column - ( ( 1 / 2 ) * ( column + length ) )
+  ##     |
+  ##     +-- left = left_1 + left_2
+  ##              = ( ( 1 / 2 ) * column ) + ( ( 1 / 2 ) * length )
+  ##              = ( 1 / 2 ) * ( column + length )
+  ##
+  ##    \-------------------------------------------------------------------------------/|
+  ##     |
+  ##     +-- column
+  ##
+  ## @param[in] string
+  ##   The string.
+  ## @return sting
+  ##   The string.
+
+  function printfCenter()
+  {
+    local string="${1}";
+    local -i column="${2}";
+
+    local -i length=0;
+    local -i left=0;
+    local -i right=0;
+
+    string="$( trim "${string}" )";
+    length="${#string}";
+    left="$(( ( "${column}" + "${length}" ) / 2 ))";
+    right="$(( "${column}" - "${left}" ))";
+    string="$( printf '%*s%*s' \
+                 "${left}" \
+                 "${string}" \
+                 "${right}" \
+                 '' \
+            )";
+    string="$( trimright "${string}" )";
+
+    echo "${string}";
+    return;
+  }
+
+
+
+  ## @brief Block align string.
+  ## @details Block align string.
+  ##
+  ##   |012345678901|234567890123456789|0123456789012345678|901234567890123456|7890123456789|
+  ##
+  ##   |foobar      |      foobar      |       foobar      |      foobar      |       foobar|
+  ##
+  ##    \----------/|\----/\----/\----/|\-----/\----/\----/|\----/\----/\----/|\-----/\----/|
+  ##
+  ##   |foobar|            foobar|             foobar|            foobar|             foobar|
+  ##
+  ##           \----------/       \-----------/       \----------/       \-----------/
+  ##            |                  |                   |                  |
+  ##            |                  |                   |                  +-- gap
+  ##            |                  |                   |
+  ##            |                  |                   +-- gap
+  ##            |                  |
+  ##            |                  +-- gap
+  ##            |
+  ##            +-- gap
+  ##
+  ##   |\----/|\\---------/\----/|\-\---------/\----/|\\---------/\----/|\-\---------/\----/|
+  ##     |      ||          |      | |          |      ||          |      | |          |
+  ##     |      ||          |      | |          |      ||          |      | |          +-- length
+  ##     |      ||          |      | |          |      ||          |      | |
+  ##     |      ||          |      | |          |      ||          |      | +-- div
+  ##     |      ||          |      | |          |      ||          |      |
+  ##     |      ||          |      | |          |      ||          |      +-- add
+  ##     |      ||          |      | |          |      ||          |
+  ##     |      ||          |      | |          |      ||          +-- length
+  ##     |      ||          |      | |          |      ||
+  ##     |      ||          |      | |          |      |+-- div
+  ##     |      ||          |      | |          |      |
+  ##     |      ||          |      | |          |      +-- add
+  ##     |      ||          |      | |          |
+  ##     |      ||          |      | |          +-- length
+  ##     |      ||          |      | |
+  ##     |      ||          |      | +-- div
+  ##     |      ||          |      |
+  ##     |      ||          |      +-- add
+  ##     |      ||          |
+  ##     |      ||          +-- length
+  ##     |      ||
+  ##     |      |+-- div
+  ##     |      |
+  ##     |      +-- add
+  ##     |
+  ##     +-- length
+  ##
+  ##   |\----------------------------------------------------------------------------------/|
+  ##     |
+  ##     +-- column
+
+  function printfBlock()
+  {
+    local string="${1}";
+    local -i column="${2}";
+
+    local -a parts=();
+    local part='';
+    local part_word='';
+    local part_space='';
+    local -i gaps=0;
+    local -i length=0;
+    local -i delta=0;
+    local -i div=0;
+    local -i mod=0;
+    local -i delta=0;
+    local -i count=0;
+    local -i add=0;
+    local -i ratio=0;
+
+    string="$( trim "${string}" )";
+    delta="$(( "${column}" - "${#string}" ))";
+
+    local extglob_new='shopt -s extglob';
+    local extglob_old="$( shopt -p extglob )";
+    eval "${extglob_new}";
+
+    while (( 0 < "${#string}" )); do
+      part='';
+      if [[ '' == "${string%%*([^[:space:]]*)}" ]]; then
+        :;
+      else
+        part_space="${string%%*([^[:space:]]*)}";
+        part+="${part_space}";
+        string="${string##*([[:space:]])}";
+      fi
+      if [[ '' == "${string%%*([[:space:]]*)}" ]]; then
+        :;
+      else
+        part_word="${string%%*([[:space:]]*)}";
+        part+="${part_word}";
+        string="${string##*([^[:space:]])}";
+      fi
+      if [[ '' == "${part}" ]]; then
+        :;
+      else
+        parts[${#parts[@]}]="${part}";
+      fi
+    done
+
+    eval "${extglob_old}";
+
+    gaps="$(( ${#parts[@]} - 1 ))";
+    if (( 0 == "${gaps}" )); then
+      div=1;
+    else
+      div="$(( "${delta}" / "${gaps}" ))";
+    fi
+    if (( 0 == "${gaps}" )); then
+      mod=0;
+    else
+      mod="$(( "${delta}" % "${gaps}" ))";
+    fi
+    if (( 0 == "${mod}" )); then
+      ratio=1;
+    else
+       ratio="$(( "${gaps}" / "${mod}" ))";
+    fi
+    count="${mod}";
+
+    string='';
+
+    local -i index=0;
+    for (( index=0; index<"${#parts[@]}"; index++ )); do
+      length="${#parts[${index}]}";
+      add=0;
+      if (( 0 == "${index}" )); then
+        string+="${parts[${index}]}";
+      else
+        if (( 0 == "${ratio}" )); then
+          :;
+        else
+          if (( 0 == "$(( "${index}" % "${ratio}" ))" )); then
+            if (( 0 < "${count}" )); then
+              add=1;
+              (( count-- ));
+            else
+              :;
+            fi
+          else
+            :;
+          fi
+        fi
+        string+="$( printf '%*s' \
+                      "$(( ${length} + "${div}" + "${add}" ))" \
+                      "${parts[${index}]}" \
+                 )";
+      fi
+    done
+
+    echo "${string}";
+    return;
+  }
+
+  ## @brief Add a border on the left or right side of a string.
+  ## @details Add a border on the left or right side of a string.
+  ## @param[in] string_in
+  ##   The string.
+  ## @param[in] column
+  ##   The number of colums.
+  ## @param[in] border_left
+  ##   A string on the left side of the string.
+  ## @param[in] border_right
+  ##   A string on the right side of the string.
+  ## @return
+  ##   The string.
+
+  function border()
+  {
+    local string_in="${1}";
+    local -i column="${2}";
+    local border_left="${3}";
+    local border_right="${4}";
+
+    local string_out='';
+    local -i delta=0;
+
+    string_out+="${border_left}";
+    string_out+="${string_in}";
+    if [[ -z "${border_right}" ]]; then
+      :;
+    else
+      delta="$((  "${column}" \
+                - "${#string_in}" \
+                - "${#border_left}" \
+                - "${#border_right}" \
+             ))";
+      string_out+="$( printf '%*s' "${delta}" '' )";
+      string_out+="${border_right}";
+    fi
+
+    echo "${string_out}";
+    return;
+  }
+
+
+
+  local -i width=0;
+  local -a lines=();
+  local line='';
+  local string_out='';
+
+  if [[ -n "${border_top}" ]]; then
+    string_out+="$(  printf '%*s' "${column}" ' ' \
+                   | tr ' ' "${border_top}" )"$'\n';
+  else
+    :;
+  fi
+
+  width="$((   "${column}" - "${#border_left}" - "${#border_right}" ))";
+  string_in="$( echo "${string_in}x" \
+               | fold --spaces --width="${width}" )";
+  string_in="${string_in%x}";
+  readarray -t 'lines' <<< "${string_in}";
+  local -i index=0;
+  for (( index=0; index<"${#lines[@]}"; index++ )); do
+    lines[${index}]="$( trim "${lines[${index}]}" )";
+    if    (   [[ ! -v "lines[$(( "${index}" + 1 ))]" ]] \
+           && [[ '' == "${lines[$(( "${index}" + 1 ))]}" ]] ) \
+       || (   [[   -v "lines[$(( "${index}" + 1 ))]" ]] \
+           && [[ '' == "${lines[$(( "${index}" + 1 ))]}" ]] ); then
+      line="$( printfLeft "${lines[${index}]}" "${width}" )";
+      case "${alignment}" in
+        'left' )
+          line="$( printfLeft "${lines[${index}]}" "${width}" )";
+          ;;
+        'right' )
+          line="$( printfRight "${lines[${index}]}" "${width}" )";
+          ;;
+        'center' )
+          line="$( printfCenter "${lines[${index}]}" "${width}" )";
+          ;;
+        'block' )
+          line="$( printfLeft "${lines[${index}]}" "${width}" )";
+          ;;
+        * )
+          ;;
+      esac
+    else
+      case "${alignment}" in
+        'left' )
+          line="$( printfLeft "${lines[${index}]}" "${width}" )";
+          ;;
+        'right' )
+          line="$( printfRight "${lines[${index}]}" "${width}" )";
+          ;;
+        'center' )
+          line="$( printfCenter "${lines[${index}]}" "${width}" )";
+          ;;
+        'block' )
+          line="$( printfBlock "${lines[${index}]}" "${width}" )";
+          ;;
+        * )
+          ;;
+      esac
+    fi
+    if    [[ -n "${border_left}" ]] \
+       || [[ -n "${border_right}" ]]; then
+      line="$( border "${line}" \
+                             "${column}" \
+                             "${border_left}" \
+                             "${border_right}" \
+                   )";
+    else
+      line="${line}";
+    fi
+    string_out+="$( trimright "${line}" )"$'\n';
+  done
+
+  if [[ -n "${border_bottom}" ]]; then
+    string_out+="$(  printf '%*s' "${column}" ' ' \
+                   | tr ' ' "${border_bottom}" )"$'\n';
+  else
+    :;
+  fi
+
+  echo "${string_out}";
+  return;
+}
+
 ## Name of the organisation.
 ##
 ## Example:
@@ -54,17 +667,17 @@ name_organisation='JD';
 ##
 ## Example:
 ##
-##   name_package='foobar';
+##   name_package='FooBar';
 
-name_package='foobar';
+name_package='FooBar';
 
 ## Package description.
 ##
 ## Example:
 ##
-##   description_package="is for making foobar";
+##   description_package="is a package for making foobar";
 
-description_package="is for making foobar";
+description_package="is a package for making foobar";
 
 ## Copyright information.
 ##
@@ -83,51 +696,30 @@ copyright_contacts='<john_dow@example.com>';
 ##
 ## Example:
 ##
-##   legal_notice="################################################################################
-##   ##
-##   ## This file is part of the ${name_organisation} ${name_package} package.
-##   ##
-##   ## ${name_organisation} ${name_package} - ${description_package}.
-##   ##
-##   ## Copyright (C)  ${copyright_years}  ${copyright_owners}  ${copyright_contacts}
-##   ##
-##   ## GNU All-Permissive  License: Copying and  distribution of this file,  with or
-##   ## without modification,  are permitted in  any medium without  royalty provided
-##   ## the copyright  notice and this  notice are  preserved.  This file  is offered
-##   ## as-is, without any warranty.
-##   ##
-##   ################################################################################
+##   legal_notice='';
+##   legal_notice+="$( align "
+##   This file is part of the ${name_organisation} ${name_package} package.
 ##
+##   ${name_organisation} ${name_package} - ${description_package}
 ##
+##   Copyright (C)  ${copyright_years}  ${copyright_owners}  ${copyright_contacts}
 ##
-##   ################################################################################
-##   ##
-##   ## (\$Version: 0.0.0 ($( date --utc '+%4Y-%2m-%2d %2H:%2M:%2S %::z' )) $
-##   ##
-##   ################################################################################";
+##   GNU All-Permissive License: Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved.  This file is offered as-is, without any warranty.
+##
+##   \$Version: $( version ) \$
+##   " 80 'block' '## ' ' ##' '#' '#' )"$'\n';
 
-legal_notice="################################################################################
-##
-## This file is part of the ${name_organisation} ${name_package} package.
-##
-## ${name_organisation} ${name_package} - ${description_package}.
-##
-## Copyright (C)  ${copyright_years}  ${copyright_owners}  ${copyright_contacts}
-##
-## GNU All-Permissive  License: Copying and  distribution of this file,  with or
-## without modification,  are permitted in  any medium without  royalty provided
-## the copyright  notice and this  notice are  preserved.  This file  is offered
-## as-is, without any warranty.
-##
-################################################################################
+legal_notice="$( align "
+This file is part of the ${name_organisation} ${name_package} package.
 
+${name_organisation} ${name_package} - ${description_package}
 
+Copyright (C)  ${copyright_years}  ${copyright_owners}  ${copyright_contacts}
 
-################################################################################
-##
-## (\$Version: 0.0.0 ($( date --utc '+%4Y-%2m-%2d %2H:%2M:%2S %::z' )) $
-##
-################################################################################";
+GNU All-Permissive License: Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.
+
+\$Version: $( version ) \$
+" 80 'block' '## ' ' ##' '#' '#' )"$'\n';
 
 
 
@@ -200,7 +792,7 @@ local_options=( \
 ##     'pull.ff;false' \
 ##   );
 
-global_options=(
+global_options=( \
   'user.name;John Dow' \
   'user.email;john_dow@example.com' \
   'merge.ff;false' \
@@ -226,7 +818,7 @@ global_options=(
 ##     'example.com;ssh://john_dow@example.com/home/john_dow/repositories/foobar/' \
 ##   );
 
-remotes=(
+remotes=( \
   'github.com;git@github.com-JohnDow:JohnDow' \
   'gitlab.com;git@gitlab.com-JohnDow:JohnDow' \
   "example.com;ssh://john_dow@example.com/home/john_dow/repositories/${name_package}/" \
@@ -256,7 +848,7 @@ remotes=(
 ##
 ##   or
 ##
-##   configuration_files=(
+##   configuration_files=( \
 ##     '.gitattributes' \
 ##     '.gitignore' \
 ##     '.gitmodules' \
@@ -264,7 +856,7 @@ remotes=(
 ##     '.gitkeep' \
 ##   );
 
-configuration_files=(
+configuration_files=( \
   '.gitattributes' \
   '.gitignore' \
   '.gitkeep' \
@@ -345,7 +937,7 @@ configuration_files=(
 ##
 ##   or
 ##
-##   readme_files=(
+##   readme_files=( \
 ##     'AUTHORS' \
 ##     'BACKLOG' \
 ##     'BUGS' \
@@ -361,7 +953,7 @@ configuration_files=(
 ##     'TODO' \
 ##   );
 
-readme_files=(
+readme_files=( \
   'AUTHORS' \
   'BACKLOG' \
   'BUGS' \
@@ -463,7 +1055,7 @@ common_tree=( \
 ##
 ##   or
 ##
-##   pogram_tree=(
+##   pogram_tree=( \
 ##     'Makefile.am' \
 ##     'build/.gitkeep' \
 ##     'configure.ac' \
@@ -749,7 +1341,7 @@ package_tree=( \
 ##
 ##   or
 ##
-##   license_files=(
+##   license_files=( \
 ##     'COPYING.DOC;/home/john_dow/licenses/licenses/gnu_fdl-1.3.txt' \
 ##     'COPYING.PRG;/home/john_dow/licenses/licenses/gnu_gpl-3.0.txt' \
 ##     'COPYING.LIB;/home/john_dow/licenses/licenses/gnu_lgpl-3.0.txt' \

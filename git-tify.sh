@@ -1,34 +1,28 @@
 #! /usr/bin/env -S bash -e
 ################################################################################
-##
-## This file is part of the RaSt git-gnu-project.sh package.
-##
-## RaSt git-gnu-project.sh - for managing a  directory as a Git repository and a
-## GNU project using Bash.
-##
-## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
-##
-## RaSt  git-gnu-project.sh is  free software:  you can  redistribute it  and/or
-## modify it under the  terms of the GNU General Public  License as published by
-## the Free  Software Foundation, either version  3 of the License,  or (at your
-## option) any later version.
-##
-## RaSt git-gnu-project.sh  is distributed in the  hope that it will  be useful,
-## but   WITHOUT  ANY   WARRANTY;   without  even   the   implied  warranty   of
-## MERCHANTABILITY or  FITNESS FOR  A PARTICULAR PURPOSE.   See the  GNU General
-## Public License for more details.
-##
-## You should have received a copy of  the GNU General Public License along with
-## this package.  If not, see <https://www.gnu.org/licenses/>.
-##
-################################################################################
-
-
-
-################################################################################
-##
-## $Version: 0.8.0 (2023-07-19 08:54:48 +00:00:00) $
-##
+##                                                                            ##
+## This file is part of the RaSt git-gnu-project.sh package.                  ##
+##                                                                            ##
+## RaSt git-gnu-project.sh  - for  managing a  directory as  a Git repository ##
+## and a GNU project using Bash.                                              ##
+##                                                                            ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
+##                                                                            ##
+## RaSt FooBar  is free  software: you  can redistribute  it and/or modify it ##
+## under the  terms of  the GNU  General Public  License as  published by the ##
+## Free Software  Foundation, either  version 3  of the  License, or (at your ##
+## option) any later version.                                                 ##
+##                                                                            ##
+## RaSt  FooBar  is  distributed  in  the  hope  that  it will be useful, but ##
+## WITHOUT   ANY   WARRANTY;   without   even   the   implied   warranty   of ##
+## MERCHANTABILITY or FITNESS FOR A  PARTICULAR PURPOSE. See the GNU  General ##
+## Public License for more details.                                           ##
+##                                                                            ##
+## You should have received  a copy of the  GNU General Public License  along ##
+## with this package. If not, see <https://www.gnu.org/licenses/>.            ##
+##                                                                            ##
+## $Version: 0.9.0 (2023-07-24 07:52:39 +00:00:00) $                          ##
+##                                                                            ##
 ################################################################################
 
 

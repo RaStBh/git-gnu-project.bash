@@ -707,7 +707,7 @@ copyright_contacts='<john_dow@example.com>';
 ##   GNU All-Permissive License: Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved.  This file is offered as-is, without any warranty.
 ##
 ##   \$Version: $( version ) \$
-##   " 80 'block' '## ' ' ##' '#' '#' )"$'\n';
+##   " 80 'block' '## ' ' ##' '#' '#' )";
 
 legal_notice="$( align "
 This file is part of the ${name_organisation} ${name_package} package.
@@ -719,7 +719,7 @@ Copyright (C)  ${copyright_years}  ${copyright_owners}  ${copyright_contacts}
 GNU All-Permissive License: Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.
 
 \$Version: $( version ) \$
-" 80 'block' '## ' ' ##' '#' '#' )"$'\n';
+" 80 'block' '## ' ' ##' '#' '#' )";
 
 
 

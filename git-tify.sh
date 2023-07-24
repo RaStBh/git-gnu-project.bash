@@ -774,7 +774,7 @@ function main()
 
   local version="$( cat << 'END'
 git-tify.sh (RaSt git-gnu-project.sh)
-0.8.0 (2023-07-19 08:54:48 +00:00:00)
+0.9.0 (2023-07-24 07:52:39 +00:00:00)
 Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
 License GPLv3+ (GNU GPL version 3 or later,
 see <https://gnu.org/licenses/gpl.html>)

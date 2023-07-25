@@ -1,4 +1,4 @@
-#! /usr/bin/env -S bash -e
+#! /usr/bin/env -S bash
 ################################################################################
 ##                                                                            ##
 ## This file is part of the RaSt git-gnu-project.sh package.                  ##

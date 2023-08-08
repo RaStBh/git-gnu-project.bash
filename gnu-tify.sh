@@ -6,7 +6,7 @@
 ## RaSt git-gnu-project.sh  - for  managing a  directory as  a Git repository ##
 ## and a GNU project using Bash.                                              ##
 ##                                                                            ##
-## Copyright (C) 2023 Ralf Stephan <me@ralf-stephan.name>                     ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
 ##                                                                            ##
 ## RaSt git-gnu-project.sh is free  software: you can redistribute  it and/or ##
 ## modify it under the terms of  the GNU General Public License as  published ##
@@ -272,7 +272,7 @@
 ##
 ## AUTHORS
 ##
-##   Ralf Stephan <me@ralf-stephan.name>
+##   Ralf Stephan  <me@ralf-stephan.name>
 ##
 ## CAVEATS
 ##

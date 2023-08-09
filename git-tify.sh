@@ -21,7 +21,7 @@
 ## You should have received  a copy of the  GNU General Public License  along ##
 ## with this package.  If not, see <https://www.gnu.org/licenses/>.           ##
 ##                                                                            ##
-## $Version: 0.10.0 (2023-08-08 07:34:01 +00:00:00)$                          ##
+## $Version: 0.10.0 (2023-08-08 07:34:01 +00:00:00) $                         ##
 ##                                                                            ##
 ################################################################################
 

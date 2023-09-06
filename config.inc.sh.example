@@ -885,8 +885,10 @@ configuration_files=( \
 ##   CHANGELOG.0
 ##   CHANGELOG.1
 ##   CHANGELOG.O
+##   CHANGES
 ##   CONTRIBUTING
 ##   COPYING
+##   COPYING.AGPL
 ##   COPYING.DOC
 ##   COPYING.FDL
 ##   COPYING.GPL
@@ -900,6 +902,7 @@ configuration_files=( \
 ##   ChangeLog.O
 ##   FAQ
 ##   HACKING
+##   HISTORY
 ##   INSTALL
 ##   LICENSE
 ##   NEWS
@@ -913,6 +916,7 @@ configuration_files=( \
 ##   README-alpha
 ##   README-beta
 ##   README-dev
+##   RELEASE-NOTES
 ##   THANKS
 ##   TODO
 

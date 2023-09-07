@@ -929,15 +929,23 @@ configuration_files=( \
 ##   readme_files[1]='BACKLOG';
 ##   readme_files[2]='BUGS';
 ##   readme_files[3]='CHANGELOG';
-##   readme_files[4]='CONTRIBUTING';
-##   readme_files[5]='COPYING';
-##   readme_files[6]='FAQ';
-##   readme_files[7]='HACKING';
-##   readme_files[8]='INSTALL';
-##   readme_files[9]='NEWS';
-##   readme_files[10]='README';
-##   readme_files[11]='THANKS';
-##   readme_files[12]='TODO';
+##   readme_files[4]='CHANGES';
+##   readme_files[5]='CONTRIBUTING';
+##   readme_files[6]='COPYING.DOC';
+##   readme_files[7]='COPYING.LIB';
+##   readme_files[8]='COPYING.PRG';
+##   readme_files[9]='FAQ';
+##   readme_files[10]='HACKING';
+##   readme_files[11]='HISTORY';
+##   readme_files[12]='INSTALL';
+##   readme_files[13]='NEWS';
+##   readme_files[14]='README';
+##   readme_files[15]='README-alpha';
+##   readme_files[16]='README-beta';
+##   readme_files[17]='README-dev';
+##   readme_files[18]='RELEASE-notes';
+##   readme_files[19]='THANKS';
+##   readme_files[20]='TODO';
 ##
 ##   or
 ##
@@ -946,13 +954,21 @@ configuration_files=( \
 ##     'BACKLOG' \
 ##     'BUGS' \
 ##     'CHANGELOG' \
+##     'CHANGES' \
 ##     'CONTRIBUTING' \
-##     'COPYING' \
+##     'COPYING.DOC' \
+##     'COPYING.LIB' \
+##     'COPYING.PRG' \
 ##     'FAQ' \
 ##     'HACKING' \
+##     'HISTORY' \
 ##     'INSTALL' \
 ##     'NEWS' \
 ##     'README' \
+##     'README-alpha' \
+##     'README-beta' \
+##     'README-dev' \
+##     'RELEASE-notes' \
 ##     'THANKS' \
 ##     'TODO' \
 ##   );
@@ -962,13 +978,21 @@ readme_files=( \
   'BACKLOG' \
   'BUGS' \
   'CHANGELOG' \
+  'CHANGES' \
   'CONTRIBUTING' \
-  'COPYING' \
+  'COPYING.DOC' \
+  'COPYING.LIB' \
+  'COPYING.PRG' \
   'FAQ' \
   'HACKING' \
+  'HISTORY' \
   'INSTALL' \
   'NEWS' \
   'README' \
+  'README-alpha' \
+  'README-beta' \
+  'README-dev' \
+  'RELEASE-notes' \
   'THANKS' \
   'TODO' \
 );

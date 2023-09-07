@@ -29,7 +29,7 @@
 
 ################################################################################
 ##
-## GNU-TIFY.SH - 1 - 2023-07-19 - RaSt - RaSt git-gnu-project.sh Manual
+## GNU-TIFY.SH - 1 - 2023-08-08 - RaSt - RaSt git-gnu-project.sh Manual
 ##
 ## NAME
 ##

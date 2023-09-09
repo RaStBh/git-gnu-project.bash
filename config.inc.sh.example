@@ -874,78 +874,205 @@ configuration_files=( \
 
 
 
-## Names of GNU standard readme files:
+## Typical names of GNU standard readme files:
 ##
-##   ABOUT-GNU
-##   ABOUT-NLS
-##   AUTHORS
-##   BACKLOG
-##   BUGS
-##   CHANGELOG
-##   CHANGELOG.0
-##   CHANGELOG.1
-##   CHANGELOG.O
-##   CHANGES
-##   CONTRIBUTING
-##   COPYING
-##   COPYING.AGPL
-##   COPYING.DOC
-##   COPYING.FDL
-##   COPYING.GPL
-##   COPYING.LESSER
-##   COPYING.LGPL
-##   COPYING.LIB
-##   COPYING.PRG
-##   ChangeLog
-##   ChangeLog.0
-##   ChangeLog.1
-##   ChangeLog.O
-##   FAQ
-##   HACKING
-##   HISTORY
-##   INSTALL
-##   LICENSE
-##   NEWS
-##   NEWS.0
-##   NEWS.1
-##   NEWS.O
-##   OCHANGELOG
-##   OChangeLog
-##   ONEWS
-##   README
-##   README-alpha
-##   README-beta
-##   README-dev
-##   RELEASE-NOTES
-##   THANKS
-##   TODO
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |filename      |file to use instead   |required by         |comment                                     |      
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |ABOUT-GNU     |                      |                    |outdated                                    |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |can no longer be found on the internet      |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |ABOUT-NLS     |                      |                    |outdated                                    |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |a file from GNU gettext                     |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |AUTHORS       |                      |required by GNU     |contains credits to the package authors     |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |see THANKS                                  |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |BACKLOG       |                      |                    |contains list of work that needs to be      |
+##   |              |                      |                    |completed                                   |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |to do later                                 |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |see TODO                                    |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |BUGS          |                      |                    |contains list of known bugs and instructions|
+##   |              |                      |                    |on reporting new ones                       |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |considered errors                           |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |see PROBLEMS                                |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |CHANGELOG     |same as ChangeLog     |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |CHANGELOG.0   |same as ChangeLog.0   |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |CHANGELOG.1   |same as ChangeLog.1   |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |CHANGELOG.O   |same as ChangeLog.O   |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |CHANGES       |same as ChangeLog     |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |CONTRIBUTING  |same as HACKING       |                    |contains information on how to contribute to|
+##   |              |                      |                    |the package                                 |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING       |                      |required by GNU     |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU General Public License (GNU GPL)        |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |or                                          |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU Affero General Public License (GPL AGPL)|
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.DOC   |                      |required by GNU     |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU Free Documentation License (GNU FDL)    |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.PRG   |same as COPYING       |                    |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU General Public License (GNU GPL)        |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.LIB   |                      |required by GNU     |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU General Public License (GNU GPL)        |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |or                                          |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU Lesser General Public License (GNU LGPL)|
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.LESSER|                      |required by GNU     |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU Lesser General Public License (GNU LGPL)|
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.AGPL  |same as COPYING       |                    |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU Affero General Public License (GPL AGPL)|
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.GPL   |same as COPYING       |                    |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU General Public License (GNU GPL)        |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.LGPL  |same as COPYING.LESSER|                    |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |same as COPYING.LIB   |                    |GNU Lesser General Public License (GNU LGPL)|
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |COPYING.FDL   |same as COYPING.DOC   |                    |copyright and licensing information         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |GNU Free Documentation License (GNU FDL)    |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |ChangeLog     |                      |required by GNU     |contains list of descriptions of all the    |
+##   |              |                      |                    |changes made to program or documentation    |
+##   |              |                      |                    |source files                                |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |for programmers                             |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |ChangeLog.0   |                      |                    |if ChangLog becomes bigger, move parts of it|
+##   |              |                      |                    |to this file                                |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |ChangeLog.1   |                      |                    |if ChangLog becomes bigger, move parts of it|
+##   |              |                      |                    |to this file                                |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |ChangeLog.O   |                      |recommended by GNU  |if ChangLog becomes bigger, move parts of it|
+##   |              |                      |                    |to this file                                |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |FAQ           |                      |                    |contains list of frequently asked questions |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |HACKING       |same as CONTRIBUTING  |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |HISTORY       |same as ChangeLog     |                    |                                            |
+##   |              |                      |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |INSTALL       |                      |required by GNU     |contains information on how to install the  |
+##   |              |                      |                    |package                                     |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |LICENSE       |same as COPYING       |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |NEWS          |                      |required by GNU     |contains list of user-visible changes worth |
+##   |              |                      |                    |mentioning                                  |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |for users                                   |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |NEWS.0        |                      |                    |if NEWS becomes bigger, move parts of it to |
+##   |              |                      |                    |this file                                   |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |NEWS.1        |                      |                    |if NEWS becomes bigger, move parts of it to |
+##   |              |                      |                    |this file                                   |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |NEWS.O        |                      |recommended by GNU  |if NEWS becomes bigger, move parts of it to |
+##   |              |                      |                    |this file                                   |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |OCHANGELOG    |same as ChangeLog.O   |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |OChangeLog    |same as ChangeLog.O   |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |ONEWS         |same as NEWS.O        |                    |                                            |
+##   |              |                      |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |PROBLEMS      |                      |                    |contains list of known problems and         |
+##   |              |                      |                    |instructions on reporting new ones          |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |considered warnings                         |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |see BUGS                                    |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |README        |                      |required by GNU     |contains general information                |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |first file a user should look at and fully  |
+##   |              |                      |                    |read                                        |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |README-alpha  |                      |recommended by GNITS|contains general information                |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |additional for versions which are alpha     |
+##   |              |                      |                    |releases                                    |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |README-beta   |                      |                    |contains general information                |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |additional for versions which are beta      |
+##   |              |                      |                    |releases                                    |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |README-dev    |                      |                    |contains general information                |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |additional for versions which are           |
+##   |              |                      |                    |development releases                        |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |RELEASE-NOTES |same as ChangeLog     |                    |                                            |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |THANKS        |                      |required by GNITS   |contains acknowledgements to the package    |
+##   |              |                      |                    |contributors who contributed larger amounts |
+##   |              |                      |                    |of work                                     |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |see AUTHORS                                 |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
+##   |TODO          |                      |                    |contains list of work that needs to be      |
+##   |              |                      |                    |completed                                   |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |to do sooner                                |
+##   |              |                      |                    |                                            |
+##   |              |                      |                    |see BACKLOG                                 |
+##   +--------------+----------------------+--------------------+--------------------------------------------+
 
 ## GNU standard readme files.
 ##
 ## Example:
 ##
-##   readme_files=();
 ##   readme_files[0]='AUTHORS';
 ##   readme_files[1]='BACKLOG';
 ##   readme_files[2]='BUGS';
 ##   readme_files[3]='CHANGELOG';
-##   readme_files[4]='CHANGES';
-##   readme_files[5]='CONTRIBUTING';
-##   readme_files[6]='COPYING.DOC';
-##   readme_files[7]='COPYING.LIB';
-##   readme_files[8]='COPYING.PRG';
-##   readme_files[9]='FAQ';
-##   readme_files[10]='HACKING';
-##   readme_files[11]='HISTORY';
-##   readme_files[12]='INSTALL';
-##   readme_files[13]='NEWS';
-##   readme_files[14]='README';
-##   readme_files[15]='README-alpha';
-##   readme_files[16]='README-beta';
-##   readme_files[17]='README-dev';
-##   readme_files[18]='RELEASE-notes';
-##   readme_files[19]='THANKS';
-##   readme_files[20]='TODO';
+##   readme_files[4]='CONTRIBUTING';
+##   readme_files[5]='COPYING.DOC';
+##   readme_files[6]='COPYING.LIB';
+##   readme_files[7]='COPYING.PRG';
+##   readme_files[8]='FAQ';
+##   readme_files[9]='INSTALL';
+##   readme_files[10]='NEWS';
+##   readme_files[11]='PROBLEMS';
+##   readme_files[12]='README';
+##   readme_files[13]='THANKS';
+##   readme_files[14]='TODO';
 ##
 ##   or
 ##
@@ -954,21 +1081,15 @@ configuration_files=( \
 ##     'BACKLOG' \
 ##     'BUGS' \
 ##     'CHANGELOG' \
-##     'CHANGES' \
 ##     'CONTRIBUTING' \
 ##     'COPYING.DOC' \
 ##     'COPYING.LIB' \
 ##     'COPYING.PRG' \
 ##     'FAQ' \
-##     'HACKING' \
-##     'HISTORY' \
 ##     'INSTALL' \
 ##     'NEWS' \
+##     'PROBLEMS' \
 ##     'README' \
-##     'README-alpha' \
-##     'README-beta' \
-##     'README-dev' \
-##     'RELEASE-notes' \
 ##     'THANKS' \
 ##     'TODO' \
 ##   );
@@ -978,21 +1099,15 @@ readme_files=( \
   'BACKLOG' \
   'BUGS' \
   'CHANGELOG' \
-  'CHANGES' \
   'CONTRIBUTING' \
   'COPYING.DOC' \
   'COPYING.LIB' \
   'COPYING.PRG' \
   'FAQ' \
-  'HACKING' \
-  'HISTORY' \
   'INSTALL' \
   'NEWS' \
+  'PROBLEMS' \
   'README' \
-  'README-alpha' \
-  'README-beta' \
-  'README-dev' \
-  'RELEASE-notes' \
   'THANKS' \
   'TODO' \
 );

@@ -874,7 +874,7 @@ configuration_files=( \
 
 
 
-## Typical names of GNU standard readme files:
+## Common names of GNU standard readme files:
 ##
 ##   +--------------+----------------------+--------------------+--------------------------------------------+
 ##   |filename      |file to use instead   |required by         |comment                                     |      

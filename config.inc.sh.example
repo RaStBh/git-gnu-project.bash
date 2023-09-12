@@ -876,6 +876,8 @@ configuration_files=( \
 
 ## Standard file names for readme files:
 ##
+## Traditionally the file format is ASCII without the .txt file extension.
+##
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |file name     |use instead           |strictness level |comment                                     |
 ##   |              |                      |                 |                                            |
@@ -899,6 +901,10 @@ configuration_files=( \
 ##   |BACKLOG       |                      |GNU (???)        |contains list of work that needs to be      |
 ##   |              |                      |                 |completed                                   |
 ##   |              |                      |                 |                                            |
+##   |              |                      |                 |prioritized features list, containing short |
+##   |              |                      |                 |descriptions of all functionality desired in|
+##   |              |                      |                 |the package                                 |
+##   |              |                      |                 |                                            |
 ##   |              |                      |                 |to do later                                 |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |see TODO                                    |
@@ -911,10 +917,9 @@ configuration_files=( \
 ##   |              |                      |                 |see PROBLEMS                                |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |ChangeLog     |                      |GNU (required)   |contains list of descriptions of all the    |
-##   |              |                      |                 |changes made to program or documentation    |
-##   |              |                      |                 |source files                                |
+##   |              |                      |                 |changes made to source files                |
 ##   |              |                      |                 |                                            |
-##   |              |                      |                 |mainly for programmers                      |
+##   |              |                      |                 |and maintainers are interested in           |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |one ChangeLog for all changes or separated  |
 ##   |              |                      |                 |ChangeLogs each covering a entire directory |
@@ -951,7 +956,8 @@ configuration_files=( \
 ##   |CONTRIBUTING  |same as HACKING       |                 |contains information on how to contribute to|
 ##   |              |                      |                 |the package                                 |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING       |                      |GNU (required)   |copyright and licensing information         |
+##   |COPYING       |                      |GNU (required)   |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |mainly for programs                         |
 ##   |              |                      |                 |                                            |
@@ -961,19 +967,22 @@ configuration_files=( \
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU Affero General Public License (GPL AGPL)|
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.DOC   |                      |GNU (???)        |copyright and licensing information         |
+##   |COPYING.DOC   |                      |GNU (???)        |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |mainly for documentation                    |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU Free Documentation License (GNU FDL)    |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.PRG   |same as COPYING       |                 |copyright and licensing information         |
+##   |COPYING.PRG   |same as COPYING       |                 |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |mainly for programs                         |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU General Public License (GNU GPL)        |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.LIB   |                      |GNU (required)   |copyright and licensing information         |
+##   |COPYING.LIB   |                      |GNU (required)   |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |mainly for libraries                        |
 ##   |              |                      |                 |                                            |
@@ -983,25 +992,31 @@ configuration_files=( \
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU Lesser General Public License (GNU LGPL)|
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.LESSER|                      |GNU (required)   |copyright and licensing information         |
+##   |COPYING.LESSER|                      |GNU (required)   |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |mainly for libraries                        |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU Lesser General Public License (GNU LGPL)|
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.AGPL  |same as COPYING       |                 |copyright and licensing information         |
+##   |COPYING.AGPL  |same as COPYING       |                 |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU Affero General Public License (GPL AGPL)|
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.GPL   |same as COPYING       |                 |copyright and licensing information         |
+##   |COPYING.GPL   |same as COPYING       |                 |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU General Public License (GNU GPL)        |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.LGPL  |same as COPYING.LESSER|                 |copyright and licensing information         |
-##   |              |                      |                 |                                            |
-##   |              |same as COPYING.LIB   |                 |GNU Lesser General Public License (GNU LGPL)|
+##   |COPYING.LGPL  |same as COPYING.LESSER|                 |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
+##   |              |same as COPYING.LIB   |                 |                                            |
+##   |              |                      |                 |GNU Lesser General Public License (GNU LGPL)|
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
-##   |COPYING.FDL   |same as COYPING.DOC   |                 |copyright and licensing information         |
+##   |COPYING.FDL   |same as COYPING.DOC   |                 |terms and conditions for copying,           |
+##   |              |                      |                 |distribution and modification               |
+##   |              |                      |                 |                                            |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |GNU Free Documentation License (GNU FDL)    |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
@@ -1015,7 +1030,7 @@ configuration_files=( \
 ##   |              |                      |                 |                                            |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |INSTALL       |                      |GNU (required)   |contains information on how to configure,   |
-##   |              |                      |                 |build and install the package               |
+##   |              |                      |                 |build, test and install the package         |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |LICENSE       |same as COPYING       |GNU (???)        |                                            |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
@@ -1024,7 +1039,7 @@ configuration_files=( \
 ##   |NEWS          |                      |GNU (required)   |contains list of user-visible changes worth |
 ##   |              |                      |                 |mentioning                                  |
 ##   |              |                      |                 |                                            |
-##   |              |                      |                 |mainly for users                            |
+##   |              |                      |                 |and users are interested in                 |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |NEWS.O        |                      |GNU (recommended)|if NEWS becomes longer, move older items to |
 ##   |              |                      |                 |NEWS.O                                      |
@@ -1111,9 +1126,8 @@ configuration_files=( \
 ##   |RELEASE-NOTES |same as ChangeLog     |                 |                                            |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |THANKS        |                      |GNU (???)        |contains acknowledgements to the package    |
-##   |              |                      |                 |contributors who contributed larger amounts |
-##   |              |                      |GNITS (required) |of work                                     |
-##   |              |                      |                 |                                            |
+##   |              |                      |                 |maintainers and contributors                |
+##   |              |                      |GNITS (required) |                                            |
 ##   |              |                      |                 |see AUTHORS                                 |
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |TAGS          |                      |                 |tag file for Emacs or vi                    |
@@ -1122,6 +1136,10 @@ configuration_files=( \
 ##   +--------------+----------------------+-----------------+--------------------------------------------+
 ##   |TODO          |                      |GNU (???)        |contains list of work that needs to be      |
 ##   |              |                      |                 |completed                                   |
+##   |              |                      |                 |                                            |
+##   |              |                      |                 |prioritized features list, containing short |
+##   |              |                      |                 |descriptions of all functionality currently |
+##   |              |                      |                 |worked on                                   |
 ##   |              |                      |                 |                                            |
 ##   |              |                      |                 |to do sooner                                |
 ##   |              |                      |                 |                                            |
@@ -1132,7 +1150,8 @@ configuration_files=( \
 ##
 ##   * none GNU style versions of the name:
 ##     * README  : READ.ME,  Read.me,  README.1ST,  README.TXT, ReadMe,  Readme,
-##                 read.me, readme, readme.1st, readme.txt, ...;
+##                 read.me,    readme,   readme.1st,    readme.txt,   README.en,
+##                 README.fr, README.de, ...;
 ##     * Changelg: WHATS.NEW;
 ##   * The  Gnits standards  is  no  longer maintaind.  Instead  see manuals  of
 ##     Gnulib, Autoconf, and Automake.
@@ -1144,18 +1163,20 @@ configuration_files=( \
 ##   readme_files[0]='AUTHORS';
 ##   readme_files[1]='BACKLOG';
 ##   readme_files[2]='BUGS';
-##   readme_files[3]='CHANGELOG';
+##   readme_files[3]='ChangeLog';
 ##   readme_files[4]='CONTRIBUTING';
 ##   readme_files[5]='COPYING.DOC';
-##   readme_files[6]='COPYING.LIB';
-##   readme_files[7]='COPYING.PRG';
+##   readme_files[6]='COPYING.PRG';
+##   readme_files[7]='COPYING.LIB';
 ##   readme_files[8]='FAQ';
 ##   readme_files[9]='INSTALL';
-##   readme_files[10]='NEWS';
-##   readme_files[11]='PROBLEMS';
-##   readme_files[12]='README';
-##   readme_files[13]='THANKS';
-##   readme_files[14]='TODO';
+##   readme_files[10]='MANIFEST';
+##   readme_files[11]='NEWS';
+##   readme_files[12]='PROBLEMS';
+##   readme_files[13]='README';
+##   readme_files[14]='THANKS';
+##   readme_files[15]='TAGS';
+##   readme_files[16]='TODO';
 ##
 ##   or
 ##
@@ -1163,17 +1184,19 @@ configuration_files=( \
 ##     'AUTHORS' \
 ##     'BACKLOG' \
 ##     'BUGS' \
-##     'CHANGELOG' \
+##     'ChangeLog' \
 ##     'CONTRIBUTING' \
 ##     'COPYING.DOC' \
-##     'COPYING.LIB' \
 ##     'COPYING.PRG' \
+##     'COPYING.LIB' \
 ##     'FAQ' \
 ##     'INSTALL' \
+##     'MANIFEST' \
 ##     'NEWS' \
 ##     'PROBLEMS' \
 ##     'README' \
 ##     'THANKS' \
+##     'TAGS' \
 ##     'TODO' \
 ##   );
 
@@ -1181,17 +1204,19 @@ readme_files=( \
   'AUTHORS' \
   'BACKLOG' \
   'BUGS' \
-  'CHANGELOG' \
+  'ChangeLog' \
   'CONTRIBUTING' \
   'COPYING.DOC' \
-  'COPYING.LIB' \
   'COPYING.PRG' \
+  'COPYING.LIB' \
   'FAQ' \
   'INSTALL' \
+  'MANIFEST' \
   'NEWS' \
   'PROBLEMS' \
   'README' \
   'THANKS' \
+  'TAGS' \
   'TODO' \
 );
 

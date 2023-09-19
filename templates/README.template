@@ -19,8 +19,279 @@
 ################################################################################
 ##                                                                            ##
 ## {? organisation name ?} {? project name ?} README file - general overview  ##
-## of the program / library / documentation / package and pointers to further ##
-## resources.                                                                 ##
+## of the programs / libraries / documentations / package and pointers to     ##
+## further resources.                                                         ##
 ##                                                                            ##
 ################################################################################
 ################################################################################
+
+
+
+================================================================================
+
+Banner, badges and emblems:
+                       _           _   _  _   _
+                      | |__   __ _| \ | || \ | | ___ _ __
+ _________________    | '_ \ / _` |  \| ||  \| |/ _ \ '__|    _________________
+<_________________|   | |_) | (_| | |\  || |\  |  __/ |      |_________________>
+                      |_.__/ \__,_|_| \_||_| \_|\___|_|
+
+[badge label|badge content]
+
+================================================================================
+
+Name of the programs / libraries / documentations / package:
+
+{? organisation name ?} {? project name ?} {? project type ?}
+
+================================================================================
+
+Short description of the programs / libraries / documentations / package:
+
+{? project description short ?}
+
+================================================================================
+
+Version of the programs / libraries / documentations / package:
+
+{? project release version ?}
+
+================================================================================
+
+Release date of the programs / libraries / documentations / package:
+
+{? project release date ?}
+
+================================================================================
+
+Short description of the programs / libraries / documentations / package:
+
+{? project description short ?}
+
+================================================================================
+
+Pointers to further resources:
+
+Website:
+
+Repository:
+
+================================================================================
+
+Contents
+--------------------------------------------------------------------------------
+
+ 0 Description
+ 1 AUTHORS
+ 2 BACKLOG
+ 3 BUGS
+ 4 CONTRIBUTING
+ 5 COPYING
+ 6 COPYING.DOC
+ 7 COPYING.LIB
+ 8 COPYING.PRG
+ 9 ChangeLog
+10 FAQ
+11 INSTALL
+12 MANIFEST
+13 NEWS
+14 PROBLEMS
+15 README
+16 TAGS
+17 THANKS
+18 TODO
+
+================================================================================
+
+ 0 Description
+--------------------------------------------------------------------------------
+
+Long description of the programs / libraries / documentations / package
+(including: (*) names of all programs / libraries and description what they are
+for; (*) titles of all documentations and description what they are about; (*)
+prerequisites, requirements and dependencies for all programs / libraries /
+documentations; (*) documentations (or pointer to documentations) of all
+programs / libraries):
+
+{? project description long ?}
+
+================================================================================
+
+ 1 AUTHORS
+--------------------------------------------------------------------------------
+
+Credits to the programs / libraries / documentations / package authors:
+
+Authors:
+
+See AUTHORS file.
+
+================================================================================
+
+ 2 BACKLOG
+--------------------------------------------------------------------------------
+
+Features list of all functionality of the programs / libraries / documentations
+/ package desired in the future:
+
+See BACKLOG file.
+
+================================================================================
+
+ 3 BUGS
+--------------------------------------------------------------------------------
+
+List of known bugs of the programs / libraries / documentations / package and
+instructions on reporting new ones:
+See BUGS file.
+
+================================================================================
+
+ 4 CONTRIBUTING
+--------------------------------------------------------------------------------
+
+Information on how to contribute to the programs / libraries / documentations /
+package:
+See CONTRIBUTING file.
+
+================================================================================
+
+ 5 COPYING
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the programs
+/ libraries / documentations / package:
+See COPYING file.
+
+================================================================================
+
+ 6 COPYING.DOC
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the
+documentations:
+See COPYING.DOC file.
+
+================================================================================
+
+ 7 COPYING.LIB
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the
+libraries:
+See COPYING.LIB file.
+
+================================================================================
+
+ 8 COPYING.PRG
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the programs:
+See COPYING.PRG file.
+
+================================================================================
+
+ 9 ChangeLog
+--------------------------------------------------------------------------------
+
+List of descriptions of all the changes made to source files of the programs /
+libraries / documentations / package and maintainers are interested in:
+
+See ChangeLog file.
+
+================================================================================
+
+10 FAQ
+--------------------------------------------------------------------------------
+
+List of frequently asked questions about the programs / libraries /
+documentations / package:
+
+See FAQ file.
+
+================================================================================
+
+11 INSTALL
+--------------------------------------------------------------------------------
+
+Information on how to configure, build, test and install the programs /
+libraries / documentations / package:
+
+See INSTALL file.
+
+================================================================================
+
+12 MANIFEST
+--------------------------------------------------------------------------------
+
+List of directories and files in the distribution of the programs / libraries /
+documentations / package:
+
+See MANIFEST file.
+
+================================================================================
+
+13 NEWS
+--------------------------------------------------------------------------------
+
+List of user-visible changes to the programs / libraries / documentations /
+package worth mentioning and users are interested in:
+
+See NEWS file.
+
+================================================================================
+
+14 PROBLEMS
+--------------------------------------------------------------------------------
+
+List of known problems of the programs / libraries / documentations / package
+and instructions on reporting new ones:
+
+See PROBLEMS file.
+
+================================================================================
+
+15 README
+--------------------------------------------------------------------------------
+
+General overview of the programs / libraries / documentations / package and
+pointers to further resources:
+
+See README file.
+
+================================================================================
+
+16 TAGS
+--------------------------------------------------------------------------------
+
+Index to source-code definitions of functions, variables, and any other
+interesting syntactic features of the programs / libraries / documentations /
+package:
+
+See TAGS file.
+
+================================================================================
+
+17 THANKS
+--------------------------------------------------------------------------------
+
+Acknowledgements to the programs / libraries / documentations / package
+maintainers and contributors:
+
+Maintainers:
+
+Contributors:
+
+See THANKS file.
+
+================================================================================
+
+18 TODO
+--------------------------------------------------------------------------------
+
+List of features and bugs of the programs / libraries / documentations / package
+currently worked on.
+
+See TODO file.
+
+================================================================================

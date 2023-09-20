@@ -7,7 +7,7 @@
 ## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
 ## local directory.                                                           ##
 ##                                                                            ##
-## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan@gmx.de>                ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
 ##                                                                            ##
 ## GNU All-Permissive License: Copying and distribution of this file, with or ##
 ## without modification, are permitted in any medium without royalty provided ##
@@ -17,8 +17,326 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## RaSt git-gnu-project README file - general overview of the package and     ##
-## pointers to further resources.                                             ##
+## RaSt git-gnu-project README file - general overview of the programs /      ##
+## libraries / documentations / package and pointers to further resources.    ##
 ##                                                                            ##
 ################################################################################
 ################################################################################
+
+
+
+================================================================================
+
+Banner, badges and emblems:
+             ____       ____  _
+            |  _ \ __ _/ ___|| |_
+ _______    | |_) / _` \___ \| __|    _________________________________________
+[_______]   |  _ < (_| |___) | |_    [_________________________________________]
+            |_| \_\__,_|____/ \__|
+                                    ____            _           _
+                                   |  _ \ _ __ ___ (_) ___  ___| |_
+ ______________________________    | |_) | '__/ _ \| |/ _ \/ __| __|    _______
+[______________________________]   |  __/| | | (_) | |  __/ (__| |_    [_______]
+                                   |_|   |_|  \___// |\___|\___|\__|
+                                                 |__/
+
+[made by|RaSt]
+
+================================================================================
+
+Name of the programs / libraries / documentations / package:
+
+RaSt git-gnu-project package
+
+================================================================================
+
+Short description of the programs / libraries / documentations / package:
+
+With RaSt git-gnu-project you can create a Git repository and a GNU project tree
+in a local directory.
+
+================================================================================
+
+Version of the programs / libraries / documentations / package latest release:
+
+1.0.0
+
+================================================================================
+
+Date of the programs / libraries / documentations / package latest release:
+
+2023-09-18 14:17:21 +00:00:00
+
+================================================================================
+
+Contents
+--------------------------------------------------------------------------------
+
+ 0 Description
+ 1 AUTHORS
+ 2 BACKLOG
+ 3 BUGS
+ 4 CONTRIBUTING
+ 5 COPYING
+ 6 COPYING.DOC
+ 7 COPYING.LIB
+ 8 COPYING.PRG
+ 9 ChangeLog
+10 FAQ
+11 INSTALL
+12 MANIFEST
+13 NEWS
+14 PROBLEMS
+15 README
+16 TAGS
+17 THANKS
+18 TODO
+
+================================================================================
+
+ 0 Description
+--------------------------------------------------------------------------------
+
+Long description of the programs / libraries / documentations / package
+(including: (*) names of all programs / libraries and description what they are
+for; (*) titles of all documentations and description what they are about; (*)
+prerequisites, requirements and dependencies for installation for all programs /
+libraries / documentations; (*) documentations (or pointer to documentations) of
+all programs / libraries; (*) pointers to further resources like website and
+repository):
+
+RaSt git-gnu-project contains the two programs gittify and gnutify.
+
+Using gittify you can:
+
+* create locally an otherwise empty Git repository;
+
+* set global and local Git configuration settings;
+
+* set directories and files to ignore;
+
+* make an initial commit;
+
+* ...
+
+Using gnutify you can:
+
+* create locally a GNU project tree for programs, libraries, documentations or a
+  package (which itself contains programs, libraries, documentations);
+
+* create locally the GNU standard readme files having your preferred copyright
+  notice and license notice;
+
+* copy license files;
+
+* ...
+
+.. to start your fresh project.
+
+For further information see the documentation of gittify and gnutify:
+
+  man 1 gittify
+  man 1 gnutify
+
+  info gittify
+  info gnutify
+
+Website:
+
+Repositories:
+
+  <https://github.com/RaStBh/git-gnu-project.git>
+  <https://gitlab.com/RaStBh/git-gnu-project.git>
+
+================================================================================
+
+ 1 AUTHORS
+--------------------------------------------------------------------------------
+
+Credits to the programs / libraries / documentations / package authors:
+
+Authors:
+
+  Ralf Stephan  <me@ralf-stephan.name>
+
+See AUTHORS file if present.
+
+================================================================================
+
+ 2 BACKLOG
+--------------------------------------------------------------------------------
+
+Features list of all functionality of the programs / libraries / documentations
+/ package desired in the future:
+
+See BACKLOG file if present.
+
+================================================================================
+
+ 3 BUGS
+--------------------------------------------------------------------------------
+
+List of known bugs of the programs / libraries / documentations / package and
+instructions on reporting new ones:
+
+See BUGS file if present.
+
+================================================================================
+
+ 4 CONTRIBUTING
+--------------------------------------------------------------------------------
+
+Information on how to contribute to the programs / libraries / documentations /
+package:
+
+See CONTRIBUTING file if present.
+
+================================================================================
+
+ 5 COPYING
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the programs
+/ libraries / documentations / package:
+
+See COPYING file if present.
+
+================================================================================
+
+ 6 COPYING.DOC
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the
+documentations:
+
+See COPYING.DOC file if present.
+
+================================================================================
+
+ 7 COPYING.LIB
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the
+libraries:
+
+See COPYING.LIB file if present.
+
+================================================================================
+
+ 8 COPYING.PRG
+--------------------------------------------------------------------------------
+
+Terms and conditions for copying, distribution and modification of the programs:
+
+See COPYING.PRG file if present.
+
+================================================================================
+
+ 9 ChangeLog
+--------------------------------------------------------------------------------
+
+List of descriptions of all the changes made to source files of the programs /
+libraries / documentations / package and maintainers are interested in:
+
+See ChangeLog file if present.
+
+================================================================================
+
+10 FAQ
+--------------------------------------------------------------------------------
+
+List of frequently asked questions about the programs / libraries /
+documentations / package:
+
+See FAQ file if present.
+
+================================================================================
+
+11 INSTALL
+--------------------------------------------------------------------------------
+
+Information on how to configure, build, test and install the programs /
+libraries / documentations / package:
+
+See INSTALL file if present.
+
+================================================================================
+
+12 MANIFEST
+--------------------------------------------------------------------------------
+
+List of directories and files in the distribution of the programs / libraries /
+documentations / package:
+
+See MANIFEST file if present.
+
+================================================================================
+
+13 NEWS
+--------------------------------------------------------------------------------
+
+List of user-visible changes to the programs / libraries / documentations /
+package worth mentioning and users are interested in:
+
+See NEWS file if present.
+
+================================================================================
+
+14 PROBLEMS
+--------------------------------------------------------------------------------
+
+List of known problems of the programs / libraries / documentations / package
+and instructions on reporting new ones:
+
+See PROBLEMS file if present.
+
+================================================================================
+
+15 README
+--------------------------------------------------------------------------------
+
+General overview of the programs / libraries / documentations / package and
+pointers to further resources:
+
+See README file if present.
+
+================================================================================
+
+16 TAGS
+--------------------------------------------------------------------------------
+
+Index to source-code definitions of functions, variables, and any other
+interesting syntactic features of the programs / libraries / documentations /
+package:
+
+See TAGS file if present.
+
+================================================================================
+
+17 THANKS
+--------------------------------------------------------------------------------
+
+Acknowledgements to the programs / libraries / documentations / package
+maintainers and contributors:
+
+Maintainers:
+
+  Ralf Stephan  <me@ralf-stephan.name>
+
+Contributors:
+
+  Ralf Stephan  <me@ralf-stephan.name>
+
+See THANKS file if present.
+
+================================================================================
+
+18 TODO
+--------------------------------------------------------------------------------
+
+List of features and bugs of the programs / libraries / documentations / package
+currently worked on:
+
+See TODO file if present.
+
+================================================================================

@@ -52,29 +52,15 @@ Short description of the programs / libraries / documentations / package:
 
 ================================================================================
 
-Version of the programs / libraries / documentations / package:
+Version of the programs / libraries / documentations / package latest release:
 
 {? project release version ?}
 
 ================================================================================
 
-Release date of the programs / libraries / documentations / package:
+Date of the programs / libraries / documentations / package latest release:
 
 {? project release date ?}
-
-================================================================================
-
-Short description of the programs / libraries / documentations / package:
-
-{? project description short ?}
-
-================================================================================
-
-Pointers to further resources:
-
-Website:
-
-Repository:
 
 ================================================================================
 
@@ -109,9 +95,10 @@ Contents
 Long description of the programs / libraries / documentations / package
 (including: (*) names of all programs / libraries and description what they are
 for; (*) titles of all documentations and description what they are about; (*)
-prerequisites, requirements and dependencies for all programs / libraries /
-documentations; (*) documentations (or pointer to documentations) of all
-programs / libraries):
+prerequisites, requirements and dependencies for installation for all programs /
+libraries / documentations; (*) documentations (or pointer to documentations) of
+all programs / libraries; (*) pointers to further resources like website and
+repository):
 
 {? project description long ?}
 
@@ -143,6 +130,7 @@ See BACKLOG file.
 
 List of known bugs of the programs / libraries / documentations / package and
 instructions on reporting new ones:
+
 See BUGS file.
 
 ================================================================================
@@ -152,6 +140,7 @@ See BUGS file.
 
 Information on how to contribute to the programs / libraries / documentations /
 package:
+
 See CONTRIBUTING file.
 
 ================================================================================
@@ -161,6 +150,7 @@ See CONTRIBUTING file.
 
 Terms and conditions for copying, distribution and modification of the programs
 / libraries / documentations / package:
+
 See COPYING file.
 
 ================================================================================
@@ -170,6 +160,7 @@ See COPYING file.
 
 Terms and conditions for copying, distribution and modification of the
 documentations:
+
 See COPYING.DOC file.
 
 ================================================================================
@@ -179,6 +170,7 @@ See COPYING.DOC file.
 
 Terms and conditions for copying, distribution and modification of the
 libraries:
+
 See COPYING.LIB file.
 
 ================================================================================
@@ -187,6 +179,7 @@ See COPYING.LIB file.
 --------------------------------------------------------------------------------
 
 Terms and conditions for copying, distribution and modification of the programs:
+
 See COPYING.PRG file.
 
 ================================================================================

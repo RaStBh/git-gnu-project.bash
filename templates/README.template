@@ -111,7 +111,7 @@ Credits to the programs / libraries / documentations / package authors:
 
 Authors:
 
-See AUTHORS file.
+See AUTHORS file if present.
 
 ================================================================================
 
@@ -121,7 +121,7 @@ See AUTHORS file.
 Features list of all functionality of the programs / libraries / documentations
 / package desired in the future:
 
-See BACKLOG file.
+See BACKLOG file if present.
 
 ================================================================================
 
@@ -131,7 +131,7 @@ See BACKLOG file.
 List of known bugs of the programs / libraries / documentations / package and
 instructions on reporting new ones:
 
-See BUGS file.
+See BUGS file if present.
 
 ================================================================================
 
@@ -141,7 +141,7 @@ See BUGS file.
 Information on how to contribute to the programs / libraries / documentations /
 package:
 
-See CONTRIBUTING file.
+See CONTRIBUTING file if present.
 
 ================================================================================
 
@@ -151,7 +151,7 @@ See CONTRIBUTING file.
 Terms and conditions for copying, distribution and modification of the programs
 / libraries / documentations / package:
 
-See COPYING file.
+See COPYING file if present.
 
 ================================================================================
 
@@ -161,7 +161,7 @@ See COPYING file.
 Terms and conditions for copying, distribution and modification of the
 documentations:
 
-See COPYING.DOC file.
+See COPYING.DOC file if present.
 
 ================================================================================
 
@@ -171,7 +171,7 @@ See COPYING.DOC file.
 Terms and conditions for copying, distribution and modification of the
 libraries:
 
-See COPYING.LIB file.
+See COPYING.LIB file if present.
 
 ================================================================================
 
@@ -180,7 +180,7 @@ See COPYING.LIB file.
 
 Terms and conditions for copying, distribution and modification of the programs:
 
-See COPYING.PRG file.
+See COPYING.PRG file if present.
 
 ================================================================================
 
@@ -190,7 +190,7 @@ See COPYING.PRG file.
 List of descriptions of all the changes made to source files of the programs /
 libraries / documentations / package and maintainers are interested in:
 
-See ChangeLog file.
+See ChangeLog file if present.
 
 ================================================================================
 
@@ -200,7 +200,7 @@ See ChangeLog file.
 List of frequently asked questions about the programs / libraries /
 documentations / package:
 
-See FAQ file.
+See FAQ file if present.
 
 ================================================================================
 
@@ -210,7 +210,7 @@ See FAQ file.
 Information on how to configure, build, test and install the programs /
 libraries / documentations / package:
 
-See INSTALL file.
+See INSTALL file if present.
 
 ================================================================================
 
@@ -220,7 +220,7 @@ See INSTALL file.
 List of directories and files in the distribution of the programs / libraries /
 documentations / package:
 
-See MANIFEST file.
+See MANIFEST file if present.
 
 ================================================================================
 
@@ -230,7 +230,7 @@ See MANIFEST file.
 List of user-visible changes to the programs / libraries / documentations /
 package worth mentioning and users are interested in:
 
-See NEWS file.
+See NEWS file if present.
 
 ================================================================================
 
@@ -240,7 +240,7 @@ See NEWS file.
 List of known problems of the programs / libraries / documentations / package
 and instructions on reporting new ones:
 
-See PROBLEMS file.
+See PROBLEMS file if present.
 
 ================================================================================
 
@@ -250,7 +250,7 @@ See PROBLEMS file.
 General overview of the programs / libraries / documentations / package and
 pointers to further resources:
 
-See README file.
+See README file if present.
 
 ================================================================================
 
@@ -261,7 +261,7 @@ Index to source-code definitions of functions, variables, and any other
 interesting syntactic features of the programs / libraries / documentations /
 package:
 
-See TAGS file.
+See TAGS file if present.
 
 ================================================================================
 
@@ -275,7 +275,7 @@ Maintainers:
 
 Contributors:
 
-See THANKS file.
+See THANKS file if present.
 
 ================================================================================
 
@@ -283,8 +283,8 @@ See THANKS file.
 --------------------------------------------------------------------------------
 
 List of features and bugs of the programs / libraries / documentations / package
-currently worked on.
+currently worked on:
 
-See TODO file.
+See TODO file if present.
 
 ================================================================================

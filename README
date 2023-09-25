@@ -166,8 +166,40 @@ See AUTHORS file if present.
  2 BACKLOG
 --------------------------------------------------------------------------------
 
-Features list of all functionality of the programs / libraries / documentations
-/ package desired in the future:
+List of all functionality of the programs / libraries / documentations / package
+desired in the future:
+
+states:
+
+                 +<------------------------------------------------------------------rework<--+
+                 |                                                                           /|\
+                 |                                                                            |
+                 |             +<-----------------------------------progress<--+              |
+                 |             |                                              /|\             |
+                \|/           \|/                                              |              |
+  -->scheduled-->+-->started-->+-->progress----------------------------------->+-->finished-->+-->accomplished-->
+                 |             |                                              /|\             |
+                 |             |                                               |              |
+                 |             |                 +<--pending<--+               |              |
+                 |             |                 |            /|\              |              |
+                 |            \|/               \|/            |               |              |
+                 |             +-->interrupted-->+-->pending-->+-->continued-->+              |
+                 |             |                 |             |               |              |
+                \|/           \|/               \|/           \|/             \|/            \|/
+                 +------------>+---------------->+------------>+-------------->+------------->+
+                                                                                              |
+                                                                                             \|/
+                                                                                          discarded
+                                                                                              |
+                                                                                             \|/
+
+priorities:
+
+  -->someday-->low-->medium-->high-->instantly-->
+
+for gittify:
+
+for gnutify:
 
 See BACKLOG file if present.
 

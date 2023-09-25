@@ -105,7 +105,8 @@ libraries / documentations; (*) documentations (or pointer to documentations) of
 all programs / libraries; (*) pointers to further resources like website and
 repository):
 
-RaSt git-gnu-project contains the two programs gittify and gnutify.
+RaSt git-gnu-project contains one command which has two sub commands which are
+gittify and gnutify.
 
 Using gittify you can:
 

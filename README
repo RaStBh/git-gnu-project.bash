@@ -134,13 +134,11 @@ Using gnutify you can:
 
 .. to start your fresh project.
 
-For further information see the documentation of gittify and gnutify:
+For further information see the documentation of git-gnu-project:
 
-  man 1 gittify
-  man 1 gnutify
+  man 1 git-gnu-project
 
-  info gittify
-  info gnutify
+  info git-gnu-project
 
 Website:
 
@@ -197,10 +195,6 @@ states:
 priorities:
 
   -->someday-->low-->medium-->high-->instantly-->
-
-for gittify:
-
-for gnutify:
 
 See BACKLOG file if present.
 

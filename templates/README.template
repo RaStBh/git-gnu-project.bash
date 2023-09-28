@@ -86,6 +86,7 @@ Contents
 16 TAGS
 17 THANKS
 18 TODO
+19 VENDORS
 
 ================================================================================
 
@@ -107,7 +108,9 @@ repository):
  1 AUTHORS
 --------------------------------------------------------------------------------
 
-Credits to the programs / libraries / documentations / package authors:
+Credits to the authors of this programs / libraries / documentations / package
+(first-party contributions to this programs / libraries / documentations /
+package).
 
 Authors:
 
@@ -268,8 +271,9 @@ See TAGS file if present.
 17 THANKS
 --------------------------------------------------------------------------------
 
-Acknowledgements to the programs / libraries / documentations / package
-maintainers and contributors:
+Acknowledgements to the contributors and maintainers of this programs /
+libraries / documentations / package  (second-party contributions to this
+programs / libraries / documentations / package).
 
 Maintainers:
 
@@ -288,3 +292,12 @@ currently worked on:
 See TODO file if present.
 
 ================================================================================
+
+19 VENDORS
+--------------------------------------------------------------------------------
+
+Credits to the authors of other programs / libraries / documentations / package
+(third-party contributions to this programs / libraries / documentations /
+package).
+
+See VENDORS file if present.

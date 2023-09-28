@@ -25,8 +25,24 @@
 
 
 
+# Doxygen
+
+/doc/docbook/
+/doc/html/
+/doc/html/
+/doc/latex/
+/doc/latex/
+/doc/rtf/
+/doc/xml/
+
+
+
 # Emacs
+
 *~
 
+
+
 # Notepad++
+
 nppBackup/

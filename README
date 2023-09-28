@@ -91,6 +91,7 @@ Contents
 16 TAGS
 17 THANKS
 18 TODO
+19 VENDORS
 
 ================================================================================
 
@@ -367,3 +368,24 @@ currently worked on:
 See TODO file if present.
 
 ================================================================================
+
+19 VENDORS
+--------------------------------------------------------------------------------
+
+Credits to the authors of other programs / libraries / documentations / package
+(third-party contributions to this programs / libraries / documentations /
+package).
+
+This programs / libraries / documentations / package contain(s), use(s) and
+redistribute(s) programs / libraries / documentations / packages who are written
+and owned by others. It is / they are released under their respective copyright
+and license. We want to thank the contributors of these projects.
+
+* bash-doxygen (94094df on Feb 25, 2019) <https://github.com/Anvil/bash-doxygen>
+
+  Damien Nadé <github@livna.org>
+
+  For terms and conditions for copying, distribution and modification see
+  <contrib\bash-doxygen\README.md> and <contrib\bash-doxygen\COPYING>.
+
+See VENDORS file if present.

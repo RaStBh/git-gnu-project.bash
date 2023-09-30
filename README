@@ -432,7 +432,4 @@ and license. We want to thank the contributors of these projects.
   For terms and conditions for copying, distribution and modification see
   <contrib\bash-doxygen\README.md> and <contrib\bash-doxygen\COPYING>.
 
-  I (Ralf Stephan) copyied and renamed <contrib/bash-doxygen/doxygen-bash.sed> 
-  to <src/doxygen-bash-filer.sed> to adapt it to my needs. -- 2023-09-30
-
 See VENDORS file if present.

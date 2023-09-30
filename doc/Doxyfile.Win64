@@ -984,7 +984,7 @@ INPUT_FILE_ENCODING    =
 # provided as doxygen C comment), *.py, *.pyw, *.f90, *.f95, *.f03, *.f08,
 # *.f18, *.f, *.for, *.vhd, *.vhdl, *.ucf, *.qsf and *.ice.
 
-FILE_PATTERNS          = *.sh*
+FILE_PATTERNS          = *.sh
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -1076,7 +1076,7 @@ IMAGE_PATH             =
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-INPUT_FILTER           = "C:\GnuWin32-0.6.3\bin\sed.exe -n -f ..\contrib\bash-doxygen\doxygen-bash.sed"
+INPUT_FILTER           = "C:\GnuWin32-0.6.3\bin\sed.exe --file=..\contrib\bash-doxygen\doxygen-bash.sed --quiet"
 
 # The FILTER_PATTERNS tag can be used to specify filters on a per file pattern
 # basis. Doxygen will compare the file name with each pattern and apply the
@@ -2806,7 +2806,7 @@ DOT_CLEANUP            = YES
 # <outfile_format> -o <outputfile> <inputfile>. The external tool should support
 # output file formats "png", "eps", "svg", and "ismap".
 
-MSCGEN_TOOL            = "C:/Program Files (x86)/Mscgen/mscgen.exe"
+MSCGEN_TOOL            =
 
 # The MSCFILE_DIRS tag can be used to specify one or more directories that
 # contain msc files that are included in the documentation (see the \mscfile

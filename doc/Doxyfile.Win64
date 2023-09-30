@@ -1104,7 +1104,7 @@ FILTER_PATTERNS        = "*.awk=C:\GnuWin32-0.6.3\bin\sed.exe --file=C:\Users\la
                          "*.perl=C:\GnuWin32-0.6.3\bin\sed.exe --file=C:\Users\laurin\Desktop\projects\public\git-gnu-project.sh\src\doxygen-perl-filter.sed --quiet --regexp-extended" \
                          "*.sed=C:\GnuWin32-0.6.3\bin\sed.exe --file=C:\Users\laurin\Desktop\projects\public\git-gnu-project.sh\src\doxygen-sed-filter.sed --quiet --regexp-extended" \
                          "*.sh=C:\GnuWin32-0.6.3\bin\sed.exe --file=C:\Users\laurin\Desktop\projects\public\git-gnu-project.sh\src\doxygen-sh-filter.sed --quiet --regexp-extended" \
-                         "no_extension=C:\GnuWin32-0.6.3\bin\sed.exe --file=C:\Users\laurin\Desktop\projects\public\git-gnu-project.sh\src\doxygen-sh-filter.sed --quiet --regexp-extended"
+                         "no_extension=C:\GnuWin32-0.6.3\bin\sed.exe --file=C:\Users\laurin\Desktop\projects\public\git-gnu-project.sh\src\doxygen-no-extension-filter.sed --quiet --regexp-extended"
 
 # If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set using
 # INPUT_FILTER) will also be used to filter the input files that are used for

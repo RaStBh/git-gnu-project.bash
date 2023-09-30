@@ -24,3 +24,27 @@
 ##                                                                            ##
 ################################################################################
 ################################################################################
+
+
+
+## @mainpage 
+##
+## RaSt git-gnu-project package
+##
+## With RaSt git-gnu-project you can create a Git repository and a GNU project 
+## tree in a local directory.
+##
+## 1.0.0
+##
+## 2023-09-18 14:17:21 +00:00:00
+##
+## @copyright Copyright (C)  2023  Ralf Stephan  \<me@ralf-stephan.name\>
+
+
+
+## @file git-gnu-project.sh
+##
+## @brief The main script of RaSt git-gnu-project.
+##
+## @details The main script of RaSt git-gnu-project handling the command 
+## git-gnu-project and the subcommands gittify and gnutify.

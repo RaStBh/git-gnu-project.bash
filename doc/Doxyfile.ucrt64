@@ -343,7 +343,12 @@ OPTIMIZE_OUTPUT_SLICE  = NO
 #
 # Note see also the list of default file extension mappings.
 
-EXTENSION_MAPPING      = sh=C
+EXTENSION_MAPPING      = awk=C \
+                         bash=C \
+                         perl=C \
+                         sed=C \
+                         sh=C \
+                         no_extension=C
 
 # If the MARKDOWN_SUPPORT tag is enabled then doxygen pre-processes all comments
 # according to the Markdown format, which allows for more readable
@@ -984,7 +989,12 @@ INPUT_FILE_ENCODING    =
 # provided as doxygen C comment), *.py, *.pyw, *.f90, *.f95, *.f03, *.f08,
 # *.f18, *.f, *.for, *.vhd, *.vhdl, *.ucf, *.qsf and *.ice.
 
-FILE_PATTERNS          = *.sh
+FILE_PATTERNS          = *.awk \
+                         *.bash \
+                         *.perl \
+                         *.sed \
+                         *.sh \
+                         *
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -1076,7 +1086,7 @@ IMAGE_PATH             =
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-INPUT_FILTER           = "/usr/bin/sed --file=../src/doxygen-bash-filter.sed --quiet"
+INPUT_FILTER           = "/usr/bin/sed --file=../src/doxygen-bash-filter.sed --quiet --regexp-extended"
 
 # The FILTER_PATTERNS tag can be used to specify filters on a per file pattern
 # basis. Doxygen will compare the file name with each pattern and apply the
@@ -1089,7 +1099,12 @@ INPUT_FILTER           = "/usr/bin/sed --file=../src/doxygen-bash-filter.sed --q
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-FILTER_PATTERNS        =
+FILTER_PATTERNS        = "*.awk=/usr/bin/sed --file=../src/doxygen-awk-filter.sed --quiet --regexp-extended" \
+                         "*.bash=/usr/bin/sed --file=../src/doxygen-bash-filter.sed --quiet --regexp-extended" \
+                         "*.perl=/usr/bin/sed --file=../src/doxygen-perl-filter.sed --quiet --regexp-extended" \
+                         "*.sed=/usr/bin/sed --file=../src/doxygen-sed-filter.sed --quiet --regexp-extended" \
+                         "*.sh=/usr/bin/sed --file=../src/doxygen-sh-filter.sed --quiet --regexp-extended" \
+                         "no_extension=/usr/bin/sed --file=../src/doxygen-sh-filter.sed --quiet --regexp-extended"
 
 # If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set using
 # INPUT_FILTER) will also be used to filter the input files that are used for

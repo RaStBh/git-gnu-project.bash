@@ -340,6 +340,95 @@ See INSTALL file if present.
 List of directories and files in the distribution of the programs / libraries /
 documentations / package:
 
+bash$ tree --gitignore --gitfile .gitignore
+
+.
+├── COPYING.DOC
+├── COPYING.PRG
+├── MANIFEST
+├── README
+├── contrib
+│   └── bash-doxygen
+│       ├── COPYING
+│       ├── README.md
+│       ├── doxygen-bash.sed
+│       └── test
+│           ├── input
+│           └── output
+├── doc
+│   ├── Doxyfile.Win64
+│   ├── Doxyfile.example
+│   ├── Doxyfile.ucrt64
+│   ├── PlantUML.cfg
+│   ├── doxygen-filter.txt
+│   └── uml_activity_diagram.txt
+├── hooks
+│   ├── applypatch-msg
+│   ├── commit-msg
+│   ├── fsmonitor-watchman
+│   ├── p4-changelist
+│   ├── p4-post-changelist
+│   ├── p4-pre-submit
+│   ├── p4-prepare-changelist
+│   ├── post-applypatch
+│   ├── post-checkout
+│   ├── post-commit
+│   ├── post-index-change
+│   ├── post-merge
+│   ├── post-receive
+│   ├── post-rewrite
+│   ├── post-update
+│   ├── pre-applypatch
+│   ├── pre-auto-gc
+│   ├── pre-commit
+│   ├── pre-push
+│   ├── pre-rebase
+│   ├── pre-receive
+│   ├── prepare-commit-msg
+│   ├── proc-receive
+│   ├── push-to-checkout
+│   ├── reference-transaction
+│   ├── sendemail-validate
+│   └── update
+├── licenses
+│   ├── cc_0_1.0.txt
+│   ├── cc_by-nc-nd_4.0.txt
+│   ├── cc_by-nc-sa_4.0.txt
+│   ├── cc_by-nc_4.0.txt
+│   ├── cc_by-nd_4.0.txt
+│   ├── cc_by-sa_4.0.txt
+│   ├── cc_by_4.0.txt
+│   ├── gnu_agpl-3.0.txt
+│   ├── gnu_apl.txt
+│   ├── gnu_fdl-1.3.txt
+│   ├── gnu_gpl-3.0.txt
+│   ├── gnu_lgpl-3.0.txt
+│   └── gnu_vcadl.txt
+├── src
+│   └── git-gnu-project.sh
+└── templates
+    ├── AUTHORS.template
+    ├── BACKLOG.template
+    ├── BUGS.template
+    ├── CONTRIBUTING.template
+    ├── COPYING.DOC.template
+    ├── COPYING.LIB.template
+    ├── COPYING.PRG.template
+    ├── COPYING.template
+    ├── ChangeLog.template
+    ├── FAQ.template
+    ├── INSTALL.template
+    ├── MANIFEST.template
+    ├── NEWS.template
+    ├── PROBLEMS.template
+    ├── README.template
+    ├── TAGS.template
+    ├── THANKS.template
+    ├── TODO.template
+    └── VENDORS.template
+
+9 directories, 79 files
+
 See MANIFEST file if present.
 
 ================================================================================

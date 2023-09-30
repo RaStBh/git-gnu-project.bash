@@ -343,8 +343,7 @@ OPTIMIZE_OUTPUT_SLICE  = NO
 #
 # Note see also the list of default file extension mappings.
 
-EXTENSION_MAPPING      = sh=C \
-                         no_extension=C
+EXTENSION_MAPPING      = sh=C
 
 # If the MARKDOWN_SUPPORT tag is enabled then doxygen pre-processes all comments
 # according to the Markdown format, which allows for more readable
@@ -985,8 +984,7 @@ INPUT_FILE_ENCODING    =
 # provided as doxygen C comment), *.py, *.pyw, *.f90, *.f95, *.f03, *.f08,
 # *.f18, *.f, *.for, *.vhd, *.vhdl, *.ucf, *.qsf and *.ice.
 
-FILE_PATTERNS          = *.sh \
-                         *
+FILE_PATTERNS          = *.sh*
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -1078,7 +1076,7 @@ IMAGE_PATH             =
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-INPUT_FILTER           = "C:\GnuWin32-0.6.3\bin\sed.exe --quiet --file=..\src\doxygen-bash-filter.sed"
+INPUT_FILTER           = "C:\GnuWin32-0.6.3\bin\sed.exe -n -f ..\contrib\bash-doxygen\doxygen-bash.sed"
 
 # The FILTER_PATTERNS tag can be used to specify filters on a per file pattern
 # basis. Doxygen will compare the file name with each pattern and apply the
@@ -1098,7 +1096,7 @@ FILTER_PATTERNS        =
 # producing the source files to browse (i.e. when SOURCE_BROWSER is set to YES).
 # The default value is: NO.
 
-FILTER_SOURCE_FILES    = YES
+FILTER_SOURCE_FILES    = NO
 
 # The FILTER_SOURCE_PATTERNS tag can be used to specify source filters per file
 # pattern. A pattern will override the setting for FILTER_PATTERN (if any) and
@@ -2708,7 +2706,7 @@ INTERACTIVE_SVG        = NO
 # found. If left blank, it is assumed the dot tool can be found in the path.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-DOT_PATH               = "../../../../../../../Program Files/Graphviz/bin/"
+DOT_PATH               = "C:/Program Files/Graphviz/bin/"
 
 # The DOTFILE_DIRS tag can be used to specify one or more directories that
 # contain dot files that are included in the documentation (see the \dotfile
@@ -2722,7 +2720,7 @@ DOTFILE_DIRS           =
 # DIA_PATH tag allows you to specify the directory where the dia binary resides.
 # If left empty dia is assumed to be found in the default search path.
 
-DIA_PATH               = "../../../../../../../Program Files (x86)/Dia/bin/"
+DIA_PATH               = "C:/Program Files (x86)/Dia/bin/"
 
 # The DIAFILE_DIRS tag can be used to specify one or more directories that
 # contain dia files that are included in the documentation (see the \diafile
@@ -2736,7 +2734,7 @@ DIAFILE_DIRS           =
 # a preprocessing step. Doxygen will generate a warning when it encounters a
 # \startuml command in this case and will not generate output for the diagram.
 
-PLANTUML_JAR_PATH      = "../../../../../../../Program Files (x86)/PlantUML/"
+PLANTUML_JAR_PATH      = "C:/Program Files (x86)/PlantUML/"
 
 # When using plantuml, the PLANTUML_CFG_FILE tag can be used to specify a
 # configuration file for plantuml.
@@ -2808,7 +2806,7 @@ DOT_CLEANUP            = YES
 # <outfile_format> -o <outputfile> <inputfile>. The external tool should support
 # output file formats "png", "eps", "svg", and "ismap".
 
-MSCGEN_TOOL            = "../../../../../../../Program Files (x86)/Mscgen/mscgen.exe"
+MSCGEN_TOOL            = "C:/Program Files (x86)/Mscgen/mscgen.exe"
 
 # The MSCFILE_DIRS tag can be used to specify one or more directories that
 # contain msc files that are included in the documentation (see the \mscfile

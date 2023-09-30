@@ -1078,7 +1078,7 @@ IMAGE_PATH             =
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-INPUT_FILTER           = "C:\GnuWin32-0.6.3\bin\sed.exe -n -f C:\Users\laurin\Desktop\projects\public\git-gnu-project.sh\src\doxygen-bash-filter.sed"
+INPUT_FILTER           = "C:\GnuWin32-0.6.3\bin\sed.exe --quiet --file=..\src\doxygen-bash-filter.sed"
 
 # The FILTER_PATTERNS tag can be used to specify filters on a per file pattern
 # basis. Doxygen will compare the file name with each pattern and apply the

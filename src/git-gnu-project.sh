@@ -129,6 +129,8 @@ set -o errtrace;
 ##   subshell environment.  The DEBUG and RETURN traps are normally not
 ##   inherited in such cases.
 ##
+set -o functrace;
+##
 ## hashall - same as -h - Remember the location of commands as they are looked
 ##   up.
 ##
@@ -251,6 +253,8 @@ set -o pipefail;
 ## verbose - same as -v - Print shell input lines as they are read.
 ##
 ## verbose - Same as -v. - Print shell input lines as they are read.
+##
+set -o verbose;
 ##
 ## vi - use a vi-style line editing interface
 ##
@@ -379,6 +383,8 @@ set -o xtrace;
 ##
 ##   6. Error tracing is enabled: command substitution, shell functions, and
 ##      subshells invoked with ( command ) inherit the ERR trap.
+##
+shopt -s extdebug;
 ##
 ## extglob - If set, the extended pattern matching features described above (see
 ##   Pattern Matching) are enabled.

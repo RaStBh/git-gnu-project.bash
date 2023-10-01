@@ -27,12 +27,12 @@
 
 
 
-## @mainpage 
+## @mainpage
 ##
 ## RaSt git-gnu-project package
 ##
-## With RaSt git-gnu-project you can create a Git repository and a GNU project 
-## tree in a local directory.
+## With the RaSt git-gnu-project you can create a Git repository and a GNU
+## project tree in a local directory.
 ##
 ## 1.0.0
 ##
@@ -44,7 +44,62 @@
 
 ## @file git-gnu-project.sh
 ##
-## @brief The main script of RaSt git-gnu-project.
+## @brief The main script of the RaSt git-gnu-project.
 ##
-## @details The main script of RaSt git-gnu-project handling the command 
+## @details The main script of the RaSt git-gnu-project handling the command
 ## git-gnu-project and the subcommands gittify and gnutify.
+
+
+
+## @c{
+## For Doxygen \var:
+##
+##   Datatypes:
+##
+##     integer
+##     float
+##     string
+##
+##     indexed-array-of-X
+##     hashed-array-of-X
+## }
+
+## @var integer EXIT_NO_ERROR
+## @brief The Exit code for no error.
+## @details The Command executed successfully.
+
+declare -r -i EXIT_NO_ERROR=0;
+
+## @var integer EXIT_GENERAL_ERROR
+## @brief The Exit code for a general error.
+## @details The Command did not execute successfully.
+
+declare -r -i EXIT_GENERAL_ERROR=1;
+
+## @fn main()
+## @brief The main function.
+## @details The main function (1) reads the configuration file, (2) reads the
+##   command line arguments (3) handles the command line arguments and (4)
+##   handles the subcommands gittify and gnutify.
+## @param[in] integer argc
+##   The number of command line arguments passed to the function.
+## @param[in] indexed-array-of-string argv
+##   The Array containing the command line arguments passed to the function.
+## @return
+##   return value: void; return code: the return code of the last executed
+##   command.
+
+function main() {
+  local -i argc="${1}"; shift 1;
+  local -a argv=( "${@}" );
+
+  return;
+}
+
+# Call the main function.
+
+main "${#}" "${@}";
+
+# Pass the return code of the main function to the console as the exit code.
+
+exit "${?}";

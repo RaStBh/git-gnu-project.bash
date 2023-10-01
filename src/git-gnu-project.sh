@@ -54,6 +54,11 @@
 ## @c{
 ## List of set options.
 ##
+## bash$ set --help
+##
+## "4.3.1 The Set Builtin" <https://www.gnu.org/software/bash/manual/bash.html#
+## The-Set-Builtin>
+##
 ## Recommended options to enable for debugging:
 ##
 ##   bash> set -E          -e         -u         -x        -o pipefail;
@@ -271,6 +276,9 @@ set -o xtrace;
 
 ## @c{
 ## List of shopt options.
+##
+## "4.3.2 The Shopt Builtin" <https://www.gnu.org/software/bash/manual/bash.html
+## #The-Shopt-Builtin>
 ##
 ## assoc_expand_once - If set, the shell suppresses multiple evaluation of
 ##   associative array subscripts during arithmetic expression evaluation, while

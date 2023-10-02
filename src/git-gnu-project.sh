@@ -74,8 +74,9 @@ declare -r -i ENABLE_COMMAND=0;
 ## @code
 ##   DEBUG_COMMAND && echo 'a message'
 ## @endcode
-## @param[in] integer ENABLE_COMMAND<br />Contains wether to run the debug
-##   command.
+## @startglobal
+## @itemglobal{in,integer,ENABLE_COMMAND<br />Contains wether to run the debug command.}
+## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
 ## @return return value: void<br />return code: The return code of the last
 ##   executed command.
@@ -99,14 +100,15 @@ declare -r -i ENABLE_SUBCOMMAND_GITTIFY=0;
 ## @code
 ##   DEBUG_SUBCOMMAND_GITTIFY && echo 'a message'
 ## @endcode
-## @param[in] integer ENABLE_SUBCOMMAND_GITTIFY<br />Contains wether to run the
-##   debug command.
+## @startglobal
+## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GITTIFY<br />Contains wether to run the debug command.}
+## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
 ## @return return value: void<br />return code: The return code of the last
 ##   executed command.
 
 function DEBUG_SUBCOMMAND_GITTIFY() {
-  (( 0 == "${ENABLE_COMMAND}" )) && "${@}";
+  (( 0 == "${ENABLE_SUBCOMMAND_GITTIFY}" )) && "${@}";
   return;
 }
 
@@ -124,14 +126,15 @@ declare -r -i ENABLE_SUBCOMMAND_GNUTIFY=0;
 ## @code
 ##   DEBUG_SUBCOMMAND_GNUTIFY && echo 'a message'
 ## @endcode
-## @param[in] integer ENABLE_SUBCOMMAND_GNUTIFY<br />Contains wether to run the
-##   debug command.
+## @startglobal
+## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GNUTIFY<br />Contains wether to run the debug command.}
+## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
 ## @return return value: void<br />return code: The return code of the last
 ##   executed command.
 
 function DEBUG_SUBCOMMAND_GNUTIFY() {
-  (( 0 == "${ENABLE_COMMAND}" )) && "${@}";
+  (( 0 == "${ENABLE_SUBCOMMAND_GNUTIFY}" )) && "${@}";
   return;
 }
 
@@ -1174,8 +1177,8 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## cause the shell to exit when the -e option is enabled.
 ##
 ## ============================================================================}
-##
-@c{==========================================================================
+
+## @c{==========================================================================
 ##
 ## local: command documentation:
 ## bash$ trap -l
@@ -1319,6 +1322,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## bash$ trap -l
 ##
 ## ============================================================================}
+
 ## @c{==========================================================================
 ##
 ## local: man documentation:

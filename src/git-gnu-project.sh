@@ -53,7 +53,8 @@
 
 ## @c{==========================================================================
 ##
-## command documentation: bash$ set --help
+## local: command documentation:
+## bash$ set --help
 ## -----------------------------------------------------------------------------
 ##
 ## allexport
@@ -216,25 +217,64 @@
 ##
 ##   Print commands and their arguments as they are executed.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## man documentation: bash$ man ???
+## local: man documentation:
+## bash$ man set
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## see
+## BASH_BUILTINS(1)
 ##
-## info documentation; bash$ info ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: info documentation:
+## bash$ info set
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## package specific documentation: /usr/local/doc/???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: package specific documentation:
+## </usr/local/doc/???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource website: "4.3.1 The Set Builtin" <https://www.gnu.org/
-## software/bash/manual/bash.html#The-Set-Builtin>
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: source code file:
+## </usr/src/???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: configuration file:
+## </???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: website:
+## 4.3.1 The Set Builtin
+## <https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin>
 ## -----------------------------------------------------------------------------
 ##
 ## allexport
@@ -443,37 +483,59 @@
 ## -r: Enable restricted shell mode.  This option cannot be unset once it has
 ##   been set.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource wiki: ???
+## remote: wiki:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource forum: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: forum:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource mailing list: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: mailing list:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource repository: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: repository:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource archive: ???
+## remote: archive:
+## <https://???>
 ## -----------------------------------------------------------------------------
+##
+## n/a
 ##
 ## ============================================================================}
 
 
 
 ## @c{
-##
 ## Set shell options using set.
 ##
 ## Recommended options to enable for debugging:
@@ -497,28 +559,70 @@ set -o xtrace;
 
 ## @c{==========================================================================
 ##
-## command documentation: bash$ shopt --help
+## local: command documentation:
+## bash$ shopt --help
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## man documentation: bash$ man ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: man documentation:
+## bash$ man shopt
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## see
+## BASH_BUILTINS(1)
 ##
-## info documentation; bash$ info ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: info documentation:
+## bash$ info shopt
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## package specific documentation: /usr/local/doc/???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: package specific documentation:
+## </usr/local/doc/???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource website: "4.3.2 The Shopt Builtin" <https://www.gnu.org/
-## software/bash/manual/bash.html#The-Shopt-Builtin>
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: source code file:
+## </usr/src/???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: configuration file:
+## </???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: website:
+## 4.3.2 The Shopt Builtin
+## <https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin>
 ## -----------------------------------------------------------------------------
 ##
 ## assoc_expand_once
@@ -851,30 +955,55 @@ set -o xtrace;
 ##
 ##   If set, the echo builtin expands backslash-escape sequences by default.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource wiki: ???
+## remote: wiki:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource forum: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: forum:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource mailing list: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: mailing list:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource repository: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: repository:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource archive: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: archive:
+## <https://???>
 ## -----------------------------------------------------------------------------
+##
+## n/a
 ##
 ## ============================================================================}
 
@@ -922,7 +1051,8 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 
 ## @c{==========================================================================
 ##
-## command documentation: bash$ trap --help
+## local: command documentation:
+## bash$ trap --help
 ## -----------------------------------------------------------------------------
 ##
 ## If a SIGNAL_SPEC is EXIT (0) ARG is executed on exit from the shell.
@@ -935,10 +1065,13 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## A SIGNAL_SPEC of ERR means to execute ARG each time a command's failure would
 ## cause the shell to exit when the -e option is enabled.
 ##
-## =============================================================================
+## ============================================================================}
+## @c{==========================================================================
 ##
-## command documentation: bash$ trap -l
+## local: command documentation:
+## bash$ trap -l
 ## -----------------------------------------------------------------------------
+##
 ##
 ## List of signal names and their corresponding numbers:
 ##
@@ -1007,87 +1140,82 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## 63) SIGRTMAX-1
 ## 64) SIGRTMAX
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## command documentation: bash$ kill --help
+## local: man documentation:
+## bash$ man trap
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## see
+## BASH_BUILTINS
 ##
-## command documentation: bash$ kill -l
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: info documentation:
+## bash$ info trap
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: package specific documentation:
+## </usr/local/doc/???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: source code file:
+## </usr/src/???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: configuration file:
+## </???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: command documentation:
+## bash$ kill --help
+## -----------------------------------------------------------------------------
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: command documentation:
+## bash$ kill -l
 ## -----------------------------------------------------------------------------
 ##
 ## same as
 ## bash$ trap -l
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## command documentation: bash$ stty --help
-## -----------------------------------------------------------------------------
-##
-## =============================================================================
-##
-## command documentation: bash$ stty -a
-## -----------------------------------------------------------------------------
-##
-## speed 38400 baud;
-## rows 39;
-## columns 134;                        libc      perl
-##                                     -------   -------
-## line    = 0;
-## intr    = ^C;              CTRL-C   SIGINT    SIGINT
-## quit    = ^\;              CTRL-\   SIGQUIT   SIGQUIT
-## erase   = ^?;              CTRL-?
-## kill    = ^U;              CTRL-U
-## eof     = ^D;              CTRL-D
-## eol     = <undef>;
-## eol2    = <undef>;
-## swtch   = ^Z;              CTRL-Z             SIGTSTP
-## start   = ^Q;              CTRL-Q             SIGCONT
-## stop    = ^S;              CTRL-S             SIGSTOP
-## susp    = ^Z;              CTRL-Z   SIGTSTP
-## rprnt   = ^R;              CTRL-R
-## werase  = ^W;              CTRL-W
-## lnext   = ^V;              CTRL-V
-## discard = ^O;              CTRL-O
-## min     = 1;
-## time    = 0;
-##
-## -parenb
-## -parodd
-## -cmspar cs8
-## -hupcl
-## -cstopb cread
-## -clocal
-## -crtscts
-## -ignbrk brkint
-## -ignpar
-## -parmrk
-## -inpck
-## -istrip
-## -inlcr
-## -igncr icrnl ixon
-## -ixoff
-## -iuclc ixany imaxbel iutf8 opost
-## -olcuc
-## -ocrnl onlcr
-## -onocr
-## -onlret
-## -ofill
-## -ofdel nl0 cr0 tab0 bs0 vt0 ff0 isig icanon iexten echo echoe echok
-## -echonl
-## -noflsh
-## -tostop echoctl echoke
-## -flusho
-##
-## =============================================================================
-##
-## man documentation: bash$ man trap
-## -----------------------------------------------------------------------------
-##
-## =============================================================================
-##
-## man documentation: bash$ man kill
+## local: man documentation:
+## bash$ man kill
 ## -----------------------------------------------------------------------------
 ##
 ## Here is a list of available signals, their numbers, and some commentary on
@@ -1130,369 +1258,12 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## SIGUSR1     30    user defined signal 1
 ## SIGUSR2     31    user defined signal 2
 ##
-## =============================================================================
-##
-## man documentation: bash$ man stty
-## -----------------------------------------------------------------------------
-##
-## =============================================================================
-##
-## man documentation: "termios, tcgetattr, tcsetattr, tcsendbreak, tcdrain,
-## tcflush, tcflow, cfmakeraw, cfgetospeed, cfgetispeed, cfsetispeed,
-## cfsetospeed, cfsetspeed - get and set terminal attributes, line control, get
-## and set baud rate" <https://manpages.debian.org/bookworm/manpages-dev/termios
-## .3.en.html>
-## -----------------------------------------------------------------------------
-##
-## The c_cc array defines the terminal special characters.  The symbolic indices
-## (initial values) and meaning are:
-##
-## VDISCARD
-##
-##   (not in POSIX; not supported under Linux; 017, SI, Ctrl-O) Toggle:
-##   start/stop discarding pending output.  Recognized when IEXTEN is set, and
-##   then not passed as input.
-##
-## VDSUSP
-##
-##   (not in POSIX; not supported under Linux; 031, EM, Ctrl-Y) Delayed suspend
-##   character (DSUSP): send SIGTSTP signal when the character is read by the
-##   user program.  Recognized when IEXTEN and ISIG are set, and the system
-##   supports job control, and then not passed as input.
-##
-## VEOF
-##
-##   (004, EOT, Ctrl-D) End-of-file character (EOF).  More precisely: this
-##   character causes the pending tty buffer to be sent to the waiting user
-##   program without waiting for end-of-line.  If it is the first character of
-##   the line, the read(2) in the user program returns 0, which signifies
-##   end-of-file.  Recognized when ICANON is set, and then not passed as input.
-##
-## VEOL
-##
-##   (0, NUL) Additional end-of-line character (EOL).  Recognized when ICANON is
-##   set.
-##
-## VEOL2
-##
-##   (not in POSIX; 0, NUL) Yet another end-of-line character (EOL2).
-##   Recognized when ICANON is set.
-##
-## VERASE
-##
-##   (0177, DEL, rubout, or 010, BS, Ctrl-H, or also #) Erase character (ERASE).
-##   This erases the previous not-yet-erased character, but does not erase past
-##   EOF or beginning-of-line.  Recognized when ICANON is set, and then not
-##   passed as input.
-##
-## VINTR
-##
-##   (003, ETX, Ctrl-C, or also 0177, DEL, rubout) Interrupt character (INTR).
-##   Send a SIGINT signal.  Recognized when ISIG is set, and then not passed as
-##   input.
-##
-## VKILL
-##
-##   (025, NAK, Ctrl-U, or Ctrl-X, or also @) Kill character (KILL).  This
-##   erases the input since the last EOF or beginning-of-line.  Recognized when
-##   ICANON is set, and then not passed as input.
-##
-## VLNEXT
-##
-##   (not in POSIX; 026, SYN, Ctrl-V) Literal next (LNEXT).  Quotes the next
-##   input character, depriving it of a possible special meaning.  Recognized
-##   when IEXTEN is set, and then not passed as input.
-##
-## VMIN
-##
-##   Minimum number of characters for noncanonical read (MIN).
-##
-## VQUIT
-##
-##   (034, FS, Ctrl-\) Quit character (QUIT).  Send SIGQUIT signal.  Recognized
-##   when ISIG is set, and then not passed as input.
-##
-## VREPRINT
-##
-##   (not in POSIX; 022, DC2, Ctrl-R) Reprint unread characters (REPRINT).
-##   Recognized when ICANON and IEXTEN are set, and then not passed as input.
-##
-## VSTART
-##
-##   (021, DC1, Ctrl-Q) Start character (START).  Restarts output stopped by the
-##   Stop character.  Recognized when IXON is set, and then not passed as input.
-##
-## VSTATUS
-##
-##   (not in POSIX; not supported under Linux; status request: 024, DC4,
-##   Ctrl-T).  Status character (STATUS).  Display status information at
-##   terminal, including state of foreground process and amount of CPU time it
-##   has consumed.  Also sends a SIGINFO signal (not supported on Linux) to the
-##   foreground process group.
-##
-## VSTOP
-##
-##   (023, DC3, Ctrl-S) Stop character (STOP). Stop output until Start character
-##   typed.  Recognized when IXON is set, and then not passed as input.
-##
-## VSUSP
-##
-##   (032, SUB, Ctrl-Z) Suspend character (SUSP).  Send SIGTSTP signal.
-##   Recognized when ISIG is set, and then not passed as input.
-##
-## VSWTCH
-##
-##   (not in POSIX; not supported under Linux; 0, NUL) Switch character (SWTCH).
-##   Used in System V to switch shells in shell layers, a predecessor to shell
-##   job control.
-##
-## VTIME
-##
-## Timeout in deciseconds for noncanonical read (TIME).
-##
-## VWERASE
-##
-##   (not in POSIX; 027, ETB, Ctrl-W) Word erase (WERASE).  Recognized when
-##   ICANON and IEXTEN are set, and then not passed as input.
-##
-## An individual terminal special character can be disabled by setting the value
-## of the corresponding c_cc element to _POSIX_VDISABLE.
-##
-## The above symbolic subscript values are all different, except that VTIME,
-## VMIN may have the same value as VEOL, VEOF, respectively. In noncanonical
-## mode the special character meaning is replaced by the timeout meaning.  For
-## an explanation of VMIN and VTIME, see the description of noncanonical mode
-## below.
-##
-## =============================================================================
-##
-## man documentation: "signal - ANSI C signal handling" <https://manpages.debian
-## .org/bookworm/manpages-dev/signal.2.en.html>
-## -----------------------------------------------------------------------------
-##
-## see
-## man 7 signal
-##
-## =============================================================================
-##
-## man documentation: "signal - overview of signals" <https://manpages.debian
-## .org/bookworm/manpages/signal.7.en.html>
-## -----------------------------------------------------------------------------
-##
-## Standard signals
-##
-## Linux supports the standard signals listed below.  The second column of the
-## table indicates which standard (if any) specified the signal: "P1990"
-## indicates that the signal is described in the original POSIX.1-1990 standard;
-## "P2001" indicates that the signal was added in SUSv2 and POSIX.1-2001.
-##
-## Signal      Standard   Action   Comment
-##  ---------   --------   ------   -------------------------------------------
-##
-## SIGABRT     P1990      Core     Abort signal from abort(3)
-## SIGALRM     P1990      Term     Timer signal from alarm(2)
-## SIGBUS      P2001      Core     Bus error (bad memory access)
-## SIGCHLD     P1990      Ign      Child stopped or terminated
-## SIGCLD      -          Ign      A synonym for SIGCHLD
-## SIGCONT     P1990      Cont     Continue if stopped
-## SIGEMT      -          Term     Emulator trap
-## SIGFPE      P1990      Core     Floating-point exception
-## SIGHUP      P1990      Term     Hangup detected on controlling terminal or
-##                                 death of controlling process
-## SIGILL      P1990      Core     Illegal Instruction
-## SIGINFO     -                   A synonym for SIGPWR
-## SIGINT      P1990      Term     Interrupt from keyboard
-## SIGIO       -          Term     I/O now possible (4.2BSD)
-## SIGIOT      -          Core     IOT trap. A synonym for SIGABRT
-## SIGKILL     P1990      Term     Kill signal
-## SIGLOST     -          Term     File lock lost (unused)
-## SIGPIPE     P1990      Term     Broken pipe: write to pipe with no readers;
-##                                 see pipe(7)
-## SIGPOLL     P2001      Term     Pollable event (Sys V); synonym for SIGIO
-## SIGPROF     P2001      Term     Profiling timer expired
-## SIGPWR      -          Term     Power failure (System V)
-## SIGQUIT     P1990      Core     Quit from keyboard
-## SIGSEGV     P1990      Core     Invalid memory reference
-## SIGSTKFLT   -          Term     Stack fault on coprocessor (unused)
-## SIGSTOP     P1990      Stop     Stop process
-## SIGTSTP     P1990      Stop     Stop typed at terminal
-## SIGSYS      P2001      Core     Bad system call (SVr4); see also seccomp(2)
-## SIGTERM     P1990      Term     Termination signal
-## SIGTRAP     P2001      Core     Trace/breakpoint trap
-## SIGTTIN     P1990      Stop     Terminal input for background process
-## SIGTTOU     P1990      Stop     Terminal output for background process
-## SIGUNUSED   -          Core     Synonymous with SIGSYS
-## SIGURG      P2001      Ign      Urgent condition on socket (4.2BSD)
-## SIGUSR1     P1990      Term     User-defined signal 1
-## SIGUSR2     P1990      Term     User-defined signal 2
-## SIGVTALRM   P2001      Term     Virtual alarm clock (4.2BSD)
-## SIGXCPU     P2001      Core     CPU time limit exceeded (4.2BSD); see
-##                                 setrlimit(2)
-## SIGXFSZ     P2001      Core     File size limit exceeded (4.2BSD); see
-##                                 setrlimit(2)
-## SIGWINCH    -          Ign      Window resize signal (4.3BSD, Sun)
-##
-## The signals SIGKILL and SIGSTOP cannot be caught, blocked, or ignored.
-##
-## Up to and including Linux 2.2, the default behavior for SIGSYS, SIGXCPU,
-## SIGXFSZ, and (on architectures other than SPARC and MIPS) SIGBUS was to
-## terminate the process (without a core dump). (On some other UNIX systems the
-## default action for SIGXCPU and SIGXFSZ is to terminate the process without a
-## core dump.)  Linux 2.4 conforms to the POSIX.1-2001 requirements for these
-## signals, terminating the process with a core dump.
-##
-## SIGEMT is not specified in POSIX.1-2001, but nevertheless appears on most
-## other UNIX systems, where its default action is typically to terminate the
-## process with a core dump.
-##
-## SIGPWR (which is not specified in POSIX.1-2001) is typically ignored by
-## default on those other UNIX systems where it appears.
-##
-## SIGIO (which is not specified in POSIX.1-2001) is ignored by default on
-## several other UNIX systems.
-##
-## =============================================================================
-##
-## man documentation: "signal - overview of signals" <https://manpages.debian
-## .org/bookworm/manpages/signal.7.en.html>
-## -----------------------------------------------------------------------------
-##
-## Signal numbering for standard signals
-##
-## The numeric value for each signal is given in the table below.  As shown in
-## the table, many signals have different numeric values on different
-## architectures.  The first numeric value in each table row shows the signal
-## number on x86, ARM, and most other architectures; the second value is for
-## Alpha and SPARC; the third is for MIPS; and the last is for PARISC.  A dash
-## (-) denotes that a signal is absent on the corresponding architecture.
-##
-## Signal      x86/ARM       Alpha/   MIPS   PARISC   Notes
-##             most others   SPARC
-## ---------   -----------   ------   ----   ------   -------------
-##
-## SIGHUP       1             1        1      1
-## SIGINT       2             2        2      2
-## SIGQUIT      3             3        3      3
-## SIGILL       4             4        4      4
-## SIGTRAP      5             5        5      5
-## SIGABRT      6             6        6      6
-## SIGIOT       6             6        6      6
-## SIGBUS       7            10       10     10
-## SIGEMT       -             7        7      -
-## SIGFPE       8             8        8      8
-## SIGKILL      9             9        9      9
-## SIGUSR1     10            30       16     16
-## SIGSEGV     11            11       11     11
-## SIGUSR2     12            31       17     17
-## SIGPIPE     13            13       13     13
-## SIGALRM     14            14       14     14
-## SIGTERM     15            15       15     15
-## SIGSTKFLT   16             -        -      7
-## SIGCHLD     17            20       18     18
-## SIGCLD       -             -       18      -
-## SIGCONT     18            19       25     26
-## SIGSTOP     19            17       23     24
-## SIGTSTP     20            18       24     25
-## SIGTTIN     21            21       26     27
-## SIGTTOU     22            22       27     28
-## SIGURG      23            16       21     29
-## SIGXCPU     24            24       30     12
-## SIGXFSZ     25            25       31     30
-## SIGVTALRM   26            26       28     20
-## SIGPROF     27            27       29     21
-## SIGWINCH    28            28       20     23
-## SIGIO       29            23       22     22
-## SIGPOLL                                            Same as SIGIO
-## SIGPWR      30            29/-     19     19
-## SIGINFO      -            29/-      -      -
-## SIGLOST      -             -/29     -      -
-## SIGSYS      31            12       12     31
-## SIGUNUSED   31             -        -     31
-##
-## Note the following:
-##
-## * Where defined, SIGUNUSED is synonymous with SIGSYS.  Since glibc 2.26,
-##   SIGUNUSED is no longer defined on any architecture.
-##
-## * Signal 29 is SIGINFO/SIGPWR (synonyms for the same value) on Alpha but
-##   SIGLOST on SPARC.
-##
-## =============================================================================
-##
-## man documentation: "signal - overview of signals" <https://manpages.debian
-## .org/bookworm/manpages/signal.7.en.html>
-## -----------------------------------------------------------------------------
-##
-## Real-time signals
-##
-## Starting with Linux 2.2, Linux supports real-time signals as originally
-## defined in the POSIX.1b real-time extensions (and now included in
-## POSIX.1-2001).  The range of supported real-time signals is defined by the
-## macros SIGRTMIN and SIGRTMAX.  POSIX.1-2001 requires that an implementation
-## support at least _POSIX_RTSIG_MAX (8) real-time signals.
-##
-## The Linux kernel supports a range of 33 different real-time signals, numbered
-## 32 to 64.  However, the glibc POSIX threads implementation internally uses
-## two (for NPTL) or three (for LinuxThreads) real-time signals (see
-## pthreads(7)), and adjusts the value of SIGRTMIN suitably (to 34 or 35).
-## Because the range of available real-time signals varies according to the
-## glibc threading implementation (and this variation can occur at run time
-## according to the available kernel and glibc), and indeed the range of
-## real-time signals varies across UNIX systems, programs should never refer to
-## real-time signals using hard-coded numbers, but instead should always refer
-## to real-time signals using the notation SIGRTMIN+n, and include suitable
-## (run-time) checks that SIGRTMIN+n does not exceed SIGRTMAX.
-##
-## Unlike standard signals, real-time signals have no predefined meanings: the
-## entire set of real-time signals can be used for application-defined purposes.
-##
-## The default action for an unhandled real-time signal is to terminate the
-## receiving process.
-##
-## Real-time signals are distinguished by the following:
-##
-## * Multiple instances of real-time signals can be queued.  By contrast, if
-##   multiple instances of a standard signal are delivered while that signal is
-##   currently blocked, then only one instance is queued.
-##
-## * If the signal is sent using sigqueue(3), an accompanying value (either an
-##   integer or a pointer) can be sent with the signal.  If the receiving
-##   process establishes a handler for this signal using the SA_SIGINFO flag to
-##   sigaction(2), then it can obtain this data via the si_value field of the
-##   siginfo_t structure passed as the second argument to the handler.
-##   Furthermore, the si_pid and si_uid fields of this structure can be used to
-##   obtain the PID and real user ID of the process sending the signal.
-##
-## * Real-time signals are delivered in a guaranteed order.  Multiple real-time
-##   signals of the same type are delivered in the order they were sent.  If
-##   different real-time signals are sent to a process, they are delivered
-##   starting with the lowest-numbered signal.  (I.e., low-numbered signals have
-##   highest priority.)  By contrast, if multiple standard signals are pending
-##   for a process, the order in which they are delivered is unspecified.
-##
-## If both standard and real-time signals are pending for a process, POSIX
-## leaves it unspecified which is delivered first.  Linux, like many other
-## implementations, gives priority to standard signals in this case.
-##
-## According to POSIX, an implementation should permit at least
-## _POSIX_SIGQUEUE_MAX (32) real-time signals to be queued to a process.
-## However, Linux does things differently.  Up to and including Linux 2.6.7,
-## Linux imposes a system-wide limit on the number of queued real-time signals
-## for all processes.  This limit can be viewed and (with privilege) changed via
-## the /proc/sys/kernel/rtsig-max file.  A related file,
-## /proc/sys/kernel/rtsig-nr, can be used to find out how many real-time signals
-## are currently queued.  In Linux 2.6.8, these /proc interfaces were replaced
-## by the RLIMIT_SIGPENDING resource limit, which specifies a per-user limit for
-## queued signals; see setrlimit(2) for further details.
-##
-## =============================================================================
-##
-## info documentation; bash$ info trap
-## -----------------------------------------------------------------------------
-##
-## =============================================================================
-##
-## info documentation; bash$ info kill
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: info documentation:
+## bash$ info kill
 ## -----------------------------------------------------------------------------
 ##
 ## 2.5 Signal specifications
@@ -1627,9 +1398,116 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## least eight real-time signals called ‘RTMIN’, ‘RTMIN+1’, ..., ‘RTMAX-1’,
 ## ‘RTMAX’.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## info documentation; bash$ info stty
+## local: package specific documentation:
+## </usr/local/doc/???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: source code file:
+## </usr/src/???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: configuration file:
+## </???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: command documentation:
+## bash$ stty --help
+## -----------------------------------------------------------------------------
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: command documentation:
+## bash$ stty --all
+## -----------------------------------------------------------------------------
+##
+## speed 38400 baud;
+## rows 39;
+## columns 134;                        libc      perl
+##                                     -------   -------
+## line    = 0;
+## intr    = ^C;              CTRL-C   SIGINT    SIGINT
+## quit    = ^\;              CTRL-\   SIGQUIT   SIGQUIT
+## erase   = ^?;              CTRL-?
+## kill    = ^U;              CTRL-U
+## eof     = ^D;              CTRL-D
+## eol     = <undef>;
+## eol2    = <undef>;
+## swtch   = ^Z;              CTRL-Z
+## start   = ^Q;              CTRL-Q             SIGCONT
+## stop    = ^S;              CTRL-S             SIGSTOP
+## susp    = ^Z;              CTRL-Z   SIGTSTP   SIGTSTP
+## rprnt   = ^R;              CTRL-R
+## werase  = ^W;              CTRL-W
+## lnext   = ^V;              CTRL-V
+## discard = ^O;              CTRL-O
+## min     = 1;
+## time    = 0;
+##
+## -parenb
+## -parodd
+## -cmspar cs8
+## -hupcl
+## -cstopb cread
+## -clocal
+## -crtscts
+## -ignbrk brkint
+## -ignpar
+## -parmrk
+## -inpck
+## -istrip
+## -inlcr
+## -igncr icrnl ixon
+## -ixoff
+## -iuclc ixany imaxbel iutf8 opost
+## -olcuc
+## -ocrnl onlcr
+## -onocr
+## -onlret
+## -ofill
+## -ofdel nl0 cr0 tab0 bs0 vt0 ff0 isig icanon iexten echo echoe echok
+## -echonl
+## -noflsh
+## -tostop echoctl echoke
+## -flusho
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: man documentation:
+## bash$ man stty
+## -----------------------------------------------------------------------------
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: info documentation:
+## bash$ info stty
 ## -----------------------------------------------------------------------------
 ##
 ## 19.2.6 Special characters
@@ -1648,82 +1526,473 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##
 ## ‘intr’
 ##
-##   Send an interrupt signal.
+##    Send an interrupt signal.
 ##
 ## ‘quit’
 ##
-##   Send a quit signal.
+##    Send a quit signal.
 ##
 ## ‘erase’
 ##
-##   Erase the last character typed.
+##    Erase the last character typed.
 ##
 ## ‘kill’
 ##
-##   Erase the current line.
+##    Erase the current line.
 ##
 ## ‘eof’
 ##
-##   Send an end of file (terminate the input).
+##    Send an end of file (terminate the input).
 ##
 ## ‘eol’
 ##
-##   End the line.
+##    End the line.
 ##
 ## ‘eol2’
 ##
-##   Alternate character to end the line.  Non-POSIX.
+##    Alternate character to end the line.  Non-POSIX.
 ##
 ## ‘discard’
 ##
-##   Alternate character to toggle discarding of output.  Non-POSIX.
+##    Alternate character to toggle discarding of output.  Non-POSIX.
 ##
 ## ‘swtch’
 ##
-##   Switch to a different shell layer.  Non-POSIX.
+##    Switch to a different shell layer.  Non-POSIX.
 ##
 ## ‘status’
 ##
-##   Send an info signal.  Not currently supported on Linux.  Non-POSIX.
+##    Send an info signal.  Not currently supported on Linux.  Non-POSIX.
 ##
 ## ‘start’
 ##
-##   Restart the output after stopping it.
+##    Restart the output after stopping it.
 ##
 ## ‘stop’
 ##
-##   Stop the output.
+##    Stop the output.
 ##
 ## ‘susp’
 ##
-##   Send a terminal stop signal.
+##    Send a terminal stop signal.
 ##
 ## ‘dsusp’
 ##
-##   Send a terminal stop signal after flushing the input.  Non-POSIX.
+##    Send a terminal stop signal after flushing the input.  Non-POSIX.
 ##
 ## ‘rprnt’
 ##
-##   Redraw the current line.  Non-POSIX.
+##    Redraw the current line.  Non-POSIX.
 ##
 ## ‘werase’
 ##
-##   Erase the last word typed.  Non-POSIX.
+##    Erase the last word typed.  Non-POSIX.
 ##
 ## ‘lnext’
 ##
-##   Enter the next character typed literally, even if it is a special
-##   character.  Non-POSIX.
+##    Enter the next character typed literally, even if it is a special
+##    character.  Non-POSIX.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## package specific documentation: /usr/local/doc/???
+## local: package specific documentation:
+## </usr/local/doc/???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource website: "4.1 Bourne Shell Builtins" <https://www.gnu.org/
-## software/bash/manual/bash.html#Bourne-Shell-Builtins>
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: source code file:
+## </usr/src/???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## local: configuration file:
+## </???>
+## -----------------------------------------------------------------------------
+##
+## n/a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: website:
+## "termios, tcgetattr, tcsetattr, tcsendbreak, tcdrain, tcflush, tcflow,
+## cfmakeraw, cfgetospeed, cfgetispeed, cfsetispeed, cfsetospeed, cfsetspeed -
+## get and set terminal attributes, line control, get and set baud rate"
+## <https://manpages.debian.org/bookworm/manpages-dev/termios.3.en.html>
+## -----------------------------------------------------------------------------
+##
+## The c_cc array defines the terminal special characters.  The symbolic indices
+## (initial values) and meaning are:
+##
+## VDISCARD
+##
+##   (not in POSIX; not supported under Linux; 017, SI, Ctrl-O) Toggle:
+##   start/stop discarding pending output.  Recognized when IEXTEN is set, and
+##   then not passed as input.
+##
+## VDSUSP
+##
+##   (not in POSIX; not supported under Linux; 031, EM, Ctrl-Y) Delayed suspend
+##   character (DSUSP): send SIGTSTP signal when the character is read by the
+##   user program.  Recognized when IEXTEN and ISIG are set, and the system
+##   supports job control, and then not passed as input.
+##
+## VEOF
+##
+##   (004, EOT, Ctrl-D) End-of-file character (EOF).  More precisely: this
+##   character causes the pending tty buffer to be sent to the waiting user
+##   program without waiting for end-of-line.  If it is the first character of
+##   the line, the read(2) in the user program returns 0, which signifies
+##   end-of-file.  Recognized when ICANON is set, and then not passed as input.
+##
+## VEOL
+##
+##   (0, NUL) Additional end-of-line character (EOL).  Recognized when ICANON is
+##   set.
+##
+## VEOL2
+##
+##   (not in POSIX; 0, NUL) Yet another end-of-line character (EOL2).
+##   Recognized when ICANON is set.
+##
+## VERASE
+##
+##   (0177, DEL, rubout, or 010, BS, Ctrl-H, or also #) Erase character (ERASE).
+##   This erases the previous not-yet-erased character, but does not erase past
+##   EOF or beginning-of-line.  Recognized when ICANON is set, and then not
+##   passed as input.
+##
+## VINTR
+##
+##   (003, ETX, Ctrl-C, or also 0177, DEL, rubout) Interrupt character (INTR).
+##   Send a SIGINT signal.  Recognized when ISIG is set, and then not passed as
+##   input.
+##
+## VKILL
+##
+##   (025, NAK, Ctrl-U, or Ctrl-X, or also @) Kill character (KILL).  This
+##   erases the input since the last EOF or beginning-of-line.  Recognized when
+##   ICANON is set, and then not passed as input.
+##
+## VLNEXT
+##
+##   (not in POSIX; 026, SYN, Ctrl-V) Literal next (LNEXT).  Quotes the next
+##   input character, depriving it of a possible special meaning.  Recognized
+##   when IEXTEN is set, and then not passed as input.
+##
+## VMIN
+##
+##   Minimum number of characters for noncanonical read (MIN).
+##
+## VQUIT
+##
+##   (034, FS, Ctrl-\) Quit character (QUIT).  Send SIGQUIT signal.  Recognized
+##   when ISIG is set, and then not passed as input.
+##
+## VREPRINT
+##
+##   (not in POSIX; 022, DC2, Ctrl-R) Reprint unread characters (REPRINT).
+##   Recognized when ICANON and IEXTEN are set, and then not passed as input.
+##
+## VSTART
+##
+##   (021, DC1, Ctrl-Q) Start character (START).  Restarts output stopped by the
+##   Stop character.  Recognized when IXON is set, and then not passed as input.
+##
+## VSTATUS
+##
+##   (not in POSIX; not supported under Linux; status request: 024, DC4,
+##   Ctrl-T).  Status character (STATUS).  Display status information at
+##   terminal, including state of foreground process and amount of CPU time it
+##   has consumed.  Also sends a SIGINFO signal (not supported on Linux) to the
+##   foreground process group.
+##
+## VSTOP
+##
+##   (023, DC3, Ctrl-S) Stop character (STOP).  Stop output until Start character
+##   typed.  Recognized when IXON is set, and then not passed as input.
+##
+## VSUSP
+##
+##   (032, SUB, Ctrl-Z) Suspend character (SUSP).  Send SIGTSTP signal.
+##   Recognized when ISIG is set, and then not passed as input.
+##
+## VSWTCH
+##
+##   (not in POSIX; not supported under Linux; 0, NUL) Switch character (SWTCH).
+##   Used in System V to switch shells in shell layers, a predecessor to shell
+##   job control.
+##
+## VTIME
+##
+## Timeout in deciseconds for noncanonical read (TIME).
+##
+## VWERASE
+##
+##   (not in POSIX; 027, ETB, Ctrl-W) Word erase (WERASE).  Recognized when
+##   ICANON and IEXTEN are set, and then not passed as input.
+##
+## An individual terminal special character can be disabled by setting the value
+## of the corresponding c_cc element to _POSIX_VDISABLE.
+##
+## The above symbolic subscript values are all different, except that VTIME,
+## VMIN may have the same value as VEOL, VEOF, respectively.  In noncanonical
+## mode the special character meaning is replaced by the timeout meaning.  For
+## an explanation of VMIN and VTIME, see the description of noncanonical mode
+## below.a
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: website:
+## signal - ANSI C signal handling
+## <https://manpages.debian.org/bookworm/manpages-dev/signal.2.en.html>
+## -----------------------------------------------------------------------------
+##
+## see
+## man 7 signal
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: website:
+## signal - overview of signals
+## <https://manpages.debian.org/bookworm/manpages/signal.7.en.html>
+## -----------------------------------------------------------------------------
+##
+## Standard signals
+##
+## Linux supports the standard signals listed below.  The second column of the
+## table indicates which standard (if any) specified the signal: "P1990"
+## indicates that the signal is described in the original POSIX.1-1990 standard;
+## "P2001" indicates that the signal was added in SUSv2 and POSIX.1-2001.
+##
+## Signal      Standard   Action   Comment
+##  ---------   --------   ------   -------------------------------------------
+##
+## SIGABRT     P1990      Core     Abort signal from abort(3)
+## SIGALRM     P1990      Term     Timer signal from alarm(2)
+## SIGBUS      P2001      Core     Bus error (bad memory access)
+## SIGCHLD     P1990      Ign      Child stopped or terminated
+## SIGCLD      -          Ign      A synonym for SIGCHLD
+## SIGCONT     P1990      Cont     Continue if stopped
+## SIGEMT      -          Term     Emulator trap
+## SIGFPE      P1990      Core     Floating-point exception
+## SIGHUP      P1990      Term     Hangup detected on controlling terminal or
+##                                 death of controlling process
+## SIGILL      P1990      Core     Illegal Instruction
+## SIGINFO     -                   A synonym for SIGPWR
+## SIGINT      P1990      Term     Interrupt from keyboard
+## SIGIO       -          Term     I/O now possible (4.2BSD)
+## SIGIOT      -          Core     IOT trap.  A synonym for SIGABRT
+## SIGKILL     P1990      Term     Kill signal
+## SIGLOST     -          Term     File lock lost (unused)
+## SIGPIPE     P1990      Term     Broken pipe: write to pipe with no readers;
+##                                 see pipe(7)
+## SIGPOLL     P2001      Term     Pollable event (Sys V); synonym for SIGIO
+## SIGPROF     P2001      Term     Profiling timer expired
+## SIGPWR      -          Term     Power failure (System V)
+## SIGQUIT     P1990      Core     Quit from keyboard
+## SIGSEGV     P1990      Core     Invalid memory reference
+## SIGSTKFLT   -          Term     Stack fault on coprocessor (unused)
+## SIGSTOP     P1990      Stop     Stop process
+## SIGTSTP     P1990      Stop     Stop typed at terminal
+## SIGSYS      P2001      Core     Bad system call (SVr4); see also seccomp(2)
+## SIGTERM     P1990      Term     Termination signal
+## SIGTRAP     P2001      Core     Trace/breakpoint trap
+## SIGTTIN     P1990      Stop     Terminal input for background process
+## SIGTTOU     P1990      Stop     Terminal output for background process
+## SIGUNUSED   -          Core     Synonymous with SIGSYS
+## SIGURG      P2001      Ign      Urgent condition on socket (4.2BSD)
+## SIGUSR1     P1990      Term     User-defined signal 1
+## SIGUSR2     P1990      Term     User-defined signal 2
+## SIGVTALRM   P2001      Term     Virtual alarm clock (4.2BSD)
+## SIGXCPU     P2001      Core     CPU time limit exceeded (4.2BSD); see
+##                                 setrlimit(2)
+## SIGXFSZ     P2001      Core     File size limit exceeded (4.2BSD); see
+##                                 setrlimit(2)
+## SIGWINCH    -          Ign      Window resize signal (4.3BSD, Sun)
+##
+## The signals SIGKILL and SIGSTOP cannot be caught, blocked, or ignored.
+##
+## Up to and including Linux 2.2, the default behavior for SIGSYS, SIGXCPU,
+## SIGXFSZ, and (on architectures other than SPARC and MIPS) SIGBUS was to
+## terminate the process (without a core dump).  (On some other UNIX systems the
+## default action for SIGXCPU and SIGXFSZ is to terminate the process without a
+## core dump.)  Linux 2.4 conforms to the POSIX.1-2001 requirements for these
+## signals, terminating the process with a core dump.
+##
+## SIGEMT is not specified in POSIX.1-2001, but nevertheless appears on most
+## other UNIX systems, where its default action is typically to terminate the
+## process with a core dump.
+##
+## SIGPWR (which is not specified in POSIX.1-2001) is typically ignored by
+## default on those other UNIX systems where it appears.
+##
+## SIGIO (which is not specified in POSIX.1-2001) is ignored by default on
+## several other UNIX systems.
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: website:
+## signal - overview of signals
+## <https://manpages.debian.org/bookworm/manpages/signal.7.en.html>
+## -----------------------------------------------------------------------------
+##
+## Signal numbering for standard signals
+##
+## The numeric value for each signal is given in the table below.  As shown in
+## the table, many signals have different numeric values on different
+## architectures.  The first numeric value in each table row shows the signal
+## number on x86, ARM, and most other architectures; the second value is for
+## Alpha and SPARC; the third is for MIPS; and the last is for PARISC.  A dash
+## (-) denotes that a signal is absent on the corresponding architecture.
+##
+## Signal      x86/ARM       Alpha/   MIPS   PARISC   Notes
+##             most others   SPARC
+## ---------   -----------   ------   ----   ------   -------------
+##
+## SIGHUP       1             1        1      1
+## SIGINT       2             2        2      2
+## SIGQUIT      3             3        3      3
+## SIGILL       4             4        4      4
+## SIGTRAP      5             5        5      5
+## SIGABRT      6             6        6      6
+## SIGIOT       6             6        6      6
+## SIGBUS       7            10       10     10
+## SIGEMT       -             7        7      -
+## SIGFPE       8             8        8      8
+## SIGKILL      9             9        9      9
+## SIGUSR1     10            30       16     16
+## SIGSEGV     11            11       11     11
+## SIGUSR2     12            31       17     17
+## SIGPIPE     13            13       13     13
+## SIGALRM     14            14       14     14
+## SIGTERM     15            15       15     15
+## SIGSTKFLT   16             -        -      7
+## SIGCHLD     17            20       18     18
+## SIGCLD       -             -       18      -
+## SIGCONT     18            19       25     26
+## SIGSTOP     19            17       23     24
+## SIGTSTP     20            18       24     25
+## SIGTTIN     21            21       26     27
+## SIGTTOU     22            22       27     28
+## SIGURG      23            16       21     29
+## SIGXCPU     24            24       30     12
+## SIGXFSZ     25            25       31     30
+## SIGVTALRM   26            26       28     20
+## SIGPROF     27            27       29     21
+## SIGWINCH    28            28       20     23
+## SIGIO       29            23       22     22
+## SIGPOLL                                            Same as SIGIO
+## SIGPWR      30            29/-     19     19
+## SIGINFO      -            29/-      -      -
+## SIGLOST      -             -/29     -      -
+## SIGSYS      31            12       12     31
+## SIGUNUSED   31             -        -     31
+##
+## Note the following:
+##
+## * Where defined, SIGUNUSED is synonymous with SIGSYS.  Since glibc 2.26,
+##   SIGUNUSED is no longer defined on any architecture.
+##
+## * Signal 29 is SIGINFO/SIGPWR (synonyms for the same value) on Alpha but
+##   SIGLOST on SPARC.
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## signal - overview of signals
+## <https://manpages.debian.org/bookworm/manpages/signal.7.en.html>
+## -----------------------------------------------------------------------------
+##
+## Real-time signals
+##
+## Starting with Linux 2.2, Linux supports real-time signals as originally
+## defined in the POSIX.1b real-time extensions (and now included in
+## POSIX.1-2001).  The range of supported real-time signals is defined by the
+## macros SIGRTMIN and SIGRTMAX.  POSIX.1-2001 requires that an implementation
+## support at least _POSIX_RTSIG_MAX (8) real-time signals.
+##
+## The Linux kernel supports a range of 33 different real-time signals, numbered
+## 32 to 64.  However, the glibc POSIX threads implementation internally uses
+## two (for NPTL) or three (for LinuxThreads) real-time signals (see
+## pthreads(7)), and adjusts the value of SIGRTMIN suitably (to 34 or 35).
+## Because the range of available real-time signals varies according to the
+## glibc threading implementation (and this variation can occur at run time
+## according to the available kernel and glibc), and indeed the range of
+## real-time signals varies across UNIX systems, programs should never refer to
+## real-time signals using hard-coded numbers, but instead should always refer
+## to real-time signals using the notation SIGRTMIN+n, and include suitable
+## (run-time) checks that SIGRTMIN+n does not exceed SIGRTMAX.
+##
+## Unlike standard signals, real-time signals have no predefined meanings: the
+## entire set of real-time signals can be used for application-defined purposes.
+##
+## The default action for an unhandled real-time signal is to terminate the
+## receiving process.
+##
+## Real-time signals are distinguished by the following:
+##
+## * Multiple instances of real-time signals can be queued.  By contrast, if
+##   multiple instances of a standard signal are delivered while that signal is
+##   currently blocked, then only one instance is queued.
+##
+## * If the signal is sent using sigqueue(3), an accompanying value (either an
+##   integer or a pointer) can be sent with the signal.  If the receiving
+##   process establishes a handler for this signal using the SA_SIGINFO flag to
+##   sigaction(2), then it can obtain this data via the si_value field of the
+##   siginfo_t structure passed as the second argument to the handler.
+##   Furthermore, the si_pid and si_uid fields of this structure can be used to
+##   obtain the PID and real user ID of the process sending the signal.
+##
+## * Real-time signals are delivered in a guaranteed order.  Multiple real-time
+##   signals of the same type are delivered in the order they were sent.  If
+##   different real-time signals are sent to a process, they are delivered
+##   starting with the lowest-numbered signal.  (I.e., low-numbered signals have
+##   highest priority.)  By contrast, if multiple standard signals are pending
+##   for a process, the order in which they are delivered is unspecified.
+##
+## If both standard and real-time signals are pending for a process, POSIX
+## leaves it unspecified which is delivered first.  Linux, like many other
+## implementations, gives priority to standard signals in this case.
+##
+## According to POSIX, an implementation should permit at least
+## _POSIX_SIGQUEUE_MAX (32) real-time signals to be queued to a process.
+## However, Linux does things differently.  Up to and including Linux 2.6.7,
+## Linux imposes a system-wide limit on the number of queued real-time signals
+## for all processes.  This limit can be viewed and (with privilege) changed via
+## the /proc/sys/kernel/rtsig-max file.  A related file,
+## /proc/sys/kernel/rtsig-nr, can be used to find out how many real-time signals
+## are currently queued.  In Linux 2.6.8, these /proc interfaces were replaced
+## by the RLIMIT_SIGPENDING resource limit, which specifies a per-user limit for
+## queued signals; see setrlimit(2) for further details.
+##
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: website:
+## 4.1 Bourne Shell Builtins
+## <https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins>
 ## -----------------------------------------------------------------------------
 ##
 ## trap
@@ -1740,7 +2009,7 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## only -p is given, trap prints the list of commands associated with each
 ## signal number in a form that may be reused as shell input.  The -l option
 ## causes the shell to print a list of signal names and their corresponding
-## numbers.  Each sigspec is either a signal name or a signal number. Signal
+## numbers.  Each sigspec is either a signal name or a signal number.  Signal
 ## names are case insensitive and the SIG prefix is optional.
 ##
 ## If a sigspec is 0 or EXIT, arg is executed when the shell exits.  If a
@@ -1768,10 +2037,13 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##
 ## The return status is zero unless a sigspec does not specify a valid signal.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource website: "17.4.9.2 Characters that Cause Signals" <https://
-## www.gnu.org/software/libc/manual/html_mono/libc.html#Signal-Characters>
+## remote: website:
+## 17.4.9.2 Characters that Cause Signals
+## <https://www.gnu.org/software/libc/manual/html_mono/libc.html#Signal-Characters>
 ## -----------------------------------------------------------------------------
 ##
 ## 17.4.9.2 Characters that Cause Signals
@@ -1827,19 +2099,26 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##   character array.  termios.c_cc[VDSUSP] holds the character itself.
 ##
 ##   The DSUSP (suspend) character is recognized only if the implementation
-##   supports job control (see Job Control). It sends a SIGTSTP signal, like the
-##   SUSP character, but not right away-only when the program tries to read it
-##   as input.  Not all systems with job control support DSUSP; only
+##   supports job control (see Job Control).  It sends a SIGTSTP signal, like
+##   the SUSP character, but not right away-only when the program tries to read
+##   it as input.  Not all systems with job control support DSUSP; only
 ##   BSD-compatible systems do (including GNU/Hurd systems).
 ##
 ##   See Signal Handling, for more information about signals.
 ##
 ##   Typically, the DSUSP character is C-y.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource website: "24.2.2 Termination Signals" <https://www.gnu.org/
-## software/libc/manual/html_mono/libc.html#Termination-Signals>
+## remote: website:
+## 24.2.2 Termination Signals
+## <https://www.gnu.org/ software/libc/manual/html_mono/libc.html#Termination-
+## Signals>
+## -----------------------------------------------------------------------------
+##
+## online resource website:
 ## -----------------------------------------------------------------------------
 ##
 ## 24.2.2 Termination Signals
@@ -1895,9 +2174,9 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##   cannot be handled or ignored, and is therefore always fatal.  It is also
 ##   not possible to block this signal.
 ##
-##   This signal is usually generated only by explicit request. Since it cannot
+##   This signal is usually generated only by explicit request.  Since it cannot
 ##   be handled, you should generate it only as a last resort, after first
-##   trying a less drastic method such as C-c or SIGTERM. If a process does not
+##   trying a less drastic method such as C-c or SIGTERM.  If a process does not
 ##   respond to any other termination signals, sending it a SIGKILL signal will
 ##   almost always cause it to go away.
 ##
@@ -1919,10 +2198,17 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##   termination effectively disconnects all processes in the session from the
 ##   controlling terminal.  For more information, see Termination Internals.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource website: "24.2.5 Job Control Signals" <https://www.gnu.org/
-## software/libc/manual/html_mono/libc.html#Job-Control-Signals>
+## remote: website:
+## 24.2.5 Job Control Signals
+## <https://www.gnu.org/ software/libc/manual/html_mono/libc.html#Job-Control
+## -Signals>
+## -----------------------------------------------------------------------------
+##
+## online resource website:
 ## -----------------------------------------------------------------------------
 ##
 ## 24.2.5 Job Control Signals
@@ -1932,7 +2218,7 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## can’t be raised or handled.
 ##
 ## You should generally leave these signals alone unless you really understand
-## how job control works. See Job Control.
+## how job control works.  See Job Control.
 ##
 ## Macro: int SIGCHLD
 ##
@@ -1951,11 +2237,11 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##
 ## Macro: int SIGCONT
 ##
-##   You can send a SIGCONT signal to a process to make it continue. This signal
-##   is special-it always makes the process continue if it is stopped, before
-##   the signal is delivered.  The default behavior is to do nothing else.  You
-##   cannot block this signal.  You can set a handler, but SIGCONT always makes
-##   the process continue regardless.
+##   You can send a SIGCONT signal to a process to make it continue.  This
+##   signal is special-it always makes the process continue if it is stopped,
+##   before the signal is delivered.  The default behavior is to do nothing
+##   else.  You cannot block this signal.  You can set a handler, but SIGCONT
+##   always makes the process continue regardless.
 ##
 ##   Most programs have no reason to handle SIGCONT; they simply resume
 ##   execution without realizing they were ever stopped.  You can use a handler
@@ -1965,12 +2251,12 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##
 ## Macro: int SIGSTOP
 ##
-##   The SIGSTOP signal stops the process. It cannot be handled, ignored, or
+##   The SIGSTOP signal stops the process.  It cannot be handled, ignored, or
 ##   blocked.
 ##
 ## Macro: int SIGTSTP
 ##
-##   The SIGTSTP signal is an interactive stop signal. Unlike SIGSTOP, this
+##   The SIGTSTP signal is an interactive stop signal.  Unlike SIGSTOP, this
 ##   signal can be handled and ignored.
 ##
 ##   Your program should handle this signal if you have a special need to leave
@@ -1994,7 +2280,7 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## Macro: int SIGTTOU
 ##
 ##   This is similar to SIGTTIN, but is generated when a process in a background
-##   job attempts to write to the terminal or set its modes. Again, the default
+##   job attempts to write to the terminal or set its modes.  Again, the default
 ##   action is to stop the process.  SIGTTOU is only generated for an attempt to
 ##   write to the terminal if the TOSTOP output mode is set; see Output Modes.
 ##
@@ -2002,7 +2288,7 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## is continued, except SIGKILL signals and (obviously) SIGCONT signals.  The
 ## signals are marked as pending, but not delivered until the process is
 ## continued.  The SIGKILL signal always causes termination of the process and
-## can’t be blocked, handled or ignored. You can ignore SIGCONT, but it always
+## can’t be blocked, handled or ignored.  You can ignore SIGCONT, but it always
 ## causes the process to be continued anyway if it is stopped.  Sending a
 ## SIGCONT signal to a process causes any pending stop signals for that process
 ## to be discarded.  Likewise, any pending SIGCONT signals for a process are
@@ -2010,7 +2296,7 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##
 ## When a process in an orphaned process group (see Orphaned Process Groups)
 ## receives a SIGTSTP, SIGTTIN, or SIGTTOU signal and does not handle it, the
-## process does not stop. Stopping the process would probably not be very
+## process does not stop.  Stopping the process would probably not be very
 ## useful, since there is no shell program that will notice it stop and allow
 ## the user to continue it.  What happens instead depends on the operating
 ## system you are using.  Some systems may do nothing; others may deliver
@@ -2018,10 +2304,13 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## process dies with SIGKILL; this avoids the problem of many stopped,
 ## orphaned processes lying around the system.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource wiki: "Signal (IPC)" <https://en.wikipedia.org/wiki/
-## Signal_(IPC)>
+## remote: wiki:
+## POSIX signals
+## <https://en.wikipedia.org/wiki/Signal_(IPC)#POSIX_signals>
 ## -----------------------------------------------------------------------------
 ##
 ## POSIX signals
@@ -2161,7 +2450,7 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##   will send SIGKILL to applications that have marked themselves "clean"
 ##   resulting in faster shutdown times with, presumably, no ill effects.[16]
 ##   The command killall -9 has a similar, while dangerous effect, when executed
-##   e.g. in Linux; it does not let programs save unsaved data. It has other
+##   e.g. in Linux; it does not let programs save unsaved data.  It has other
 ##   options, and with none, uses the safer SIGTERM signal.
 ##
 ## SIGPIPE
@@ -2294,10 +2583,13 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##   The SIGWINCH signal is sent to a process when its controlling terminal
 ##   changes its size (a window change).[21]
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource wiki: "Signal (IPC)" <https://en.wikipedia.org/wiki/
-## Signal_(IPC)>
+## remote: wiki:
+## Default action
+## <https://en.wikipedia.org/wiki/Signal_(IPC)#Default_action>
 ## -----------------------------------------------------------------------------
 ##
 ## Default action
@@ -2371,10 +2663,13 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ##   Continue – Continue the process, if it is stopped; otherwise, ignore the
 ##   signal.
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource wiki: "Signal (IPC)" <https://en.wikipedia.org/wiki/
-## Signal_(IPC)>
+## remote: wiki:
+## Miscellaneous signals
+## <https://en.wikipedia.org/wiki/Signal_(IPC)#Miscellaneous_signals>
 ## -----------------------------------------------------------------------------
 ##
 ## Miscellaneous signals
@@ -2410,36 +2705,70 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 ## SIGUNUSED
 ##
 ##   The SIGUNUSED signal is sent to a process when a system call with an unused
-##   system call number is made. It is synonymous with SIGSYS on most
+##   system call number is made.  It is synonymous with SIGSYS on most
 ##   architectures.[23]
 ##
 ## SIGCLD
 ##
 ##   The SIGCLD signal is synonymous with SIGCHLD.[23]
 ##
-## =============================================================================
+## ============================================================================}
+
+## @c{==========================================================================
 ##
-## online resource forum: ???
+## remote: forum:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource mailing list: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: mailing list:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource repository: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: repository:
+## <https://???>
 ## -----------------------------------------------------------------------------
 ##
-## =============================================================================
+## n/a
 ##
-## online resource archive: ???
+## ============================================================================}
+
+## @c{==========================================================================
+##
+## remote: archive:
+## <https://???>
 ## -----------------------------------------------------------------------------
+##
+## n/a
 ##
 ## ============================================================================}
 
 
+
+## @{
+## Trap signals and other events.
+##
+##   EXIT
+##   DEBUG
+##   RETURN
+##   ERR
+##
+##   SIGINT    CTRL-C
+##   SIGQUIT   CTRL-\
+##   SIGTSTP   CTRL-Z
+##
+## }
 
 ## @fn trapEXIT()
 ## @brief The trap function for EXIT.
@@ -2456,14 +2785,15 @@ declare -r -i EXIT_GENERAL_ERROR=1;
 
 function trapEXIT() {
   local -r -i LINENO="${1}";
-  echo "lineno: ${LINENO}";
-  echo "caller: $( caller 1 )";
-  echo 'trapEXIT: This function is not fully implemented yet.';
-  exit "${EXIT_GENERAL_ERROR}";
+  local -r -i return_code="${?}";
+  echo "lineno: '${LINENO}'";
+  echo "return_code: '${return_code}'";
+  echo "caller: '$( caller 1 )'";
+  echo 'trapSIGTSTP: This function is not fully implemented yet.';
   return;
 }
 
-trap 'trapEXIT "${LINENO}"' EXIT;
+trap trapEXIT "${LINENO}" EXIT;
 
 ## @fn trapDEBUG()
 ## @brief The trap function for DEBUG.
@@ -2484,10 +2814,11 @@ trap 'trapEXIT "${LINENO}"' EXIT;
 
 function trapDEBUG() {
   local -r -i LINENO="${1}";
-  echo "lineno: ${LINENO}";
-  echo "caller: $( caller 1 )";
-  echo 'trapDEBUG: This function is not fully implemented yet.';
-  exit "${EXIT_GENERAL_ERROR}";
+  local -r -i return_code="${?}";
+  echo "lineno: '${LINENO}'";
+  echo "return_code: '${return_code}'";
+  echo "caller: '$( caller 1 )'";
+  echo 'trapSIGTSTP: This function is not fully implemented yet.';
   return;
 }
 
@@ -2510,10 +2841,11 @@ trap 'trapDEBUG "${LINENO}"' DEBUG;
 
 function trapRETURN() {
   local -r -i LINENO="${1}";
-  echo "lineno: ${LINENO}";
-  echo "caller: $( caller 1 )";
-  echo 'trapRETURN: This function is not fully implemented yet.';
-  exit "${EXIT_GENERAL_ERROR}";
+  local -r -i return_code="${?}";
+  echo "lineno: '${LINENO}'";
+  echo "return_code: '${return_code}'";
+  echo "caller: '$( caller 1 )'";
+  echo 'trapSIGTSTP: This function is not fully implemented yet.';
   return;
 }
 
@@ -2528,7 +2860,7 @@ trap 'trapRETURN "${LINENO}"' RETURN;
 ##   ERR - If a sigspec is ERR, the command arg is executed whenever a pipeline
 ##   (which may consist of a single simple command), a list, or a compound
 ##   command returns a non-zero exit status, subject to the following
-##   conditions. The ERR trap is not executed if the failed command is part of
+##   conditions.  The ERR trap is not executed if the failed command is part of
 ##   the command list immediately following an until or while keyword, part of
 ##   the test following the if or elif reserved words, part of a command
 ##   executed in a && or || list except the command following the final && or
@@ -2543,10 +2875,11 @@ trap 'trapRETURN "${LINENO}"' RETURN;
 
 function trapERR() {
   local -r -i LINENO="${1}";
-  echo "lineno: ${LINENO}";
-  echo "caller: $( caller 1 )";
-  echo 'trapERR: This function is not fully implemented yet.';
-  exit "${EXIT_GENERAL_ERROR}";
+  local -r -i return_code="${?}";
+  echo "lineno: '${LINENO}'";
+  echo "return_code: '${return_code}'";
+  echo "caller: '$( caller 1 )'";
+  echo 'trapSIGTSTP: This function is not fully implemented yet.';
   return;
 }
 
@@ -2568,10 +2901,11 @@ trap 'trapERR "${LINENO}"' ERR;
 
 function trapSIGINT() {
   local -r -i LINENO="${1}";
-  echo "lineno: ${LINENO}";
-  echo "caller: $( caller 1 )";
-  echo 'trapSIGINT: This function is not fully implemented yet.';
-  exit "${EXIT_GENERAL_ERROR}";
+  local -r -i return_code="${?}";
+  echo "lineno: '${LINENO}'";
+  echo "return_code: '${return_code}'";
+  echo "caller: '$( caller 1 )'";
+  echo 'trapSIGTSTP: This function is not fully implemented yet.';
   return;
 }
 
@@ -2594,10 +2928,11 @@ trap 'trapSIGINT "${LINENO}"' SIGINT;
 
 function trapSIGQUIT() {
   local -r -i LINENO="${1}";
-  echo "lineno: ${LINENO}";
-  echo "caller: $( caller 1 )";
-  echo 'trapSIGQUIT: This function is not fully implemented yet.';
-  exit "${EXIT_GENERAL_ERROR}";
+  local -r -i return_code="${?}";
+  echo "lineno: '${LINENO}'";
+  echo "return_code: '${return_code}'";
+  echo "caller: '$( caller 1 )'";
+  echo 'trapSIGTSTP: This function is not fully implemented yet.';
   return;
 }
 
@@ -2619,10 +2954,11 @@ trap 'trapSIGQUIT "${LINENO}"' SIGQUIT;
 
 function trapSIGTSTP() {
   local -r -i LINENO="${1}";
-  echo "lineno: ${LINENO}";
-  echo "caller: $( caller 1 )";
+  local -r -i return_code="${?}";
+  echo "lineno: '${LINENO}'";
+  echo "return_code: '${return_code}'";
+  echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';
-  exit "${EXIT_GENERAL_ERROR}";
   return;
 }
 

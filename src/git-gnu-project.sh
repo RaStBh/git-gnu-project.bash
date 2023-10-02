@@ -23,7 +23,7 @@
 ## with this package.  If not, see <https://www.gnu.org/licenses/>.           ##
 ##                                                                            ##
 ################################################################################
-###############################################################################}
+## ############################################################################}
 
 
 
@@ -47,7 +47,93 @@
 ## @brief The main script of the RaSt git-gnu-project.
 ##
 ## @details The main script of the RaSt git-gnu-project handling the command
-## git-gnu-project and the subcommands gittify and gnutify.
+##   git-gnu-project and the subcommands gittify and gnutify.
+
+
+
+## @c{
+## Variables and functions for debugging and logging purposes.
+##
+## Enable and disable debugging.
+##
+##   0   enable
+##   1   disable
+## }
+
+## @var ENABLE_COMMAND
+## @brief Enable debugging of command git-gnu-project.
+## @details Enable debugging commands in the command git-gnu-project part.
+
+declare -r -i ENABLE_COMMAND=0;
+
+## @fn DEBUG_COMMAND()
+## @brief Run debugging commands of command git-gnu-project part.
+## @details Run debugging commands by chaining multiple commands.
+##
+## Example:
+## @code
+##   DEBUG_COMMAND && echo 'a message'
+## @endcode
+## @param[in] integer ENABLE_COMMAND<br />Contains wether to run the debug
+##   command.
+## @param[in] indexed-array-of-string ${\@}<br />The command to run.
+## @return return value: void<br />return code: The return code of the last
+##   executed command.
+
+function DEBUG_COMMAND() {
+  (( 0 == "${ENABLE_COMMAND}" )) && "${@}";
+  return;
+}
+
+## @var ENABLE_SUBCOMMAND_GITTIFY
+## @brief Enable debugging of subcommand gittify.
+## @details Enable debugging commands in the command gittify part.
+
+declare -r -i ENABLE_SUBCOMMAND_GITTIFY=0;
+
+## @fn DEBUG_SUBCOMMAND_GITTIFY()
+## @brief Run debugging commands of subcommand gittify part.
+## @details Run debugging commands by chaining multiple commands.
+##
+## Example:
+## @code
+##   DEBUG_SUBCOMMAND_GITTIFY && echo 'a message'
+## @endcode
+## @param[in] integer ENABLE_SUBCOMMAND_GITTIFY<br />Contains wether to run the
+##   debug command.
+## @param[in] indexed-array-of-string ${\@}<br />The command to run.
+## @return return value: void<br />return code: The return code of the last
+##   executed command.
+
+function DEBUG_SUBCOMMAND_GITTIFY() {
+  (( 0 == "${ENABLE_COMMAND}" )) && "${@}";
+  return;
+}
+
+## @var ENABLE_SUBCOMMAND_GNUTIFY
+## @brief Enable debugging of subcommand gnutify.
+## @details Enable debugging commands in the command gnutify part.
+
+declare -r -i ENABLE_SUBCOMMAND_GNUTIFY=0;
+
+## @fn DEBUG_SUBCOMMAND_GNUTIFY()
+## @brief Run debugging commands of subcommand gnutify part.
+## @details Run debugging commands by chaining multiple commands.
+##
+## Example:
+## @code
+##   DEBUG_SUBCOMMAND_GNUTIFY && echo 'a message'
+## @endcode
+## @param[in] integer ENABLE_SUBCOMMAND_GNUTIFY<br />Contains wether to run the
+##   debug command.
+## @param[in] indexed-array-of-string ${\@}<br />The command to run.
+## @return return value: void<br />return code: The return code of the last
+##   executed command.
+
+function DEBUG_SUBCOMMAND_GNUTIFY() {
+  (( 0 == "${ENABLE_COMMAND}" )) && "${@}";
+  return;
+}
 
 
 
@@ -307,7 +393,7 @@
 ##   command list immediately following a while or until keyword, part of the
 ##   test in an if statement, part of any command executed in a && or || list
 ##   except the command following the final && or ||, any command in a pipeline
-##   but the last, or if the command’s return status is being inverted with !.
+##   but the last, or if the command's return status is being inverted with !.
 ##   If a compound command other than a subshell returns a non-zero status
 ##   because a command failed while -e was being ignored, the shell does not
 ##   exit.  A trap on ERR, if set, is executed before the shell exits.
@@ -351,7 +437,7 @@
 ##
 ##   Same as -H.
 ##
-##   Enable ‘!’ style history substitution (see History Expansion).  This option
+##   Enable '!' style history substitution (see History Expansion).  This option
 ##   is on by default for interactive shells.
 ##
 ## history
@@ -382,7 +468,7 @@
 ##
 ##   Same as -C.
 ##
-##   Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting
+##   Prevent output redirection using '>', '>&', and '<>' from overwriting
 ##   existing files.
 ##
 ## noexec
@@ -413,8 +499,8 @@
 ##
 ##   Same as -u.
 ##
-##   Treat unset variables and parameters other than the special parameters ‘@’
-##   or ‘*’, or array variables subscripted with ‘@’ or ‘*’, as an error when
+##   Treat unset variables and parameters other than the special parameters '@'
+##   or '*', or array variables subscripted with '@' or '*', as an error when
 ##   performing parameter expansion.  An error message will be written to the
 ##   standard error, and a non-interactive shell will exit.
 ##
@@ -681,7 +767,7 @@ set -o xtrace;
 ##
 ## compat31, compat32, compat40, compat41, compat42, compat43, compat44
 ##
-##   These control aspects of the shell’s compatibility mode (see Shell
+##   These control aspects of the shell's compatibility mode (see Shell
 ##   Compatibility Mode).
 ##
 ## complete_fullquote
@@ -711,8 +797,8 @@ set -o xtrace;
 ##
 ## dotglob
 ##
-##   If set, Bash includes filenames beginning with a ‘.’ in the results of
-##   filename expansion.  The filenames ‘.’ and ‘..’ must always be matched
+##   If set, Bash includes filenames beginning with a '.' in the results of
+##   filename expansion.  The filenames '.' and '..' must always be matched
 ##   explicitly, even if dotglob is set.
 ##
 ## execfail
@@ -780,20 +866,20 @@ set -o xtrace;
 ##
 ##   If set, range expressions used in pattern matching bracket expressions (see
 ##   Pattern Matching) behave as if in the traditional C locale when performing
-##   comparisons.  That is, the current locale’s collating sequence is not taken
-##   into account, so ‘b’ will not collate between ‘A’ and ‘B’, and upper-case
+##   comparisons.  That is, the current locale's collating sequence is not taken
+##   into account, so 'b' will not collate between 'A' and 'B', and upper-case
 ##   and lower-case ASCII characters will collate together.
 ##
 ## globskipdots
 ##
-##   If set, filename expansion will never match the filenames ‘.’ and ‘..’,
-##   even if the pattern begins with a ‘.’.  This option is enabled by default.
+##   If set, filename expansion will never match the filenames '.' and '..',
+##   even if the pattern begins with a '.'.  This option is enabled by default.
 ##
 ## globstar
 ##
-##   If set, the pattern ‘**’ used in a filename expansion context will match
+##   If set, the pattern '**' used in a filename expansion context will match
 ##   all files and zero or more directories and subdirectories.  If the pattern
-##   is followed by a ‘/’, only directories and subdirectories match.
+##   is followed by a '/', only directories and subdirectories match.
 ##
 ## gnu_errfmt
 ##
@@ -819,7 +905,7 @@ set -o xtrace;
 ## hostcomplete
 ##
 ##   If set, and Readline is being used, Bash will attempt to perform hostname
-##   completion when a word containing a ‘@’ is being completed (see Letting
+##   completion when a word containing a '@' is being completed (see Letting
 ##   Readline Type For You).  This option is enabled by default.
 ##
 ## huponexit
@@ -835,7 +921,7 @@ set -o xtrace;
 ##
 ## interactive_comments
 ##
-##   Allow a word beginning with ‘##’ to cause that word and all remaining
+##   Allow a word beginning with '##' to cause that word and all remaining
 ##   characters on that line to be ignored in an interactive shell.  This option
 ##   is enabled by default.
 ##
@@ -905,7 +991,7 @@ set -o xtrace;
 ##
 ## patsub_replacement
 ##
-##   If set, Bash expands occurrences of ‘&’ in the replacement string of
+##   If set, Bash expands occurrences of '&' in the replacement string of
 ##   pattern substitution to the text matched by the pattern, as described above
 ##   (see Shell Parameter Expansion).  This option is enabled by default.
 ##
@@ -917,7 +1003,7 @@ set -o xtrace;
 ## progcomp_alias
 ##
 ##   If set, and programmable completion is enabled, Bash treats a command name
-##   that doesn’t have any completions as a possible alias and attempts alias
+##   that doesn't have any completions as a possible alias and attempts alias
 ##   expansion.  If it has an alias, Bash attempts programmable completion using
 ##   the command word resulting from the expanded alias.
 ##
@@ -1021,8 +1107,6 @@ shopt -s shift_verbose;
 
 
 ## @c{
-## For Doxygen \var:
-##
 ## Datatypes:
 ##
 ##   integer
@@ -1090,7 +1174,8 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## cause the shell to exit when the -e option is enabled.
 ##
 ## ============================================================================}
-## @c{==========================================================================
+##
+@c{==========================================================================
 ##
 ## local: command documentation:
 ## bash$ trap -l
@@ -1165,7 +1250,6 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## 64) SIGRTMAX
 ##
 ## ============================================================================}
-
 ## @c{==========================================================================
 ##
 ## local: man documentation:
@@ -1235,7 +1319,6 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## bash$ trap -l
 ##
 ## ============================================================================}
-
 ## @c{==========================================================================
 ##
 ## local: man documentation:
@@ -1293,37 +1376,37 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## 2.5 Signal specifications
 ## =========================
 ##
-## A SIGNAL may be a signal name like ‘HUP’, or a signal number like ‘1’, or an
+## A SIGNAL may be a signal name like 'HUP', or a signal number like '1', or an
 ## exit status of a process terminated by the signal.  A signal name can be
-## given in canonical form or prefixed by ‘SIG’.  The case of the letters is
+## given in canonical form or prefixed by 'SIG'.  The case of the letters is
 ## ignored.  The following signal names and numbers are supported on all POSIX
 ## compliant systems:
 ##
-## ‘HUP’
+## 'HUP'
 ##
 ##    1.  Hangup.
 ##
-## ‘INT’
+## 'INT'
 ##
 ##    2.  Terminal interrupt.
 ##
-## ‘QUIT’
+## 'QUIT'
 ##
 ##    3.  Terminal quit.
 ##
-## ‘ABRT’
+## 'ABRT'
 ##
 ##    6.  Process abort.
 ##
-## ‘KILL’
+## 'KILL'
 ##
 ##    9.  Kill (cannot be caught or ignored).
 ##
-## ‘ALRM’
+## 'ALRM'
 ##
 ##   14.  Alarm Clock.
 ##
-## ‘TERM’
+## 'TERM'
 ##
 ##   15.  Termination.
 ##
@@ -1331,96 +1414,96 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## All systems conforming to POSIX 1003.1-2001 also support the following
 ## signals:
 ##
-## ‘BUS’
+## 'BUS'
 ##
 ##   Access to an undefined portion of a memory object.
 ##
-## ‘CHLD’
+## 'CHLD'
 ##
 ##   Child process terminated, stopped, or continued.
 ##
-## ‘CONT’
+## 'CONT'
 ##
 ##   Continue executing, if stopped.
 ##
-## ‘FPE’
+## 'FPE'
 ##
 ##   Erroneous arithmetic operation.
 ##
-## ‘ILL’
+## 'ILL'
 ##
 ##   Illegal Instruction.
 ##
-## ‘PIPE’
+## 'PIPE'
 ##
 ##   Write on a pipe with no one to read it.
 ##
-## ‘SEGV’
+## 'SEGV'
 ##
 ##   Invalid memory reference.
 ##
-## ‘STOP’
+## 'STOP'
 ##
 ##   Stop executing (cannot be caught or ignored).
 ##
-## ‘TSTP’
+## 'TSTP'
 ##
 ##   Terminal stop.
 ##
-## ‘TTIN’
+## 'TTIN'
 ##
 ##   Background process attempting read.
 ##
-## ‘TTOU’
+## 'TTOU'
 ##
 ##   Background process attempting write.
 ##
-## ‘URG’
+## 'URG'
 ##
 ##   High bandwidth data is available at a socket.
 ##
-## ‘USR1’
+## 'USR1'
 ##
 ##   User-defined signal 1.
 ##
-## ‘USR2’
+## 'USR2'
 ##
 ##   User-defined signal 2.
 ##
 ## POSIX 1003.1-2001 systems that support the XSI extension also support the
 ## following signals:
 ##
-## ‘POLL’
+## 'POLL'
 ##
 ##   Pollable event.
 ##
-## ‘PROF’
+## 'PROF'
 ##
 ##   Profiling timer expired.
 ##
-## ‘SYS’
+## 'SYS'
 ##
 ##   Bad system call.
 ##
-## ‘TRAP’
+## 'TRAP'
 ##
 ##   Trace/breakpoint trap.
 ##
-## ‘VTALRM’
+## 'VTALRM'
 ##
 ##   Virtual timer expired.
 ##
-## ‘XCPU’
+## 'XCPU'
 ##
 ##   CPU time limit exceeded.
 ##
-## ‘XFSZ’
+## 'XFSZ'
 ##
 ##   File size limit exceeded.
 ##
 ## POSIX 1003.1-2001 systems that support the XRT extension also support at
-## least eight real-time signals called ‘RTMIN’, ‘RTMIN+1’, ..., ‘RTMAX-1’,
-## ‘RTMAX’.
+## least eight real-time signals called 'RTMIN', 'RTMIN+1', ..., 'RTMAX-1',
+## 'RTMAX'.
 ##
 ## ============================================================================}
 
@@ -1537,82 +1620,82 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## 19.2.6 Special characters
 ## -------------------------
 ##
-## The special characters’ default values vary from system to system.  They are
-## set with the syntax ‘name value’, where the names are listed below and the
-## value can be given either literally, in hat notation (‘^C’), or as an integer
-## which may start with ‘0x’ to indicate hexadecimal, ‘0’ to indicate octal, or
+## The special characters' default values vary from system to system.  They are
+## set with the syntax 'name value', where the names are listed below and the
+## value can be given either literally, in hat notation ('^C'), or as an integer
+## which may start with '0x' to indicate hexadecimal, '0' to indicate octal, or
 ## any other digit to indicate decimal.
 ##
-## For GNU stty, giving a value of ‘^-’ or ‘undef’ disables that special
-## character.  (This is incompatible with Ultrix ‘stty’, which uses a value of
-## ‘u’ to disable a special character.  GNU ‘stty’ treats a value ‘u’ like any
+## For GNU stty, giving a value of '^-' or 'undef' disables that special
+## character.  (This is incompatible with Ultrix 'stty', which uses a value of
+## 'u' to disable a special character.  GNU 'stty' treats a value 'u' like any
 ## other, namely to set that special character to <U>.)
 ##
-## ‘intr’
+## 'intr'
 ##
 ##    Send an interrupt signal.
 ##
-## ‘quit’
+## 'quit'
 ##
 ##    Send a quit signal.
 ##
-## ‘erase’
+## 'erase'
 ##
 ##    Erase the last character typed.
 ##
-## ‘kill’
+## 'kill'
 ##
 ##    Erase the current line.
 ##
-## ‘eof’
+## 'eof'
 ##
 ##    Send an end of file (terminate the input).
 ##
-## ‘eol’
+## 'eol'
 ##
 ##    End the line.
 ##
-## ‘eol2’
+## 'eol2'
 ##
 ##    Alternate character to end the line.  Non-POSIX.
 ##
-## ‘discard’
+## 'discard'
 ##
 ##    Alternate character to toggle discarding of output.  Non-POSIX.
 ##
-## ‘swtch’
+## 'swtch'
 ##
 ##    Switch to a different shell layer.  Non-POSIX.
 ##
-## ‘status’
+## 'status'
 ##
 ##    Send an info signal.  Not currently supported on Linux.  Non-POSIX.
 ##
-## ‘start’
+## 'start'
 ##
 ##    Restart the output after stopping it.
 ##
-## ‘stop’
+## 'stop'
 ##
 ##    Stop the output.
 ##
-## ‘susp’
+## 'susp'
 ##
 ##    Send a terminal stop signal.
 ##
-## ‘dsusp’
+## 'dsusp'
 ##
 ##    Send a terminal stop signal after flushing the input.  Non-POSIX.
 ##
-## ‘rprnt’
+## 'rprnt'
 ##
 ##    Redraw the current line.  Non-POSIX.
 ##
-## ‘werase’
+## 'werase'
 ##
 ##    Erase the last word typed.  Non-POSIX.
 ##
-## ‘lnext’
+## 'lnext'
 ##
 ##    Enter the next character typed literally, even if it is a special
 ##    character.  Non-POSIX.
@@ -1746,8 +1829,9 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## VSTOP
 ##
-##   (023, DC3, Ctrl-S) Stop character (STOP).  Stop output until Start character
-##   typed.  Recognized when IXON is set, and then not passed as input.
+##   (023, DC3, Ctrl-S) Stop character (STOP).  Stop output until Start
+##   character typed.  Recognized when IXON is set, and then not passed as
+##   input.
 ##
 ## VSUSP
 ##
@@ -2025,7 +2109,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## The commands in arg are to be read and executed when the shell receives
 ## signal sigspec.  If arg is absent (and there is a single sigspec) or equal
-## to ‘-’, each specified signal’s disposition is reset to the value it had
+## to '-', each specified signal's disposition is reset to the value it had
 ## when the shell was started.  If arg is the null string, then the signal
 ## specified by each sigspec is ignored by the shell and commands it invokes.
 ## If arg is not present and -p has been supplied, the shell displays the trap
@@ -2052,7 +2136,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## immediately following an until or while keyword, part of the test following
 ## the if or elif reserved words, part of a command executed in a && or || list
 ## except the command following the final && or ||, any command in a pipeline
-## but the last, or if the command’s return status is being inverted using !.
+## but the last, or if the command's return status is being inverted using !.
 ## These are the same conditions obeyed by the errexit (-e) option.
 ##
 ## Signals ignored upon entry to the shell cannot be trapped or reset.  Trapped
@@ -2067,7 +2151,8 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## remote: website:
 ## 17.4.9.2 Characters that Cause Signals
-## <https://www.gnu.org/software/libc/manual/html_mono/libc.html#Signal-Characters>
+## <https://www.gnu.org/software/libc/manual/html_mono/libc.html#Signal-
+##  Characters>
 ## -----------------------------------------------------------------------------
 ##
 ## 17.4.9.2 Characters that Cause Signals
@@ -2148,7 +2233,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## 24.2.2 Termination Signals
 ##
 ## These signals are all used to tell a process to terminate, in one way or
-## another.  They have different names because they’re used for slightly
+## another.  They have different names because they're used for slightly
 ## different purposes, and programs might want to handle them differently.
 ##
 ## The reason for handling these signals is usually so your program can tidy up
@@ -2172,16 +2257,16 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## Macro: int SIGINT
 ##
-##   The SIGINT (“program interrupt”) signal is sent when the user types the
+##   The SIGINT ("program interrupt") signal is sent when the user types the
 ##   INTR character (normally C-c).  See Special Characters, for information
 ##   about terminal driver support for C-c.
 ##
 ## Macro: int SIGQUIT
 ##
-##   The SIGQUIT signal is similar to SIGINT, except that it’s controlled by a
+##   The SIGQUIT signal is similar to SIGINT, except that it's controlled by a
 ##   different key-the QUIT character, usually C-\-and produces a core dump when
 ##   it terminates the process, just like a program error signal.  You can think
-##   of this as a program error condition “detected” by the user.
+##   of this as a program error condition "detected" by the user.
 ##
 ##   See Program Error Signals, for information about core dumps.  See Special
 ##   Characters, for information about terminal driver support.
@@ -2213,7 +2298,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## Macro: int SIGHUP
 ##
-##   The SIGHUP (“hang-up”) signal is used to report that the user’s terminal is
+##   The SIGHUP ("hang-up") signal is used to report that the user's terminal is
 ##   disconnected, perhaps because a network or telephone connection was broken.
 ##   For more information about this, see Control Modes.
 ##
@@ -2237,9 +2322,9 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## 24.2.5 Job Control Signals
 ##
-## These signals are used to support job control.  If your system doesn’t
+## These signals are used to support job control.  If your system doesn't
 ## support job control, then these macros are defined but the signals themselves
-## can’t be raised or handled.
+## can't be raised or handled.
 ##
 ## You should generally leave these signals alone unless you really understand
 ## how job control works.  See Job Control.
@@ -2294,7 +2379,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## Macro: int SIGTTIN
 ##
-##   A process cannot read from the user’s terminal while it is running as a
+##   A process cannot read from the user's terminal while it is running as a
 ##   background job.  When any process in a background job tries to read from
 ##   the terminal, all of the processes in the job are sent a SIGTTIN signal.
 ##   The default action for this signal is to stop the process.  For more
@@ -2312,7 +2397,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ## is continued, except SIGKILL signals and (obviously) SIGCONT signals.  The
 ## signals are marked as pending, but not delivered until the process is
 ## continued.  The SIGKILL signal always causes termination of the process and
-## can’t be blocked, handled or ignored.  You can ignore SIGCONT, but it always
+## can't be blocked, handled or ignored.  You can ignore SIGCONT, but it always
 ## causes the process to be continued anyway if it is stopped.  Sending a
 ## SIGCONT signal to a process causes any pending stop signals for that process
 ## to be discarded.  Likewise, any pending SIGCONT signals for a process are
@@ -2565,7 +2650,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##   "Signal trap"
 ##
 ##   The SIGTRAP signal is sent to a process when an exception (or trap)
-##   occurs: a condition that a debugger has requested to be informed of – for
+##   occurs: a condition that a debugger has requested to be informed of - for
 ##   example, when a particular function is executed, or when a particular
 ##   variable changes value.
 ##
@@ -2671,20 +2756,20 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ## Actions explained:
 ##
-##   Terminate – Abnormal termination of the process.  The process is terminated
+##   Terminate - Abnormal termination of the process.  The process is terminated
 ##   with all the consequences of _exit() except that the status made available
 ##   to wait() and waitpid() indicates abnormal termination by the specified
 ##   signal.
 ##
-##   Terminate (core dump) – Abnormal termination of the process.  Additionally,
+##   Terminate (core dump) - Abnormal termination of the process.  Additionally,
 ##   implementation-defined abnormal termination actions, such as creation of a
 ##   core file, may occur.
 ##
-##   Ignore – Ignore the signal.
+##   Ignore - Ignore the signal.
 ##
-##   Stop – Stop (or suspend) the process.
+##   Stop - Stop (or suspend) the process.
 ##
-##   Continue – Continue the process, if it is stopped; otherwise, ignore the
+##   Continue - Continue the process, if it is stopped; otherwise, ignore the
 ##   signal.
 ##
 ## ============================================================================}
@@ -2780,7 +2865,7 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 
 
 
-## @{
+## @c{
 ## Trap signals and other events.
 ##
 ##   EXIT
@@ -2801,11 +2886,9 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##   shell.
 ##
 ##   EXIT - If a sigspec is 0 or EXIT, arg is executed when the shell exits.
-## @param[in] integer LINENO
-##   The current line number.
-## @return
-##   return value: ???; return code: the return code of the last executed
-##   command.
+## @param[in] integer LINENO<br />The current line number.
+## @return return value: various information about the triggering event<br />
+##   return code: the return code of the last executed command.
 
 function trapEXIT() {
   local -r -i LINENO="${1}";
@@ -2832,9 +2915,8 @@ trap trapEXIT "${LINENO}" EXIT;
 ##   The Shopt Builtin) for details of its effect on the DEBUG trap.
 ## @param[in] integer LINENO
 ##   The current line number.
-## @return
-##   return value: ???; return code: the return code of the last executed
-##   command.
+## @return return value: various information about the triggering event<br />
+##   return code: the return code of the last executed command.
 
 function trapDEBUG() {
   local -r -i LINENO="${1}";
@@ -2859,9 +2941,8 @@ trap 'trapDEBUG "${LINENO}"' DEBUG;
 ##   executing.
 ## @param[in] integer LINENO
 ##   The current line number.
-## @return
-##   return value: ???; return code: the return code of the last executed
-##   command.
+## @return return value: various information about the triggering event<br />
+##   return code: the return code of the last executed command.
 
 function trapRETURN() {
   local -r -i LINENO="${1}";
@@ -2888,14 +2969,13 @@ trap 'trapRETURN "${LINENO}"' RETURN;
 ##   the command list immediately following an until or while keyword, part of
 ##   the test following the if or elif reserved words, part of a command
 ##   executed in a && or || list except the command following the final && or
-##   ||, any command in a pipeline but the last, or if the command’s return
+##   ||, any command in a pipeline but the last, or if the command's return
 ##   status is being inverted using !.  These are the same conditions obeyed by
 ##   the errexit (-e) option.
 ## @param[in] integer LINENO
 ##   The current line number.
-## @return
-##   return value: ???; return code: the return code of the last executed
-##   command.
+## @return return value: various information about the triggering event<br />
+##   return code: the return code of the last executed command.
 
 function trapERR() {
   local -r -i LINENO="${1}";
@@ -2919,9 +2999,8 @@ trap 'trapERR "${LINENO}"' ERR;
 ##   commonly initiated by the user pressing CTRL-C.
 ## @param[in] integer LINENO
 ##   The current line number.
-## @return
-##   return value: ???; return code: the return code of the last executed
-##   command.
+## @return return value: various information about the triggering event<br />
+##   return code: the return code of the last executed command.
 
 function trapSIGINT() {
   local -r -i LINENO="${1}";
@@ -2946,9 +3025,8 @@ trap 'trapSIGINT "${LINENO}"' SIGINT;
 ##   dump.  It is commonly initiated by the user pressing CTRL-\.
 ## @param[in] integer LINENO
 ##   The current line number.
-## @return
-##   return value: ???; return code: the return code of the last executed
-##   command.
+## @return return value: various information about the triggering event<br />
+##   return code: the return code of the last executed command.
 
 function trapSIGQUIT() {
   local -r -i LINENO="${1}";
@@ -2972,9 +3050,8 @@ trap 'trapSIGQUIT "${LINENO}"' SIGQUIT;
 ##   initiated by the user pressing CTRL-Z.
 ## @param[in] integer LINENO
 ##   The current line number.
-## @return
-##   return value: ???; return code: the return code of the last executed
-##   command.
+## @return return value: various information about the triggering event<br />
+##   return code: the return code of the last executed command.
 
 function trapSIGTSTP() {
   local -r -i LINENO="${1}";
@@ -2995,15 +3072,15 @@ trap 'trapSIGTSTP "${LINENO}"' SIGTSTP;
 ## @details The main function (1) reads the configuration file, (2) reads the
 ##   command line arguments (3) handles the command line arguments and (4)
 ##   handles the subcommands gittify and gnutify.
-## @param[in] integer argc
-##   The number of command line arguments passed to the function.
-## @param[in] indexed-array-of-string argv
-##   The Array containing the command line arguments passed to the function.
-## @return
-##   return value: void; return code: the return code of the last executed
-##   command.
+## @param[in] integer argc<br />The number of command line arguments passed to
+##   the function.
+## @param[in] indexed-array-of-string argv<br />The Array containing the command
+##   line arguments passed to the function.
+## @return return value: void;<br />return code: the return code of the last
+##   executed command.
 
 function main() {
+  local -r    command="${1}"; shift 1;
   local -r -i argc="${1}"; shift 1;
   local -r -a argv=( "${@}" );
 

@@ -1035,17 +1035,41 @@ shopt -s shift_verbose;
 
 
 
+## @c{
+## Exit codes.
+## Return codes.
+##
+##   0   success
+##   1   failure
+## }
+
+
+
 ## @var integer EXIT_NO_ERROR
-## @brief The Exit code for no error.
-## @details The Command executed successfully.
+## @brief The exit code for no error.
+## @details The command executed successfully.
 
 declare -r -i EXIT_NO_ERROR=0;
 
 ## @var integer EXIT_GENERAL_ERROR
-## @brief The Exit code for a general error.
-## @details The Command did not execute successfully.
+## @brief The exit code for a general error.
+## @details The command did not execute successfully.
 
 declare -r -i EXIT_GENERAL_ERROR=1;
+
+
+
+## @var integer RETURN_NO_ERROR
+## @brief The return code for no error.
+## @details In the command everything executed successfully.
+
+declare -r -i RETURN_NO_ERROR="${EXIT_NO_ERROR}";
+
+## @var integer RETURN_GENERAL_ERROR
+## @brief The return code for a general error.
+## @details In the command something did not execute successfully.
+
+declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 
 
 

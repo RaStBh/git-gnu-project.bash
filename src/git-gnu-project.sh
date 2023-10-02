@@ -2890,14 +2890,14 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##   shell.
 ##
 ##   EXIT - If a sigspec is 0 or EXIT, arg is executed when the shell exits.
-## @param[in] integer LINENO<br />The current line number.
+## @param[in] integer line_number<br />The current line number.
 ## @return return value: various information about the triggering event<br />
 ##   return code: the return code of the last executed command.
 
 function trapEXIT() {
-  local -r -i LINENO="${1}";
+  local -r -i line_number="${1}";
   local -r -i return_code="${?}";
-  echo "lineno: '${LINENO}'";
+  echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';
@@ -2917,15 +2917,14 @@ trap trapEXIT "${LINENO}" EXIT;
 ##   for command, and before the first command executes in a shell function.
 ##   Refer to the description of the extdebug option to the shopt builtin (see
 ##   The Shopt Builtin) for details of its effect on the DEBUG trap.
-## @param[in] integer LINENO
-##   The current line number.
+## @param[in] integer line_number<br />The current line number.
 ## @return return value: various information about the triggering event<br />
 ##   return code: the return code of the last executed command.
 
 function trapDEBUG() {
-  local -r -i LINENO="${1}";
+  local -r -i line_number="${1}";
   local -r -i return_code="${?}";
-  echo "lineno: '${LINENO}'";
+  echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';
@@ -2943,15 +2942,14 @@ trap 'trapDEBUG "${LINENO}"' DEBUG;
 ##   RETURN - If a sigspec is RETURN, the command arg is executed each time a
 ##   shell function or a script executed with the . or source builtins finishes
 ##   executing.
-## @param[in] integer LINENO
-##   The current line number.
+## @param[in] integer line_number<br />The current line number.
 ## @return return value: various information about the triggering event<br />
 ##   return code: the return code of the last executed command.
 
 function trapRETURN() {
-  local -r -i LINENO="${1}";
+  local -r -i line_number="${1}";
   local -r -i return_code="${?}";
-  echo "lineno: '${LINENO}'";
+  echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';
@@ -2976,15 +2974,14 @@ trap 'trapRETURN "${LINENO}"' RETURN;
 ##   ||, any command in a pipeline but the last, or if the command's return
 ##   status is being inverted using !.  These are the same conditions obeyed by
 ##   the errexit (-e) option.
-## @param[in] integer LINENO
-##   The current line number.
+## @param[in] integer line_number<br />The current line number.
 ## @return return value: various information about the triggering event<br />
 ##   return code: the return code of the last executed command.
 
 function trapERR() {
-  local -r -i LINENO="${1}";
+  local -r -i line_number="${1}";
   local -r -i return_code="${?}";
-  echo "lineno: '${LINENO}'";
+  echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';
@@ -3001,15 +2998,14 @@ trap 'trapERR "${LINENO}"' ERR;
 ##   Signal interrupt - The SIGINT signal is sent to a process by its
 ##   controlling terminal when a user wishes to interrupt the process.  It is
 ##   commonly initiated by the user pressing CTRL-C.
-## @param[in] integer LINENO
-##   The current line number.
+## @param[in] integer line_number<br />The current line number.
 ## @return return value: various information about the triggering event<br />
 ##   return code: the return code of the last executed command.
 
 function trapSIGINT() {
-  local -r -i LINENO="${1}";
+  local -r -i line_number="${1}";
   local -r -i return_code="${?}";
-  echo "lineno: '${LINENO}'";
+  echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';
@@ -3027,15 +3023,14 @@ trap 'trapSIGINT "${LINENO}"' SIGINT;
 ##   Signal quit - The SIGQUIT signal is sent to a process by its controlling
 ##   terminal when the user requests that the process quit and perform a core
 ##   dump.  It is commonly initiated by the user pressing CTRL-\.
-## @param[in] integer LINENO
-##   The current line number.
+## @param[in] integer line_number<br />The current line number.
 ## @return return value: various information about the triggering event<br />
 ##   return code: the return code of the last executed command.
 
 function trapSIGQUIT() {
-  local -r -i LINENO="${1}";
+  local -r -i line_number="${1}";
   local -r -i return_code="${?}";
-  echo "lineno: '${LINENO}'";
+  echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';
@@ -3052,15 +3047,14 @@ trap 'trapSIGQUIT "${LINENO}"' SIGQUIT;
 ##   Signal terminal stop - The SIGTSTP signal is sent to a process by its
 ##   controlling terminal to request it to stop (terminal stop).  It is commonly
 ##   initiated by the user pressing CTRL-Z.
-## @param[in] integer LINENO
-##   The current line number.
+## @param[in] integer line_number<br />The current line number.
 ## @return return value: various information about the triggering event<br />
 ##   return code: the return code of the last executed command.
 
 function trapSIGTSTP() {
-  local -r -i LINENO="${1}";
+  local -r -i line_number="${1}";
   local -r -i return_code="${?}";
-  echo "lineno: '${LINENO}'";
+  echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
   echo 'trapSIGTSTP: This function is not fully implemented yet.';

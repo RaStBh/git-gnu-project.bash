@@ -283,8 +283,24 @@ TAB_SIZE               = 4
 # with the commands \{ and \} for these it is advised to use the version @{ and
 # @} or use a double escape (\\{ and \\})
 
-ALIASES                = c{1}= \
-                         comment{1}=
+ALIASES                = c{1}=""
+ALIASES               += comment{1}=""
+ALIASES               += global{2}="@param[\1] \2 [global]"
+ALIASES               += startglobal="\
+<dl class=\"params\">\
+<dt>Globals</dt>\
+<dd>\
+<table class=\"params\">"
+ALIASES               += itemglobal{3}="\
+<tr>\
+<td class=\"paramdir\">[\1]</td>\
+<td class=\"paramname\">\2</td>\
+<td>\3</td>\
+</tr>"
+ALIASES               += endglobal="\
+</table>\
+</dd>\
+</dl>"
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For

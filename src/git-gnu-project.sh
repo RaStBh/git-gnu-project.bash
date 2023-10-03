@@ -3254,9 +3254,10 @@ setLogLevel "${LOG_LEVEL_ALL}";
 ##   executed command.
 
 function main() {
-  local -r    command="${1}"; shift 1;
-  local -r -i argc="${1}"; shift 1;
-  local -r -a argv=( "${@}" );
+
+  local -r    command="${0}";                                                   echo "command='${command}'";
+  local -r -i argc="${1}"; shift 1;                                             echo "argc='${argc}'";
+  local -r -a argv=( "${@}" );                                                  echo "argv='${#argv}' '${argv[@]}'";
 
   return;
 }

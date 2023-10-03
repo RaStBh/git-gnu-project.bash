@@ -38,7 +38,7 @@
 ##
 ## 2023-09-18 14:17:21 +00:00:00
 ##
-## @copyright Copyright (C)  2023  Ralf Stephan  \<me@ralf-stephan.name\>
+## Copyright (C)  2023  Ralf Stephan  \<me\@ralf-stephan.name\>
 
 
 
@@ -75,7 +75,8 @@ declare -r -i ENABLE_COMMAND=0;
 ##   DEBUG_COMMAND && echo 'a message'
 ## @endcode
 ## @startglobal
-## @itemglobal{in,integer,ENABLE_COMMAND<br />Contains wether to run the debug command.}
+## @itemglobal{in,integer,ENABLE_COMMAND<br />Contains wether to run the debug
+##   command.}
 ## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
 ## @return return value: void<br />return code: The return code of the last
@@ -101,7 +102,8 @@ declare -r -i ENABLE_SUBCOMMAND_GITTIFY=0;
 ##   DEBUG_SUBCOMMAND_GITTIFY && echo 'a message'
 ## @endcode
 ## @startglobal
-## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GITTIFY<br />Contains wether to run the debug command.}
+## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GITTIFY<br />Contains wether to run
+##   the debug command.}
 ## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
 ## @return return value: void<br />return code: The return code of the last
@@ -127,7 +129,8 @@ declare -r -i ENABLE_SUBCOMMAND_GNUTIFY=0;
 ##   DEBUG_SUBCOMMAND_GNUTIFY && echo 'a message'
 ## @endcode
 ## @startglobal
-## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GNUTIFY<br />Contains wether to run the debug command.}
+## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GNUTIFY<br />Contains wether to run
+##   the debug command.}
 ## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
 ## @return return value: void<br />return code: The return code of the last
@@ -2900,11 +2903,11 @@ function trapEXIT() {
   echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
-  echo 'trapSIGTSTP: This function is not fully implemented yet.';
+  echo 'trapEXIT: This function is not fully implemented yet.';
   return;
 }
 
-trap trapEXIT "${LINENO}" EXIT;
+trap "trapEXIT ${LINENO}" EXIT;
 
 ## @fn trapDEBUG()
 ## @brief The trap function for DEBUG.
@@ -2927,7 +2930,7 @@ function trapDEBUG() {
   echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
-  echo 'trapSIGTSTP: This function is not fully implemented yet.';
+  echo 'trapDEBUG: This function is not fully implemented yet.';
   return;
 }
 
@@ -2952,7 +2955,7 @@ function trapRETURN() {
   echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
-  echo 'trapSIGTSTP: This function is not fully implemented yet.';
+  echo 'trapRETURN: This function is not fully implemented yet.';
   return;
 }
 
@@ -2984,7 +2987,7 @@ function trapERR() {
   echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
-  echo 'trapSIGTSTP: This function is not fully implemented yet.';
+  echo 'trapERR: This function is not fully implemented yet.';
   return;
 }
 
@@ -3008,7 +3011,7 @@ function trapSIGINT() {
   echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
-  echo 'trapSIGTSTP: This function is not fully implemented yet.';
+  echo 'trapSIGINT: This function is not fully implemented yet.';
   return;
 }
 
@@ -3033,7 +3036,7 @@ function trapSIGQUIT() {
   echo "line_number: '${line_number}'";
   echo "return_code: '${return_code}'";
   echo "caller: '$( caller 1 )'";
-  echo 'trapSIGTSTP: This function is not fully implemented yet.';
+  echo 'trapSIGQUIT: This function is not fully implemented yet.';
   return;
 }
 
@@ -3062,6 +3065,179 @@ function trapSIGTSTP() {
 }
 
 trap 'trapSIGTSTP "${LINENO}"' SIGTSTP;
+
+
+
+## @c{
+## Logging level:
+##
+## Level   Description
+## -----   -----------
+##
+## ALL     All levels including custom levels.
+##
+## DEBUG   Designates fine-grained informational events that are most useful to
+##         debug an application.
+##
+## INFO    Designates informational messages that highlight the progress of the
+##         application at coarse-grained level.
+##
+## WARN    Designates potentially harmful situations.
+##
+## ERROR   Designates error events that might still allow the application to
+##         continue running.
+##
+## FATAL   Designates very severe error events that will presumably lead the
+##         application to abort.
+##
+## OFF     The highest possible rank and is intended to turn off logging.
+##
+## TRACE   Designates finer-grained informational events than the DEBUG.
+## }
+
+declare -r -i LOG_LEVEL_ALL=0;
+declare -r -i LOG_LEVEL_TRACE=1;
+declare -r -i LOG_LEVEL_DEBUG=2;
+declare -r -i LOG_LEVEL_INFO=3;
+declare -r -i LOG_LEVEL_WARN=4;
+declare -r -i LOG_LEVEL_ERROR=5;
+declare -r -i LOG_LEVEL_FATAL=6;
+declare -r -i LOG_LEVEL_OFF=7;
+
+declare -i LOG_LEVEL="${LOG_LEVEL_ERROR}";
+
+function dumpStack()
+{
+  local -i frame=0;
+  local -i line=0;
+  local subroutine='';
+  local filename='';
+  local -a stack_stump=();
+  while (( "${frame}" < "${#FUNCNAME[@]}" )); do
+    line="${BASH_LINENO[$(( frame - 1 ))]}";
+    subroutine="${FUNCNAME[${frame}]}"
+    filename="${BASH_SOURCE[$(( frame - 1 ))]}";
+    (( "${frame}" )) || line="${LINENO}";
+    stack_stump[${#stack_stump[@]}]="<${frame}>: <${subroutine}> at <${filename}>:<${line}>";
+    (( frame++ ));
+  done
+  printf '%s\n' "${stack_stump[@]}";
+  return;
+}
+
+function logLog()
+{
+  local log_level="${1}"; shift 1;
+  local message=( "${@}" );
+  local timestamp="$( date +%s )";
+  local -i timestamp_width=10;
+  local -i level_width=5;
+  local format="[%0${timestamp_width}s] [%- ${level_width}s] %s\n";
+  local errexit_new="set +o 'errexit'";
+  local errexit_old='';
+  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_TRACE}" )) \
+     && (( "${log_level}" == "${_LOG_LEVEL_TRACE}" )); then
+    printf "${format}"  "${timestamp}"  'TRACE'  "$( echo "${message[@]}" )";
+    if [ -o 'errexit' ]; then
+      errexit_old="set -o 'errexit'";
+    else
+      errexit_old="set +o 'errexit'";
+    fi
+    eval "${errexit_new}";
+    printf '%s\n' "$( _DUMP_STACK )";
+    eval "${errexit_old}";
+  else
+    :;
+  fi
+  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_DEBUG}" )) \
+     && (( "${log_level}" == "${_LOG_LEVEL_DEBUG}" )); then
+    printf "${format}" "${timestamp}" 'DEBUG' "$( echo "${message[@]}" )";
+  else
+    :;
+  fi
+  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_INFO}" )) \
+     && (( "${log_level}" == "${_LOG_LEVEL_INFO}" )); then
+    printf "${format}" "${timestamp}" 'INFO' "$( echo "${message[@]}" )";
+  else
+    :;
+  fi
+  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_WARN}" )) \
+     && (( "${log_level}" == "${_LOG_LEVEL_WARN}" )); then
+    printf "${format}" "${timestamp}" 'WARN' "$( echo "${message[@]}" )";
+  else
+    :;
+  fi
+  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_ERROR}" )) \
+     && (( "${log_level}" == "${_LOG_LEVEL_ERROR}" )); then
+    printf "${format}" "${timestamp}" 'ERROR' "$( echo "${message[@]}" )";
+  else
+    :;
+  fi
+  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_FATAL}" )) \
+     && (( "${log_level}" == "${_LOG_LEVEL_FATAL}" )); then
+    printf "${format}" "${timestamp}" 'FATAL' "$( echo "${message[@]}" )";
+  else
+    :;
+  fi
+}
+
+function setLogLevel()
+{
+  LOG_LEVEL="${1}",
+  return,
+}
+
+function ALL()
+{
+  LOG_LEVEL="${LOG_LEVEL_ALL}";
+  return;
+}
+
+function TRACE()
+{
+  logLog "${LOG_LEVEL_TRACE}" "${@}";
+  return;
+}
+
+function DEBUG()
+{
+  logLog "${LOG_LEVEL_DEBUG}" "${@}";
+  return;
+}
+
+function INFO()
+{
+  logLog "${LOG_LEVEL_INFO}" "${@}";
+  return;
+}
+
+function WARN()
+{
+  logLog "${LOG_LEVEL_WARN}" "${@}";
+  return;
+}
+
+function ERROR()
+{
+  logLog "${LOG_LEVEL_ERROR}" "${@}";
+  return;
+}
+
+function FATAL()
+{
+  logLog "${LOG_LEVEL_FATAL}" "${@}";
+  return;
+}
+
+function OFF()
+{
+  logLog="${LOG_LEVEL_OFF}";
+  return;
+}
+
+
+
+setLogLevel "${LOG_LEVEL_ALL}";
 
 
 

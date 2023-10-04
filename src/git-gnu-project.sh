@@ -52,13 +52,109 @@
 
 
 ## @c{
-## Variables and functions for debugging and logging purposes.
+## Datatypes:
+##
+##   integer
+##   float
+##   string
+##
+##   indexed-array-of-X
+##   hashed-array-of-X
+## }
+
+
+
+## @c{
+## Variables and functions for debugging.
 ##
 ## Enable and disable debugging.
 ##
 ##   0   enable
 ##   1   disable
 ## }
+
+## @var ENABLE_COMMAND_SET
+## @brief Enable options for debbuging.
+## @details Enable shell (set) options for debugging.
+
+declare -r -i ENABLE_COMMAND_SET=0;
+
+## @fn DEBUG_COMMAND_SET()
+## @brief Run commands to enable shell (set) options for debugging.
+## @details Run commands by chaining multiple commands.
+##
+## Example:
+## @code
+##   DEBUG_COMMAND_SET echo 'a message'
+## @endcode
+## @startglobal
+## @itemglobal{in,integer,ENABLE_COMMAND_SHOPT<br />Contains wether to run the
+##   command.}
+## @endglobal
+## @param[in] indexed-array-of-string ${\@}<br />The command to run.
+## @return return value:<br />void<br />return code:<br />The return code of the
+##   last executed command.
+
+function DEBUG_COMMAND_SET() {
+  (( 0 == "${ENABLE_COMMAND_SET}" )) && printf '%s\n' 'DEBUG_SET: ';
+  (( 0 == "${ENABLE_COMMAND_SET}" )) && "${@}";
+  return;
+}
+
+## @var ENABLE_COMMAND_SHOPT
+## @brief Enable options for debbuging.
+## @details Enable additional shell (shopt) options for debugging.
+
+declare -r -i ENABLE_COMMAND_SHOPT=0;
+
+## @fn DEBUG_COMMAND_SHOPT()
+## @brief Run commands to enable additional shell (shopt) options for debugging.
+## @details Run commands by chaining multiple commands.
+##
+## Example:
+## @code
+##   DEBUG_COMMAND_SHOPT echo 'a message'
+## @endcode
+## @startglobal
+## @itemglobal{in,integer,ENABLE_COMMAND_SHOPT<br />Contains wether to run the
+##   command.}
+## @endglobal
+## @param[in] indexed-array-of-string ${\@}<br />The command to run.
+## @return return value:<br />void<br />return code:<br />The return code of the
+##   last executed command.
+
+function DEBUG_COMMAND_SHOPT() {
+  (( 0 == "${ENABLE_COMMAND_SHOPT}" )) && printf '%s\n' 'DEBUG_SHOPT: ';
+  (( 0 == "${ENABLE_COMMAND_SHOPT}" )) && "${@}";
+  return;}
+
+## @var ENABLE_COMMAND_TRAP
+## @brief Enable trapping for debugging.
+## @details Enable trapping of signals and events for debugging.
+
+declare -r -i ENABLE_COMMAND_TRAP=0;
+
+## @fn DEBUG_COMMAND_TRAP()
+## @brief Run commands to enable traps for debugging.
+## @details Run commands by chaining multiple commands.
+##
+## Example:
+## @code
+##   DEBUG_COMMAND_TRAP trap "trapErr ${LINENO}" ERR
+## @endcode
+## @startglobal
+## @itemglobal{in,integer,ENABLE_COMMAND_TRAP<br />Contains wether to run the
+##   command.}
+## @endglobal
+## @param[in] indexed-array-of-string ${\@}<br />The command to run.
+## @return return value:<br />void<br />return code:<br />The return code of the
+##   last executed command.
+
+function DEBUG_COMMAND_TRAP() {
+  (( 0 == "${ENABLE_COMMAND_TRAP}" )) && printf '%s\n' 'DEBUG_TRAP: ';
+  (( 0 == "${ENABLE_COMMAND_TRAP}" )) && "${@}";
+  return;
+}
 
 ## @var ENABLE_COMMAND
 ## @brief Enable debugging of command git-gnu-project.
@@ -72,17 +168,18 @@ declare -r -i ENABLE_COMMAND=0;
 ##
 ## Example:
 ## @code
-##   DEBUG_COMMAND && echo 'a message'
+##   DEBUG_COMMAND echo 'a message'
 ## @endcode
 ## @startglobal
 ## @itemglobal{in,integer,ENABLE_COMMAND<br />Contains wether to run the debug
 ##   command.}
 ## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
-## @return return value: void<br />return code: The return code of the last
-##   executed command.
+## @return return value:<br />void<br />return code:<br />The return code of the
+##   last executed command.
 
 function DEBUG_COMMAND() {
+  (( 0 == "${ENABLE_COMMAND}" )) && printf '%s\n' 'DEBUG_COMMAND: ';
   (( 0 == "${ENABLE_COMMAND}" )) && "${@}";
   return;
 }
@@ -99,17 +196,18 @@ declare -r -i ENABLE_SUBCOMMAND_GITTIFY=0;
 ##
 ## Example:
 ## @code
-##   DEBUG_SUBCOMMAND_GITTIFY && echo 'a message'
+##   DEBUG_SUBCOMMAND_GITTIFY echo 'a message'
 ## @endcode
 ## @startglobal
 ## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GITTIFY<br />Contains wether to run
 ##   the debug command.}
 ## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
-## @return return value: void<br />return code: The return code of the last
-##   executed command.
+## @return return value:<br />void<br />return code:<br />The return code of the
+##   last executed command.
 
 function DEBUG_SUBCOMMAND_GITTIFY() {
+  (( 0 == "${ENABLE_SUBCOMMAND_GITTIFY}" )) && printf '%s\n' 'ENABLE_SUBCOMMAND_GITTIFY: ';
   (( 0 == "${ENABLE_SUBCOMMAND_GITTIFY}" )) && "${@}";
   return;
 }
@@ -126,20 +224,20 @@ declare -r -i ENABLE_SUBCOMMAND_GNUTIFY=0;
 ##
 ## Example:
 ## @code
-##   DEBUG_SUBCOMMAND_GNUTIFY && echo 'a message'
+##   DEBUG_SUBCOMMAND_GNUTIFY echo 'a message'
 ## @endcode
 ## @startglobal
 ## @itemglobal{in,integer,ENABLE_SUBCOMMAND_GNUTIFY<br />Contains wether to run
 ##   the debug command.}
 ## @endglobal
 ## @param[in] indexed-array-of-string ${\@}<br />The command to run.
-## @return return value: void<br />return code: The return code of the last
-##   executed command.
+## @return return value:<br />void<br />return code:<br />The return code of the
+##   last executed command.
 
 function DEBUG_SUBCOMMAND_GNUTIFY() {
+  (( 0 == "${ENABLE_SUBCOMMAND_GNUTIFY}" )) && printf '%s\n' 'DEBUG_SUBCOMMAND_GNUTIFY: ';
   (( 0 == "${ENABLE_SUBCOMMAND_GNUTIFY}" )) && "${@}";
   return;
-}
 
 
 
@@ -628,7 +726,7 @@ function DEBUG_SUBCOMMAND_GNUTIFY() {
 
 
 ## @c{
-## Set shell options using set.
+## Set shell (set) options.
 ##
 ## Recommended options to enable for debugging:
 ##
@@ -1103,63 +1201,12 @@ set -o xtrace;
 
 ## @c{
 ##
-## Set shell options using shopt.
+## Set shell additional shell (shopt) options.
 ##
 ## }
 
 shopt -s extdebug;
 shopt -s shift_verbose;
-
-
-
-## @c{
-## Datatypes:
-##
-##   integer
-##   float
-##   string
-##
-##   indexed-array-of-X
-##   hashed-array-of-X
-## }
-
-
-
-## @c{
-## Exit codes.
-## Return codes.
-##
-##   0   success
-##   1   failure
-## }
-
-
-
-## @var integer EXIT_NO_ERROR
-## @brief The exit code for no error.
-## @details The command executed successfully.
-
-declare -r -i EXIT_NO_ERROR=0;
-
-## @var integer EXIT_GENERAL_ERROR
-## @brief The exit code for a general error.
-## @details The command did not execute successfully.
-
-declare -r -i EXIT_GENERAL_ERROR=1;
-
-
-
-## @var integer RETURN_NO_ERROR
-## @brief The return code for no error.
-## @details In the command everything executed successfully.
-
-declare -r -i RETURN_NO_ERROR="${EXIT_NO_ERROR}";
-
-## @var integer RETURN_GENERAL_ERROR
-## @brief The return code for a general error.
-## @details In the command something did not execute successfully.
-
-declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 
 
 
@@ -2894,8 +2941,8 @@ declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
 ##
 ##   EXIT - If a sigspec is 0 or EXIT, arg is executed when the shell exits.
 ## @param[in] integer line_number<br />The current line number.
-## @return return value: various information about the triggering event<br />
-##   return code: the return code of the last executed command.
+## @return return value:<br />various information about the triggering event
+##   <br />return code:<br />the return code of the last executed command.
 
 function trapEXIT() {
   local -r -i line_number="${1}";
@@ -2921,8 +2968,8 @@ trap "trapEXIT ${LINENO}" EXIT;
 ##   Refer to the description of the extdebug option to the shopt builtin (see
 ##   The Shopt Builtin) for details of its effect on the DEBUG trap.
 ## @param[in] integer line_number<br />The current line number.
-## @return return value: various information about the triggering event<br />
-##   return code: the return code of the last executed command.
+## @return return value:<br />various information about the triggering event
+##   <br />return code:<br />the return code of the last executed command.
 
 function trapDEBUG() {
   local -r -i line_number="${1}";
@@ -2946,8 +2993,8 @@ trap 'trapDEBUG "${LINENO}"' DEBUG;
 ##   shell function or a script executed with the . or source builtins finishes
 ##   executing.
 ## @param[in] integer line_number<br />The current line number.
-## @return return value: various information about the triggering event<br />
-##   return code: the return code of the last executed command.
+## @return return value:<br />various information about the triggering event
+##   <br />return code:<br />the return code of the last executed command.
 
 function trapRETURN() {
   local -r -i line_number="${1}";
@@ -2978,8 +3025,8 @@ trap 'trapRETURN "${LINENO}"' RETURN;
 ##   status is being inverted using !.  These are the same conditions obeyed by
 ##   the errexit (-e) option.
 ## @param[in] integer line_number<br />The current line number.
-## @return return value: various information about the triggering event<br />
-##   return code: the return code of the last executed command.
+## @return return value:<br />various information about the triggering event
+##   <br />return code:<br />the return code of the last executed command.
 
 function trapERR() {
   local -r -i line_number="${1}";
@@ -3002,8 +3049,8 @@ trap 'trapERR "${LINENO}"' ERR;
 ##   controlling terminal when a user wishes to interrupt the process.  It is
 ##   commonly initiated by the user pressing CTRL-C.
 ## @param[in] integer line_number<br />The current line number.
-## @return return value: various information about the triggering event<br />
-##   return code: the return code of the last executed command.
+## @return return value:<br />various information about the triggering event
+##   <br />return code:<br />the return code of the last executed command.
 
 function trapSIGINT() {
   local -r -i line_number="${1}";
@@ -3027,8 +3074,8 @@ trap 'trapSIGINT "${LINENO}"' SIGINT;
 ##   terminal when the user requests that the process quit and perform a core
 ##   dump.  It is commonly initiated by the user pressing CTRL-\.
 ## @param[in] integer line_number<br />The current line number.
-## @return return value: various information about the triggering event<br />
-##   return code: the return code of the last executed command.
+## @return return value:<br />various information about the triggering event
+##   <br />return code:<br />the return code of the last executed command.
 
 function trapSIGQUIT() {
   local -r -i line_number="${1}";
@@ -3051,8 +3098,8 @@ trap 'trapSIGQUIT "${LINENO}"' SIGQUIT;
 ##   controlling terminal to request it to stop (terminal stop).  It is commonly
 ##   initiated by the user pressing CTRL-Z.
 ## @param[in] integer line_number<br />The current line number.
-## @return return value: various information about the triggering event<br />
-##   return code: the return code of the last executed command.
+## @return return value:<br />various information about the triggering event
+##   <br />return code:<br />the return code of the last executed command.
 
 function trapSIGTSTP() {
   local -r -i line_number="${1}";
@@ -3095,48 +3142,159 @@ trap 'trapSIGTSTP "${LINENO}"' SIGTSTP;
 ## TRACE   Designates finer-grained informational events than the DEBUG.
 ## }
 
+
+
+## @c{
+## Handle logging
+##
+## Priority: TRACE < DEBUG < INFO < WARN < ERROR < FATAL
+##           1       2       3      4      5       6
+##
+##           |                                     |
+##           |                                     +-- highest
+##           |
+##           +-- lowest
+##
+##           ALL   enable all
+##           OFF   disable all
+## }
+
+## @var
+## @brief Log level ALL.
+## @details Constant to symbolize log level ALL.
+
 declare -r -i LOG_LEVEL_ALL=0;
+
+## @var
+## @brief Log level TRACE.
+## @details Constant to symbolize log level TRACE.
+
 declare -r -i LOG_LEVEL_TRACE=1;
+
+## @var
+## @brief Log level DEBUG.
+## @details Constant to symbolize log level DEBUG.
+
 declare -r -i LOG_LEVEL_DEBUG=2;
+
+## @var
+## @brief Log level INFO.
+## @details Constant to symbolize log level INFO.
+
 declare -r -i LOG_LEVEL_INFO=3;
+
+## @var
+## @brief Log level WARN.
+## @details Constant to symbolize log level WARN.
+
 declare -r -i LOG_LEVEL_WARN=4;
+
+## @var
+## @brief Log level ERROR.
+## @details Constant to symbolize log level ERROR.
+
 declare -r -i LOG_LEVEL_ERROR=5;
+
+## @var
+## @brief Log level FATAL.
+## @details Constant to symbolize log level FATAL.
+
 declare -r -i LOG_LEVEL_FATAL=6;
+
+## @var
+## @brief Log level OFF.
+## @details Constant to symbolize log level OFF.
+
 declare -r -i LOG_LEVEL_OFF=7;
+
+## @var
+## @brief Log level.
+## @details The currently selected log level.
 
 declare -i LOG_LEVEL="${LOG_LEVEL_ERROR}";
 
-function dumpStack()
-{
+## @fn setLogLevel()
+## @brief Set current log level.
+## @details Set one of the log levels as number:
+##
+##   TRACE (1, lowest) < DEBUG (2) < INFO (3) < WARN (4) < ERROR (5) < FATAL (6, highest)
+##
+## @param[in] integer level<br />The current log level.
+## @return return value:<br />void<br />return code:<br />The return code of the
+##   last executed command.
+
+function setLogLevel() {
+  local -r -i level="${1}";
+  LOG_LEVEL="${level}";
+  return;
+}
+
+## fn getLogLevel()
+## @brief Get current log level.
+## @details Get one of the log levels:
+##
+##   TRACE (1, lowest) < DEBUG (2) < INFO (3) < WARN (4) < ERROR (5) < FATAL (6, highest)
+## @param[in] void
+## @return return value:<br />integer level<br />return code:<br />The return code of the last
+##   executed command.
+
+function getLogLevel() {
+  local -r -i level="${LOG_LEVEL}"
+  echo "${level}";
+  return;
+}
+
+## @fn dumpStack()
+## @brief Create a stack dump.
+## @details Return the context of each successive subroutine call.
+## @param[in] void
+## @return return value:<br />string stackdump<br />return code:<br />The return code of the last
+##   executed command.
+
+function dumpStack() {
   local -i frame=0;
   local -i line=0;
   local subroutine='';
   local filename='';
-  local -a stack_stump=();
+  local -a calls=();
+  local stackdump='';
   while (( "${frame}" < "${#FUNCNAME[@]}" )); do
     line="${BASH_LINENO[$(( frame - 1 ))]}";
     subroutine="${FUNCNAME[${frame}]}"
     filename="${BASH_SOURCE[$(( frame - 1 ))]}";
     (( "${frame}" )) || line="${LINENO}";
-    stack_stump[${#stack_stump[@]}]="<${frame}>: <${subroutine}> at <${filename}>:<${line}>";
+    calls["${#calls[@]}"]="<${frame}>: <${subroutine}> at <${filename}>:<${line}>";
     (( frame++ ));
   done
-  printf '%s\n' "${stack_stump[@]}";
+  printf -v stackdump '%s\n' "${calls[@]}";
   return;
 }
 
-function logLog()
-{
-  local log_level="${1}"; shift 1;
-  local message=( "${@}" );
+## @fn logLog
+## @brief Log a message
+## @details Log a message to stdout.
+##
+## Example:<br />
+##   [1696414056] [INFO ] a message
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL<br />The current log level.}
+## @endglobal
+## @param[in] integer level<br />The log level.
+## @param[in] index-array-of-string message<br />The log message.
+## @return return value:<br />string stackdump<br />return code:<br />The return code of the last
+##   executed command.
+
+function logLog() {
+  local -r -i log_level="${1}"; shift 1;
+  local -r -a message=( "${@}" );
   local timestamp="$( date +%s )";
   local -i timestamp_width=10;
   local -i level_width=5;
   local format="[%0${timestamp_width}s] [%- ${level_width}s] %s\n";
   local errexit_new="set +o 'errexit'";
   local errexit_old='';
-  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_TRACE}" )) \
-     && (( "${log_level}" == "${_LOG_LEVEL_TRACE}" )); then
+  if    (( "${LOG_LEVEL}" <= "${LOG_LEVEL_TRACE}" )) \
+     && (( "${log_level}" == "${LOG_LEVEL_TRACE}" )); then
     printf "${format}"  "${timestamp}"  'TRACE'  "$( echo "${message[@]}" )";
     if [ -o 'errexit' ]; then
       errexit_old="set -o 'errexit'";
@@ -3149,97 +3307,209 @@ function logLog()
   else
     :;
   fi
-  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_DEBUG}" )) \
-     && (( "${log_level}" == "${_LOG_LEVEL_DEBUG}" )); then
+  if    (( "${LOG_LEVEL}" <= "${LOG_LEVEL_DEBUG}" )) \
+     && (( "${log_level}" == "${LOG_LEVEL_DEBUG}" )); then
     printf "${format}" "${timestamp}" 'DEBUG' "$( echo "${message[@]}" )";
   else
     :;
   fi
-  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_INFO}" )) \
-     && (( "${log_level}" == "${_LOG_LEVEL_INFO}" )); then
+  if    (( "${LOG_LEVEL}" <= "${LOG_LEVEL_INFO}" )) \
+     && (( "${log_level}" == "${LOG_LEVEL_INFO}" )); then
     printf "${format}" "${timestamp}" 'INFO' "$( echo "${message[@]}" )";
   else
     :;
   fi
-  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_WARN}" )) \
-     && (( "${log_level}" == "${_LOG_LEVEL_WARN}" )); then
+  if    (( "${LOG_LEVEL}" <= "${LOG_LEVEL_WARN}" )) \
+     && (( "${log_level}" == "${LOG_LEVEL_WARN}" )); then
     printf "${format}" "${timestamp}" 'WARN' "$( echo "${message[@]}" )";
   else
     :;
   fi
-  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_ERROR}" )) \
-     && (( "${log_level}" == "${_LOG_LEVEL_ERROR}" )); then
+  if    (( "${LOG_LEVEL}" <= "${LOG_LEVEL_ERROR}" )) \
+     && (( "${log_level}" == "${LOG_LEVEL_ERROR}" )); then
     printf "${format}" "${timestamp}" 'ERROR' "$( echo "${message[@]}" )";
   else
     :;
   fi
-  if    (( "${_LOG_LEVEL}" <= "${_LOG_LEVEL_FATAL}" )) \
-     && (( "${log_level}" == "${_LOG_LEVEL_FATAL}" )); then
+  if    (( "${LOG_LEVEL}" <= "${LOG_LEVEL_FATAL}" )) \
+     && (( "${log_level}" == "${LOG_LEVEL_FATAL}" )); then
     printf "${format}" "${timestamp}" 'FATAL' "$( echo "${message[@]}" )";
   else
     :;
   fi
 }
 
-function setLogLevel()
-{
-  LOG_LEVEL="${1}",
-  return,
-}
+## @fn ALL()
+## @brief Enable all log messages.
+## @details Set current log leve to ALL.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_ALL<br />Set log level to ALL}
+## @endglobal
+## @param[in] void
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
 
-function ALL()
-{
+function ALL() {
   LOG_LEVEL="${LOG_LEVEL_ALL}";
   return;
 }
 
-function TRACE()
-{
-  logLog "${LOG_LEVEL_TRACE}" "${@}";
+## @fn TRACE
+## @brief Output message as TRACE log message.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_TRACE<br />Constant to symbolize log level TRACE}
+## @endglobal
+## @param[in] sting message<br />The message.
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
+
+function TRACE() {
+  local -r -a message=( "${@}" );
+  logLog "${LOG_LEVEL_TRACE}" "${@message[@]}";
   return;
 }
 
-function DEBUG()
-{
-  logLog "${LOG_LEVEL_DEBUG}" "${@}";
+## @fn DEBUG
+## @brief Output message as DEBUG log message.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_DEBUG<br />Constant to symbolize log level DEBUG}
+## @endglobal
+## @param[in] sting message<br />The message.
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
+
+function DEBUG() {
+  local -r -a message=( "${@}" );
+  logLog "${LOG_LEVEL_DEBUG}" "${@message[@]}";
   return;
 }
 
-function INFO()
-{
-  logLog "${LOG_LEVEL_INFO}" "${@}";
+## @fn INFO
+## @brief Output message as INFO log message.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_INFO<br />Constant to symbolize log level INFO}
+## @endglobal
+## @param[in] sting message<br />The message.
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
+
+function INFO() {
+  local -r -a message=( "${@}" );
+  logLog "${LOG_LEVEL_INFO}" "${@message[@]}";
   return;
 }
 
-function WARN()
-{
-  logLog "${LOG_LEVEL_WARN}" "${@}";
+## @fn WARN
+## @brief Output message as WARN log message.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_WARN<br />Constant to symbolize log level WARN}
+## @endglobal
+## @param[in] sting message<br />The message.
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
+
+function WARN() {
+  local -r -a message=( "${@}" );
+  logLog "${LOG_LEVEL_WARN}" "${@message[@]}";
   return;
 }
 
-function ERROR()
-{
-  logLog "${LOG_LEVEL_ERROR}" "${@}";
+## @fn ERROR
+## @brief Output message as ERROR log message.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_ERROR<br />Constant to symbolize log level ERROR}
+## @endglobal
+## @param[in] sting message<br />The message.
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
+
+function ERROR() {
+  local -r -a message=( "${@}" );
+  logLog "${LOG_LEVEL_ERROR}" "${@message[@]}";
   return;
 }
 
-function FATAL()
-{
-  logLog "${LOG_LEVEL_FATAL}" "${@}";
+## @fn FATAL
+## @brief Output message as FATAL log message.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_FATAL<br />Constant to symbolize log level FATAL}
+## @endglobal
+## @param[in] sting message<br />The message.
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
+
+function FATAL() {
+  local -r -a message=( "${@}" );
+  logLog "${LOG_LEVEL_FATAL}" "${@message[@]}";
   return;
 }
 
-function OFF()
-{
+## @fn OFF()
+## @brief Disable all log messages.
+## @details Set current log leve to OFF.
+## @startglobal
+## @itemglobal{in,integer,LOG_LEVEL_OFF<br />Set log level to OFF}
+## @endglobal
+## @param[in] void
+## @return return value:<br />void<br />return code:<br />The return code of the last
+##   executed command.
+
+function OFF() {
   logLog="${LOG_LEVEL_OFF}";
   return;
 }
 
 
 
+## @c{
+## Exit codes.
+##
+##   0   success
+##   1   failure
+## }
+
+## @var integer EXIT_NO_ERROR
+## @brief The exit code for no error.
+## @details The command executed successfully.
+
+declare -r -i EXIT_NO_ERROR=0;
+
+## @var integer EXIT_GENERAL_ERROR
+## @brief The exit code for a general error.
+## @details The command did not execute successfully.
+
+declare -r -i EXIT_GENERAL_ERROR=1;
+
+
+
+## @c{
+## Return codes.
+##
+##   0   success
+##   1   failure
+## }
+
+## @var integer RETURN_NO_ERROR
+## @brief The return code for no error.
+## @details In the command everything executed successfully.
+
+declare -r -i RETURN_NO_ERROR="${EXIT_NO_ERROR}";
+
+## @var integer RETURN_GENERAL_ERROR
+## @brief The return code for a general error.
+## @details In the command something did not execute successfully.
+
+declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
+
+
+
+## @c{
+## Here starts the program.
+## }
+
+# Set the log level
+
 setLogLevel "${LOG_LEVEL_ALL}";
-
-
 
 ## @fn main()
 ## @brief The main function.
@@ -3255,10 +3525,10 @@ setLogLevel "${LOG_LEVEL_ALL}";
 
 function main() {
 
-  local -r    command="${0}";                                                   echo "command='${command}'";
-  local -r -i argc="${1}"; shift 1;                                             echo "argc='${argc}'";
-  local -r -a argv=( "${@}" );                                                  echo "argv='${#argv}' '${argv[@]}'";
-
+  local -r    command="${0}";                                                   DEBUG_COMMAND printf '%s\n' "command='${command}'";
+  local -r -i argc="${1}"; shift 1;                                             DEBUG_COMMAND printf '%s\n' "argc='${argc}'";
+  local -r -a argv=( "${@}" );                                                  DEBUG_COMMAND printf '%s\n' "#argv='${#argv[@]}'";
+                                                                                DEBUG_COMMAND printf '%s\n' "argv='${argv[@]}'";
   return;
 }
 

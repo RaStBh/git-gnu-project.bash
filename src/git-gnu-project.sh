@@ -3288,7 +3288,7 @@ _DEBUG_TRAP trap 'trapDEBUG "${LINENO}"' DEBUG;
 ## @return void<br />return value: none<br />return code: The return code of the
 ## last executed command.
 
-function trapRETURN (){
+function trapRETURN() {
   local -r -i lineno="${1}";
   echo 'trapRETURN: This function is not yet implemented.';
   return;
@@ -3521,7 +3521,7 @@ function dumpStack() {
 }
 
 ## @fn printLog()
-## @breif Print log message to STDOUT.
+## @brief Print log message to STDOUT.
 ## @details Print log message to STDOUT.
 ## Example:
 ## @code
@@ -3557,7 +3557,7 @@ function printLog() {
   return;
 }
 
-## @fn printLogTRACE
+## @fn printLogTRACE()
 ## @brief Print TRACE log message.
 ## @details Print TRACE log message. Make a stack trace also.
 ## @param[in] array-of-string message<br />The message.
@@ -3571,66 +3571,66 @@ function printLogTRACE() {
   return;
 }
 
-## @fn printLogDEBUG
+## @fn printLogDEBUG()
 ## @brief Print DEBUG log message.
 ## @details Print DEBUG log message.
 ## @param[in] array-of-string message<br />The message.
 ## @return void<br />return value: none<br />return code: The return code of the
 ## last executed command.
 
-function printLogDEBUG {
+function printLogDEBUG() {
   local -r -a message=( "${@}" );
   printLog "${LOG_LEVEL_DEBUG}" "${message[@]}";
   return;
 }
 
-## @fn printLogINFO
+## @fn printLogINFO()
 ## @brief Print INFO log message.
 ## @details Print INFO log message.
 ## @param[in] array-of-string message<br />The message.
 ## @return void<br />return value: none<br />return code: The return code of the
 ## last executed command.
 
-function printLogINFO {
+function printLogINFO() {
   local -r -a message=( "${@}" );
   printLog "${LOG_LEVEL_INFO}" "${message[@]}";
   return;
 }
 
-## @fn printLogWARN
+## @fn printLogWARN()
 ## @brief Print WARN log message.
 ## @details Print WARN log message.
 ## @param[in] array-of-string message<br />The message.
 ## @return void<br />return value: none<br />return code: The return code of the
 ## last executed command.
 
-function printLogWARN {
+function printLogWARN() {
   local -r -a message=( "${@}" );
   printLog "${LOG_LEVEL_WARN}" "${message[@]}";
   return;
 }
 
-## @fn printLogERROR
+## @fn printLogERROR()
 ## @brief Print ERROR log message.
 ## @details Print ERROR log message.
 ## @param[in] array-of-string message<br />The message.
 ## @return void<br />return value: none<br />return code: The return code of the
 ## last executed command.
 
-function printLogERROR {
+function printLogERROR() {
   local -r -a message=( "${@}" );
   printLog "${LOG_LEVEL_ERROR}" "${message[@]}";
   return;
 }
 
-## @fn printLogFATAL
+## @fn printLogFATAL()
 ## @brief Print FATAL log message.
 ## @details Print FATAL log message.
 ## @param[in] array-of-string message<br />The message.
 ## @return void<br />return value: none<br />return code: The return code of the
 ## last executed command.
 
-function printLogFATAL {
+function printLogFATAL() {
   local -r -a message=( "${@}" );
   printLog "${LOG_LEVEL_FATAL}" "${message[@]}";
   return;
@@ -3655,15 +3655,13 @@ function printLogFATAL {
 ##   executed command.
 
 function main() {
-  local -r    command="${1}"; shift 1;                                          DEBUG printLogINFO "$( local -p command )";
-  local -r -i argc="${1}"; shift 1;                                             DEBUG printLogINFO "$( local -p argc )";
-  local -r -a argv=( "${@}" );                                                  DEBUG printLogINFO "$( local -p argv )";
+  local -r    command="${1}"; shift 1;                                          DEBUG printLogDEBUG "$( local -p command )";
+  local -r -i argc="${1}"; shift 1;                                             DEBUG printLogDEBUG "$( local -p argc )";
+  local -r -a argv=( "${@}" );                                                  DEBUG printLogDEBUG "$( local -p argv )";
 
-  DEBUG echo 'git-gnu-project running ...';
-  DEBUG echo '';
+  DEBUG printLogINFO 'git-gnu-project running ...';
 
-  DEBUG echo '';
-  DEBUG echo '... finished git-gnu-project';
+  DEBUG printLogINFO '... finished git-gnu-project';
 
   return;
 }

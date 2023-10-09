@@ -116,7 +116,7 @@ declare -r -i _ENABLE_SHOPT=0;
 ## 0 : enable<br />
 ## 1 : disable
 
-declare -r -i _ENABLE_TRAP=1;
+declare -r -i _ENABLE_TRAP=0;
 
 ## @comment{
 ## Enable or disable commands for debugging.
@@ -3117,6 +3117,12 @@ _DEBUG_TRAP trap 'trapSIGHUP "${LINENO}"' SIGHUP;
 ## @param[in,out] void
 ## @return void<br />return value: none<br />return code: The return code of the
 ## last executed command.
+##
+## @comment{
+## SIGCHLD and ERR:
+## When trapping SIGCHLD and ERR, then in ERR the variable BASH_COMMAND has the
+## wrong value.  Default action: ignore.
+## }
 
 function trapSIGCHLD() {
   local -r -i lineno="${1}";
@@ -3124,7 +3130,8 @@ function trapSIGCHLD() {
   return;
 }
 
-_DEBUG_TRAP trap 'trapSIGCHLD "${LINENO}"' SIGCHLD;
+#_DEBUG_TRAP trap 'trapSIGCHLD "${LINENO}"' SIGCHLD;
+_DEBUG_TRAP trap '' SIGCHLD;
 
 ## @comment{
 ## SIGCLD is an invalid signal specification.  This is ceept here as a comment.
@@ -3258,7 +3265,7 @@ _DEBUG_TRAP trap 'trapSIGTTOU "${LINENO}"' SIGTTOU;
 
 function trapEXIT() {
   local -r -i lineno="${1}";
-  echo 'trapEXIT: This function is not yet implemented.';
+  #echo 'trapEXIT: This function is not yet implemented.';
   return;
 }
 
@@ -3274,7 +3281,7 @@ _DEBUG_TRAP trap 'trapEXIT "${LINENO}"' EXIT;
 
 function trapDEBUG() {
   local -r -i lineno="${1}";
-  echo 'trapDEBUG: This function is not yet implemented.';
+  #echo 'trapDEBUG: This function is not yet implemented.';
   return;
 }
 
@@ -3290,7 +3297,7 @@ _DEBUG_TRAP trap 'trapDEBUG "${LINENO}"' DEBUG;
 
 function trapRETURN() {
   local -r -i lineno="${1}";
-  echo 'trapRETURN: This function is not yet implemented.';
+  #echo 'trapRETURN: This function is not yet implemented.';
   return;
 }
 
@@ -3305,14 +3312,25 @@ _DEBUG_TRAP trap 'trapRETURN "${LINENO}"' RETURN;
 ## last executed command.
 
 function trapERR() {
-  local -r -i lineno="${1}";
+
   echo 'trapERR: This function is not yet implemented.';
+
+  local -r -i line_number="${1}"; local -p line_number;
+  local -r -i exit_code="${2}"; local -p exit_code;
+  local -r    bash_command="${3}"; local -p bash_command;
+
+  local -r    call_context0="$( caller 0 )"; local -p call_context0;
+  local -r    call_context1="$( caller 1 )"; local -p call_context1;
+  local -r    bash_source=( "${BASH_SOURCE[@]}" ); local -p bash_source;
+  local -r    bash_line_number=( "${BASH_LINENO[@]}" ); local -p bash_line_number;
+  local -r    function_name=( "${FUNCNAME[@]}" ); local -p function_name;
+
+  dumpStack;
+
   return;
 }
 
-_DEBUG_TRAP trap 'trapERR "${LINENO}"' ERR;
-
-
+_DEBUG_TRAP trap 'trapERR "${LINENO}" "${?}" "${BASH_COMMAND}"' ERR;
 
 ## @comment{
 ## Logging level:
@@ -3340,8 +3358,6 @@ _DEBUG_TRAP trap 'trapERR "${LINENO}"' ERR;
 ##
 ## OFF     The highest possible rank and is intended to turn off logging.
 ## }
-
-
 
 ## @comment{
 ## Handle logging
@@ -3655,20 +3671,40 @@ function printLogFATAL() {
 ##   executed command.
 
 function main() {
-  local -r    command="${1}"; shift 1;                                          DEBUG printLogDEBUG "$( local -p command )";
-  local -r -i argc="${1}"; shift 1;                                             DEBUG printLogDEBUG "$( local -p argc )";
-  local -r -a argv=( "${@}" );                                                  DEBUG printLogDEBUG "$( local -p argv )";
 
-  DEBUG printLogINFO 'git-gnu-project running ...';
+rmdir foobar
 
-  DEBUG printLogINFO '... finished git-gnu-project';
+                                                                                DEBUG printLogINFO 'git-gnu-project running ...';
+
+  local -r    command="${1}"; shift 1;
+                                                                                DEBUG printLogDEBUG "$( local -p command )";
+
+  local -r -i argc="${1}"; shift 1;
+                                                                                DEBUG printLogDEBUG "$( local -p argc )";
+
+  local -r -a argv=( "${@}" );
+                                                                                DEBUG printLogDEBUG "$( local -p argv )";
+
+  # read configuration file
+
+  # handle configuration file
+
+  # read command line arguments
+
+  # handle command line arguments
+
+  # handle sub commands
+
+  # return from function.
+
+                                                                                DEBUG printLogINFO '... finished git-gnu-project';
 
   return;
 }
 
 # Set the log level
 
-setLogLevel "${LOG_LEVEL_ALL}";
+setLogLevel "${LOG_LEVEL_OFF}";
 
 # Call the main function.
 

@@ -34,7 +34,7 @@
 
 ## syntax:
 ##
-## primitive data type: sting
+## Primitive data type: sting
 ##
 ##   variable_p = Hello World!
 ##   variable_p= Hello World!
@@ -56,9 +56,15 @@
 ##   variable_p= 'Hello "World"!'
 ##   variable_p ='Hello "World"!'
 ##
-## composite data type: array of string
+## Composite data type: array of string
 ##
-## the '#' is the single line comment character:
+##   Similar to the "primitive data type: sting" but with an additional '[]'.
+##
+##   variable_c[] = 123
+##   variable_c[] = 234
+##   variable_c[] = 345
+##
+## The '#' is the single line comment character:
 ##
 ##   # I am a comment.
 ##   variable_p = 'Hello World!' # I am a comment.

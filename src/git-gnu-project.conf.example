@@ -32,6 +32,39 @@
 
 
 
+## syntax:
+##
+## primitive data type: sting
+##
+##   variable_p = Hello World!
+##   variable_p= Hello World!
+##   variable_p =Hello World!
+##
+##   variable_p = "Hello World!"
+##   variable_p= "Hello World!"
+##   variable_p ="Hello World!"
+##
+##   variable_p = "Hello \"World!\""
+##   variable_p= "Hello \"World!\""
+##   variable_p ="Hello \"World!\""
+##
+##   variable_p = 'Hello World!'
+##   variable_p= 'Hello World!'
+##   variable_p ='Hello World!'
+##
+##   variable_p = 'Hello "World"!'
+##   variable_p= 'Hello "World"!'
+##   variable_p ='Hello "World"!'
+##
+## composite data type: array of string
+##
+## the '#' is the single line comment character:
+##
+##   # I am a comment.
+##   variable_p = 'Hello World!' # I am a comment.
+
+
+
 ################################################################################
 ################################################################################
 ##                                                                            ##

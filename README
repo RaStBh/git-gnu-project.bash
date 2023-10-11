@@ -215,27 +215,46 @@ desired in the future:
 
 states:
 
-                 +<------------------------------------------------------------------rework<--+
-                 |                                                                           /|\
-                 |                                                                            |
-                 |             +<-----------------------------------progress<--+              |
-                 |             |                                              /|\             |
-                \|/           \|/                                              |              |
-  -->scheduled-->+-->started-->+-->progress----------------------------------->+-->finished-->+-->accomplished-->
-                 |             |                                              /|\             |
-                 |             |                                               |              |
-                 |             |                 +<--pending<--+               |              |
-                 |             |                 |            /|\              |              |
-                 |            \|/               \|/            |               |              |
-                 |             +-->interrupted-->+-->pending-->+-->continued-->+              |
-                 |             |                 |             |               |              |
-                \|/           \|/               \|/           \|/             \|/            \|/
-                 +------------>+---------------->+------------>+-------------->+------------->+
-                                                                                              |
-                                                                                             \|/
-                                                                                          discarded
-                                                                                              |
-                                                                                             \|/
+     +<---------------------------------------------------------------------------------------------------additing<--+
+     |                                                                                                              /|\
+     |               +<------------------------------------------------------------------rework<--+                  |
+     |               |                                                                           /|\                 |
+     |               |                                                                            |                  |
+     |               |             +<-----------------------------------progress<--+              |                  |
+     |               |             |                                              /|\             |                  |
+    \|/             \|/           \|/                                              |              |                  |
+  -->+-->scheduled-->+-->started-->+-->progress----------------------------------->+-->finished-->+-->accomplished-->+-->
+     |               |             |                                              /|\             |
+     |               |             |                                               |              |
+     |               |             |                 +<--pending<--+               |              |
+     |               |             |                 |            /|\              |              |
+     |               |            \|/               \|/            |               |              |
+     |               |             +-->interrupted-->+-->pending-->+-->continued-->+              |
+     |               |             |                 |             |               |              |
+    \|/             \|/           \|/               \|/           \|/             \|/            \|/
+     +-------------->+------------>+---------------->+------------>+-------------->+------------->+
+                                                                                                  |
+                                                                                                 \|/
+                                                                                              discarded
+                                                                                                  |
+                                                                                                 \|/
+
+  scheduled    : ist geplant
+
+  started      : ist angefangen
+  progress     : wird bearbeitet
+  finished     : ist beendet
+
+  interrupted  : ist unterbrochen
+  pending      : wird gewartet
+  continued    : ist vorgesetzt
+
+  acclomplished: ist vollbracht
+
+  discarded    : ist verworfen
+
+  rework       : Bestehendes wird überarbeitet
+  additing     : Neues wird hinzugefügt
 
 priorities:
 

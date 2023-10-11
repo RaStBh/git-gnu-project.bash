@@ -3671,10 +3671,9 @@ function printLogFATAL() {
 ##   executed command.
 
 function main() {
-
-rmdir foobar
-
                                                                                 DEBUG printLogINFO 'git-gnu-project running ...';
+
+  # function arguments
 
   local -r    command="${1}"; shift 1;
                                                                                 DEBUG printLogDEBUG "$( local -p command )";
@@ -3684,6 +3683,10 @@ rmdir foobar
 
   local -r -a argv=( "${@}" );
                                                                                 DEBUG printLogDEBUG "$( local -p argv )";
+
+  # local constants
+
+  # local variables
 
   # read configuration file
 

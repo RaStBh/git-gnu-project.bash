@@ -239,22 +239,22 @@ states:
                                                                                                   |
                                                                                                  \|/
 
-  scheduled    : ist geplant
+  scheduled    : is planned
 
-  started      : ist angefangen
-  progress     : wird bearbeitet
-  finished     : ist beendet
+  started      : is started
+  progress     : is being processed
+  finished     : is finished
 
-  interrupted  : ist unterbrochen
-  pending      : wird gewartet
-  continued    : ist vorgesetzt
+  interrupted  : is interrupted
+  pending      : is waiting
+  continued    : is continued
 
-  acclomplished: ist vollbracht
+  acclomplished: is completed
 
-  discarded    : ist verworfen
+  discarded    : is discarded
 
-  rework       : Bestehendes wird überarbeitet
-  additing     : Neues wird hinzugefügt
+  rework       : existing is reworked
+  additing     : new things are added
 
 priorities:
 

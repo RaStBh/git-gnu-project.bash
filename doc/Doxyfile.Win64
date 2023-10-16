@@ -1108,7 +1108,7 @@ INPUT_FILTER           = "C:\GnuWin32-0.6.3\bin\sed.exe --file=..\src\doxygen-ba
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-FILTER_PATTERNS        = "*.sh=C:\GnuWin32-0.6.3\bin\sed.exe --file=..\contrib\bash-doxygen\doxygen-bash.sed --quiet"
+FILTER_PATTERNS        = "*.sh=C:\GnuWin32-0.6.3\bin\sed.exe --file=..\src\doxygen-bash.sed --quiet"
 
 # If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set using
 # INPUT_FILTER) will also be used to filter the input files that are used for

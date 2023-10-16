@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-## @comment{####################################################################
+################################################################################
 ################################################################################
 ##                                                                            ##
 ## This file is part of the RaSt git-gnu-project package.                     ##
@@ -23,494 +23,118 @@
 ## with this package.  If not, see <https://www.gnu.org/licenses/>.           ##
 ##                                                                            ##
 ################################################################################
-## ############################################################################}
+################################################################################
 
 
 
-## @mainpage
-##
-## RaSt git-gnu-project package
-##
-## With the RaSt git-gnu-project you can create a Git repository and a GNU
-## project tree in a local directory.
-##
-## 1.0.0
-##
-## 2023-09-18 14:17:21 +00:00:00
-##
-## Copyright (C)  2023  Ralf Stephan  \<me\@ralf-stephan.name\>
+##! @mainpage
+##!
+##! RaSt git-gnu-project package
+##!
+##! With the RaSt git-gnu-project you can create a Git repository and a GNU
+##! project tree in a local directory.
+##!
+##! 1.0.0
+##!
+##! 2023-09-18 14:17:21 +00:00:00
+##!
+##! Copyright (C)  2023  Ralf Stephan  \<me\@ralf-stephan.name\>
 
 
 
-## @file git-gnu-project.sh
-##
-## @brief The main script of the RaSt git-gnu-project.
-##
-## @details The main script of the RaSt git-gnu-project handling the command
-## git-gnu-project and the subcommands gittify and gnutify.
+##! @file git-gnu-project.sh
+##!
+##! @brief The main script of the RaSt git-gnu-project.
+##!
+##! @details The main script of the RaSt git-gnu-project handling the command
+##! git-gnu-project and the subcommands gittify and gnutify.
 
 
 
-## @comment{
-## The doxygen custom command \@\{ ... \} causes problems for doxygen while
-## counting the lines.  So the references to the lines in the source code are
-## wrong.
-## }
-
-
-
-## @comment{
-## Datatypes for Doxygen comments:
+## Data types for Doxygen @param and @return:
 ##
 ##   integer
-##   float
 ##   string
 ##
-##   indexed-array-of-X
-##   hashed-array-of-X
-## }
+##   indexed-array-of-integer
+##   indexed-array-of-string
+##
+##   hashed-array-of-integer
+##   hashed-array-of-string
 
 
 
-## @comment{
-## First enable the shell options to make bash more verbose.
-##
-## This is moved to top of the file.  See below for the other shell options and
-## for the additional shell options.
-## }
+## < head <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-#set -o 'xtrace';
-#set -o 'verbose';
+## << shell options <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-## @comment{
-## Enable or disable shell options (set) for debugging.
-## }
+## Bash Shell Options
 
-## @var _ENABLE_SET
-## @brief Enable setting shell options (set).
-## @details Enable running command to set shell options.<br /><br />
-## 0 : enable<br />
-## 1 : disable
-
-declare -r -i _ENABLE_SET=0;
-
-## @comment{
-## Enable or disable additional shell options (shopt) for debugging.
-## }
-
-## @var _ENABLE_SHOPT
-## @brief Enable setting additional shell options (shopt).
-## @details Enable running command to set additional shell options.<br /><br />
-## 0 : enable<br />
-## 1 : disable
-
-declare -r -i _ENABLE_SHOPT=0;
-
-## @comment{
-## Enable or disable trapping.
-## }
-
-## @var _ENABLE_TRAP
-## @brief Enable trapping of signals and events.
-## @details Enable running command for trapping.<br /><br />
-## 0 : enable<br />
-## 1 : disable
-
-declare -r -i _ENABLE_TRAP=0;
-
-## @comment{
-## Enable or disable commands for debugging.
-## }
-
-## @var _ENABLE_DEBUG
-## @brief Enable debug output.
-## @details Enable running commands for debugging.<br /><br />
-## 0 : enable<br />
-## 1 : disable
-
-declare -r -i _ENABLE_DEBUG=0;
-
-
-
-## @comment{
-## Command exit codes.
-##
-##   0   success
-##   1   failure
-## }
-
-## @var integer EXIT_NO_ERROR
-## @brief The exit code for no error.
-## @details The exit code to signal that the command executed successfully.
-
-declare -r -i EXIT_NO_ERROR=0;
-
-## @var integer EXIT_GENERAL_ERROR
-## @brief The exit code for a general error.
-## @details The exit code to signal that the command did not execute
-## successfully.
-
-declare -r -i EXIT_GENERAL_ERROR=1;
-
-
-
-## @comment{
-## Function return codes.
-##
-##   0   success
-##   1   failure
-## }
-
-## @var integer RETURN_NO_ERROR
-## @brief The return code for no error.
-## @details The return code to signal that the function executed successfully.
-
-declare -r -i RETURN_NO_ERROR="${EXIT_NO_ERROR}";
-
-## @var integer RETURN_GENERAL_ERROR
-## @brief The return code for a general error.
-## @details The return code to signal that the function did not execute
-## successfully.
-
-declare -r -i RETURN_GENERAL_ERROR="${EXIT_GENERAL_ERROR}";
-
-
-
-## @comment{
-## Enable or disable shell options (set) for debugging.
-## }
-
-## @fn _DEBUG_SET()
-## @brief Run commands to set shell options.
-## @details Run set commands by chaining multiple commands.<br /><br />
-## Example:
-## @code
-## _DEBUG_SET set -o 'errexit'
-## @endcode
-## @startglobal
-## @itemglobal{in,integer,_ENABLE_SET<br />Enable setting of shell options.}
-## @endglobal
-## @param[in] indexed-array-of-string ${\@}<br />The command to run.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function _DEBUG_SET() {
-  #(( 0 == "${_ENABLE_SET}" )) && printf '%s\n' 'SET:';
-  (( 0 == "${_ENABLE_SET}" )) && "${@}";
-  return "${RETURN_NO_ERROR}";
-}
-
-## @comment{
-## Enable or disable additional shell options (shopt) for debugging.
-## }
-
-## @fn _DEBUG_SHOPT()
-## @brief Run commands to set additional shell options.
-## @details Run shopt commands by chaining multiple commands.<br /><br />
-## Example:
-## @code
-## _DEBUG_SHOPT shopt -s 'extdebug'
-## @endcode
-## @startglobal
-## @itemglobal{in,integer,_ENABLE_SHOPT<br />Enable setting of additional shell
-## options.}
-## @endglobal
-## @param[in] indexed-array-of-string ${\@}<br />The command to run.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function _DEBUG_SHOPT() {
-  #(( 0 == "${_ENABLE_SHOPT}" )) && printf '%s\n' 'SHOPT:';
-  (( 0 == "${_ENABLE_SHOPT}" )) && "${@}";
-  return "${RETURN_NO_ERROR}";
-}
-
-## @comment{
-## Enable or disable trapping.
-## }
-
-## @fn _DEBUG_TRAP()
-## @brief Run commands for trapping of signals and events.
-## @details Run trapping commands by chaining multiple commands.<br /><br />
-## Example:
-## @code
-## _DEBUG_TRAP trap 'trapERR' ERR
-## @endcode
-## @startglobal
-## @itemglobal{in,integer,_ENABLE_TRAP<br />Enable trapping.}
-## @endglobal
-## @param[in] indexed-array-of-string ${\@}<br />The command to run.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function _DEBUG_TRAP() {
-  #(( 0 == "${_ENABLE_TRAP}" )) && printf '%s\n' 'TRAP:';
-  (( 0 == "${_ENABLE_TRAP}" )) && "${@}";
-  return "${RETURN_NO_ERROR}";
-}
-
-## @comment{
-## Enable or disable commands for debugging.
-## }
-
-## @fn DEBUG()
-## @brief Run commands for debugging.
-## @details Run debugging commands by chaining multiple commands.<br /><br />
-## Example:
-## @code
-## DEBUG echo 'a message'
-## @endcode
-## @startglobal
-## @itemglobal{in,integer,_ENABLE<br />Enable debug output.}
-## @endglobal
-## @param[in] indexed-array-of-string ${\@}<br />The command to run.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function DEBUG() {
-  #(( 0 == "${_ENABLE_DEBUG}" )) && printf '%s\n' 'DEBUG:';
-  (( 0 == "${_ENABLE_DEBUG}" )) && "${@}";
-  return "${RETURN_NO_ERROR}";
-}
-
-
-
-## @comment{====================================================================
+## Bash shell options:
 ##
-## local: command documentation:
-## bash$ set --help
-## -----------------------------------------------------------------------------
+## (1) bash$ set --help
 ##
-## allexport
+## (2) bash$ set -o
 ##
-##   same as -a
+## (3) bash$ set +o
 ##
-##   Mark variables which are modified or created for export.
+## (4) bash$ man set
 ##
-## braceexpand
+## (5) bash$ info set
 ##
-##   same as -B
+## (6) /usr/local/doc/
 ##
-##   The shell will perform brace expansion.
+## (7) /usr/src/
 ##
-## emacs
+## (8) 4.3.1 The Set Builtin
+##     <https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin>
 ##
-##   Use an emacs-style line editing interface.
 ##
-## errexit
 ##
-##   same as -e
+## from (3):
 ##
-##   Exit immediately if a command exits with a non-zero status.
+## Bash Shell Options:
+## option name                |option character
+## ---------------------------+----------------
+## set -o allexport           |set -a
+## set -o braceexpand         |set -B
+## set -o emacs               |
+## set -o errexit             |set -e
+## set -o errtrace            |set -E
+## set -o functrace           |set -T
+## set -o hashall             |set -h
+## set -o histexpand          |set -H
+## set -o history             |
+## set -o igncr               |
+## set -o ignoreeof           |
+## set -o interactive-comments|
+## set -o keyword             |set -k
+## set -o monitor             |set -m
+## set -o noclobber           |set -C
+## set -o noexec              |set -n
+## set -o noglob              |set -f
+## set -o nolog               |
+## set -o notify              |set -b
+## set -o nounset             |set -u
+## set -o onecmd              |set -t
+## set -o physical            |set -P
+## set -o pipefail            |
+## set -o posix               |
+## set -o privileged          |set -p
+## set -o verbose             |set -v
+## set -o vi                  |
+## set -o xtrace              |set -x
 ##
-## errtrace
 ##
-##   same as -E
 ##
-##   If set, the ERR trap is inherited by shell functions.
+## from (8):
 ##
-## functrace
-##
-##   same as -T
-##
-##   If set, the DEBUG and RETURN traps are inherited by shell functions.
-##
-## hashall
-##
-##   same as -h
-##
-##   Remember the location of commands as they are looked up.
-##
-## histexpand
-##
-##   same as -H
-##
-##   Enable ! style history substitution.  This flag is on by default when the
-##   shell is interactive.
-##
-## history
-##
-##   Enable command history.
-##
-## igncr
-##
-##   On Cygwin, ignore \r in line endings.
-##
-## ignoreeof
-##
-##   The shell will not exit upon reading EOF.
-##
-## interactive-comments
-##
-##   Allow comments to appear in interactive commands.
-##
-## keyword
-##
-##   same as -k
-##
-##   All assignment arguments are placed in the environment for a command, not
-##   just those that precede the command name.
-##
-## monitor
-##
-##   same as -m
-##
-##   Job control is enabled.
-##
-## noclobber
-##
-##   same as -C
-##
-##   If set, disallow existing regular files to be overwritten by redirection of
-##   output.
-##
-## noexec
-##
-##   same as -n
-##
-##   Read commands but do not execute them.
-##
-## noglob
-##
-##   same as -f
-##
-##   Disable file name generation (globbing).
-##
-## nolog
-##
-##   Currently accepted but ignored.
-##
-## notify
-##
-##   same as -b
-##
-##   Notify of job termination immediately.
-##
-## nounset
-##
-##   same as -u
-##
-##   Treat unset variables as an error when substituting.
-##
-## onecmd
-##
-##   same as -t
-##
-##   Exit after reading and executing one command.
-##
-## physical
-##
-##   same as -P
-##
-##   If set, do not resolve symbolic links when executing commands such as cd
-##   which change the current directory.
-##
-## pipefail
-##
-##   The return value of a pipeline is the status of the last command to exit
-##   with a non-zero status, or zero if no command exited with a non-zero
-##   status.
-##
-## posix
-##
-##   Change the behavior of bash where the default operation differs from the
-##   Posix standard to match the standard.
-##
-## privileged
-##
-##   same as -p
-##
-##   Turned on whenever the real and effective user ids do not match.  Disables
-##   processing of the $ENV file and importing of shell functions.  Turning this
-##   option off causes the effective uid and gid to be set to the real uid and
-##   gid.
-##
-## verbose
-##
-##   same as -v
-##
-##   Print shell input lines as they are read.
-##
-## vi
-##
-##   Use a vi-style line editing interface.
-##
-## xtrace
-##
-##   same as -x
-##
-##   Print commands and their arguments as they are executed.
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: man documentation:
-## bash$ man set
-## -----------------------------------------------------------------------------
-##
-## see
-## BASH_BUILTINS(1)
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: info documentation:
-## bash$ info set
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: package specific documentation:
-## </usr/local/doc/???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: source code file:
-## </usr/src/???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: configuration file:
-## </???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: website:
-## 4.3.1 The Set Builtin
-## <https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin>
-## -----------------------------------------------------------------------------
-##
-## allexport
-##
-##   Same as -a.
+## allexport (-a)
 ##
 ##   Each variable or function that is created or modified is given the export
 ##   attribute and marked for export to the environment of subsequent commands.
 ##
-## braceexpand
-##
-##   Same as -B.
+## braceexpand (-B)
 ##
 ##   The shell will perform brace expansion (see Brace Expansion).  This option
 ##   is on by default.
@@ -520,9 +144,7 @@ function DEBUG() {
 ##   Use an emacs-style line editing interface (see Command Line Editing).  This
 ##   also affects the editing interface used for read -e.
 ##
-## errexit
-##
-##   Same as -e.
+## errexit (-e)
 ##
 ##   Exit immediately if a pipeline (see Pipelines), which may consist of a
 ##   single simple command (see Simple Commands), a list (see Lists of
@@ -548,32 +170,24 @@ function DEBUG() {
 ##   not have any effect until the compound command or the command containing
 ##   the function call completes.
 ##
-## errtrace
-##
-##   Same as -E.
+## errtrace (-E)
 ##
 ##   If set, any trap on ERR is inherited by shell functions, command
 ##   substitutions, and commands executed in a subshell environment.  The ERR
 ##   trap is normally not inherited in such cases.
 ##
-## functrace
-##
-##   Same as -T.
+## functrace (-T)
 ##
 ##   If set, any trap on DEBUG and RETURN are inherited by shell functions,
 ##   command substitutions, and commands executed in a subshell environment.
 ##   The DEBUG and RETURN traps are normally not inherited in such cases.
 ##
-## hashall
-##
-##   Same as -h.
+## hashall (-h)
 ##
 ##   Locate and remember (hash) commands as they are looked up for execution.
 ##   This option is enabled by default.
 ##
-## histexpand
-##
-##   Same as -H.
+## histexpand (-H)
 ##
 ##   Enable '!' style history substitution (see History Expansion).  This option
 ##   is on by default for interactive shells.
@@ -583,42 +197,40 @@ function DEBUG() {
 ##   Enable command history, as described in Bash History Facilities.  This
 ##   option is on by default in interactive shells.
 ##
+## igncr
+##
+##   On Cygwin, ignore \r in line endings.
+##
 ## ignoreeof
 ##
 ##   An interactive shell will not exit upon reading EOF.
 ##
-## keyword
+## interactive-comments
 ##
-##  Same as -k.
+##   Allow comments to appear in interactive commands.
+##
+## keyword (-k)
 ##
 ##   All arguments in the form of assignment statements are placed in the
 ##   environment for a command, not just those that precede the command name.
 ##
-## monitor
-##
-##   Same as -m.
+## monitor (-m)
 ##
 ##   Job control is enabled (see Job Control).  All processes run in a separate
 ##   process group.  When a background job completes, the shell prints a line
 ##   containing its exit status.
 ##
-## noclobber
-##
-##   Same as -C.
+## noclobber (-C)
 ##
 ##   Prevent output redirection using '>', '>&', and '<>' from overwriting
 ##   existing files.
 ##
-## noexec
-##
-##   Same as -n.
+## noexec (-n)
 ##
 ##   Read commands but do not execute them.  This may be used to check a script
-##   for syntax errors.  This option is ignored by interactive shells.
+##   for syntax errors. This option is ignored by interactive shells.
 ##
-## noglob
-##
-##   Same as -f.
+## noglob (-f)
 ##
 ##   Disable filename expansion (globbing).
 ##
@@ -626,31 +238,23 @@ function DEBUG() {
 ##
 ##   Currently ignored.
 ##
-## notify
-##
-##   Same as -b.
+## notify (-b)
 ##
 ##   Cause the status of terminated background jobs to be reported immediately,
 ##   rather than before printing the next primary prompt.
 ##
-## nounset
-##
-##   Same as -u.
+## nounset (-u)
 ##
 ##   Treat unset variables and parameters other than the special parameters '@'
 ##   or '*', or array variables subscripted with '@' or '*', as an error when
 ##   performing parameter expansion.  An error message will be written to the
 ##   standard error, and a non-interactive shell will exit.
 ##
-## onecmd
-##
-##   Same as -t.
+## onecmd (-t)
 ##
 ##   Exit after reading and executing one command.
 ##
-## physical
-##
-##   Same as -P.
+## physical (-P)
 ##
 ##   If set, do not resolve symbolic links when performing commands such as cd
 ##   which change the current directory.  The physical directory is used
@@ -669,9 +273,7 @@ function DEBUG() {
 ##   POSIX standard to match the standard (see Bash POSIX Mode).  This is
 ##   intended to make Bash behave as a strict superset of that standard.
 ##
-## privileged
-##
-##   Same as -p.
+## privileged (-p)
 ##
 ##   Turn on privileged mode.  In this mode, the $BASH_ENV and $ENV files are
 ##   not processed, shell functions are not inherited from the environment, and
@@ -683,9 +285,7 @@ function DEBUG() {
 ##   user id is not reset.  Turning this option off causes the effective user
 ##   and group ids to be set to the real user and group ids.
 ##
-## verbose
-##
-##   Same as -v.
+## verbose (-v)
 ##
 ##   Print shell input lines as they are read.
 ##
@@ -694,9 +294,7 @@ function DEBUG() {
 ##   Use a vi-style line editing interface.  This also affects the editing
 ##   interface used for read -e.
 ##
-## xtrace
-##
-##   Same as -x.
+## xtrace (-x)
 ##
 ##   Print a trace of simple commands, for commands, case commands, select
 ##   commands, and arithmetic for commands and their arguments or associated
@@ -704,64 +302,11 @@ function DEBUG() {
 ##   of the PS4 variable is expanded and the resultant value is printed before
 ##   the command and its expanded arguments.
 ##
-## -r: Enable restricted shell mode.  This option cannot be unset once it has
-##   been set.
+## ??? (-r)
 ##
-## ============================================================================}
+##   Enable restricted shell mode.  This option cannot be unset once it has been
+##   set.
 
-## @comment{====================================================================
-##
-## remote: wiki:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: forum:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: mailing list:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: repository:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: archive:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-
-
-## @comment{
-## Set shell (set) options.
-##
 ## Recommended options to enable for debugging:
 ##
 ##   bash> set -E          -e         -u         -x        -o pipefail;
@@ -769,96 +314,102 @@ function DEBUG() {
 ##   which is same as
 ##
 ##   bash> set -o errtrace -o errexit -o nounset -o xtrace -o pipefail;
-## }
 
-## @comment{
-## First enable the shell options to make bash more verbose.
-##
-## This is moved to top of the file.
-## }
-
-#set -o 'xtrace';
 #set -o 'verbose';
+#set -o 'xtrace';
 
-## @comment{
-## Then enable all other shell options.
-## }
+set -o 'errexit';
+set -o 'errtrace';
+set -o 'functrace';
+set -o 'nounset';
+set -o 'pipefail';
 
-_DEBUG_SET set -o 'errexit';
-_DEBUG_SET set -o 'errtrace';
-_DEBUG_SET set -o 'functrace';
-_DEBUG_SET set -o 'nounset';
-_DEBUG_SET set -o 'pipefail';
-
-
-
-## @comment{====================================================================
+## Bash additional shell options:
 ##
-## local: command documentation:
-## bash$ shopt --help
-## -----------------------------------------------------------------------------
+## (1) bash$ shopt --help
 ##
-## n/a
+## (2) bash$ shopt -p
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+## (3) bash$ man shopt
 ##
-## local: man documentation:
-## bash$ man shopt
-## -----------------------------------------------------------------------------
+## (4) bash$ info shopt
 ##
-## see
-## BASH_BUILTINS(1)
+## (5) /usr/local/doc/
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+## (6) /usr/src/
 ##
-## local: info documentation:
-## bash$ info shopt
-## -----------------------------------------------------------------------------
+## (7) 4.3.2 The Shopt Builtin
+##     <https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin>
 ##
-## n/a
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## local: package specific documentation:
-## </usr/local/doc/???>
-## -----------------------------------------------------------------------------
+## from (2):
 ##
-## n/a
+## Bash Additional Shell Options:
+## option name                     |option character
+## --------------------------------+----------------
+## shopt -s autocd                 |
+## shopt -s assoc_expand_once      |
+## shopt -s cdable_vars            |
+## shopt -s cdspell                |
+## shopt -s checkhash              |
+## shopt -s checkjobs              |
+## shopt -s checkwinsize           |
+## shopt -s cmdhist                |
+## shopt -s compat31               |
+## shopt -s compat32               |
+## shopt -s compat40               |
+## shopt -s compat41               |
+## shopt -s compat42               |
+## shopt -s compat43               |
+## shopt -s compat44               |
+## shopt -s completion_strip_exe   |
+## shopt -s complete_fullquote     |
+## shopt -s direxpand              |
+## shopt -s dirspell               |
+## shopt -s dotglob                |
+## shopt -s execfail               |
+## shopt -s expand_aliases         |
+## shopt -s extdebug               |
+## shopt -s extglob                |
+## shopt -s extquote               |
+## shopt -s failglob               |
+## shopt -s force_fignore          |
+## shopt -s globasciiranges        |
+## shopt -s globskipdots           |
+## shopt -s globstar               |
+## shopt -s gnu_errfmt             |
+## shopt -s histappend             |
+## shopt -s histreedit             |
+## shopt -s histverify             |
+## shopt -s hostcomplete           |
+## shopt -s huponexit              |
+## shopt -s inherit_errexit        |
+## shopt -s interactive_comments   |
+## shopt -s lastpipe               |
+## shopt -s lithist                |
+## shopt -s localvar_inherit       |
+## shopt -s localvar_unset         |
+## shopt -s login_shell            |
+## shopt -s mailwarn               |
+## shopt -s no_empty_cmd_completion|
+## shopt -s nocaseglob             |
+## shopt -s nocasematch            |
+## shopt -s noexpand_translation   |
+## shopt -s nullglob               |
+## shopt -s patsub_replacement     |
+## shopt -s progcomp               |
+## shopt -s progcomp_alias         |
+## shopt -s promptvars             |
+## shopt -s restricted_shell       |
+## shopt -s shift_verbose          |
+## shopt -s sourcepath             |
+## shopt -s varredir_close         |
+## shopt -s xpg_echo               |
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## local: source code file:
-## </usr/src/???>
-## -----------------------------------------------------------------------------
 ##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: configuration file:
-## </???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: website:
-## 4.3.2 The Shopt Builtin
-## <https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin>
-## -----------------------------------------------------------------------------
+## from (7):
 ##
 ## assoc_expand_once
 ##
@@ -1189,238 +740,150 @@ _DEBUG_SET set -o 'pipefail';
 ## xpg_echo
 ##
 ##   If set, the echo builtin expands backslash-escape sequences by default.
-##
-## ============================================================================}
 
-## @comment{====================================================================
-##
-## remote: wiki:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
+shopt -s 'extdebug';
+shopt -s 'shift_verbose';
 
-## @comment{====================================================================
-##
-## remote: forum:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
+## >> shell options >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-## @comment{====================================================================
-##
-## remote: mailing list:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
+## << debugging <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-## @comment{====================================================================
-##
-## remote: repository:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
+## Simple Way to Handle Debugging
 
-## @comment{====================================================================
-##
-## remote: archive:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
+##! @var DEBUG_ON
+##! @brief Constant to switch debug on.
+##! @details Constant to switch debug on.
 
+declare -r -i DEBUG_ON=0;
 
+##! @var DEBUG_OFF
+##! @brief Constant to switch debug off.
+##! @details Constant to switch debug off.
 
-## @comment{
-## Set shell additional shell (shopt) options.
-## }
+declare -r -i DEBUG_OFF=1;
 
-_DEBUG_SHOPT shopt -s 'extdebug';
-_DEBUG_SHOPT shopt -s 'shift_verbose';
+##! @var DEBUG_STATE
+##! @brief Constant to switch debug on or off.
+##! @details Constant to switch debug on or off.
 
+declare -r -i DEBUG_STATE="${DEBUG_ON}";
 
+##! @fn DEBUG()
+##! @brief Run commands for debugging.
+##! @details Run debugging commands by chaining multiple commands.
+##! @startglobal
+##! @itemglobal{in,integer,DEBUG_STATE<br />Constant to switch debug on or
+##! off.}
+##! @endglobal
+##! @param[in] array-of-string tokens<br />The chained tokens.
+##! @return string message<br />return value: The result after chaining the
+##! tokens together und executing the tokens.<br />return code: The return code
+##! of the last executed command.
 
-## @comment{====================================================================
-##
-## local: command documentation:
-## bash$ trap --help
-## -----------------------------------------------------------------------------
-##
-## If a SIGNAL_SPEC is EXIT (0) ARG is executed on exit from the shell.
-##
-## If a SIGNAL_SPEC is DEBUG, ARG is executed before every simple command.
-##
-## If a SIGNAL_SPEC is RETURN, ARG is executed each time a shell function or a
-## script run by the . or source builtins finishes executing.
-##
-## A SIGNAL_SPEC of ERR means to execute ARG each time a command's failure would
-## cause the shell to exit when the -e option is enabled.
-##
-## ============================================================================}
+function DEBUG() {
+  local -r -a tokens=( "${@}" );
+  local       message="$( printf '%s' 'DEBUG: '; "${tokens[@]}"; )";
+  (( "${DEBUG_STATE}" )) || { printf '%s\n' "${message}"; }
+  return "${?}";
+}
 
-## @comment{====================================================================
-##
-## local: command documentation:
-## bash$ trap -l
-## -----------------------------------------------------------------------------
-##
-##
-## List of signal names and their corresponding numbers:
-##
-##  1) SIGHUP
-##  2) SIGINT
-##  3) SIGQUIT
-##  4) SIGILL
-##  5) SIGTRAP
-##  6) SIGABRT
-##  7) SIGEMT
-##  8) SIGFPE
-##  9) SIGKILL
-## 10) SIGBUS
-## 11) SIGSEGV
-## 12) SIGSYS
-## 13) SIGPIPE
-## 14) SIGALRM
-## 15) SIGTERM
-## 16) SIGURG
-## 17) SIGSTOP
-## 18) SIGTSTP
-## 19) SIGCONT
-## 20) SIGCHLD
-## 21) SIGTTIN
-## 22) SIGTTOU
-## 23) SIGIO
-## 24) SIGXCPU
-## 25) SIGXFSZ
-## 26) SIGVTALRM
-## 27) SIGPROF
-## 28) SIGWINCH
-## 29) SIGPWR
-## 30) SIGUSR1
-## 31) SIGUSR2
-## 32) SIGRTMIN
-## 33) SIGRTMIN+1
-## 34) SIGRTMIN+2
-## 35) SIGRTMIN+3
-## 36) SIGRTMIN+4
-## 37) SIGRTMIN+5
-## 38) SIGRTMIN+6
-## 39) SIGRTMIN+7
-## 40) SIGRTMIN+8
-## 41) SIGRTMIN+9
-## 42) SIGRTMIN+10
-## 43) SIGRTMIN+11
-## 44) SIGRTMIN+12
-## 45) SIGRTMIN+13
-## 46) SIGRTMIN+14
-## 47) SIGRTMIN+15
-## 48) SIGRTMIN+16
-## 49) SIGRTMAX-15
-## 50) SIGRTMAX-14
-## 51) SIGRTMAX-13
-## 52) SIGRTMAX-12
-## 53) SIGRTMAX-11
-## 54) SIGRTMAX-10
-## 55) SIGRTMAX-9
-## 56) SIGRTMAX-8
-## 57) SIGRTMAX-7
-## 58) SIGRTMAX-6
-## 59) SIGRTMAX-5
-## 60) SIGRTMAX-4
-## 61) SIGRTMAX-3
-## 62) SIGRTMAX-2
-## 63) SIGRTMAX-1
-## 64) SIGRTMAX
-##
-## ============================================================================}
-## @comment{====================================================================
-##
-## local: man documentation:
-## bash$ man trap
-## -----------------------------------------------------------------------------
-##
-## see
-## BASH_BUILTINS
-##
-## ============================================================================}
+## Traping Signals for Debugging
 
-## @comment{====================================================================
+## Trap signals and conditions.
 ##
-## local: info documentation:
-## bash$ info trap
-## -----------------------------------------------------------------------------
+##  (1) bash$ trap --help
 ##
-## n/a
+##  (2) bash$ trap -l
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+##  (3) bash$ man trap
 ##
-## local: package specific documentation:
-## </usr/local/doc/???>
-## -----------------------------------------------------------------------------
+##  (4) bash$ info trap
 ##
-## n/a
+##  (5) bash$ kill --help
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+##  (6) bash$ kill -l
 ##
-## local: source code file:
-## </usr/src/???>
-## -----------------------------------------------------------------------------
+##  (7) bash$ man kill
 ##
-## n/a
+##  (8)bash$  info kill
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+##  (9) bash$ stty --all
 ##
-## local: configuration file:
-## </???>
-## -----------------------------------------------------------------------------
+## (10) bash$ man stty
 ##
-## n/a
+## (11) bash$ info stty
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+## (12) /usr/local/doc/
 ##
-## local: command documentation:
-## bash$ kill --help
-## -----------------------------------------------------------------------------
+## (13) /usr/src/
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+## (14) termios, tcgetattr, tcsetattr, tcsendbreak, tcdrain, tcflush, tcflow,
+##      cfmakeraw, cfgetospeed, cfgetispeed, cfsetispeed, cfsetospeed,
+##      cfsetspeed - get and set terminal attributes, line control, get and set
+##      baud rate
+##      <https://manpages.debian.org/bookworm/manpages-dev/termios.3.en.html>
 ##
-## local: command documentation:
-## bash$ kill -l
-## -----------------------------------------------------------------------------
+## (15) signal - ANSI C signal handling
+##      <https://manpages.debian.org/bookworm/manpages-dev/signal.2.en.html>
 ##
-## same as
-## bash$ trap -l
+## (16) signal - overview of signals
+##      <https://manpages.debian.org/bookworm/manpages/signal.7.en.html>
 ##
-## ============================================================================}
-
-## @comment{====================================================================
+## (17) 4.1 Bourne Shell Builtins
+##      <https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins>
 ##
-## local: man documentation:
-## bash$ man kill
-## -----------------------------------------------------------------------------
+## (18) 17.4.9.2 Characters that Cause Signals
+##      <https://www.gnu.org/software/libc/manual/html_mono/libc.html#Signal-Characters>
+##
+## (19) 24.2.2 Termination Signals
+##      <https://www.gnu.org/ software/libc/manual/html_mono/libc.html#Termination-Signals>
+##
+## (20) 24.2.5 Job Control Signals
+##      <https://www.gnu.org/software/libc/manual/html_mono/libc.html#Job-Control-Signals>
+##
+## (21) POSIX signals
+##      <https://en.wikipedia.org/wiki/Signal_(IPC)#POSIX_signals>
+##
+##
+##
+## from (2):
+## from (6):
+##
+## Signals:
+##
+##  1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+##  6) SIGABRT      7) SIGEMT       8) SIGFPE       9) SIGKILL     10) SIGBUS
+## 11) SIGSEGV     12) SIGSYS      13) SIGPIPE     14) SIGALRM     15) SIGTERM
+## 16) SIGURG      17) SIGSTOP     18) SIGTSTP     19) SIGCONT     20) SIGCHLD
+## 21) SIGTTIN     22) SIGTTOU     23) SIGIO       24) SIGXCPU     25) SIGXFSZ
+## 26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGPWR      30) SIGUSR1
+## 31) SIGUSR2     32) SIGRTMIN    33) SIGRTMIN+1  34) SIGRTMIN+2  35) SIGRTMIN+3
+## 36) SIGRTMIN+4  37) SIGRTMIN+5  38) SIGRTMIN+6  39) SIGRTMIN+7  40) SIGRTMIN+8
+## 41) SIGRTMIN+9  42) SIGRTMIN+10 43) SIGRTMIN+11 44) SIGRTMIN+12 45) SIGRTMIN+13
+## 46) SIGRTMIN+14 47) SIGRTMIN+15 48) SIGRTMIN+16 49) SIGRTMAX-15 50) SIGRTMAX-14
+## 51) SIGRTMAX-13 52) SIGRTMAX-12 53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9
+## 56) SIGRTMAX-8  57) SIGRTMAX-7  58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4
+## 61) SIGRTMAX-3  62) SIGRTMAX-2  63) SIGRTMAX-1  64) SIGRTMAX
+##
+##
+##
+## from (1):
+##
+## Other Conditions:
+##
+## * If a SIGNAL_SPEC is EXIT (0) ARG is executed on exit from the shell.
+##
+## * If a SIGNAL_SPEC is DEBUG, ARG is executed before every simple command.
+##
+## * If a SIGNAL_SPEC is RETURN, ARG is executed each time a shell function or a
+##   script run by the . or source builtins finishes executing.
+##
+## * A SIGNAL_SPEC of ERR means to execute ARG each time a command's failure
+##   would cause the shell to exit when the -e option is enabled.
+##
+##
+##
+## from (7):
 ##
 ## Here is a list of available signals, their numbers, and some commentary on
 ## them, from the file <sys/signal.h>, which should be considered the official
@@ -1462,13 +925,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## SIGUSR1     30    user defined signal 1
 ## SIGUSR2     31    user defined signal 2
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## local: info documentation:
-## bash$ info kill
-## -----------------------------------------------------------------------------
+##
+## from (8):
 ##
 ## 2.5 Signal specifications
 ## =========================
@@ -1602,51 +1061,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## least eight real-time signals called 'RTMIN', 'RTMIN+1', ..., 'RTMAX-1',
 ## 'RTMAX'.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## local: package specific documentation:
-## </usr/local/doc/???>
-## -----------------------------------------------------------------------------
 ##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: source code file:
-## </usr/src/???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: configuration file:
-## </???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: command documentation:
-## bash$ stty --help
-## -----------------------------------------------------------------------------
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: command documentation:
-## bash$ stty --all
-## -----------------------------------------------------------------------------
+## from (9):
 ##
 ## speed 38400 baud;
 ## rows 39;
@@ -1698,21 +1115,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## -tostop echoctl echoke
 ## -flusho
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## local: man documentation:
-## bash$ man stty
-## -----------------------------------------------------------------------------
 ##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: info documentation:
-## bash$ info stty
-## -----------------------------------------------------------------------------
+## from (11):
 ##
 ## 19.2.6 Special characters
 ## -------------------------
@@ -1797,46 +1202,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ##    Enter the next character typed literally, even if it is a special
 ##    character.  Non-POSIX.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## local: package specific documentation:
-## </usr/local/doc/???>
-## -----------------------------------------------------------------------------
 ##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: source code file:
-## </usr/src/???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## local: configuration file:
-## </???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: website:
-## "termios, tcgetattr, tcsetattr, tcsendbreak, tcdrain, tcflush, tcflow,
-## cfmakeraw, cfgetospeed, cfgetispeed, cfsetispeed, cfsetospeed, cfsetspeed -
-## get and set terminal attributes, line control, get and set baud rate"
-## <https://manpages.debian.org/bookworm/manpages-dev/termios.3.en.html>
-## -----------------------------------------------------------------------------
+## from (14):
 ##
 ## The c_cc array defines the terminal special characters.  The symbolic indices
 ## (initial values) and meaning are:
@@ -1957,28 +1325,11 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## VMIN may have the same value as VEOL, VEOF, respectively.  In noncanonical
 ## mode the special character meaning is replaced by the timeout meaning.  For
 ## an explanation of VMIN and VTIME, see the description of noncanonical mode
-## below.a
+## below.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: website:
-## signal - ANSI C signal handling
-## <https://manpages.debian.org/bookworm/manpages-dev/signal.2.en.html>
-## -----------------------------------------------------------------------------
 ##
-## see
-## man 7 signal
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: website:
-## signal - overview of signals
-## <https://manpages.debian.org/bookworm/manpages/signal.7.en.html>
-## -----------------------------------------------------------------------------
+## from (16):
 ##
 ## Standard signals
 ##
@@ -2052,14 +1403,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## SIGIO (which is not specified in POSIX.1-2001) is ignored by default on
 ## several other UNIX systems.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: website:
-## signal - overview of signals
-## <https://manpages.debian.org/bookworm/manpages/signal.7.en.html>
-## -----------------------------------------------------------------------------
+##
+## from (16):
 ##
 ## Signal numbering for standard signals
 ##
@@ -2121,13 +1467,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## * Signal 29 is SIGINFO/SIGPWR (synonyms for the same value) on Alpha but
 ##   SIGLOST on SPARC.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## signal - overview of signals
-## <https://manpages.debian.org/bookworm/manpages/signal.7.en.html>
-## -----------------------------------------------------------------------------
+##
+## from (16):
 ##
 ## Real-time signals
 ##
@@ -2191,40 +1533,21 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## by the RLIMIT_SIGPENDING resource limit, which specifies a per-user limit for
 ## queued signals; see setrlimit(2) for further details.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: website:
-## 4.1 Bourne Shell Builtins
-## <https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins>
-## -----------------------------------------------------------------------------
 ##
-## trap
+## from (17):
 ##
-##   trap [-lp] [arg] [sigspec ...]
+## If a sigspec is 0 or EXIT, arg is executed when the shell exits.
 ##
-## The commands in arg are to be read and executed when the shell receives
-## signal sigspec.  If arg is absent (and there is a single sigspec) or equal
-## to '-', each specified signal's disposition is reset to the value it had
-## when the shell was started.  If arg is the null string, then the signal
-## specified by each sigspec is ignored by the shell and commands it invokes.
-## If arg is not present and -p has been supplied, the shell displays the trap
-## commands associated with each sigspec.  If no arguments are supplied, or
-## only -p is given, trap prints the list of commands associated with each
-## signal number in a form that may be reused as shell input.  The -l option
-## causes the shell to print a list of signal names and their corresponding
-## numbers.  Each sigspec is either a signal name or a signal number.  Signal
-## names are case insensitive and the SIG prefix is optional.
+## If a sigspec is DEBUG, the command arg is executed before every simple
+## command, for command, case command, select command, every arithmetic for
+## command, and before the first command executes in a shell function.  Refer to
+## the description of the extdebug option to the shopt builtin (see The Shopt
+## Builtin) for details of its effect on the DEBUG trap.
 ##
-## If a sigspec is 0 or EXIT, arg is executed when the shell exits.  If a
-## sigspec is DEBUG, the command arg is executed before every simple command,
-## for command, case command, select command, every arithmetic for command, and
-## before the first command executes in a shell function.  Refer to the
-## description of the extdebug option to the shopt builtin (see The Shopt
-## Builtin) for details of its effect on the DEBUG trap.  If a sigspec is
-## RETURN, the command arg is executed each time a shell function or a script
-## executed with the . or source builtins finishes executing.
+## If a sigspec is RETURN, the command arg is executed each time a shell
+## function or a script executed with the . or source builtins finishes
+## executing.
 ##
 ## If a sigspec is ERR, the command arg is executed whenever a pipeline (which
 ## may consist of a single simple command), a list, or a compound command
@@ -2236,21 +1559,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## but the last, or if the command's return status is being inverted using !.
 ## These are the same conditions obeyed by the errexit (-e) option.
 ##
-## Signals ignored upon entry to the shell cannot be trapped or reset.  Trapped
-## signals that are not being ignored are reset to their original values in a
-## subshell or subshell environment when one is created.
 ##
-## The return status is zero unless a sigspec does not specify a valid signal.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: website:
-## 17.4.9.2 Characters that Cause Signals
-## <https://www.gnu.org/software/libc/manual/html_mono/libc.html#Signal-
-##  Characters>
-## -----------------------------------------------------------------------------
+## from (18):
 ##
 ## 17.4.9.2 Characters that Cause Signals
 ##
@@ -2314,18 +1625,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ##
 ##   Typically, the DSUSP character is C-y.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: website:
-## 24.2.2 Termination Signals
-## <https://www.gnu.org/ software/libc/manual/html_mono/libc.html#Termination-
-## Signals>
-## -----------------------------------------------------------------------------
 ##
-## online resource website:
-## -----------------------------------------------------------------------------
+## from (19):
 ##
 ## 24.2.2 Termination Signals
 ##
@@ -2404,18 +1706,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ##   termination effectively disconnects all processes in the session from the
 ##   controlling terminal.  For more information, see Termination Internals.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: website:
-## 24.2.5 Job Control Signals
-## <https://www.gnu.org/ software/libc/manual/html_mono/libc.html#Job-Control
-## -Signals>
-## -----------------------------------------------------------------------------
 ##
-## online resource website:
-## -----------------------------------------------------------------------------
+## from (20):
 ##
 ## 24.2.5 Job Control Signals
 ##
@@ -2510,14 +1803,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## process dies with SIGKILL; this avoids the problem of many stopped,
 ## orphaned processes lying around the system.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: wiki:
-## POSIX signals
-## <https://en.wikipedia.org/wiki/Signal_(IPC)#POSIX_signals>
-## -----------------------------------------------------------------------------
+##
+## from (21):
 ##
 ## POSIX signals
 ##
@@ -2789,14 +2077,9 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ##   The SIGWINCH signal is sent to a process when its controlling terminal
 ##   changes its size (a window change).[21]
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: wiki:
-## Default action
-## <https://en.wikipedia.org/wiki/Signal_(IPC)#Default_action>
-## -----------------------------------------------------------------------------
+##
+## from (21):
 ##
 ## Default action
 ##
@@ -2869,14 +2152,40 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ##   Continue - Continue the process, if it is stopped; otherwise, ignore the
 ##   signal.
 ##
-## ============================================================================}
-
-## @comment{====================================================================
 ##
-## remote: wiki:
-## Miscellaneous signals
-## <https://en.wikipedia.org/wiki/Signal_(IPC)#Miscellaneous_signals>
-## -----------------------------------------------------------------------------
+##
+## from (20):
+##
+## Trap signals and other events.
+##
+## Signals that are used to tell a process to terminate (from glibc):
+##
+##   SIGTERM
+##   SIGINT    CTRL-C
+##   SIGQUIT   CTRL-\
+##   SIGKILL
+##   SIGHUP
+##
+## Signals that are used to support job control (from glibc):
+##
+##   SIGCHLD
+##   SIGCLD
+##   SIGCONT
+##   SIGSTOP
+##   SIGTSTP   CTRL-Z
+##   SIGTTIN
+##   SIGTTOU
+##
+## Events useful for debugging:
+##
+##   EXIT
+##   DEBUG
+##   RETURN
+##   ERR
+##
+##
+##
+## from (21):
 ##
 ## Miscellaneous signals
 ##
@@ -2917,802 +2226,1379 @@ _DEBUG_SHOPT shopt -s 'shift_verbose';
 ## SIGCLD
 ##
 ##   The SIGCLD signal is synonymous with SIGCHLD.[23]
-##
-## ============================================================================}
 
-## @comment{====================================================================
-##
-## remote: forum:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: mailing list:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: repository:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-## @comment{====================================================================
-##
-## remote: archive:
-## <https://???>
-## -----------------------------------------------------------------------------
-##
-## n/a
-##
-## ============================================================================}
-
-
-
-## @comment{
-## Trap signals and other events.
-##
-## Signals that are used to tell a process to terminate (from glibc):
-##
-##   SIGTERM
-##   SIGINT    CTRL-C
-##   SIGQUIT   CTRL-\
-##   SIGKILL
-##   SIGHUP
-##
-## Signals that are used to support job control (from glibc):
-##
-##   SIGCHLD
-##   SIGCLD
-##   SIGCONT
-##   SIGSTOP
-##   SIGTSTP   CTRL-Z
-##   SIGTTIN
-##   SIGTTOU
-##
-## Events useful for debugging:
-##
-##   EXIT
-##   DEBUG
-##   RETURN
-##   ERR
-## }
-
-## @comment{
-## Signals that are used to tell a process to terminate:
-## }
-
-## @fn trapSIGTERM()
-## @brief Trap function for the SIGTERM signal.
-## @details   The SIGTERM signal is a generic signal used to cause program
-## termination.  Unlike SIGKILL, this signal can be blocked, handled, and
-## ignored.  It is the normal way to politely ask a program to terminate.<br />
-## <br />The shell command kill generates SIGTERM by default.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function trapSIGTERM() {
-  local -r -i lineno="${1}";
-  echo 'SIGTERM: This function is not yet implemented.';
-  return;
-}
-
-_DEBUG_TRAP trap 'trapSIGTERM "${LINENO}"' SIGTERM;
-
-## @fn trapSIGINT()
-## @brief Trap function for the SIGINT signal (CTRL-C).
-## @details The SIGINT ("program interrupt") signal is sent when the user types
-## the INTR character (normally C-c).  See Special Characters, for information
-## about terminal driver support for C-c.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function trapSIGINT() {
-  local -r -i lineno="${1}";
-  echo 'SIGINT: This function is not yet implemented.';
-  return;
-}
-
-_DEBUG_TRAP trap 'trapSIGINT "LINENO"' SIGINT;
-
-## @fn trapSIGQUIT()
-## @brief Trap function for the SIGQUIT signal (CTRL-\\).
-## @details   The SIGQUIT signal is similar to SIGINT, except that it's
-## controlled by a different key-the QUIT character, usually C-\\-and produces a
-## core dump when it terminates the process, just like a program error signal.
-## You can think of this as a program error condition "detected" by the user.
-## <br /><br />See Program Error Signals, for information about core dumps.  See
-## Special Characters, for information about terminal driver support.<br />
-## <br />Certain kinds of cleanups are best omitted in handling SIGQUIT.  For
-## example, if the program creates temporary files, it should handle the other
-## termination requests by deleting the temporary files.  But it is better for
-## SIGQUIT not to delete them, so that the user can examine them in conjunction
-## with the core dump.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function trapSIGQUIT() {
-  local -r -i lineno="${1}";
-  echo 'SIGQUIT: This function is not yet implemented.';
-  return;
-}
-
-_DEBUG_TRAP trap 'trapSIGQUIT "${LINENO}"' SIGQUIT;
-
-## @fn trapSIGKILL()
-## @brief Trap function for the SIGKILL signal.
-## @details The SIGKILL signal is used to cause immediate program termination.
-## It cannot be handled or ignored, and is therefore always fatal.  It is also
-## not possible to block this signal.<br /><br />This signal is usually
-## generated only by explicit request.  Since it cannot be handled, you should
-## generate it only as a last resort, after first trying a less drastic method
-## such as C-c or SIGTERM.  If a process does not respond to any other
-## termination signals, sending it a SIGKILL signal will almost always cause it
-## to go away.<br /><br />In fact, if SIGKILL fails to terminate a process,
-## that by itself constitutes an operating system bug which you should
-## report.<br /><br />The system will generate SIGKILL for a process itself
-## under some unusual conditions where the program cannot possibly continue to
-## run (even to run a signal handler).
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function trapSIGKILL() {
-  local -r -i lineno="${1}";
-  echo 'SIGKILL: This function is not yet implemented.';
-  return;
-}
-
-_DEBUG_TRAP trap 'trapSIGKILL "${LINENO}"' SIGKILL;
-
-## @fn trapSIGHUP()
-## @brief Trap function for the SIGHUP signal.
-## @details The SIGHUP ("hang-up") signal is used to report that the user's
-## terminal is disconnected, perhaps because a network or telephone connection
-## was broken.   For more information about this, see Control Modes.<br /><br />
-## This signal is also used to report the termination of the controlling process
-## on a terminal to jobs associated with that session; this termination
-## effectively disconnects all processes in the session from the controlling
-## terminal.  For more information, see Termination Internals.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapSIGHUP()
+##! @brief Trap function for the SIGHUP signal.
+##! @details Trap function for the SIGHUP signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGHUP signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapSIGHUP() {
-  local -r -i lineno="${1}";
-  echo 'SIGHUP: This function is not yet implemented.';
-  return;
+  local message='trapSIGHUP: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapSIGHUP;
 
-_DEBUG_TRAP trap 'trapSIGHUP "${LINENO}"' SIGHUP;
+#trap 'trapSIGHUP' 'SIGHUP';
 
-## @comment{
-## Signals that are used to support job control:
-## }
+##! @fn trapSIGINT()
+##! @brief Trap function for the SIGINT signal.
+##! @details Trap function for the SIGINT signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGINT signal.<br />return code: The return code of the last executed
+##! command.
+##! @note CTRL+C
 
-## @fn trapSIGCHLD()
-## @brief Trap function for the SIGCHLD signal.
-## @details This signal is sent to a parent process whenever one of its child
-## processes terminates or stops.<br /><br />The default action for this signal
-## is to ignore it.  If you establish a handler for this signal while there are
-## child processes that have terminated but not reported their status via wait
-## or waitpid (see Process Completion), whether your new handler applies to
-## those processes or not depends on the particular operating system.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-##
-## @comment{
-## SIGCHLD and ERR:
-## When trapping SIGCHLD and ERR, then in ERR the variable BASH_COMMAND has the
-## wrong value.  Default action: ignore.
-## }
-
-function trapSIGCHLD() {
-  local -r -i lineno="${1}";
-  echo 'SIGCHLD: This function is not yet implemented.';
-  return;
+function trapSIGINT() {
+  local message='trapSIGINT: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapSIGINT;
 
-#_DEBUG_TRAP trap 'trapSIGCHLD "${LINENO}"' SIGCHLD;
-_DEBUG_TRAP trap '' SIGCHLD;
+#trap 'trapSIGINT' 'SIGINT';
 
-## @comment{
-## SIGCLD is an invalid signal specification.  This is ceept here as a comment.
+##! @fn trapSIGQUIT()
+##! @brief Trap function for the SIGQUIT signal.
+##! @details Trap function for the SIGQUIT signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGQUIT signal.<br />return code: The return code of the last executed
+##! command.
+##! @note CTRL-\\
 
-## @fn trapSIGCLD()
-## @brief Trap function for the SIGCLD signal.
-## @details This is an obsolete name for SIGCHLD.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-#function trapSIGCLD() {
-#  local -r -i lineno="${1}";
-#  echo 'SIGCLD: This function is not yet implemented.';
-#  return;
-#}
-
-#_DEBUG_TRAP trap 'trapSIGCLD "${LINENO}"' SIGCLD;
-## }
-
-## @fn trapSIGCONT()
-## @brief Trap function for the SIGCONT signal.
-## @details You can send a SIGCONT signal to a process to make it continue. This
-## signal is special-it always makes the process continue if it is stopped,
-## before the signal is delivered.  The default behavior is to do nothing
-## else.  You cannot block this signal.  You can set a handler, but SIGCONT
-## always makes the process continue regardless.<br /><br />Most programs have
-## no reason to handle SIGCONT; they simply resume execution without realizing
-## they were ever stopped.  You can use a handler for SIGCONT to make a program
-## do something special when it is stopped and continued-for example, to reprint
-## a prompt when it is suspended while waiting for input.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function trapSIGCONT() {
-  local -r -i lineno="${1}";
-  echo 'SIGCONT: This function is not yet implemented.';
-  return;
+function trapSIGQUIT() {
+  local message='trapSIGQUIT: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapSIGQUIT;
 
-_DEBUG_TRAP trap 'trapSIGCONT "${LINENO}"' SIGCONT;
+#trap 'trapSIGQUIT' 'SIGQUIT';
 
-## @fn trapSIGSTOP()
-## @brief Trap function for the SIGCONT signal.
-## @details The SIGSTOP signal stops the process.  It cannot be handled,
-## ignored, or blocked.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapSIGILL()
+##! @brief Trap function for the SIGILL signal.
+##! @details Trap function for the SIGILL signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGILL signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGILL() {
+  local message='trapSIGILL: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGILL;
+
+#trap 'trapSIGILL' 'SIGILL';
+
+##! @fn trapSIGTRAP()
+##! @brief Trap function for the SIGTRAP signal.
+##! @details Trap function for the SIGTRAP signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGTRAP signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGTRAP() {
+  local message='trapSIGTRAP: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGTRAP;
+
+#trap 'trapSIGTRAP' 'SIGTRAP';
+
+##! @fn trapSIGABRT()
+##! @brief Trap function for the SIGABRT signal.
+##! @details Trap function for the SIGABRT signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGABRT signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGABRT() {
+  local message='trapSIGABRT: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGABRT;
+
+#trap 'trapSIGABRT' 'SIGABRT';
+
+##! @fn trapSIGEMT()
+##! @brief Trap function for the SIGEMT signal.
+##! @details Trap function for the SIGEMT signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGEMT signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGEMT() {
+  local message='trapSIGEMT: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGEMT;
+
+#trap 'trapSIGEMT' 'SIGEMT';
+
+##! @fn trapSIGFPE()
+##! @brief Trap function for the SIGFPE signal.
+##! @details Trap function for the SIGFPE signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGFPE signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGFPE() {
+  local message='trapSIGFPE: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGFPE;
+
+#trap 'trapSIGFPE' 'SIGFPE';
+
+##! @fn trapSIGKILL()
+##! @brief Trap function for the SIGKILL signal.
+##! @details Trap function for the SIGKILL signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGKILL signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGKILL() {
+  local message='trapSIGKILL: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGKILL;
+
+#trap 'trapSIGKILL' 'SIGKILL';
+
+##! @fn trapSIGBUS()
+##! @brief Trap function for the SIGBUS signal.
+##! @details Trap function for the SIGBUS signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGBUS signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGBUS() {
+  local message='trapSIGBUS: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGBUS;
+
+#trap 'trapSIGBUS' 'SIGBUS';
+
+##! @fn trapSIGSEGV()
+##! @brief Trap function for the SIGSEGV signal.
+##! @details Trap function for the SIGSEGV signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGSEGV signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGSEGV() {
+  local message='trapSIGSEGV: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGSEGV;
+
+#trap 'trapSIGSEGV' 'SIGSEGV';
+
+##! @fn trapSIGSYS()
+##! @brief Trap function for the SIGSYS signal.
+##! @details Trap function for the SIGSYS signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGSYS signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGSYS() {
+  local message='trapSIGSYS: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGSYS;
+
+#trap 'trapSIGSYS' 'SIGSYS';
+
+##! @fn trapSIGPIPE()
+##! @brief Trap function for the SIGPIPE signal.
+##! @details Trap function for the SIGPIPE signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGPIPE signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGPIPE() {
+  local message='trapSIGPIPE: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGPIPE;
+
+#trap 'trapSIGPIPE' 'SIGPIPE';
+
+##! @fn trapSIGALRM()
+##! @brief Trap function for the SIGALRM signal.
+##! @details Trap function for the SIGALRM signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGALRM signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGALRM() {
+  local message='trapSIGALRM: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGALRM;
+
+#trap 'trapSIGALRM' 'SIGALRM';
+
+##! @fn trapSIGTERM()
+##! @brief Trap function for the SIGTERM signal.
+##! @details Trap function for the SIGTERM signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGTERM signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGTERM() {
+  local message='trapSIGTERM: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGTERM;
+
+#trap 'trapSIGTERM' 'SIGTERM';
+
+##! @fn trapSIGURG()
+##! @brief Trap function for the SIGURG signal.
+##! @details Trap function for the SIGURG signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGURG signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGURG() {
+  local message='trapSIGURG: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGURG;
+
+#trap 'trapSIGURG' 'SIGURG';
+
+##! @fn trapSIGSTOP()
+##! @brief Trap function for the SIGSTOP signal.
+##! @details Trap function for the SIGSTOP signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGSTOP signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapSIGSTOP() {
-  local -r -i lineno="${1}";
-  echo 'SIGSTOP: This function is not yet implemented.';
-  return;
+  local message='trapSIGSTOP: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapSIGSTOP;
 
-_DEBUG_TRAP trap 'trapSIGSTOP "${LINENO}"' SIGSTOP;
+#trap 'trapSIGSTOP' 'SIGSTOP';
 
-## @fn trapSIGTSTP()
-## @brief Trap function for the SIGTSTP signal (CTRL-Z).
-## @details The SIGTSTP signal is an interactive stop signal.  Unlike SIGSTOP,
-## this signal can be handled and ignored.<br /><br />Your program should handle
-## this signal if you have a special need to leave files or system tables in a
-## secure state when a process is stopped.  For example, programs that turn off
-## echoing should handle SIGTSTP so they can turn echoing back on before
-## stopping.<br /><br />This signal is generated when the user types the SUSP
-## character (normally C-z).  For more information about terminal driver
-## support, see Special Characters.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapSIGTSTP()
+##! @brief Trap function for the SIGTSTP signal.
+##! @details Trap function for the SIGTSTP signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGTSTP signal.<br />return code: The return code of the last executed
+##! command.
+##! @note CTRL-Z
 
 function trapSIGTSTP() {
-  local -r -i lineno="${1}";
-  echo 'SIGTSTP: This function is not yet implemented.';
-  return;
+  local message='trapSIGTSTP: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapSIGTSTP;
 
-_DEBUG_TRAP trap 'trapSIGTSTP "${LINENO}"' SIGTSTP;
+#trap 'trapSIGTSTP' 'SIGTSTP';
 
-## @fn trapSIGTTIN()
-## @brief Trap function for the SIGTTIN signal.
-## @details A process cannot read from the user's terminal while it is running
-## as a background job.  When any process in a background job tries to read from
-## the terminal, all of the processes in the job are sent a SIGTTIN signal. The
-## default action for this signal is to stop the process.  For more information
-## about how this interacts with the terminal driver, see Access to the
-## Controlling Terminal.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapSIGCONT()
+##! @brief Trap function for the SIGCONT signal.
+##! @details Trap function for the SIGCONT signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGCONT signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGCONT() {
+  local message='trapSIGCONT: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGCONT;
+
+#trap 'trapSIGCONT' 'SIGCONT';
+
+##! @fn trapSIGCHLD()
+##! @brief Trap function for the SIGCHLD signal.
+##! @details Trap function for the SIGCHLD signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGCHLD signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGCHLD() {
+  local message='trapSIGCHLD: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGCHLD;
+
+#trap 'trapSIGCHLD' 'SIGCHLD';
+
+##! @fn trapSIGTTIN()
+##! @brief Trap function for the SIGTTIN signal.
+##! @details Trap function for the SIGTTIN signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGTTIN signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapSIGTTIN() {
-  local -r -i lineno="${1}";
-  echo 'SIGTTIN: This function is not yet implemented.';
-  return;
+  local message='trapSIGTTIN: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapSIGTTIN;
 
-_DEBUG_TRAP trap 'trapSIGTTIN "${LINENO}"' SIGTTIN;
+#trap 'trapSIGTTIN' 'SIGTTIN';
 
-## @fn trapSIGTTOU()
-## @brief Trap function for the SIGTTOU signal.
-## @details This is similar to SIGTTIN, but is generated when a process in a
-## background job attempts to write to the terminal or set its modes.  Again,
-## the default action is to stop the process.  SIGTTOU is only generated for an
-## attempt to write to the terminal if the TOSTOP output mode is set; see Output
-## Modes.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapSIGTTOU()
+##! @brief Trap function for the SIGTTOU signal.
+##! @details Trap function for the SIGTTOU signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGTTOU signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapSIGTTOU() {
-  local -r -i lineno="${1}";
-  echo 'SIGTTOU: This function is not yet implemented.';
-  return;
+  local message='trapSIGTTOU: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapSIGTTOU;
 
-_DEBUG_TRAP trap 'trapSIGTTOU "${LINENO}"' SIGTTOU;
+#trap 'trapSIGTTOU' 'SIGTTOU';
 
-## @comment{
-## Events useful for debugging:
-## }
+##! @fn trapSIGIO()
+##! @brief Trap function for the SIGIO signal.
+##! @details Trap function for the SIGIO signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGIO signal.<br />return code: The return code of the last executed
+##! command.
 
-## @fn trapEXIT()
-## @brief Trap function for the EXIT event.
-## @details If a SIGNAL_SPEC is EXIT (0) ARG is executed on exit from the shell.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+function trapSIGIO() {
+  local message='trapSIGIO: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGIO;
+
+#trap 'trapSIGIO' 'SIGIO';
+
+##! @fn trapSIGXCPU()
+##! @brief Trap function for the SIGXCPU signal.
+##! @details Trap function for the SIGXCPU signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGXCPU signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGXCPU() {
+  local message='trapSIGXCPU: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGXCPU;
+
+#trap 'trapSIGXCPU' 'SIGXCPU';
+
+##! @fn trapSIGXFSZ()
+##! @brief Trap function for the SIGXFSZ signal.
+##! @details Trap function for the SIGXFSZ signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGXFSZ signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGXFSZ() {
+  local message='trapSIGXFSZ: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGXFSZ;
+
+#trap 'trapSIGXFSZ' 'SIGXFSZ';
+
+##! @fn trapSIGVTALRM()
+##! @brief Trap function for the SIGVTALRM signal.
+##! @details Trap function for the SIGVTALRM signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGVTALRM signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGVTALRM() {
+  local message='trapSIGVTALRM: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGVTALRM;
+
+#trap 'trapSIGVTALRM' 'SIGVTALRM';
+
+##! @fn trapSIGPROF()
+##! @brief Trap function for the SIGPROF signal.
+##! @details Trap function for the SIGPROF signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGPROF signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGPROF() {
+  local message='trapSIGPROF: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGPROF;
+
+#trap 'trapSIGPROF' 'SIGPROF';
+
+##! @fn trapSIGWINCH()
+##! @brief Trap function for the SIGWINCH signal.
+##! @details Trap function for the SIGWINCH signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGWINCH signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGWINCH() {
+  local message='trapSIGWINCH: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGWINCH;
+
+#trap 'trapSIGWINCH' 'SIGWINCH';
+
+##! @fn trapSIGPWR()
+##! @brief Trap function for the SIGPWR signal.
+##! @details Trap function for the SIGPWR signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGPWR signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGPWR() {
+  local message='trapSIGPWR: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGPWR;
+
+#trap 'trapSIGPWR' 'SIGPWR';
+
+##! @fn trapSIGUSR1()
+##! @brief Trap function for the SIGUSR1 signal.
+##! @details Trap function for the SIGUSR1 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGUSR1 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGUSR1() {
+  local message='trapSIGUSR1: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGUSR1;
+
+#trap 'trapSIGUSR1' 'SIGUSR1';
+
+##! @fn trapSIGUSR2()
+##! @brief Trap function for the SIGUSR2 signal.
+##! @details Trap function for the SIGUSR2 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGUSR2 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGUSR2() {
+  local message='trapSIGUSR2: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGUSR2;
+
+#trap 'trapSIGUSR2' 'SIGUSR2';
+
+##! @fn trapSIGRTMIN()
+##! @brief Trap function for the SIGRTMIN signal.
+##! @details Trap function for the SIGRTMIN signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN() {
+  local message='trapSIGRTMIN: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN;
+
+#trap 'trapSIGRTMIN' 'SIGRTMIN';
+
+##! @fn trapSIGRTMIN1()
+##! @brief Trap function for the SIGRTMIN+1 signal.
+##! @details Trap function for the SIGRTMIN+1 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+1 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN1() {
+  local message='trapSIGRTMIN1: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN1;
+
+#trap 'trapSIGRTMIN1' 'SIGRTMIN+1';
+
+##! @fn trapSIGRTMIN2()
+##! @brief Trap function for the SIGRTMIN+2 signal.
+##! @details Trap function for the SIGRTMIN+2 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+2 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN2() {
+  local message='trapSIGRTMIN2: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN2;
+
+#trap 'trapSIGRTMIN2' 'SIGRTMIN+2';
+
+##! @fn trapSIGRTMIN3()
+##! @brief Trap function for the SIGRTMIN+3 signal.
+##! @details Trap function for the SIGRTMIN+3 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+3 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN3() {
+  local message='trapSIGRTMIN3: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN3;
+
+#trap 'trapSIGRTMIN3' 'SIGRTMIN+3';
+
+##! @fn trapSIGRTMIN4()
+##! @brief Trap function for the SIGRTMIN+4 signal.
+##! @details Trap function for the SIGRTMIN+4 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+4 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN4() {
+  local message='trapSIGRTMIN4: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN4;
+
+#trap 'trapSIGRTMIN4' 'SIGRTMIN+4';
+
+##! @fn trapSIGRTMIN5()
+##! @brief Trap function for the SIGRTMIN+5 signal.
+##! @details Trap function for the SIGRTMIN+5 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+5 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN5() {
+  local message='trapSIGRTMIN5: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN5;
+
+#trap 'trapSIGRTMIN5' 'SIGRTMIN+5';
+
+##! @fn trapSIGRTMIN6()
+##! @brief Trap function for the SIGRTMIN+6 signal.
+##! @details Trap function for the SIGRTMIN+6 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+6 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN6() {
+  local message='trapSIGRTMIN6: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN6;
+
+#trap 'trapSIGRTMIN6' 'SIGRTMIN+6';
+
+##! @fn trapSIGRTMIN7()
+##! @brief Trap function for the SIGRTMIN+7 signal.
+##! @details Trap function for the SIGRTMIN+7 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+7 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN7() {
+  local message='trapSIGRTMIN7: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN7;
+
+#trap 'trapSIGRTMIN7' 'SIGRTMIN+7';
+
+##! @fn trapSIGRTMIN8()
+##! @brief Trap function for the SIGRTMIN+8 signal.
+##! @details Trap function for the SIGRTMIN+8 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+8 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN8() {
+  local message='trapSIGRTMIN8: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN8;
+
+#trap 'trapSIGRTMIN8' 'SIGRTMIN+8';
+
+##! @fn trapSIGRTMIN9()
+##! @brief Trap function for the SIGRTMIN+9 signal.
+##! @details Trap function for the SIGRTMIN+9 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+9 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN9() {
+  local message='trapSIGRTMIN9: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN9;
+
+#trap 'trapSIGRTMIN9' 'SIGRTMIN+9';
+
+##! @fn trapSIGRTMIN10()
+##! @brief Trap function for the SIGRTMIN+10 signal.
+##! @details Trap function for the SIGRTMIN+10 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+10 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN10() {
+  local message='trapSIGRTMIN10: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN10;
+
+#trap 'trapSIGRTMIN10' 'SIGRTMIN+10';
+
+##! @fn trapSIGRTMIN11()
+##! @brief Trap function for the SIGRTMIN+11 signal.
+##! @details Trap function for the SIGRTMIN+11 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+11 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN11() {
+  local message='trapSIGRTMIN11: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN11;
+
+#trap 'trapSIGRTMIN11' 'SIGRTMIN+11';
+
+##! @fn trapSIGRTMIN12()
+##! @brief Trap function for the SIGRTMIN+12 signal.
+##! @details Trap function for the SIGRTMIN+12 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+12 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN12() {
+  local message='trapSIGRTMIN12: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN12;
+
+#trap 'trapSIGRTMIN12' 'SIGRTMIN+12';
+
+##! @fn trapSIGRTMIN13()
+##! @brief Trap function for the SIGRTMIN+13 signal.
+##! @details Trap function for the SIGRTMIN+13 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+13 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN13() {
+  local message='trapSIGRTMIN13: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN13;
+
+#trap 'trapSIGRTMIN13' 'SIGRTMIN+13';
+
+##! @fn trapSIGRTMIN14()
+##! @brief Trap function for the SIGRTMIN+14 signal.
+##! @details Trap function for the SIGRTMIN+14 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+14 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN14() {
+  local message='trapSIGRTMIN14: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN14;
+
+#trap 'trapSIGRTMIN14' 'SIGRTMIN+14';
+
+##! @fn trapSIGRTMIN15()
+##! @brief Trap function for the SIGRTMIN+15 signal.
+##! @details Trap function for the SIGRTMIN+15 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+15 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN15() {
+  local message='trapSIGRTMIN15: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN15;
+
+#trap 'trapSIGRTMIN15' 'SIGRTMIN+15';
+
+##! @fn trapSIGRTMIN16()
+##! @brief Trap function for the SIGRTMIN+16 signal.
+##! @details Trap function for the SIGRTMIN+16 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMIN+16 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMIN16() {
+  local message='trapSIGRTMIN16: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMIN16;
+
+#trap 'trapSIGRTMIN16' 'SIGRTMIN+16';
+
+##! @fn trapSIGRTMAX15()
+##! @brief Trap function for the SIGRTMAX-15 signal.
+##! @details Trap function for the SIGRTMAX-15 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-15 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX15() {
+  local message='trapSIGRTMAX15: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX15;
+
+#trap 'trapSIGRTMAX15' 'SIGRTMAX-15';
+
+##! @fn trapSIGRTMAX14()
+##! @brief Trap function for the SIGRTMAX-14 signal.
+##! @details Trap function for the SIGRTMAX-14 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-14 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX14() {
+  local message='trapSIGRTMAX14: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX14;
+
+#trap 'trapSIGRTMAX14' 'SIGRTMAX-14';
+
+##! @fn trapSIGRTMAX13()
+##! @brief Trap function for the SIGRTMAX-13 signal.
+##! @details Trap function for the SIGRTMAX-13 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-13 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX13() {
+  local message='trapSIGRTMAX13: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX13;
+
+#trap 'trapSIGRTMAX13' 'SIGRTMAX-13';
+
+##! @fn trapSIGRTMAX12()
+##! @brief Trap function for the SIGRTMAX-12 signal.
+##! @details Trap function for the SIGRTMAX-12 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-12 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX12() {
+  local message='trapSIGRTMAX12: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX12;
+
+#trap 'trapSIGRTMAX12' 'SIGRTMAX-12';
+
+##! @fn trapSIGRTMAX11()
+##! @brief Trap function for the SIGRTMAX-11 signal.
+##! @details Trap function for the SIGRTMAX-11 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-11 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX11() {
+  local message='trapSIGRTMAX11: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX11;
+
+#trap 'trapSIGRTMAX11' 'SIGRTMAX-11';
+
+##! @fn trapSIGRTMAX10()
+##! @brief Trap function for the SIGRTMAX-10 signal.
+##! @details Trap function for the SIGRTMAX-10 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-10 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX10() {
+  local message='trapSIGRTMAX10: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX10;
+
+#trap 'trapSIGRTMAX10' 'SIGRTMAX-10';
+
+##! @fn trapSIGRTMAX9()
+##! @brief Trap function for the SIGRTMAX-9 signal.
+##! @details Trap function for the SIGRTMAX-9 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-9 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX9() {
+  local message='trapSIGRTMAX9: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX9;
+
+#trap 'trapSIGRTMAX9' 'SIGRTMAX-9';
+
+##! @fn trapSIGRTMAX8()
+##! @brief Trap function for the SIGRTMAX-8 signal.
+##! @details Trap function for the SIGRTMAX-8 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-8 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX8() {
+  local message='trapSIGRTMAX8: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX8;
+
+#trap 'trapSIGRTMAX8' 'SIGRTMAX-8';
+
+##! @fn trapSIGRTMAX7()
+##! @brief Trap function for the SIGRTMAX-7 signal.
+##! @details Trap function for the SIGRTMAX-7 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-7 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX7() {
+  local message='trapSIGRTMAX7: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX7;
+
+#trap 'trapSIGRTMAX7' 'SIGRTMAX-7';
+
+##! @fn trapSIGRTMAX6()
+##! @brief Trap function for the SIGRTMAX-6 signal.
+##! @details Trap function for the SIGRTMAX-6 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-6 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX6() {
+  local message='trapSIGRTMAX6: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX6;
+
+#trap 'trapSIGRTMAX6' 'SIGRTMAX-6';
+
+##! @fn trapSIGRTMAX5()
+##! @brief Trap function for the SIGRTMAX-5 signal.
+##! @details Trap function for the SIGRTMAX-5 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-5 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX5() {
+  local message='trapSIGRTMAX5: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX5;
+
+#trap 'trapSIGRTMAX5' 'SIGRTMAX-5';
+
+##! @fn trapSIGRTMAX4()
+##! @brief Trap function for the SIGRTMAX-4 signal.
+##! @details Trap function for the SIGRTMAX-4 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-4 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX4() {
+  local message='trapSIGRTMAX4: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX4;
+
+#trap 'trapSIGRTMAX4' 'SIGRTMAX-4';
+
+##! @fn trapSIGRTMAX3()
+##! @brief Trap function for the SIGRTMAX-3 signal.
+##! @details Trap function for the SIGRTMAX-3 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-3 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX3() {
+  local message='trapSIGRTMAX3: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX3;
+
+#trap 'trapSIGRTMAX3' 'SIGRTMAX-3';
+
+##! @fn trapSIGRTMAX2()
+##! @brief Trap function for the SIGRTMAX-2 signal.
+##! @details Trap function for the SIGRTMAX-2 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-2 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX2() {
+  local message='trapSIGRTMAX2: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX2;
+
+#trap 'trapSIGRTMAX2' 'SIGRTMAX-2';
+
+##! @fn trapSIGRTMAX1()
+##! @brief Trap function for the SIGRTMAX-1 signal.
+##! @details Trap function for the SIGRTMAX-1 signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX-1 signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX1() {
+  local message='trapSIGRTMAX1: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX1;
+
+#trap 'trapSIGRTMAX1' 'SIGRTMAX-1';
+
+##! @fn trapSIGRTMAX()
+##! @brief Trap function for the SIGRTMAX signal.
+##! @details Trap function for the SIGRTMAX signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! SIGRTMAX signal.<br />return code: The return code of the last executed
+##! command.
+
+function trapSIGRTMAX() {
+  local message='trapSIGRTMAX: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
+}
+readonly -f trapSIGRTMAX;
+
+#trap 'trapSIGRTMAX' 'SIGRTMAX';
+
+##! @fn trapEXIT()
+##! @brief Trap function for the EXIT signal.
+##! @details Trap function for the EXIT signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! EXIT signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapEXIT() {
-  local -r -i lineno="${1}";
-  #echo 'trapEXIT: This function is not yet implemented.';
-  return;
+  local message='trapEXIT: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapEXIT;
 
-_DEBUG_TRAP trap 'trapEXIT "${LINENO}"' EXIT;
+#trap 'trapEXIT' 'EXIT';
 
-## @fn trapDEBUG()
-## @brief Trap function for the DEBUG event.
-## @details If a SIGNAL_SPEC is DEBUG, ARG is executed before every simple
-## command.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapDEBUG()
+##! @brief Trap function for the DEBUG signal.
+##! @details Trap function for the DEBUG signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! DEBUG signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapDEBUG() {
-  local -r -i lineno="${1}";
-  #echo 'trapDEBUG: This function is not yet implemented.';
-  return;
+  local message='trapDEBUG: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapDEBUG;
 
-_DEBUG_TRAP trap 'trapDEBUG "${LINENO}"' DEBUG;
+#trap 'trapDEBUG' 'DEBUG';
 
-## @fn trapRETURN()
-## @brief Trap function for the RETURN event.
-## @details If a SIGNAL_SPEC is RETURN, ARG is executed each time a shell
-## function or a script run by the . or source builtins finishes executing.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapRETURN()
+##! @brief Trap function for the RETURN signal.
+##! @details Trap function for the RETURN signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! RETURN signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapRETURN() {
-  local -r -i lineno="${1}";
-  #echo 'trapRETURN: This function is not yet implemented.';
-  return;
+  local message='trapRETURN: This function is not yet fully implemented.';
+  printf '%s\n' "${message}";
+  return "${?}";
 }
+readonly -f trapRETURN;
 
-_DEBUG_TRAP trap 'trapRETURN "${LINENO}"' RETURN;
+#trap 'trapRETURN' 'RETURN';
 
-## @fn trapERR()
-## @brief Trap function for the ERR event.
-## @details A SIGNAL_SPEC of ERR means to execute ARG each time a command's
-## failure would cause the shell to exit when the -e option is enabled.
-## @param[in,out] void
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
+##! @fn trapERR()
+##! @brief Trap function for the ERR signal.
+##! @details Trap function for the ERR signal.
+##! @param[in] void<br />n/a
+##! @return string message<br />return value: The message shown in case of the
+##! ERR signal.<br />return code: The return code of the last executed
+##! command.
 
 function trapERR() {
+  local -r -i line_number="${1}";
+  local -r -i exit_status="${2}";
+  local -r    bash_commannd="${3}";
 
-  echo 'trapERR: This function is not yet implemented.';
+  local       message='trapERR: This function is not yet fully implemented.';
+  local       format='';
 
-  local -r -i line_number="${1}"; local -p line_number;
-  local -r -i exit_code="${2}"; local -p exit_code;
-  local -r    bash_command="${3}"; local -p bash_command;
+  format+='%s';
+  format+='\n';
+  format+="  line number : '%s'";
+  format+='\n';
+  format+="  exit status : '%s'";
+  format+='\n';
+  format+="  bash command: '%s'";
+  format+='\n';
 
-  local -r    call_context0="$( caller 0 )"; local -p call_context0;
-  local -r    call_context1="$( caller 1 )"; local -p call_context1;
-  local -r    bash_source=( "${BASH_SOURCE[@]}" ); local -p bash_source;
-  local -r    bash_line_number=( "${BASH_LINENO[@]}" ); local -p bash_line_number;
-  local -r    function_name=( "${FUNCNAME[@]}" ); local -p function_name;
+  format+="$( dumpStackTraceFromTo; )";
+  format+='\n';
 
-  dumpStack;
 
-  return;
+  printf "${format}" \
+         "${message}" \
+         "${line_number}" \
+         "${exit_status}" \
+         "${bash_commannd}";
+
+  return "${?}";
 }
+readonly -f trapERR;
 
-_DEBUG_TRAP trap 'trapERR "${LINENO}" "${?}" "${BASH_COMMAND}"' ERR;
+trap 'trapERR "${LINENO}" "${?}" "${BASH_COMMAND}"' 'ERR';
 
-## @comment{
-## Logging level:
+## >> debugging >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+## > head >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                                                                                DEBUG printf '%s\n' 'begin shell script ...';
+
+## < body <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+## << include files <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+## get the directory where this script is.
+
+##! @var SOURCE_DIRECTORY
+##! @brief The source directory.
+##! @details The source directory.
+
+declare -r SOURCE_DIRECTORY="${BASH_SOURCE%/*}";
+
+## include liblogger.sh
+
+if [[ -e "${SOURCE_DIRECTORY}/liblogger.sh" ]]; then
+  source "${SOURCE_DIRECTORY}/liblogger.sh";
+else
+  printf '%s\n' "Error: The file 'liblogger.sh' is required.";
+  exit 1;
+fi
+
+enableLogging;
+setLogLevel "${LOG_LEVEL_ALL}";
+                                                                                DEBUG printf '%s\n' "The logger state is set to '$( getLoggingState; )'";
+                                                                                DEBUG printf '%s\n' "The logger level is set to '$( getLogLevel; )'";
+
+## >> include files >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+## << global constants <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+## Command Line Arguments
+
+##! @var _ARG0
+##! @brief The name of the shell script.
+##! @details The special parameter $0 expands to the name of the shell or shell
+##! script.
+##! @note $BASH_ARGV0
+
+declare -r    _ARG0="${0}";                                                     DEBUG printf '%s\n' "$( declare -p _ARG0; )";
+
+##! @var _ARGC
+##! @brief The number of positional parameters.
+##! @details The special parameter $# expands to the number of positional
+##! parameters.
+##! @note $BASH_ARGC
+
+declare -r -i _ARGC="${#}";                                                     DEBUG printf '%s\n' "$( declare -p _ARGC; )";
+
+##! @var _ARGV
+##! @brief The positional parameters.
+##! @details The special parameter $@ expands to the positional parameters.
+##! @note $BASH_ARGV
+
+declare -r -a _ARGV=( "${@}" );                                                 DEBUG printf '%s\n' "$( declare -p _ARGV; )";
+
+## Exit Codes and Return Codes
+
+## Exit Codes
 ##
-## Level   Description
-## -----   -----------
+## (1) bash$ trap -l
 ##
-## ALL     All levels including custom levels.
+## (2) Appendix E. Exit Codes With Special Meanings
+##     <https://tldp.org/LDP/abs/html/exitcodes.html>
 ##
-## TRACE   Designates finer-grained informational events than the DEBUG.
 ##
-## DEBUG   Designates fine-grained informational events that are most useful to
-##         debug an application.
 ##
-## INFO    Designates informational messages that highlight the progress of the
-##         application at coarse-grained level.
+## from (2):
 ##
-## WARN    Designates potentially harmful situations.
+## Reserved Exit Codes:
+## exit code|meaning
+## ---------+------------------------------
+##     1    |catchall for general errors
+##     2    |misuse of shell builtins
+##   126    |command invoked cannot execute
+##   127    |command not found
+##   128    |invalid argument to exit
+##   128 + n|fatal error signal "n"
+##          |  n = 1 ... 64 => 129 ... 192
+##   255    |exit status out of range
 ##
-## ERROR   Designates error events that might still allow the application to
-##         continue running.
 ##
-## FATAL   Designates very severe error events that will presumably lead the
-##         application to abort.
 ##
-## OFF     The highest possible rank and is intended to turn off logging.
-## }
-
-## @comment{
-## Handle logging
+## from (1):
 ##
-## Priority: TRACE < DEBUG < INFO < WARN < ERROR < FATAL
-##           1       2       3      4      5       6
+## Signals
 ##
-##           |                                     |
-##           |                                     +-- highest
-##           |
-##           +-- lowest
-##
-##           ALL   0   enable all
-##           OFF   7   disable all
-## }
+##  1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+##  6) SIGABRT      7) SIGEMT       8) SIGFPE       9) SIGKILL     10) SIGBUS
+## 11) SIGSEGV     12) SIGSYS      13) SIGPIPE     14) SIGALRM     15) SIGTERM
+## 16) SIGURG      17) SIGSTOP     18) SIGTSTP     19) SIGCONT     20) SIGCHLD
+## 21) SIGTTIN     22) SIGTTOU     23) SIGIO       24) SIGXCPU     25) SIGXFSZ
+## 26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGPWR      30) SIGUSR1
+## 31) SIGUSR2     32) SIGRTMIN    33) SIGRTMIN+1  34) SIGRTMIN+2  35) SIGRTMIN+3
+## 36) SIGRTMIN+4  37) SIGRTMIN+5  38) SIGRTMIN+6  39) SIGRTMIN+7  40) SIGRTMIN+8
+## 41) SIGRTMIN+9  42) SIGRTMIN+10 43) SIGRTMIN+11 44) SIGRTMIN+12 45) SIGRTMIN+13
+## 46) SIGRTMIN+14 47) SIGRTMIN+15 48) SIGRTMIN+16 49) SIGRTMAX-15 50) SIGRTMAX-14
+## 51) SIGRTMAX-13 52) SIGRTMAX-12 53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9
+## 56) SIGRTMAX-8  57) SIGRTMAX-7  58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4
+## 61) SIGRTMAX-3  62) SIGRTMAX-2  63) SIGRTMAX-1  64) SIGRTMAX
 
-## @var LOG_LEVEL_ALL
-## @brief Log level ALL.
-## @details Constant to symbolize log level ALL.
+##! @var EXIT_NO_ERROR
+##! @brief The exit code for no error.
+##! @details The exit code to signal that the command executed successfully.
+##! @note success
 
-declare -r -i LOG_LEVEL_ALL=0;
+declare -r -i EXIT_NO_ERROR=0;
 
-## @var LOG_LEVEL_TRACE
-## @brief Log level TRACE.
-## @details Constant to symbolize log level TRACE.
+##! @var EXIT_GENERAL_ERROR
+##! @brief The exit code for a general error.
+##! @details The exit code to signal that the command did not execute
+##! successfully.
+##! @note failure
 
-declare -r -i LOG_LEVEL_TRACE=1;
+declare -r -i EXIT_GENERAL_ERROR=1;
 
-## @var LOG_LEVEL_DEBUG
-## @brief Log level DEBUG.
-## @details Constant to symbolize log level DEBUG.
+##! @var RETURN_NO_ERROR
+##! @brief The return code for a general error.
+##! @details The return code to signal that the function executed successfully.
+##! @note success
 
-declare -r -i LOG_LEVEL_DEBUG=2;
+declare -r -i RETURN_NO_ERROR=0;
 
-## @var LOG_LEVEL_INFO
-## @brief Log level INFO.
-## @details Constant to symbolize log level INFO.
+##! @var RETURN_GENERAL_ERROR
+##! @brief The return code for a general error.
+##! @details The return code to signal that the function did not execute
+##! successfully.
+##! @note failure
 
-declare -r -i LOG_LEVEL_INFO=3;
+declare -r -i RETURN_GENERAL_ERROR=1;
 
-## @var LOG_LEVEL_WARN
-## @brief Log level WARN.
-## @details Constant to symbolize log level WARN.
+## >> global constants >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-declare -r -i LOG_LEVEL_WARN=4;
+## << global variables <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-## @var LOG_LEVEL_ERROR
-## @brief Log level ERROR.
-## @details Constant to symbolize log level ERROR.
+## Exit Status
 
-declare -r -i LOG_LEVEL_ERROR=5;
+##! @var exit_status
+##! @brief The exit status.
+##! @details The special parameter $? expands to the exit status of the most
+##! recently executed foreground pipeline.
 
-## @var LOG_LEVEL_FATAL
-## @brief Log level FATAL.
-## @details Constant to symbolize log level FATAL.
+declare    -i exit_status=0;
 
-declare -r -i LOG_LEVEL_FATAL=6;
+## >> global variables >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-## @var LOG_LEVEL_OFF
-## @brief Log level OFF.
-## @details Constant to symbolize log level OFF.
+## << global functions <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-declare -r -i LOG_LEVEL_OFF=7;
+## >> global functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-## @var log_level
-## @brief Log level.
-## @details The currently selected log level.
+## < main <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-declare -i log_level="${LOG_LEVEL_ERROR}";
-
-## @fn setLogLevel()
-## @brief Set the current log level.
-## @details Set the current log level using one of the log levels:<br /><br />
-## TRACE (1, lowest) < DEBUG (2) < INFO (3) < WARN (4) < ERROR (5) < FATAL (6,
-## highest)
-## @param[in] integer level<br />The current log level.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function setLogLevel() {
-  local -r -i level="${1}";
-  log_level="${level}";
-  return;
-}
-
-## @fn getLogLevel()
-## @brief Get current log level.
-## @details Get the current log level using one of the log levels:<br /><br />
-## TRACE (1, lowest) < DEBUG (2) < INFO (3) < WARN (4) < ERROR (5) < FATAL (6,
-## highest)
-## @param[in] void
-## @return integer level<br />return value: The currently selected log level
-## <br />return code: The return code of the last executed command.
-
-function getLogLevel() {
-  local -r -i level="${log_level}";
-  echo "${level}";
-  return;
-}
-
-## @fn dumpStack()
-## @brief Create a stack dump.
-## @details Return the context of each successive subroutine call.
-## @param[in] void
-## @return return value:<br />string stackdump<br />return code:<br />The return code of the last
-##   executed command.
-##
-## @comment{
-## reminder:
-## local -r -i exit_code="${?}";
-## local -r -i line_number="${LINENO}";
-## local -r    executed_command="${BASH_COMMAND}";
-## }
-
-function dumpStack() {
-  local timestamp='';
-  local source_file='';
-  local source_line='';
-  local source_function='';
-  local target_file='';
-  local target_line='';
-  local target_function='';
-  local -i count=0;
-  local shopt_old='';
-  local shopt_new='';
-  local -a target=();
-  local stack_dump='';
-
-  stack_dump='stack dump:';
-  count="${#FUNCNAME[@]}";
-  local -i index=0;
-  for (( index=0; index<"$(( "${count}" - 1 ))"; index++ )); do
-
-    stack_dump+="\n";
-    timestamp="${EPOCHREALTIME}";
-    stack_dump+="[${timestamp}]";
-    stack_dump+=' ';
-    stack_dump+="${index}:";
-    stack_dump+=' ';
-    source_file="${BASH_SOURCE[$(( "${index}" + 0 ))]}";
-    stack_dump+="in file '${source_file}'";
-    stack_dump+=' ';
-    source_line="${BASH_LINENO[$(( "${index}" + 0 ))]}";
-    stack_dump+="in line '${source_line}'";
-    stack_dump+=' ';
-    source_function="${FUNCNAME[$(( "${index}" + 0 ))]}";
-    stack_dump+="the function '${source_function}'";
-    stack_dump+=' ';
-    stack_dump+='is called';
-    stack_dump+=' ';
-    stack_dump+='-->';
-    stack_dump+=' ';
-
-    shopt_old="$( shopt -p extdebug )";
-    shopt_new="shopt -s extdebug";
-    eval "${shopt_new}";
-    readarray -d ' ' target < <( declare -F "${FUNCNAME[$(( "${index}" + 0 ))]}" );
-    eval "${shopt_old}";
-
-    target_function="${target[0]}";
-    target_function="${target_function% }";
-    stack_dump+="the function '${target_function}' is";
-    stack_dump+=' ';
-    target_file="${target[2]}";
-    target_file="${target_file%$'\n'}";
-    stack_dump+="in file '${target_file}'";
-    stack_dump+=' ';
-    target_line="${target[1]}";
-    target_line="${target_line% }";
-    stack_dump+="in line '${target_line}'";
-
-  done
-
-  echo -e "${stack_dump}";
-
-  return;
-}
-
-## @fn printLog()
-## @brief Print log message to STDOUT.
-## @details Print log message to STDOUT.
-## Example:
-## @code
-## printLog INFO a message
-## @endcode
-## @param[in] integer level<br />The log level.
-## @param[in] array-of-string message<br />The log message.
-## @return string result<br />return value: The log entry<br />return code: The
-## return code of the last executed command.
-
-function printLog() {
-  local -r -i level="${1}"; shift 1;
-  local -r -a message=( "${@}" );
-  local -r    timestamp="${EPOCHREALTIME}";
-  local -r    format='[%010s] [%- 5s] %s';
-  local       result='';
-  if   (( "${level}" <= "${LOG_LEVEL_TRACE}" )); then
-    printf -v 'result' "${format}" "${timestamp}" 'TRACE' "$( echo "${message[@]}" )";
-  elif (( "${level}" <= "${LOG_LEVEL_DEBUG}" )); then
-    printf -v 'result' "${format}" "${timestamp}" 'DEBUG' "$( echo "${message[@]}" )";
-  elif (( "${level}" <= "${LOG_LEVEL_INFO}" )); then
-    printf -v 'result' "${format}" "${timestamp}" 'INFO' "$( echo "${message[@]}" )";
-  elif (( "${level}" <= "${LOG_LEVEL_WARN}" )); then
-    printf -v 'result' "${format}" "${timestamp}" 'WARN' "$( echo "${message[@]}" )";
-  elif (( "${level}" <= "${LOG_LEVEL_ERROR}" )); then
-    printf -v 'result' "${format}" "${timestamp}" 'ERROR' "$( echo "${message[@]}" )";
-  elif (( "${level}" <= "${LOG_LEVEL_FATAL}" )); then
-    printf -v 'result' "${format}" "${timestamp}" 'FATAL' "$( echo "${message[@]}" )";
-  else
-    :;
-  fi
-  echo "${result}";
-  return;
-}
-
-## @fn printLogTRACE()
-## @brief Print TRACE log message.
-## @details Print TRACE log message. Make a stack trace also.
-## @param[in] array-of-string message<br />The message.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function printLogTRACE() {
-  local -r -a message=( "${@}" );
-  printLog "${LOG_LEVEL_TRACE}" "${message[@]}";
-  dumpStack;
-  return;
-}
-
-## @fn printLogDEBUG()
-## @brief Print DEBUG log message.
-## @details Print DEBUG log message.
-## @param[in] array-of-string message<br />The message.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function printLogDEBUG() {
-  local -r -a message=( "${@}" );
-  printLog "${LOG_LEVEL_DEBUG}" "${message[@]}";
-  return;
-}
-
-## @fn printLogINFO()
-## @brief Print INFO log message.
-## @details Print INFO log message.
-## @param[in] array-of-string message<br />The message.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function printLogINFO() {
-  local -r -a message=( "${@}" );
-  printLog "${LOG_LEVEL_INFO}" "${message[@]}";
-  return;
-}
-
-## @fn printLogWARN()
-## @brief Print WARN log message.
-## @details Print WARN log message.
-## @param[in] array-of-string message<br />The message.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function printLogWARN() {
-  local -r -a message=( "${@}" );
-  printLog "${LOG_LEVEL_WARN}" "${message[@]}";
-  return;
-}
-
-## @fn printLogERROR()
-## @brief Print ERROR log message.
-## @details Print ERROR log message.
-## @param[in] array-of-string message<br />The message.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function printLogERROR() {
-  local -r -a message=( "${@}" );
-  printLog "${LOG_LEVEL_ERROR}" "${message[@]}";
-  return;
-}
-
-## @fn printLogFATAL()
-## @brief Print FATAL log message.
-## @details Print FATAL log message.
-## @param[in] array-of-string message<br />The message.
-## @return void<br />return value: none<br />return code: The return code of the
-## last executed command.
-
-function printLogFATAL() {
-  local -r -a message=( "${@}" );
-  printLog "${LOG_LEVEL_FATAL}" "${message[@]}";
-  return;
-}
-
-
-
-## @c{
-## Here starts the program.
-## }
-
-## @fn main()
-## @brief The main function.
-## @details The main function (1) reads the configuration file, (2) reads the
-##   command line arguments (3) handles the command line arguments and (4)
-##   handles the subcommands gittify and gnutify.
-## @param[in] integer argc<br />The number of command line arguments passed to
-##   the function.
-## @param[in] indexed-array-of-string argv<br />The Array containing the command
-##   line arguments passed to the function.
-## @return return value: void;<br />return code: the return code of the last
-##   executed command.
-
+## ???: todo: add comment
 function main() {
-                                                                                DEBUG printLogINFO 'git-gnu-project running ...';
-
-  # function arguments
-
-  local -r    command="${1}"; shift 1;
-                                                                                DEBUG printLogDEBUG "$( local -p command )";
-
-  local -r -i argc="${1}"; shift 1;
-                                                                                DEBUG printLogDEBUG "$( local -p argc )";
-
-  local -r -a argv=( "${@}" );
-                                                                                DEBUG printLogDEBUG "$( local -p argv )";
-
-  # local constants
-
-  # local variables
-
-  # read configuration file
-
-  # handle configuration file
-
-  # read command line arguments
-
-  # handle command line arguments
-
-  # handle sub commands
-
-  # return from function.
-
-                                                                                DEBUG printLogINFO '... finished git-gnu-project';
-
-  return;
+local -r    ARG0="${1}"; shift 1;
+local -r -i ARGC="${1}"; shift 1;
+local -r -a ARGV=( "${@}" );
+return "${?}";
 }
+readonly -f main;
 
-# Set the log level
+## Run main function.
 
-setLogLevel "${LOG_LEVEL_OFF}";
+main "${_ARG0}" "${_ARGC}" "${_ARGV}";
 
-# Call the main function.
+## Get the exit status of the function main.
 
-main "${0}" "${#}" "${@}";
+exit_status="${?}";
 
-# Pass the return code of the main function to the console as the exit code.
+## >> main >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-exit "${?}";
+## > body >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                                                                                DEBUG printf '%s\n' '... finished git-gnu-project';
+
+## < tail <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+## << exit <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+## Exit from the shell script.  The exit status is that of the main function.
+
+exit "${exit_status}";
+
+## >> exit >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+## > tail >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -183,8 +183,6 @@ declare -i logging_state="${LOGGING_ON}";
 
 ## << global functions <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
-
 ##! @fn dumpStackTraceCaller()
 ##! @brief Dump a stack trace.
 ##! @details Create a stack trace using bash caller builtin.

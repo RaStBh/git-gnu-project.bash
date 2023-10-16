@@ -27,7 +27,7 @@
 
 
 
-##! @file logger.sh
+##! @file liblogger.sh.sh
 ##!
 ##! @brief Logger for bash.
 ##!

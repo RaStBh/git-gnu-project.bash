@@ -45,6 +45,7 @@
 # git-gnu-project
 
 /src/git-gnu-project.conf
+/src/git-gnu-project.log
 
 
 

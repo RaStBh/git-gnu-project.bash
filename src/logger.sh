@@ -39,7 +39,7 @@
 
 ## Prevent from including this file more than once.  Check include guard.
 
-[[ -v _LOGGER_SH_ ]] && return 0
+[[ -v _LIBLOGGER_SH_ ]] && return 0;
 
 ## > include guard >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -183,6 +183,153 @@ declare -i logging_state="${LOGGING_ON}";
 
 ## << global functions <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+
+##! @fn dumpStackTraceCaller()
+##! @brief Dump a stack trace.
+##! @details Create a stack trace using bash caller builtin.
+##! @param[in] void<br />n/a
+##! @return sting stack_trace<br />return value: The stack trace.<br />return
+##! code: The return code of the last executed command.
+
+function dumpStackTraceCaller() {
+  local    -i line_number=0;
+  local       function_name='';
+  local       file_name='';
+  local    -i frame=0;
+  local       stack_trace='context of subroutine call:';
+  local       line='';
+  while IFS=' ' read -r \
+                     'line_number' \
+                     'function_name' \
+                     'file_name' < <( caller "${frame}" || return ); do
+    printf -v 'line' \
+           '\n  (%d) %s at %s:%d' \
+           "${frame}" \
+           "${function_name}" \
+           "${file_name}" \
+           "${line_number}";
+    stack_trace+="${line}";
+    frame="$(( ${frame} + 1 ))";
+  done
+  printf '%b\n' "${stack_trace}";
+  return "${?}";
+}
+readonly -f dumpStackTraceCaller;
+
+##! @fn dumpStackTraceFuncname()
+##! @brief Dump a stack trace.
+##! @details Create a stack trace using $FUNCNAME, $BASH_SOURCE and
+##! $BASH_LINENO.
+##! @startglobal
+##! @itemglobal{in,array-of-string,FUNCNAME<br />The names of all shell
+##! functions currently in the execution call stack.}
+##! @itemglobal{in,array-of-string,BASH_SOURCE<br />The file names where the
+##! shell functions of FUNCNAME are defined.}
+##! @itemglobal{in,integer,BASH_LINENO<br />The line numbers in the files where
+##! the shell functions of FUNCNAME are defined.}
+##! @endglobal
+##! @param[in] void<br />n/a
+##! @return sting stack_trace<br />return value: The stack trace.<br />return
+##! code: The return code of the last executed command.
+
+function dumpStackTraceFuncname() {
+  local -r -a function_names=( "${FUNCNAME[@]}" );
+  local -r -a file_names=( "${BASH_SOURCE[@]}" );
+  local -r -a line_numbers=( "${BASH_LINENO[@]}" );
+  local       function_name='';
+  local       file_name='';
+  local    -i line_number=0;
+  local -r -i count="$(( ${#function_names[@]} - 0 ))";
+
+  local    -i frame=0;
+  local       stack_trace='current execution call stack:';
+  local       line='';
+
+  for (( frame=1; frame<"${count}"; frame++ )); do
+    function_name="${function_names[$(( "${frame}" - 0 ))]}";
+    [ "x${function_name}" = 'x' ] && function_name='MAIN';
+    file_name="${file_names[$(( "${frame}" - 0 ))]}";
+    [ "x${file_name}" = 'x' ] && file_name='NON-FILE-SOURCE';
+    line_number="${line_numbers[$(( "${frame}" - 1 ))]}";
+    printf -v 'line' \
+           '\n  (%d) %s at %s:%d' \
+           "${frame}" \
+           "${function_name}" \
+           "${file_name}" \
+           "${line_number}";
+    stack_trace+="${line}";
+  done
+  printf '%b\n' "${stack_trace}";
+  return "${?}";
+}
+readonly -f dumpStackTraceFuncname;
+
+##! @fn dumpStackTraceFromTo()
+##! @brief Dump a stack trace.
+##! @details Create a stack trace using $FUNCNAME, $BASH_SOURCE and
+##! $BASH_LINENO.  It shows from where a function is called.
+##! @startglobal
+##! @itemglobal{in,array-of-string,FUNCNAME<br />The names of all shell
+##! functions currently in the execution call stack.}
+##! @itemglobal{in,array-of-string,BASH_SOURCE<br />The file names where the
+##! shell functions of FUNCNAME are defined.}
+##! @itemglobal{in,integer,BASH_LINENO<br />The line numbers in the files where
+##! the shell functions of FUNCNAME are defined.}
+##! @endglobal
+##! @param[in] void<br />n/a
+##! @return sting stack_trace<br />return value: The stack trace.<br />return
+##! code: The return code of the last executed command.
+
+function dumpStackTraceFromTo() {
+  local -r -a function_names=( "${FUNCNAME[@]}" );
+  local -r -a file_names=( "${BASH_SOURCE[@]}" );
+  local -r -a line_numbers=( "${BASH_LINENO[@]}" );
+  local       function_name='';
+  local       file_name='';
+  local    -i line_number=0;
+  local -r -i count="$(( ${#function_names[@]} - 0 ))";
+
+  local    -i frame=0;
+  local       stack_trace='stack trace dump:';
+  local       line='';
+  local    -a target=();
+
+  for (( frame=1; frame<"${count}"; frame++ )); do
+    function_name="${function_names[$(( "${frame}" - 0 ))]}";
+    #[ "x${function_name}" = 'x' ] && function_name='MAIN';
+    file_name="${file_names[$(( "${frame}" - 0 ))]}";
+    #[ "x${file_name}" = 'x' ] && file_name='NON-FILE-SOURCE';
+    line_number="${line_numbers[$(( "${frame}" - 1 ))]}";
+    printf -v line \
+           "\n  (%d) %s at %s:%d" \
+           "${frame}" \
+           "${function_name}" \
+           "${file_name}" \
+           "${line_number}";
+    stack_trace+="${line}";
+    stack_trace+=' ';
+    stack_trace+='-->';
+    stack_trace+=' ';
+    readarray -d ' ' target < <( declare -F "${FUNCNAME[$(( "${frame}" - 1 ))]}" );
+    function_name="${target[0]}";
+    function_name="${function_name% }";
+    file_name="${target[2]}";
+    file_name="${file_name%$'\n'}";
+    line_number="${target[1]}";
+    line_number="${line_number% }";
+    printf -v line \
+           "%s at %s:%d" \
+           "${function_name}" \
+           "${file_name}" \
+           "${line_number}";
+    stack_trace+="${line}";
+  done
+  printf '%b\n' "${stack_trace}";
+  return "${?}";
+}
+readonly -f dumpStackTraceFromTo;
+
 ##! @fn setLogLevel()
 ##! @brief Set the current log level.
 ##! @details Set the current log level using one of the log levels:<br /><br />
@@ -259,7 +406,7 @@ function disableLogging() {
 }
 readonly -f disableLogging;
 
-##! @fn setLoggingState
+##! @fn setLoggingState()
 ##! @brief Set the logging state.
 ##! @details Set the logging state.
 ##! @param[in] integer state<br />The logger state.
@@ -274,7 +421,7 @@ function setLoggingState() {
 }
 readonly -f setLoggingState;
 
-##! @fn getLoggingState
+##! @fn getLoggingState()
 ##! @brief Get the logging state.
 ##! @details Get the logging state.
 ##! @param[in] void<br />n/a
@@ -329,7 +476,8 @@ function printLog() {
   if    (( "${log_level}" <= LOG_LEVEL_TRACE )) \
      && (( level == LOG_LEVEL_TRACE )); then
     printf -v 'result' "${format}" "${timestamp}" 'TRACE' "$( echo "${message[@]}" )";
-    result+="$( dumpStack )";
+    result+="\n";
+    result+="$( dumpStackTraceFromTo )";
   else
     :;
   fi
@@ -370,7 +518,7 @@ function printLog() {
     :;
   fi
 
-  printf '%s\n' "${result}";
+  printf '%b\n' "${result}";
   return;
 }
 readonly -f printLog;
@@ -501,7 +649,7 @@ readonly -f printLogFATAL;
 
 ## Prevent from including this file more than once.  Set include guard.
 
-declare -r -i _LOGGER_SH_=0;
+declare -r -i _LIBLOGGER_SH_=0;
 
 ## > include guard >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -513,7 +661,7 @@ declare -r -i _LOGGER_SH_=0;
 
 ## Return from the included file.  The return status is 0 (success).
 
-return 0;
+return "${?}";
 
 ## >> return >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

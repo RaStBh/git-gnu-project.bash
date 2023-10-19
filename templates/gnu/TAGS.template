@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,11 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} TAGS file - index to            ##
-## source-code definitions of functions, variables, and any other interesting ##
-## syntactic features of the programs / libraries / documentations / package. ##
+## {? organisation name ?} {? project name ?} TAGS file.                      ##
+##                                                                            ##
+## This TAGS file serves the purpose to index source-code definitions of      ##
+## functions, variables and any other interesting syntactic feature of this   ##
+## {? project type ?}.  This is a tag file for Emacs or vi.                   ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

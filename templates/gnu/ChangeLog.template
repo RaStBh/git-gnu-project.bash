@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,11 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} ChangeLog file - list of        ##
-## descriptions of all the changes made to source files of the programs /     ## 
-## libraries / documentations / package and maintainers are interested in.    ##
+## {? organisation name ?} {? project name ?} ChangeLog file.                 ##
+##                                                                            ##
+## This ChangeLog file serves the purpose to list the descriptions of all the ##
+## changes made to the source files of this {? project type ?} the            ##
+## maintainers and contributors are interested in.                            ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

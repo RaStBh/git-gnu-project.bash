@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,11 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} TODO file - list of features    ##
-## and bugs of the programs / libraries / documentations / package currently  ##
-## worked on.                                                                 ##
+## {? organisation name ?} {? project name ?} TODO file.                      ##
+##                                                                            ##
+## This TODO file serves the purpose to list the features of this             ##
+## {? project type ?} and to contain descriptions of all functionality for    ##
+## this {? project type ?} currently worked on.                               ##                                                  ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

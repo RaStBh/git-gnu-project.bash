@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} MANIFEST file - list of         ##
-## directories and files in the distribution of the programs / libraries /    ##
-## documentations / package.                                                  ##
+## {? organisation name ?} {? project name ?} MANIFEST file.                  ##
+##                                                                            ##
+## This MANIFEST file serves the purpose to list all directories and files in ##
+## the distribution release of this {? project type ?}.                       ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

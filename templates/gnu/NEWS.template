@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,12 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} NEWS file - list of             ##
-## user-visible changes to the programs / libraries / documentations /        ##
-## package worth mentioning and users are interested in.                      ##
+## {? organisation name ?} {? project name ?} NEWS file.                      ##
+##                                                                            ##
+## This NEWS file serves the purpose to list the user-visible changes to this ##
+## {? project type ?} worth mentioning the users are interested in.  The      ##
+## distribution release version and the distribution release date of this     ##
+## {? project type ?} goes her.                                               ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

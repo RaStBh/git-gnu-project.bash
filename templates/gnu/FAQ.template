@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,8 +17,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} FAQ file - list of frequently   ##
-## asked questions about the programs / libraries / documentations / package. ##
+## {? organisation name ?} {? project name ?} FAQ file.                       ##
+##                                                                            ##
+## This FAQ file serves the purpose to list the frequently asked questions    ##
+## about this {? project type ?}.                                             ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

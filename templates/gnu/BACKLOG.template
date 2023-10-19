@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,11 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} BACKLOG file - features list of ##
-## all functionality of the programs / libraries / documentations / package   ##
-## desired in the future.                                                     ##
+## {? organisation name ?} {? project name ?} BACKLOG file.                   ##
+##                                                                            ##
+## This BACKLOG file serves the purpose to list the features of this          ##
+## {? project type ?} and to contain descriptions of all functionality for    ##
+## this {? project type ?} desired in the future.                             ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

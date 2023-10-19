@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} INSTALL file - information on   ##
-## how to configure, build, test and install the programs / libraries /       ##
-## documentations / package.                                                  ##
+## {? organisation name ?} {? project name ?} INSTALL file.                   ##
+##                                                                            ##
+## This README file serves the purpose to give instructions on how to         ##
+## configure, build, test and install this {? project type ?}.                ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

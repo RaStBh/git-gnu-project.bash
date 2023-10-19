@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,9 +17,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} README file - general overview  ##
-## of the programs / libraries / documentations / package and pointers to     ##
-## further resources.                                                         ##
+## {? organisation name ?} {? project name ?} README file.                    ##
+##                                                                            ##
+## This README file serves the purpose to give a general overview about this  ##
+## {? project type ?} and pointers to further resources.                      ##                                                      ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

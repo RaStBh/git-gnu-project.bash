@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,10 +17,11 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} VENDORS file - credits to the   ##
-## authors of other programs / libraries / documentations / package           ##
-## (third-party contributions to this programs / libraries / documentations / ##
-## package).                                                                  ##
+## {? organisation name ?} {? project name ?} VENDORS file.                   ##
+##                                                                            ##
+## This VENDORS file serves the purpose to give credit to the vendors of      ##
+## contributed {? project type ?} to this {? project type ?} and to describe  ##
+## their contributions to this {? project type ?}.                            ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

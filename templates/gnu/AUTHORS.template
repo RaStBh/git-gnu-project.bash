@@ -2,11 +2,10 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the {? organisation name ?} {? project name ?} {?     ##
-## project type ?}.                                                           ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} - {? project description short  ##
-## ?}.                                                                        ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
 ## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
@@ -18,10 +17,11 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## {? organisation name ?} {? project name ?} AUTHORS file - credits to the   ##
-## authors of this programs / libraries / documentations / package            ##
-## (first-party contributions to this programs / libraries / documentations / ##
-## package).                                                                  ##
+## {? organisation name ?} {? project name ?} AUTHORS file.                   ##
+##                                                                            ##
+## This AUTHORS file serves the purpose to give credit to the authors of this ##
+## {? project type ?} and to describe their contributions to this             ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

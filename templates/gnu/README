@@ -40,37 +40,39 @@ Banner, badges and emblems:
 
 ================================================================================
 
-Name of the programs / libraries / documentations / package:
+## The Name of this {? package type ?}:                                       ##
 
 {? organisation name ?} {? project name ?} {? project type ?}
 
 ================================================================================
 
-Short description of the programs / libraries / documentations / package:
+## The short description of this {? package type ?}:                          ##
 
-{? project description short ?}
+{? project brief ?}
 
 ================================================================================
 
-Version of the programs / libraries / documentations / package latest release:
+## The distribution release version of this {? package type ?}:               ##
 
 {? project release version ?}
 
 ================================================================================
 
-Date of the programs / libraries / documentations / package latest release:
+## The distribution date of this {? package type ?}:                          ##
 
 {? project release date ?}
 
 ================================================================================
 
-Copyright notice(s) of the programs / libraries / documentations / package:
+## The copyright notices of all programs, libraries and documentations of     ##
+## this {? package type ?}:                                                   ##
 
-{? copyright notice ?}
+{? copyright notices?}
 
 ================================================================================
 
-License notice(s) of the programs / libraries / documentations / package:
+## The License notices of all programs, libraries and documentations of this  ##
+##{? package type ?}:                                                         ##
 
 {? copyright notice ?}
 
@@ -105,24 +107,25 @@ Contents
  0 Description
 --------------------------------------------------------------------------------
 
-Long description of the programs / libraries / documentations / package
-(including: (*) names of all programs / libraries and description what they are
-for; (*) titles of all documentations and description what they are about; (*)
-prerequisites, requirements and dependencies for installation for all programs /
-libraries / documentations; (*) documentations (or pointer to documentations) of
-all programs / libraries; (*) pointers to further resources like website and
-repository):
+## Long description of all programs, libraries and documentations of this     ##
+## {? package type ?} (including: (*) names of all programs and libraries and ##
+## a description what they are for; (*) titles of all documentations and a    ##
+## description what they are about; (*) prerequisites, requirements and       ##
+## dependencies for installation for all programs, libraries and              ##
+## documentations; (*) documentations or pointer to documentations of all     ##
+## programs and libraries; (*) pointers to further resources like website,    ##
+## wiki, mailing list and repository).                                        ##
 
-{? project description long ?}
+{? project details ?}
 
 ================================================================================
 
  1 AUTHORS
 --------------------------------------------------------------------------------
 
-Credits to the authors of this programs / libraries / documentations / package
-(first-party contributions to this programs / libraries / documentations /
-package).
+## This AUTHORS section serves the purpose to give credit to the authors of   ##
+## this {? project type ?} and to describe their contributions to this        ##
+## {? project type ?}.                                                        ##
 
 Authors:
 
@@ -133,8 +136,9 @@ See AUTHORS file if present.
  2 BACKLOG
 --------------------------------------------------------------------------------
 
-List of all functionality of the programs / libraries / documentations / package
-desired in the future:
+## This BACKLOG section serves the purpose to list the features of this       ##
+## {? project type ?} and to contain descriptions of all functionality for    ##
+## this {? project type ?} desired in the future.                             ##
 
 See BACKLOG file if present.
 
@@ -143,8 +147,8 @@ See BACKLOG file if present.
  3 BUGS
 --------------------------------------------------------------------------------
 
-List of known bugs of the programs / libraries / documentations / package and
-instructions on reporting new ones:
+## This BUGS section serves the purpose to list the know bugs (errors) of     ##
+## this {? project type ?} and to give instructions on reporting new bugs.    ##
 
 See BUGS file if present.
 
@@ -153,8 +157,8 @@ See BUGS file if present.
  4 CONTRIBUTING
 --------------------------------------------------------------------------------
 
-Information on how to contribute to the programs / libraries / documentations /
-package:
+## This README section serves the purpose to give instructions on how to      ##
+## contribute to this {? project type ?}.                                     ##  
 
 See CONTRIBUTING file if present.
 
@@ -163,7 +167,7 @@ See CONTRIBUTING file if present.
  5 COPYING
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the programs
+## Terms and conditions for copying, distribution and modification of the programs
 / libraries / documentations / package:
 
 See COPYING file if present.

@@ -161,8 +161,8 @@ See BUGS file if present.
  4 CONTRIBUTING
 --------------------------------------------------------------------------------
 
-## This README section serves the purpose to give instructions on how to      ##
-## contribute to this {? project type ?}.                                     ## 
+## This CONTRIBUTING section serves the purpose to give instructions on how to ##
+## contribute to this {? project type ?}.                                      ## 
 
 See CONTRIBUTING file if present.
 
@@ -224,8 +224,8 @@ See COPYING.PRG file if present.
  9 ChangeLog
 --------------------------------------------------------------------------------
 
-## This ChangeLog file serves the purpose to list the descriptions of all the ##
-## changes made to the source files of this {? project type ?} the            ##
+## This ChangeLog section serves the purpose to list the descriptions of all  ##
+## the changes made to the source files of this {? project type ?} the        ##
 ## maintainers and contributors are interested in.                            ##
 
 See ChangeLog file if present.
@@ -235,8 +235,8 @@ See ChangeLog file if present.
 10 FAQ
 --------------------------------------------------------------------------------
 
-List of frequently asked questions about the programs / libraries /
-documentations / package:
+## This FAQ section serves the purpose to list the frequently asked questions ##
+## about this {? project type ?}.                                             ##
 
 See FAQ file if present.
 
@@ -245,8 +245,8 @@ See FAQ file if present.
 11 INSTALL
 --------------------------------------------------------------------------------
 
-Information on how to configure, build, test and install the programs /
-libraries / documentations / package:
+## This INSTALL section serves the purpose to give instructions on how to     ##
+## configure, build, test and install this {? project type ?}.                ##
 
 See INSTALL file if present.
 

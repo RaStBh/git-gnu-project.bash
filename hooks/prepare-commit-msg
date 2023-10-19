@@ -2,12 +2,12 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## This file is part of the RaSt git-gnu-project package.                     ##
+## This file is part of the {? organisation name ?} {? project name ?}        ##
+## {? project type ?}.                                                        ##
 ##                                                                            ##
-## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
-## local directory.                                                           ##
+## {? organisation name ?} {? project name ?} - {? project brief ?}.          ##
 ##                                                                            ##
-## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
+## Copyright (C)  {? copyright years ?}  {? copyright owners ?}               ##
 ##                                                                            ##
 ## GNU All-Permissive License: Copying and distribution of this file, with or ##
 ## without modification, are permitted in any medium without royalty provided ##
@@ -17,7 +17,7 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## RaSt git-gnu-project prepare-commit-msg hook file.                         ##
+## {? organisation name ?} {? project name ?} prepare-commit-msg hook file.   ##
 ##                                                                            ##
 ## This hook is invoked by git-commit.                                        ##
 ##                                                                            ##

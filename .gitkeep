@@ -19,8 +19,9 @@
 ##                                                                            ##
 ## RaSt git-gnu-project .gitkeep file.                                        ##
 ##                                                                            ##
-## A .gitkeep file serves the purpose that Git tracks the directory where     ##
-## such a file is in even if the directory does not contain any files.        ##
+## This .gitkeep file serves the purpose to instruct Git to track this        ##
+## directory where this file is in even if this directory does not contain    ##
+## any files.                                                                 ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

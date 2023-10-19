@@ -19,8 +19,8 @@
 ##                                                                            ##
 ## RaSt git-gnu-project .gitignore file.                                      ##
 ##                                                                            ##
-## A .gitignore file serves the purpose that Git untracks the files listed    ##
-## therein in and below the directory where such a file is in.                ##
+## This .gitignore file serves the purpose to instruct Git to untrack the     ##
+## files listed therein in and below the directory where this file is in.     ##
 ##                                                                            ##
 ################################################################################
 ################################################################################

@@ -17,8 +17,8 @@
 ################################################################################
 ################################################################################
 ##                                                                            ##
-## RaSt git-gnu-project README file - general overview of the programs /      ##
-## libraries / documentations / package and pointers to further resources.    ##
+## This README file serves the purpose to give a general overview about this  ##
+## package and pointers to further resources.                                 ##
 ##                                                                            ##
 ################################################################################
 ################################################################################
@@ -44,72 +44,16 @@ Banner, badges and emblems:
 
 ================================================================================
 
-Name of the programs / libraries / documentations / package:
+## The Name of this {? package type ?}:                                       ##
 
 RaSt git-gnu-project package
 
 ================================================================================
 
-Short description of the programs / libraries / documentations / package:
+## The short description of this {? package type ?}:                          ##
 
 With the RaSt git-gnu-project you can create a Git repository and a GNU project
 tree in a local directory.
-
-================================================================================
-
-Version of the programs / libraries / documentations / package latest release:
-
-1.0.0
-
-================================================================================
-
-Date of the programs / libraries / documentations / package latest release:
-
-2023-09-18 14:17:21 +00:00:00
-
-================================================================================
-
-Copyright notice(s) of the programs / libraries / documentations / package:
-
-Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>
-
-================================================================================
-
-License notice(s) of the programs / libraries / documentations / package:
-
-for the readme files:
-
-## GNU All-Permissive License: Copying and distribution of this file, with or ##
-## without modification, are permitted in any medium without royalty provided ##
-## the copyright notice and this notice are preserved.  This file is offered  ##
-## as-is, without any warranty.                                               ##
-
-for the documentation:
-
-## Permission is granted to copy, distribute and/or modify this document      ##
-## under the terms of the GNU Free Documentation License, Version 1.3 or      ##
-## any later version published by the Free Software Foundation; with no       ##
-## Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy ##
-## of the license is included in the section entitled "GNU Free Documentation ##
-## License".                                                                  ##
-##                                                                            ##
-## You should have received a copy of the GNU Free Documentation License      ##
-## along with this package.  If not, see <https://www.gnu.org/licenses/>.     ##
-
-for the programs / libraries:
-
-## This package is free software: you can redistribute it and/or modify it    ##
-## under the terms of the GNU General Public License as published by the Free ##
-## Software Foundation, either version 3 of the License, or (at your option)  ##
-## any later version.                                                         ##
-##                                                                            ##
-## This package is distributed in the hope that it will be useful, but        ##
-## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY ##
-## or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License   ##
-## for more details.                                                          ##
-##                                                                            ##
-## You should have received a copy of the GNU General Public License along    ##
-## with this package.  If not, see <https://www.gnu.org/licenses/>.           ##
 
 ================================================================================
 
@@ -142,42 +86,40 @@ Contents
  0 Description
 --------------------------------------------------------------------------------
 
-Long description of the programs / libraries / documentations / package
-(including: (*) names of all programs / libraries and description what they are
-for; (*) titles of all documentations and description what they are about; (*)
-prerequisites, requirements and dependencies for installation for all programs /
-libraries / documentations; (*) documentations (or pointer to documentations) of
-all programs / libraries; (*) pointers to further resources like website and
-repository):
+## Long description of all programs, libraries and documentations of this     ##
+## {? package type ?} (including: (*) names of all programs and libraries and ##
+## a description what they are for; (*) titles of all documentations and a    ##
+## description what they are about; (*) prerequisites, requirements and       ##
+## dependencies for installation for all programs, libraries and              ##
+## documentations; (*) documentations or pointer to documentations of all     ##
+## programs and libraries; (*) pointers to further resources like website,    ##
+## wiki, mailing list and repository).
 
-RaSt git-gnu-project contains one command which has two sub commands which are
-gittify and gnutify.
+With the command git-gnu-project and its subcommands gittify and gnutify
+you can create a local working directory with a local Git repository and
+a GNU style project tree with standard readme files.
 
-Using gittify you can:
+Using subcommand gittify you can:
 
-* create locally an otherwise empty Git repository;
+* create a local empty Git working directory and local local Git repository;
 
 * set global and local Git configuration settings;
-
-* set directories and files to ignore;
 
 * make an initial commit;
 
 * ...
 
-Using gnutify you can:
+Using subcommand gnutify you can:
 
-* create locally a GNU project tree for programs, libraries, documentations or a
+* create a local GNU project tree for programs, libraries, documentations or a
   package (which itself contains programs, libraries, documentations);
 
-* create locally the GNU standard readme files having your preferred copyright
-  notice and license notice;
+* create local GNU standard readme files having your preferred copyright notice
+  and license notice;
 
 * copy license files;
 
 * ...
-
-.. to start your fresh project.
 
 For further information see the documentation of git-gnu-project:
 
@@ -185,33 +127,37 @@ For further information see the documentation of git-gnu-project:
 
   info git-gnu-project
 
-Website:
+For further information see the website and repositories:
 
-Repositories:
+<https://github.com/RaStBh/git-gnu-project.git>
 
-  <https://github.com/RaStBh/git-gnu-project.git>
-  <https://gitlab.com/RaStBh/git-gnu-project.git>
+<https://gitlab.com/RaStBh/git-gnu-project.git>
 
 ================================================================================
 
  1 AUTHORS
 --------------------------------------------------------------------------------
 
-Credits to the programs / libraries / documentations / package authors:
+## This AUTHORS section serves the purpose to give credit to the authors of   ##
+## this {? project type ?} and to describe their contributions to this        ##
+## {? project type ?}.                                                        ##
+
+See AUTHORS file if present.
 
 Authors:
 
   Ralf Stephan  <me@ralf-stephan.name>
-
-See AUTHORS file if present.
 
 ================================================================================
 
  2 BACKLOG
 --------------------------------------------------------------------------------
 
-List of all functionality of the programs / libraries / documentations / package
-desired in the future:
+## This BACKLOG section serves the purpose to list the features of this       ##
+## {? project type ?} and to contain descriptions of all functionality for    ##
+## this {? project type ?} desired in the future.                             ##
+
+See BACKLOG file if present.
 
 states:
 
@@ -261,15 +207,20 @@ priorities:
 
   -->someday-->low-->medium-->high-->instantly-->
 
-See BACKLOG file if present.
+workflow:
+
+  -->+-->edit backlog file-->...-->edit readme file-->push to repositories-->+-->
+    /|\                                                                      |
+     |                                                                      \|/
+     +<----------------------------------------------------------------------+
 
 ================================================================================
 
  3 BUGS
 --------------------------------------------------------------------------------
 
-List of known bugs of the programs / libraries / documentations / package and
-instructions on reporting new ones:
+## This BUGS section serves the purpose to list the know bugs (errors) of     ##
+## this {? project type ?} and to give instructions on reporting new bugs.    ##
 
 See BUGS file if present.
 
@@ -278,8 +229,8 @@ See BUGS file if present.
  4 CONTRIBUTING
 --------------------------------------------------------------------------------
 
-Information on how to contribute to the programs / libraries / documentations /
-package:
+## This CONTRIBUTING section serves the purpose to give instructions on how to ##
+## contribute to this {? project type ?}.                                      ##
 
 See CONTRIBUTING file if present.
 
@@ -288,28 +239,98 @@ See CONTRIBUTING file if present.
  5 COPYING
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the programs
-/ libraries / documentations / package:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING file if present.
+
+for further information see:
+
+Licenses
+<https://www.gnu.org/licenses/>
+
+GNU General Public License
+<https://www.gnu.org/licenses/#GPL>
+
+GNU Lesser General Public License
+<https://www.gnu.org/licenses/#LGPL>
+
+The GNU Affero General Public License
+<https://www.gnu.org/licenses/#AGPL>
+
+GNU Free Documentation License
+<https://www.gnu.org/licenses/#FDL>
+
+GNU All-Permissive License
+<https://www.gnu.org/licenses/license-list.html#GNUAllPermissive>
+
+Verbatim Copying and Distribution
+<https://www.gnu.org/licenses/#VerbatimCopying>
 
 ================================================================================
 
  6 COPYING.DOC
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the
-documentations:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING.DOC file if present.
+
+for the standard readme files:
+
+################################################################################
+################################################################################
+##                                                                            ##
+## This file is part of the RaSt git-gnu-project package.                     ##
+##                                                                            ##
+## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
+## local directory.                                                           ##
+##                                                                            ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
+##                                                                            ##
+## GNU All-Permissive License: Copying and distribution of this file, with or ##
+## without modification, are permitted in any medium without royalty provided ##
+## the copyright notice and this notice are preserved.  This file is offered  ##
+## as-is, without any warranty.                                               ##
+##                                                                            ##
+################################################################################
+################################################################################
+
+for the documentation (manpages, manuals, references, ...)
+
+################################################################################
+################################################################################
+##                                                                            ##
+## This file is part of the RaSt git-gnu-project package.                     ##
+##                                                                            ##
+## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
+## local directory.                                                           ##
+##                                                                            ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
+##                                                                            ##
+## Permission is granted to copy, distribute and/or modify this document      ##
+## under the terms of the GNU Free Documentation License, Version 1.3 or any  ##
+## later version published by the Free Software Foundation; with the          ##
+## Invariant Sections being "Invariant Section 1" and "Invariant Section 2",  ##
+## with the Front-Cover Texts being "Front-Cover Text 1" and "Front-Cover     ##
+## Text 2", and with the Back-Cover Texts being "Back-Cover Text 1" and       ##
+## "Back-Cover Text 2".  A copy of the license is included in the section     ##
+## entitled "GNU Free Documentation License".                                 ##
+##                                                                            ##
+## You should have received a copy of the GNU Free Documentation License      ##
+## along with this package.  If not, see <https://www.gnu.org/licenses/>.     ##
+##                                                                            ##
+################################################################################
+################################################################################
 
 ================================================================================
 
  7 COPYING.LIB
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the
-libraries:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING.LIB file if present.
 
@@ -318,17 +339,47 @@ See COPYING.LIB file if present.
  8 COPYING.PRG
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the programs:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING.PRG file if present.
+
+for the scripts (bash, sed, ...):
+
+################################################################################
+################################################################################
+##                                                                            ##
+## This file is part of the RaSt git-gnu-project package.                     ##
+##                                                                            ##
+## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
+## local directory.                                                           ##
+##                                                                            ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
+##                                                                            ##
+## This package is free software: you can redistribute it and/or modify it    ##
+## under the terms of the GNU General Public License as published by the Free ##
+## Software Foundation, either version 3 of the License, or (at your option)  ##
+## any later version.                                                         ##
+##                                                                            ##
+## This package is distributed in the hope that it will be useful, but        ##
+## WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY ##
+## or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License   ##
+## for more details.                                                          ##
+##                                                                            ##
+## You should have received a copy of the GNU General Public License along    ##
+## with this package.  If not, see <https://www.gnu.org/licenses/>.           ##
+##                                                                            ##
+################################################################################
+################################################################################
 
 ================================================================================
 
  9 ChangeLog
 --------------------------------------------------------------------------------
 
-List of descriptions of all the changes made to source files of the programs /
-libraries / documentations / package and maintainers are interested in:
+## This ChangeLog section serves the purpose to list the descriptions of all  ##
+## the changes made to the source files of this {? project type ?} the        ##
+## maintainers and contributors are interested in.                            ##
 
 See ChangeLog file if present.
 
@@ -337,8 +388,8 @@ See ChangeLog file if present.
 10 FAQ
 --------------------------------------------------------------------------------
 
-List of frequently asked questions about the programs / libraries /
-documentations / package:
+## This FAQ section serves the purpose to list the frequently asked questions ##
+## about this {? project type ?}.                                             ##
 
 See FAQ file if present.
 
@@ -347,8 +398,8 @@ See FAQ file if present.
 11 INSTALL
 --------------------------------------------------------------------------------
 
-Information on how to configure, build, test and install the programs /
-libraries / documentations / package:
+## This INSTALL section serves the purpose to give instructions on how to     ##
+## configure, build, test and install this {? project type ?}.                ##
 
 See INSTALL file if present.
 
@@ -357,117 +408,59 @@ See INSTALL file if present.
 12 MANIFEST
 --------------------------------------------------------------------------------
 
-List of directories and files in the distribution of the programs / libraries /
-documentations / package:
-
-bash$ tree --gitignore --gitfile .gitignore
-
-.
-├── COPYING.DOC
-├── COPYING.PRG
-├── MANIFEST
-├── README
-├── contrib
-│   └── bash-doxygen
-│       ├── COPYING
-│       ├── README.md
-│       ├── doxygen-bash.sed
-│       └── test
-│           ├── input
-│           └── output
-├── doc
-│   ├── Doxyfile.Win64
-│   ├── Doxyfile.example
-│   ├── Doxyfile.ucrt64
-│   ├── PlantUML.cfg
-│   ├── doxygen-filter.txt
-│   └── uml_activity_diagram.txt
-├── hooks
-│   ├── applypatch-msg
-│   ├── commit-msg
-│   ├── fsmonitor-watchman
-│   ├── p4-changelist
-│   ├── p4-post-changelist
-│   ├── p4-pre-submit
-│   ├── p4-prepare-changelist
-│   ├── post-applypatch
-│   ├── post-checkout
-│   ├── post-commit
-│   ├── post-index-change
-│   ├── post-merge
-│   ├── post-receive
-│   ├── post-rewrite
-│   ├── post-update
-│   ├── pre-applypatch
-│   ├── pre-auto-gc
-│   ├── pre-commit
-│   ├── pre-push
-│   ├── pre-rebase
-│   ├── pre-receive
-│   ├── prepare-commit-msg
-│   ├── proc-receive
-│   ├── push-to-checkout
-│   ├── reference-transaction
-│   ├── sendemail-validate
-│   └── update
-├── licenses
-│   ├── cc_0_1.0.txt
-│   ├── cc_by-nc-nd_4.0.txt
-│   ├── cc_by-nc-sa_4.0.txt
-│   ├── cc_by-nc_4.0.txt
-│   ├── cc_by-nd_4.0.txt
-│   ├── cc_by-sa_4.0.txt
-│   ├── cc_by_4.0.txt
-│   ├── gnu_agpl-3.0.txt
-│   ├── gnu_apl.txt
-│   ├── gnu_fdl-1.3.txt
-│   ├── gnu_gpl-3.0.txt
-│   ├── gnu_lgpl-3.0.txt
-│   └── gnu_vcadl.txt
-├── src
-│   └── git-gnu-project.sh
-└── templates
-    ├── AUTHORS.template
-    ├── BACKLOG.template
-    ├── BUGS.template
-    ├── CONTRIBUTING.template
-    ├── COPYING.DOC.template
-    ├── COPYING.LIB.template
-    ├── COPYING.PRG.template
-    ├── COPYING.template
-    ├── ChangeLog.template
-    ├── FAQ.template
-    ├── INSTALL.template
-    ├── MANIFEST.template
-    ├── NEWS.template
-    ├── PROBLEMS.template
-    ├── README.template
-    ├── TAGS.template
-    ├── THANKS.template
-    ├── TODO.template
-    └── VENDORS.template
-
-9 directories, 79 files
+## This MANIFEST section serves the purpose to list all directories and files ##
+## in  the distribution release of this {? project type ?}.                   ##
 
 See MANIFEST file if present.
+
+bash$ tree --gitignore --gitfile .gitignore
 
 ================================================================================
 
 13 NEWS
 --------------------------------------------------------------------------------
 
-List of user-visible changes to the programs / libraries / documentations /
-package worth mentioning and users are interested in:
+## This NEWS section serves the purpose to list the user-visible changes to   ##
+## this {? project type ?} worth mentioning the users are interested in.  The ##
+## distribution release version and the distribution release date of this     ##
+## {? project type ?} goes her.                                               ##
 
 See NEWS file if present.
+
+0.0.0    2023-06-05 12:07:01 +00:00:00
+
+0.1.0    2023-06-09 10:45:34 +00:00:00
+
+0.2.0    2023-06-17 03:21:22 +00:00:00
+
+0.3.0    2023-07-05 07:32:00 +00:00:00
+
+0.4.0    2023-07-16 07:05:41 +00:00:00
+
+0.5.0    2023-07-16 07:18:27 +00:00:00
+
+0.6.0    2023-07-16 07:36:25 +00:00:00
+
+0.7.0    2023-07-16 10:01:34 +00:00:00
+
+0.8.0    2023-07-19 12:15:37 +00:00:00
+
+0.9.0    2023-07-24 08:33:20 +00:00:00
+
+0.10.0   2023-08-08 07:47:02 +00:00:00
+
+0.11.0   2023-09-12 06:47:04 +00:00:00
+
+0.12.0
 
 ================================================================================
 
 14 PROBLEMS
 --------------------------------------------------------------------------------
 
-List of known problems of the programs / libraries / documentations / package
-and instructions on reporting new ones:
+## This PROBLEMS section serves the purpose to list the know problems         ##
+## (warnings) of this {? project type ?} and to give instructions on          ##
+## reporting new ones.                                                        ##
 
 See PROBLEMS file if present.
 
@@ -476,8 +469,8 @@ See PROBLEMS file if present.
 15 README
 --------------------------------------------------------------------------------
 
-General overview of the programs / libraries / documentations / package and
-pointers to further resources:
+## This README section serves the purpose to give a general overview about    ##
+## this {? project type ?} and pointers to further resources.                 ##
 
 See README file if present.
 
@@ -486,9 +479,9 @@ See README file if present.
 16 TAGS
 --------------------------------------------------------------------------------
 
-Index to source-code definitions of functions, variables, and any other
-interesting syntactic features of the programs / libraries / documentations /
-package:
+## This TAGS section serves the purpose to index source-code definitions of   ##
+## functions, variables and any other interesting syntactic feature of this   ##
+## {? project type ?}.  This is a tag section for Emacs or vi.                ##
 
 See TAGS file if present.
 
@@ -497,8 +490,11 @@ See TAGS file if present.
 17 THANKS
 --------------------------------------------------------------------------------
 
-Acknowledgements to the programs / libraries / documentations / package
-maintainers and contributors:
+## This THANKS section serves the purpose to give credit to the maintainers   ##
+## and contributors of this {? project type ?} and to describe their          ##
+## contributions to this {? project type ?}.                                  ##
+
+See THANKS file if present.
 
 Maintainers:
 
@@ -508,15 +504,14 @@ Contributors:
 
   Ralf Stephan  <me@ralf-stephan.name>
 
-See THANKS file if present.
-
 ================================================================================
 
 18 TODO
 --------------------------------------------------------------------------------
 
-List of features and bugs of the programs / libraries / documentations / package
-currently worked on:
+## This TODO section serves the purpose to list the features of this          ##
+## {? project type ?} and to contain descriptions of all functionality for    ##
+## this {? project type ?} currently worked on.                               ##
 
 See TODO file if present.
 
@@ -525,20 +520,23 @@ See TODO file if present.
 19 VENDORS
 --------------------------------------------------------------------------------
 
-Credits to the authors of other programs / libraries / documentations / package
-(third-party contributions to this programs / libraries / documentations /
-package).
+## This VENDORS section serves the purpose to give credit to the vendors of   ##
+## contributed {? project type ?} to this {? project type ?} and to describe  ##
+## their contributions to this {? project type ?}.                            ##
 
-This programs / libraries / documentations / package contain(s), use(s) and
-redistribute(s) programs / libraries / documentations / packages who are written
-and owned by others. It is / they are released under their respective copyright
-and license. We want to thank the contributors of these projects.
+See VENDORS file if present.
 
-* bash-doxygen (94094df on Feb 25, 2019) <https://github.com/Anvil/bash-doxygen>
+This package contains, uses and redistributes programs, libraries and
+documentations who are written and owned by others.  They are released under
+their respective copyright and license.  We want to thank the contributors of
+these projects.
+
+* bash-doxygen (94094df on Feb 25, 2019)
+  <https://github.com/Anvil/bash-doxygen>
 
   Damien Nadé <github@livna.org>
 
   For terms and conditions for copying, distribution and modification see
   <contrib\bash-doxygen\README.md> and <contrib\bash-doxygen\COPYING>.
 
-See VENDORS file if present.
+================================================================================

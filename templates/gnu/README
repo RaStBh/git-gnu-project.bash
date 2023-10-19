@@ -127,9 +127,9 @@ Contents
 ## this {? project type ?} and to describe their contributions to this        ##
 ## {? project type ?}.                                                        ##
 
-Authors:
-
 See AUTHORS file if present.
+
+{? authors ?}
 
 ================================================================================
 
@@ -142,6 +142,8 @@ See AUTHORS file if present.
 
 See BACKLOG file if present.
 
+{? backlog ?}
+
 ================================================================================
 
  3 BUGS
@@ -152,62 +154,79 @@ See BACKLOG file if present.
 
 See BUGS file if present.
 
+{? bugs ?}
+
 ================================================================================
 
  4 CONTRIBUTING
 --------------------------------------------------------------------------------
 
 ## This README section serves the purpose to give instructions on how to      ##
-## contribute to this {? project type ?}.                                     ##  
+## contribute to this {? project type ?}.                                     ## 
 
 See CONTRIBUTING file if present.
+
+{? contributing ?}
 
 ================================================================================
 
  5 COPYING
 --------------------------------------------------------------------------------
 
-## Terms and conditions for copying, distribution and modification of the programs
-/ libraries / documentations / package:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING file if present.
+
+{? copying ?}
 
 ================================================================================
 
  6 COPYING.DOC
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the
-documentations:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING.DOC file if present.
+
+{? copying doc ?}
+
 
 ================================================================================
 
  7 COPYING.LIB
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the
-libraries:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING.LIB file if present.
+
+{? copying LIB ?}
+
 
 ================================================================================
 
  8 COPYING.PRG
 --------------------------------------------------------------------------------
 
-Terms and conditions for copying, distribution and modification of the programs:
+## Terms and conditions for copying, distribution and modification of this    ##
+## {? project type ?}.                                                        ##
 
 See COPYING.PRG file if present.
+
+{? copying prg ?}
+
 
 ================================================================================
 
  9 ChangeLog
 --------------------------------------------------------------------------------
 
-List of descriptions of all the changes made to source files of the programs /
-libraries / documentations / package and maintainers are interested in:
+## This ChangeLog file serves the purpose to list the descriptions of all the ##
+## changes made to the source files of this {? project type ?} the            ##
+## maintainers and contributors are interested in.                            ##
 
 See ChangeLog file if present.
 

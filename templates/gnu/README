@@ -52,32 +52,6 @@ Banner, badges and emblems:
 
 ================================================================================
 
-## The distribution release version of this {? package type ?}:               ##
-
-{? project release version ?}
-
-================================================================================
-
-## The distribution date of this {? package type ?}:                          ##
-
-{? project release date ?}
-
-================================================================================
-
-## The copyright notices of all programs, libraries and documentations of     ##
-## this {? package type ?}:                                                   ##
-
-{? copyright notices?}
-
-================================================================================
-
-## The License notices of all programs, libraries and documentations of this  ##
-##{? package type ?}:                                                         ##
-
-{? copyright notice ?}
-
-================================================================================
-
 Contents
 --------------------------------------------------------------------------------
 

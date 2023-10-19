@@ -162,7 +162,7 @@ See BUGS file if present.
 --------------------------------------------------------------------------------
 
 ## This CONTRIBUTING section serves the purpose to give instructions on how to ##
-## contribute to this {? project type ?}.                                      ## 
+## contribute to this {? project type ?}.                                      ##
 
 See CONTRIBUTING file if present.
 
@@ -192,7 +192,6 @@ See COPYING.DOC file if present.
 
 {? copying doc ?}
 
-
 ================================================================================
 
  7 COPYING.LIB
@@ -204,7 +203,6 @@ See COPYING.DOC file if present.
 See COPYING.LIB file if present.
 
 {? copying LIB ?}
-
 
 ================================================================================
 
@@ -218,7 +216,6 @@ See COPYING.PRG file if present.
 
 {? copying prg ?}
 
-
 ================================================================================
 
  9 ChangeLog
@@ -230,6 +227,8 @@ See COPYING.PRG file if present.
 
 See ChangeLog file if present.
 
+{? changelog ?}
+
 ================================================================================
 
 10 FAQ
@@ -239,6 +238,8 @@ See ChangeLog file if present.
 ## about this {? project type ?}.                                             ##
 
 See FAQ file if present.
+
+{? faq ?}
 
 ================================================================================
 
@@ -250,89 +251,109 @@ See FAQ file if present.
 
 See INSTALL file if present.
 
+{? install ?}
+
 ================================================================================
 
 12 MANIFEST
 --------------------------------------------------------------------------------
 
-List of directories and files in the distribution of the programs / libraries /
-documentations / package:
+## This MANIFEST section serves the purpose to list all directories and files ##
+## in  the distribution release of this {? project type ?}.                   ##
 
 See MANIFEST file if present.
+
+{? manifest ?}
 
 ================================================================================
 
 13 NEWS
 --------------------------------------------------------------------------------
 
-List of user-visible changes to the programs / libraries / documentations /
-package worth mentioning and users are interested in:
+## This NEWS section serves the purpose to list the user-visible changes to   ##
+## this {? project type ?} worth mentioning the users are interested in.  The ##
+## distribution release version and the distribution release date of this     ##
+## {? project type ?} goes her.                                               ##
 
 See NEWS file if present.
+
+{? news ?}
 
 ================================================================================
 
 14 PROBLEMS
 --------------------------------------------------------------------------------
 
-List of known problems of the programs / libraries / documentations / package
-and instructions on reporting new ones:
+## This PROBLEMS section serves the purpose to list the know problems         ##
+## (warnings) of this {? project type ?} and to give instructions on          ##
+## reporting new ones.                                                        ##
 
 See PROBLEMS file if present.
+
+{? problems ?}
 
 ================================================================================
 
 15 README
 --------------------------------------------------------------------------------
 
-General overview of the programs / libraries / documentations / package and
-pointers to further resources:
+## This README section serves the purpose to give a general overview about    ##
+## this {? project type ?} and pointers to further resources.                 ##
 
 See README file if present.
+
+{? readme ?}
 
 ================================================================================
 
 16 TAGS
 --------------------------------------------------------------------------------
 
-Index to source-code definitions of functions, variables, and any other
-interesting syntactic features of the programs / libraries / documentations /
-package:
+## This TAGS section serves the purpose to index source-code definitions of   ##
+## functions, variables and any other interesting syntactic feature of this   ##
+## {? project type ?}.  This is a tag section for Emacs or vi.                ##
 
 See TAGS file if present.
+
+{? tags ?}
 
 ================================================================================
 
 17 THANKS
 --------------------------------------------------------------------------------
 
-Acknowledgements to the contributors and maintainers of this programs /
-libraries / documentations / package  (second-party contributions to this
-programs / libraries / documentations / package).
-
-Maintainers:
-
-Contributors:
+## This THANKS section serves the purpose to give credit to the maintainers   ##
+## and contributors of this {? project type ?} and to describe their          ##
+## contributions to this {? project type ?}.                                  ##
 
 See THANKS file if present.
+
+{? thanks ?}
 
 ================================================================================
 
 18 TODO
 --------------------------------------------------------------------------------
 
-List of features and bugs of the programs / libraries / documentations / package
-currently worked on:
+## This TODO section serves the purpose to list the features of this          ##
+## {? project type ?} and to contain descriptions of all functionality for    ##
+## this {? project type ?} currently worked on.                               ##
 
 See TODO file if present.
+
+{? todo ?}
 
 ================================================================================
 
 19 VENDORS
 --------------------------------------------------------------------------------
 
-Credits to the authors of other programs / libraries / documentations / package
-(third-party contributions to this programs / libraries / documentations /
-package).
+## This VENDORS section serves the purpose to give credit to the vendors of   ##
+## contributed {? project type ?} to this {? project type ?} and to describe  ##
+## their contributions to this {? project type ?}.                            ##
 
-See VENDORS file if present.
+See VENDORS file if present..
+
+{? vendors ?}
+
+================================================================================

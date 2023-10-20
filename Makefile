@@ -639,7 +639,7 @@ TAGS:
 
 ## check
 ##
-##   Perform self tests on the program this makefile builds.
+##   (check and test) Perform self tests on the program this makefile builds.
 
 check:
   @echo "Target 'check': This target has not yet been implemented.";

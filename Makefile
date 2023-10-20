@@ -37,7 +37,7 @@
 ##   command line (see Arguments to Specify the Goals).  The .DEFAULT_GOAL
 ##   variable allows you to discover the current default goal, restart the
 ##   default goal selection algorithm by clearing its value, or to explicitly
-##   set the default goal. The following example illustrates these cases:
+##   set the default goal.  The following example illustrates these cases:
 ##
 ##     # Query the default goal.
 ##     ifeq ($(.DEFAULT_GOAL),)
@@ -203,9 +203,9 @@ datadir = ${datarootdir}
 ##   are using Autoconf, write it as '@sysconfdir@'.)
 ##
 ##   Do not install executables here in this directory (they probably belong in
-##   $(libexecdir) or $(sbindir)). Also do not install files that are modified
+##   $(libexecdir) or $(sbindir)).  Also do not install files that are modified
 ##   in the normal course of their use (programs whose purpose is to change the
-##   configuration of the system excluded). Those probably belong in
+##   configuration of the system excluded).  Those probably belong in
 ##   $(localstatedir).
 
 sysconfdir = ${prefix}/etc
@@ -225,7 +225,7 @@ sharedstatedir = ${prefix}/com
 ##   they run, and that pertain to one specific machine.  Users should never
 ##   need to modify files in this directory to configure the package's
 ##   operation; put such configuration information in separate files that go in
-##   $(datadir) or $(sysconfdir). $(localstatedir) should normally be
+##   $(datadir) or $(sysconfdir).  $(localstatedir) should normally be
 ##   /usr/local/var, but write it as $(prefix)/var.  (If you are using Autoconf,
 ##   write it as '@localstatedir@'.)
 

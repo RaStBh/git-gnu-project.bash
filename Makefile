@@ -704,3 +704,14 @@ test: _debug
 
 
 ## Add additional targets here.
+
+## Generate documentation.
+
+.PHONY: doc
+doc:
+## Show that target has been started.
+  @echo "Started target 'doc'. ...";
+## Generate Doxygen documentation.
+  doxygen ./doc/Doxyfile.ucrt64
+## Show that target has been finished.
+  @echo "... Target 'doc' finished.";

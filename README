@@ -165,61 +165,6 @@ Authors:
 
 See BACKLOG file if present.
 
-states:
-
-     +<---------------------------------------------------------------------------------------------------additing<--+
-     |                                                                                                               |
-     |               +<---------------------------------------------------------------improving<--+                  |
-     |               |                                                                           /|\                 |
-    \|/             \|/                                                                           |                  |
-  -->+-->scheduled-->+-->improving--------------------------------------------------------------->+-->accomplished-->+-->
-     |               |                                                                           /|\                /|\
-     |               |             +<-----------------------------------progress<--+              |                  |
-     |               |             |                                              /|\             |                  |
-     |              \|/           \|/                                              |              |                  |
-     |               +-->started-->+-->progress----------------------------------->+-->finished-->+                  |
-     |               |             |                                              /|\             |                  |
-     |               |             |                 +<--pending<--+               |              |                  |
-     |               |             |                 |            /|\              |              |                  |
-     |               |            \|/               \|/            |               |              |                  |
-     |               |             +-->interrupted-->+-->pending-->+-->continued-->+              |                  |
-     |               |             |                 |             |               |              |                  |
-     |              \|/           \|/               \|/           \|/             \|/            \|/                 |
-     +-------------->+------------>+---------------->+------------>+-------------->+------------->+----------------->+
-                                                                                                                     |
-                                                                                                                    \|/
-                                                                                                                 discarded
-                                                                                                                     |
-                                                                                                                    \|/
-
-  scheduled    : is planned
-
-  started      : is started
-  progress     : is being processed
-  finished     : is finished
-
-  interrupted  : is interrupted
-  pending      : is waiting
-  continued    : is continued
-
-  accomplished : is completed
-
-  discarded    : is discarded
-
-  improving    : rework existing stuff
-  additing     : add new stuff
-
-priorities:
-
-  -->someday-->tiny-->low-->medium-->high-->huge-->instantly-->
-
-workflow:
-
-  -->+-->edit backlog file-->...-->edit readme file-->push to repositories-->+-->
-    /|\                                                                      |
-     |                                                                      \|/
-     +<----------------------------------------------------------------------+
-
 ================================================================================
 
  3 BUGS

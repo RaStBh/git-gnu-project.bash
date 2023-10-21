@@ -1,3 +1,36 @@
+
+################################################################################
+################################################################################
+##                                                                            ##
+## This file is part of the RaSt git-gnu-project package.                     ##
+##                                                                            ##
+## RaSt git-gnu-project - create a local working directory with a local Git   ##
+## repository and within this a local GNU project containing predefined       ##
+## directories and standard readme files.                                     ##
+##                                                                            ##
+## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
+##                                                                            ##
+## GNU All-Permissive License: Copying and distribution of this file, with or ##
+## without modification, are permitted in any medium without royalty provided ##
+## the copyright notice and this notice are preserved.  This file is offered  ##
+## as-is, without any warranty.                                               ##
+##                                                                            ##
+################################################################################
+################################################################################
+##                                                                            ##
+## RaSt git-gnu-project Doxyfile.Win64 file.                                  ##
+##                                                                            ##
+## This Doxyfile.Win64 file serves the purpose to configure Doxygen and the   ##
+## documentation for this package.  This filel is for usage on MS-Windows.    ##                                                                   ## 
+##                                                                            ##
+################################################################################
+################################################################################
+##                                                                            ##
+################################################################################
+################################################################################
+
+
+
 # Doxyfile 1.9.8
 
 # This file describes the settings to be used by the documentation system
@@ -42,7 +75,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "RaSt git-gnu-project package"
+PROJECT_NAME           = "RaSt git-gnu-project - create a local working directory with a local Git repository and within this a local GNU project containing predefined directories and standard readme files."
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version

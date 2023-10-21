@@ -32,7 +32,7 @@
 
 ## Name of the package
 
-PACKAGE_NAME = git-gnu-project
+PACKAGE_NAME := git-gnu-project
 
 ## The directory from where make is called.
 
@@ -80,7 +80,7 @@ ROOT_DIRECTORY := $(realpath $(shell dirname $(realpath $(firstword $(MAKEFILE_L
 ##     # Set our own.
 ##     .DEFAULT_GOAL := foo
 
-.DEFAULT_GOAL = all
+.DEFAULT_GOAL := all
 
 ## .RECIPEPREFIX
 ##
@@ -89,7 +89,7 @@ ROOT_DIRECTORY := $(realpath $(shell dirname $(realpath $(firstword $(MAKEFILE_L
 ##   is by default) that character is the standard tab character.  For example,
 ##   this is a valid makefile:
 ##
-##     .RECIPEPREFIX = >
+##     .RECIPEPREFIX := >
 ##     all:
 ##     > @echo Hello, world
 ##
@@ -117,7 +117,7 @@ ROOT_DIRECTORY := $(realpath $(shell dirname $(realpath $(firstword $(MAKEFILE_L
 ##   Running 'make install' with a different value of prefix from the one used
 ##   to build the program should not recompile the program.
 
-prefix = /usr/local
+prefix := /usr/local
 
 ## exec_prefix
 ##
@@ -132,7 +132,7 @@ prefix = /usr/local
 ##   Running 'make install' with a different value of exec_prefix from the one
 ##   used to build the program should not recompile the program.
 
-exec_prefix = ${prefix}
+exec_prefix := ${prefix}
 
 ## Executable programs are installed in one of the following directories.
 
@@ -142,7 +142,7 @@ exec_prefix = ${prefix}
 ##   should normally be /usr/local/bin, but write it as $(exec_prefix)/bin.
 ##   (If you are using Autoconf, write it as '@bindir@'.)
 
-bindir = ${exec_prefix}/bin
+bindir := ${exec_prefix}/bin
 
 ## sbindir
 ##
@@ -151,7 +151,7 @@ bindir = ${exec_prefix}/bin
 ##   normally be /usr/local/sbin, but write it as $(exec_prefix)/sbin.
 ##   (If you are using Autoconf, write it as '@sbindir@'.)
 
-sbindir = ${exec_prefix}/sbin
+sbindir := ${exec_prefix}/sbin
 
 ## libexecdir
 ##
@@ -165,7 +165,7 @@ sbindir = ${exec_prefix}/sbin
 ##   data under $(libexecdir)/package-name/, possibly within additional
 ##   subdirectories thereof, such as $(libexecdir)/package-name/machine/version.
 
-libexecdir = ${exec_prefix}/libexec
+libexecdir := ${exec_prefix}/libexec
 
 ## Data files used by the program during its execution are divided into
 ## categories in two ways.
@@ -194,7 +194,7 @@ libexecdir = ${exec_prefix}/libexec
 ##   'datadir''s default value is based on this variable; so are 'infodir',
 ##   'mandir', and others.
 
-datarootdir = ${prefix}/share
+datarootdir := ${prefix}/share
 
 ## datadir
 ##
@@ -211,7 +211,7 @@ datarootdir = ${prefix}/share
 ##   install your data in a subdirectory thereof.  Most packages install their
 ##   data under $(datadir)/package-name/.
 
-datadir = ${datarootdir}
+datadir := ${datarootdir}
 
 ## sysconfdir
 ##
@@ -228,7 +228,7 @@ datadir = ${datarootdir}
 ##   configuration of the system excluded).  Those probably belong in
 ##   $(localstatedir).
 
-sysconfdir = ${prefix}/etc
+sysconfdir := ${prefix}/etc
 
 ## sharedstatedir
 ##
@@ -237,7 +237,7 @@ sysconfdir = ${prefix}/etc
 ##   but write it as $(prefix)/com.  (If you are using Autoconf, write it as
 ##   '@sharedstatedir@'.)
 
-sharedstatedir = ${prefix}/com
+sharedstatedir := ${prefix}/com
 
 ## localstatedir
 ##
@@ -249,7 +249,7 @@ sharedstatedir = ${prefix}/com
 ##   /usr/local/var, but write it as $(prefix)/var.  (If you are using Autoconf,
 ##   write it as '@localstatedir@'.)
 
-localstatedir = ${prefix}/var
+localstatedir := ${prefix}/var
 
 ## runstatedir
 ##
@@ -263,7 +263,7 @@ localstatedir = ${prefix}/var
 ##   it as a separate variable allows the use of /run if desired, for example.
 ##   (If you are using Autoconf 2.70 or later, write it as '@runstatedir@'.)
 
-runstatedir = ${localstatedir}/run
+runstatedir := ${localstatedir}/run
 
 ## These variables specify the directory for installing certain specific types
 ## of files, if your program has them.  Every GNU package should have Info
@@ -284,7 +284,7 @@ runstatedir = ${localstatedir}/run
 ##   with other compilers.  They should install their header files in two
 ##   places, one specified by includedir and one specified by oldincludedir.
 
-includedir = ${prefix}/include
+includedir := ${prefix}/include
 
 ## oldincludedir
 ##
@@ -305,7 +305,7 @@ includedir = ${prefix}/include
 ##   To tell whether foo.h came from the Foo package, put a magic string in the
 ##   file-part of a comment-and grep for that string.
 
-oldincludedir = /usr/include
+oldincludedir := /usr/include
 
 ## docdir
 ##
@@ -316,7 +316,7 @@ oldincludedir = /usr/include
 ##   include a version number, prevents collisions among files with common
 ##   names, such as README.
 
-docdir = ${datarootdir}/doc/${PACKAGE_NAME}
+docdir := ${datarootdir}/doc/${PACKAGE_NAME}
 
 ## infodir
 ##
@@ -325,7 +325,7 @@ docdir = ${datarootdir}/doc/${PACKAGE_NAME}
 ##   $(datarootdir)/info.  (If you are using Autoconf, write it as '@infodir@'.)
 ##   infodir is separate from docdir for compatibility with existing practice.
 
-infodir = ${datarootdir}/info
+infodir := ${datarootdir}/info
 
 ## htmldir
 ##
@@ -336,25 +336,25 @@ infodir = ${datarootdir}/info
 ##   '$(htmldir)/'ll, '$(pdfdir)/'ll, etc. where ll is a locale abbreviation
 ##   such as 'en' or 'pt_BR'.
 
-htmldir = ${docdir}
+htmldir := ${docdir}
 
 ## dvidir
 ##
 ##   See htmldir.
 
-dvidir = ${docdir}
+dvidir := ${docdir}
 
 ## dvidir
 ##
 ##   See htmldir.
 
-pdfdir = ${docdir}
+pdfdir := ${docdir}
 
 ## dvidir
 ##
 ##   See htmldir.
 
-psdir = ${docdir}
+psdir := ${docdir}
 
 ## libdir
 ##
@@ -364,7 +364,7 @@ psdir = ${docdir}
 ##   it as $(exec_prefix)/lib.  (If you are using Autoconf, write it as
 ##   '@libdir@'.)
 
-libdir = ${exec_prefix}/lib
+libdir := ${exec_prefix}/lib
 
 ## lispdir
 ##
@@ -379,7 +379,7 @@ libdir = ${exec_prefix}/lib
 ##     lispdir='${datarootdir}/emacs/site-lisp'
 ##     AC_SUBST(lispdir)
 
-lispdir = ${datarootdir}/emacs/site-lisp
+lispdir := ${datarootdir}/emacs/site-lisp
 
 ## localedir
 ##
@@ -388,7 +388,7 @@ lispdir = ${datarootdir}/emacs/site-lisp
 ##   be written as $(datarootdir)/locale.  (If you are using Autoconf, write it
 ##   as '@localedir@'.) This directory usually has a subdirectory per locale.
 
-localedir = ${datarootdir}/locale
+localedir := ${datarootdir}/locale
 
 ## Unix-style man pages are installed in one of the following:
 
@@ -403,131 +403,131 @@ localedir = ${datarootdir}/locale
 ##   Write a manual in Texinfo instead.  Man pages are just for the sake of
 ##   people running GNU software on Unix, which is a secondary application only.
 
-mandir = ${datarootdir}/man
+mandir := ${datarootdir}/man
 
 ## man1dir
 ##
 ## The directory for installing section 1 man pages.  Write it as
 ## $(mandir)/man1.
 
-man1dir = ${mandir}/man1
+man1dir := ${mandir}/man1
 
 ## man2dir
 ##
 ## The directory for installing section 2 man pages.  Write it as
 ## $(mandir)/man2.
 
-man2dir = ${mandir}/man2
+man2dir := ${mandir}/man2
 
 ## man3dir
 ##
 ## The directory for installing section 3 man pages.  Write it as
 ## $(mandir)/man3.
 
-man3dir = ${mandir}/man3
+man3dir := ${mandir}/man3
 
 ## man4dir
 ##
 ## The directory for installing section 4 man pages.  Write it as
 ## $(mandir)/man4.
 
-man4dir = ${mandir}/man4
+man4dir := ${mandir}/man4
 
 ## man5dir
 ##
 ## The directory for installing section 5 man pages.  Write it as
 ## $(mandir)/man5.
 
-man5dir = ${mandir}/man5
+man5dir := ${mandir}/man5
 
 ## man6dir
 ##
 ## The directory for installing section 6 man pages.  Write it as
 ## $(mandir)/man6.
 
-man6dir = ${mandir}/man6
+man6dir := ${mandir}/man6
 
 ## man7dir
 ##
 ## The directory for installing section 7 man pages.  Write it as
 ## $(mandir)/man7.
 
-man7dir = ${mandir}/man7
+man7dir := ${mandir}/man7
 
 ## man8dir
 ##
 ## The directory for installing section 8 man pages.  Write it as
 ## $(mandir)/man8.
 
-man8dir = ${mandir}/man8
+man8dir := ${mandir}/man8
 
 ## man9dir
 ##
 ## The directory for installing section 9 man pages.  Write it as
 ## $(mandir)/man9.
 
-man9dir = ${mandir}/man9
+man9dir := ${mandir}/man9
 
 ## manext
 ##
 ##   The file name extension for the installed man page.  This should contain a
 ##   period followed by the appropriate digit; it should normally be '.1'.
 
-manext = 1
+manext := 1
 
 ## man1ext
 ##
 ##   The file name extension for installed section 1 man pages.
 
-man1ext = 1
+man1ext := 1
 
 ## man2ext
 ##
 ##   The file name extension for installed section 2 man pages.
 
-man2ext = 2
+man2ext := 2
 
 ## man3ext
 ##
 ##   The file name extension for installed section 3 man pages.
 
-man4ext = 3
+man4ext := 3
 
 ## man1ext
 ##
 ##   The file name extension for installed section 4 man pages.
 
-man4ext = 4
+man4ext := 4
 
 ## man5ext
 ##
 ##   The file name extension for installed section 5 man pages.
 
-man5ext = 5
+man5ext := 5
 
 ## man6ext
 ##
 ##   The file name extension for installed section 6 man pages.
 
-man6ext = 6
+man6ext := 6
 
 ## man7ext
 ##
 ##   The file name extension for installed section 7 man pages.
 
-man7ext = 7
+man7ext := 7
 
 ## man8ext
 ##
 ##   The file name extension for installed section 8 man pages.
 
-man8ext = 8
+man8ext := 8
 
 ## man9ext
 ##
 ##   The file name extension for installed section 9 man pages.
 
-man9ext = 9
+man9ext := 9
 
 ## And finally, you should set the following variable:
 
@@ -535,9 +535,9 @@ man9ext = 9
 ##
 ##   The directory for the sources being compiled.  The value of this variable
 ##   is normally inserted by the configure shell script.  (If you are using
-##   Autoconf, use 'srcdir = @srcdir@'.)
+##   Autoconf, use 'srcdir := @srcdir@'.)
 
-srcdir = ${ROOT_DIRECTORY}
+srcdir := ${ROOT_DIRECTORY}
 
 
 

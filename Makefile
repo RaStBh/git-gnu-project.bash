@@ -28,6 +28,26 @@
 
 
 
+## Add additional variables here.
+
+## Name of the package
+
+PACKAGE_NAME = git-gnu-project
+
+## The directory from where make is called.
+
+WORKING_DIRECTORY := $(realpath $(shell pwd)/)
+
+## The Path to this Makefile.
+
+MAKEFILE_PATH := $(realpath $(firstword $(MAKEFILE_LIST)))
+
+## The directory where the Makefile which is called is.
+
+ROOT_DIRECTORY := $(realpath $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))/)
+
+
+
 ## From "6.14 Other Special Variables" https://www.gnu.org/software/make/manual/
 ## html_node/Special-Variables.html>
 
@@ -296,7 +316,7 @@ oldincludedir = /usr/include
 ##   include a version number, prevents collisions among files with common
 ##   names, such as README.
 
-docdir = ${datarootdir}/doc/${package_name}
+docdir = ${datarootdir}/doc/${PACKAGE_NAME}
 
 ## infodir
 ##
@@ -517,7 +537,33 @@ man9ext = 9
 ##   is normally inserted by the configure shell script.  (If you are using
 ##   Autoconf, use 'srcdir = @srcdir@'.)
 
-srcdir = $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+srcdir = ${ROOT_DIRECTORY}
+
+
+
+## Add additional variables here.
+
+
+
+## include other makefiles
+
+## Include Makefile for project independent variables and targets.
+
+include ../Makefile
+
+
+
+## Add additional targets here.
+
+_debug:
+## Show that target has been started.
+  @echo "Started target '_debug'. ...";
+## Show global variables.
+  @echo "working directory: '$(WORKING_DIRECTORY)'";
+  @echo "makefile path: '$(MAKEFILE_PATH)'";
+  @echo "root directory: '$(ROOT_DIRECTORY)'";
+## Show that target has been finished.
+  @echo "... Target '_debug' finished.";
 
 
 
@@ -528,34 +574,38 @@ srcdir = $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ##
 ##   Make all the top-level targets the makefile knows about.
 
-all:
+all: _debug
   @echo "Target 'all': This target has not yet been implemented.";
 
 ## clean
 ##
 ##   Delete all files that are normally created by running make.
 
-clean:
+clean: _debug
+## Show that target has been started.
+  @echo "Started target 'clean'. ...";
 ## Remove Notepad++ backup files and directories.
-  find "${srcdir}" -depth -path '*/nppBackup/*' -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path '*/nppBackup' -type d -exec rmdir --verbose "{}" \;
+  find "${ROOT_DIRECTORY}" -depth -path '*/nppBackup/*' -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path '*/nppBackup' -type d -exec rmdir --verbose "{}" \;;
 ## Remove Dodygen generated files.
-  find "${srcdir}" -depth -path "*${srcdir}doc/docbook/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/docbook" -type d -exec rmdir --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/html/search/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/html/search" -type d -exec rmdir --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/html/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/html" -type d -exec rmdir --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/latex/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/latex" -type d -exec rmdir --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/man/man3/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/man/man3" -type d -exec rmdir --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/man/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/man" -type d -exec rmdir --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/rtf/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/rtf" -type d -exec rmdir --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/xml/*" -type f -exec rm --verbose "{}" \;
-  find "${srcdir}" -depth -path "*${srcdir}doc/xml" -type d -exec rmdir --verbose "{}" \;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/docbook/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/docbook" -type d -exec rmdir --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/html/search/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/html/search" -type d -exec rmdir --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/html/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/html" -type d -exec rmdir --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/latex/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/latex" -type d -exec rmdir --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/man/man3/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/man/man3" -type d -exec rmdir --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/man/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/man" -type d -exec rmdir --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/rtf/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/rtf" -type d -exec rmdir --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/xml/*" -type f -exec rm --verbose "{}" \;;
+  find "${ROOT_DIRECTORY}" -depth -path "*${ROOT_DIRECTORY}/doc/xml" -type d -exec rmdir --verbose "{}" \;;
+## Show that target has been finished.
+  @echo "... Target 'clean' finished.";
 
 ## mostlyclean
 ##
@@ -564,7 +614,7 @@ clean:
 ##   for GCC does not delete libgcc.a, because recompiling it is rarely
 ##   necessary and takes a lot of time.
 
-mostlyclean:
+mostlyclean: _debug
   @echo "Target 'mostlyclean': This target has not yet been implemented.";
 
 ## distclean
@@ -574,21 +624,21 @@ mostlyclean:
 ##   configuration files or links that you would normally create as preparation
 ##   for compilation, even if the makefile itself cannot create these files.
 
-distclean:
+distclean: _debug
   @echo "Target 'distclean': This target has not yet been implemented.";
 
 ## realclean
 ##
 ##   See distclean.
 
-realclean:
+realclean: _debug
   @echo "Target 'realclean': This target has not yet been implemented.";
 
 ## clobber
 ##
 ##   See distclean.
 
-clobber:
+clobber: _debug
   @echo "Target 'clobber': This target has not yet been implemented.";
 
 ## install
@@ -597,28 +647,28 @@ clobber:
 ##   commands; copy any auxiliary files that the executable uses into the
 ##   directories where it will look for them.
 
-install:
+install: _debug
   @echo "Target 'install': This target has not yet been implemented.";
 
 ## print
 ##
 ##   Print listings of the source files that have changed.
 
-print:
+print: _debug
   @echo "Target 'print': This target has not yet been implemented.";
 
 ## tar
 ##
 ##   Create a tar file of the source files.
 
-tar:
+tar: _debug
   @echo "Target 'tar': This target has not yet been implemented.";
 
 ## shar
 ##
 ##   Create a shell archive (shar file) of the source files.
 
-shar:
+shar: _debug
   @echo "Target 'shar': This target has not yet been implemented.";
 
 ## dist
@@ -627,26 +677,30 @@ shar:
 ##   or a shar file, or a compressed version of one of the above, or even more
 ##   than one of the above.
 
-dist:
+dist: _debug
   @echo "Target 'dist': This target has not yet been implemented.";
 
 ## TAGS
 ##
 ##   Update a tags table for this program.
 
-TAGS:
+TAGS: _debug
   @echo "Target 'TAGS': This target has not yet been implemented.";
 
 ## check
 ##
 ##   (check and test) Perform self tests on the program this makefile builds.
 
-check:
+check: _debug
   @echo "Target 'check': This target has not yet been implemented.";
 
 ## test
 ##
 ##   See check.
 
-test:
+test: _debug
   @echo "Target 'test': This target has not yet been implemented.";
+
+
+
+## Add additional targets here.

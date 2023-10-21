@@ -211,7 +211,7 @@ states:
 
 priorities:
 
-  -->someday-->low-->medium-->high-->instantly-->
+  -->someday-->tiny-->low-->medium-->high-->huge-->instantly-->
 
 workflow:
 

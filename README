@@ -4,8 +4,9 @@
 ##                                                                            ##
 ## This file is part of the RaSt git-gnu-project package.                     ##
 ##                                                                            ##
-## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
-## local directory.                                                           ##
+## RaSt git-gnu-project - create a local working directory with a local Git   ##
+## repository and within this a local GNU project containing predefined       ##
+## directories and standard readme files.                                     ##
 ##                                                                            ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
 ##                                                                            ##
@@ -16,6 +17,8 @@
 ##                                                                            ##
 ################################################################################
 ################################################################################
+##                                                                            ##
+## RaSt git-gnu-project README file.                                          ##
 ##                                                                            ##
 ## This README file serves the purpose to give a general overview about this  ##
 ## package and pointers to further resources.                                 ##
@@ -31,12 +34,12 @@ Banner, badges and emblems:
              ____       ____  _
             |  _ \ __ _/ ___|| |_
  _______    | |_) / _` \___ \| __|    _________________________________________
-[_______]   |  _ < (_| |___) | |_    [_________________________________________]
+<_______]   |  _ < (_| |___) | |_    [_________________________________________>
             |_| \_\__,_|____/ \__|
                                     ____            _           _
                                    |  _ \ _ __ ___ (_) ___  ___| |_
  ______________________________    | |_) | '__/ _ \| |/ _ \/ __| __|    _______
-[______________________________]   |  __/| | | (_) | |  __/ (__| |_    [_______]
+<_____________________________]   |  __/| | | (_) | |  __/ (__| |_    [_______>
                                    |_|   |_|  \___// |\___|\___|\__|
                                                  |__/
 
@@ -46,14 +49,15 @@ Banner, badges and emblems:
 
 ## The Name of this {? package type ?}:                                       ##
 
-RaSt git-gnu-project package
+This is the RaSt git-gnu-project package.
 
 ================================================================================
 
 ## The short description of this {? package type ?}:                          ##
 
-With the RaSt git-gnu-project you can create a Git repository and a GNU project
-tree in a local directory.
+With the RaSt git-gnu-project you can create a local working directory with a
+local Git repository and within this a local GNU project containing predefined
+directories and standard readme files.
 
 ================================================================================
 
@@ -93,11 +97,13 @@ Contents
 ## dependencies for installation for all programs, libraries and              ##
 ## documentations; (*) documentations or pointer to documentations of all     ##
 ## programs and libraries; (*) pointers to further resources like website,    ##
-## wiki, mailing list and repository).
+## wiki, mailing list and repository).                                        ##
 
-With the command git-gnu-project and its subcommands gittify and gnutify
-you can create a local working directory with a local Git repository and
-a GNU style project tree with standard readme files.
+With the RaSt git-gnu-project you can create a local working directory with a
+local Git repository and within this a local GNU project containing predefined
+directories and standard readme files.
+
+The command git-gnu-project recognise the subcommands gittify and gnutify.
 
 Using subcommand gittify you can:
 
@@ -123,15 +129,15 @@ Using subcommand gnutify you can:
 
 For further information see the documentation of git-gnu-project:
 
-  man 1 git-gnu-project
+$ man 1 git-gnu-project
 
-  info git-gnu-project
+$ info git-gnu-project
 
 For further information see the website and repositories:
 
-<https://github.com/RaStBh/git-gnu-project.git>
+<https://github.com/RaStBh/git-gnu-project.sh.git>
 
-<https://gitlab.com/RaStBh/git-gnu-project.git>
+<https://gitlab.com/RaStBh/git-gnu-project.sh.git>
 
 ================================================================================
 
@@ -146,7 +152,7 @@ See AUTHORS file if present.
 
 Authors:
 
-  Ralf Stephan  <me@ralf-stephan.name>
+* Ralf Stephan  <me@ralf-stephan.name>
 
 ================================================================================
 
@@ -244,7 +250,7 @@ See CONTRIBUTING file if present.
 
 See COPYING file if present.
 
-for further information see:
+For further information see:
 
 Licenses
 <https://www.gnu.org/licenses/>
@@ -277,7 +283,7 @@ Verbatim Copying and Distribution
 
 See COPYING.DOC file if present.
 
-for the standard readme files:
+For the standard readme files:
 
 ################################################################################
 ################################################################################
@@ -297,7 +303,7 @@ for the standard readme files:
 ################################################################################
 ################################################################################
 
-for the documentation (manpages, manuals, references, ...)
+For the documentation (manpages, manuals, references, ...)
 
 ################################################################################
 ################################################################################
@@ -344,7 +350,7 @@ See COPYING.LIB file if present.
 
 See COPYING.PRG file if present.
 
-for the scripts (bash, sed, ...):
+For the scripts (bash, sed, ...):
 
 ################################################################################
 ################################################################################
@@ -413,7 +419,7 @@ See INSTALL file if present.
 
 See MANIFEST file if present.
 
-bash$ tree --gitignore --gitfile .gitignore
+$ tree --gitignore --gitfile .gitignore
 
 ================================================================================
 
@@ -498,11 +504,11 @@ See THANKS file if present.
 
 Maintainers:
 
-  Ralf Stephan  <me@ralf-stephan.name>
+* Ralf Stephan  <me@ralf-stephan.name>
 
 Contributors:
 
-  Ralf Stephan  <me@ralf-stephan.name>
+* Ralf Stephan  <me@ralf-stephan.name>
 
 ================================================================================
 

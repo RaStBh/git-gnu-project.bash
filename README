@@ -235,8 +235,9 @@ For the standard readme files:
 ##                                                                            ##
 ## This file is part of the RaSt git-gnu-project package.                     ##
 ##                                                                            ##
-## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
-## local directory.                                                           ##
+## RaSt git-gnu-project - create a local working directory with a local Git   ##
+## repository and within this a local GNU project containing predefined       ##
+## directories and standard readme files.                                     ##
 ##                                                                            ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
 ##                                                                            ##
@@ -255,8 +256,9 @@ For the documentation (manpages, manuals, references, ...)
 ##                                                                            ##
 ## This file is part of the RaSt git-gnu-project package.                     ##
 ##                                                                            ##
-## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
-## local directory.                                                           ##
+## RaSt git-gnu-project - create a local working directory with a local Git   ##
+## repository and within this a local GNU project containing predefined       ##
+## directories and standard readme files.                                     ##
 ##                                                                            ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
 ##                                                                            ##
@@ -302,8 +304,9 @@ For the scripts (bash, sed, ...):
 ##                                                                            ##
 ## This file is part of the RaSt git-gnu-project package.                     ##
 ##                                                                            ##
-## RaSt git-gnu-project - create a Git repository and a GNU project tree in a ##
-## local directory.                                                           ##
+## RaSt git-gnu-project - create a local working directory with a local Git   ##
+## repository and within this a local GNU project containing predefined       ##
+## directories and standard readme files.                                     ##
 ##                                                                            ##
 ## Copyright (C)  2023  Ralf Stephan  <me@ralf-stephan.name>                  ##
 ##                                                                            ##

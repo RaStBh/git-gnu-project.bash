@@ -165,6 +165,8 @@ Authors:
 
 See BACKLOG file if present.
 
+For the meaning of the priorities see <doc/priorities.txt>.
+
 ================================================================================
 
  3 BUGS
@@ -467,7 +469,9 @@ Contributors:
 ## {? project type ?} and to contain descriptions of all functionality for    ##
 ## this {? project type ?} currently worked on.                               ##
 
-See TODO file if present.
+See TODO file if present..
+
+For the meaning of the priorities see <doc/priorities.txt>.
 
 ================================================================================
 

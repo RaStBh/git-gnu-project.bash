@@ -339,6 +339,8 @@ For the scripts (bash, sed, ...):
 
 See ChangeLog file if present.
 
+todo: add date and time of latest changes
+
 ================================================================================
 
 10 FAQ
@@ -370,6 +372,8 @@ See INSTALL file if present.
 See MANIFEST file if present.
 
 $ tree --gitignore --gitfile .gitignore
+
+todo: add manifest
 
 ================================================================================
 
@@ -408,6 +412,8 @@ See NEWS file if present.
 0.11.0   2023-09-12 06:47:04 +00:00:00
 
 0.12.0
+
+todo: add date and time of last distribution revision
 
 ================================================================================
 

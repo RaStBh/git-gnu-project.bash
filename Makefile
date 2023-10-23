@@ -28,6 +28,23 @@
 
 
 
+# Choosing the shell.
+
+## From "5.3.2 Choosing the Shell" <https://www.gnu.org/software/make/manual/
+## html_node/Choosing-the-Shell.html>
+
+## The program used as the shell is taken from the variable SHELL.  If this
+## variable is not set in your makefile, the program /bin/sh is used as the
+## shell.  The argument(s) passed to the shell are taken from the variable
+## .SHELLFLAGS. The default value of .SHELLFLAGS is -c normally, or -ec in
+## POSIX-conforming mode.
+
+SHELL = /usr/bin/env bash
+
+SHELLFLAGS = -e
+
+
+
 ## Add additional variables here.
 
 ## Name of the package
@@ -712,6 +729,6 @@ doc:
 ## Show that target has been started.
   @echo "Started target 'doc'. ...";
 ## Generate Doxygen documentation.
-  doxygen ./doc/Doxyfile.ucrt64
+  doxygen ./doc/Doxyfile | tee ./doc/Doxyfile.log
 ## Show that target has been finished.
   @echo "... Target 'doc' finished.";

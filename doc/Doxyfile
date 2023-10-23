@@ -1112,7 +1112,7 @@ IMAGE_PATH             =
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-INPUT_FILTER           = "C:\msys64\usr\bin\sed --file=.\src\doxygen-bash.sed --quiet"
+INPUT_FILTER           = "sed --file=./src/doxygen-bash.sed --quiet"
 
 # The FILTER_PATTERNS tag can be used to specify filters on a per file pattern
 # basis. Doxygen will compare the file name with each pattern and apply the
@@ -1125,7 +1125,7 @@ INPUT_FILTER           = "C:\msys64\usr\bin\sed --file=.\src\doxygen-bash.sed --
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-FILTER_PATTERNS        = "*.sh=C:\msys64\usr\bin\sed --file=.\src\doxygen-bash.sed --quiet"
+FILTER_PATTERNS        = "*.sh=sed --file=./src/doxygen-bash.sed --quiet"
 
 # If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set using
 # INPUT_FILTER) will also be used to filter the input files that are used for
@@ -2702,7 +2702,7 @@ INTERACTIVE_SVG        = NO
 # found. If left blank, it is assumed the dot tool can be found in the path.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-DOT_PATH               = "C:\msys64\ucrt64\bin"
+DOT_PATH               =
 
 # The DOTFILE_DIRS tag can be used to specify one or more directories that
 # contain dot files that are included in the documentation (see the \dotfile
@@ -2716,7 +2716,7 @@ DOTFILE_DIRS           =
 # DIA_PATH tag allows you to specify the directory where the dia binary resides.
 # If left empty dia is assumed to be found in the default search path.
 
-DIA_PATH               = "C:\msys64\ucrt64\bin"
+DIA_PATH               =
 
 # The DIAFILE_DIRS tag can be used to specify one or more directories that
 # contain dia files that are included in the documentation (see the \diafile
@@ -2730,7 +2730,7 @@ DIAFILE_DIRS           =
 # a preprocessing step. Doxygen will generate a warning when it encounters a
 # \startuml command in this case and will not generate output for the diagram.
 
-PLANTUML_JAR_PATH      = "C:\Program Files (x86)\PlantUML"
+PLANTUML_JAR_PATH      =
 
 # When using plantuml, the PLANTUML_CFG_FILE tag can be used to specify a
 # configuration file for plantuml.

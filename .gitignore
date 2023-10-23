@@ -47,6 +47,7 @@
 
 # git-gnu-project
 
+/doc/Doxyfile.log
 /src/git-gnu-project.conf
 /src/git-gnu-project.log
 
